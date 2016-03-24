@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.delacalle.delacalle.delacalleapp" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <supports-screens android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:xlargeScreens="true"
+        android:anyDensity="true" />
+
+    <application
+        android:name=".StarterApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_logo"
+        android:label="@string/app_name"
+        android:theme="@style/MyMaterialTheme" >
+        <activity
+            android:name=".home_delacalleactivity"
+            android:label="@string/title_activity_home_delacalleactivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="facebook_app_id" />
+
+        <activity
+            android:name=".iniciosesion_delacalleactivity"
+            android:label="@string/title_activity_iniciosesion_delacalleactivity"
+            android:screenOrientation="portrait" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+
+        </activity>
+        <activity
+            android:name=".registro_delacalleactivity"
+            android:label="@string/title_activity_registro_delacalleactivity"
+            android:screenOrientation="portrait" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".menu_delacalleactivity"
+            android:label="@string/title_activity_menu_delacalleactivity"
+            android:screenOrientation="portrait" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".splashscreen_delacalleactivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".agregarrestaurante_delacalleactivity"
+            android:label="@string/title_activity_agregarrestaurante_delacalleactivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".mostrarrestaurante_delacalleactivity"
+            android:label="@string/title_activity_mostrarrestaurante_delacalleactivity"
+            android:screenOrientation="portrait" >
+
+            <!--
+         <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+
+             <category android:name="android.intent.category.LAUNCHER" />
+         </intent-filter>
+            -->
+
+        </activity>
+        <activity
+            android:name=".resetearcontrasena_delacalleactivity"
+            android:label="@string/title_activity_resetearcontrasena_delacalleactivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!--
+        <activity android:name=".SearchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+        </activity>
+        -->
+        <activity
+            android:name=".registrarresponsable_delacalleactivity"
+            android:label="@string/title_activity_registrarresponsable_delacalleactivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".listarestaurantesresponsable_delacalleactivity"
+            android:label="@string/title_activity_listarestaurantesresponsable_delacalleactivity"
+            android:screenOrientation="portrait" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".menu_pestanas_delacalleactivity"
+            android:label="@string/title_activity_menu_pestanas_delacalleactivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".perfilusuario_delacalleactivity"
+            android:label="@string/title_activity_perfilusuario_delacalleactivity" >
+        </activity>
+    </application>
+
+</manifest>

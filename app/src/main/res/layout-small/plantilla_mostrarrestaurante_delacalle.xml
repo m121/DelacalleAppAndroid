@@ -1,0 +1,157 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.delacalle.delacalle.delacalleapp.agregarrestaurante_delacalleactivity">
+
+   <!-- <EditText
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:id="@+id/editTextdescripcionmostrarrestaurante"
+        android:hint="Descripción"
+        android:maxLength="60"
+        android:textColor="#000000"
+        android:inputType="textEmailAddress"
+        android:textColorHint="#696969"
+        android:layout_below="@+id/editTextmenumostrarrestaurante"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="27dp" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:id="@+id/editTextmenumostrarrestaurante"
+        android:hint="Menú"
+        android:maxLength="20"
+        android:textColor="#000000"
+        android:textColorHint="#696969"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
+
+
+
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menú"
+        android:id="@+id/textView2"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descripción"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/editTextmenumostrarrestaurante"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+-->
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        style="@style/MyCardViewStyle"
+        android:layout_height="320dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:id="@+id/cardView">
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="300dp"
+            android:id="@+id/imageViewfotounomostrarrestaurante"
+            android:src="@drawable/mostrar_foto"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:id="@+id/editTextnombremostrarrestaurante"
+            android:hint="Nombre Restaurante"
+            android:maxLength="20"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="20sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/imageViewfotounomostrarrestaurante"
+            android:layout_toEndOf="@+id/imageViewfotounomostrarrestaurante" />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:color="#ffffff"
+            android:theme="@style/RatingBar"
+            android:isIndicator="true"
+            android:id="@+id/ratingBarmostrarrestaurante"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/imageViewfotounomostrarrestaurante"
+            android:layout_toRightOf="@+id/imageViewfotounomostrarrestaurante" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descripcion"
+                android:textSize="15sp"
+                android:id="@+id/editTextdescripcionmostrarrestaurante"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/imageViewfotounomostrarrestaurante"
+                android:layout_toEndOf="@+id/imageViewfotounomostrarrestaurante"
+                android:layout_marginLeft="37dp"
+                android:layout_marginStart="37dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descripción"
+                android:textSize="20sp"
+                android:id="@+id/textViewTituloDescripcionMostrar"
+                android:layout_above="@+id/editTextdescripcionmostrarrestaurante"
+                android:layout_alignLeft="@+id/editTextdescripcionmostrarrestaurante"
+                android:layout_alignStart="@+id/editTextdescripcionmostrarrestaurante"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre"
+                android:id="@+id/textViewTituloNombreMostrar"
+                android:textSize="20sp"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/editTextnombremostrarrestaurante"
+                android:layout_toStartOf="@+id/editTextnombremostrarrestaurante"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:id="@+id/imageViewComentario"
+                android:src="@mipmap/ic_comentario"
+                android:layout_alignParentBottom="true"
+                android:layout_alignLeft="@+id/textViewTituloNombreMostrar"
+                android:layout_alignStart="@+id/textViewTituloNombreMostrar" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/editTextnombreagregarrestaurante"
+        android:hint="Nombre Restaurante"
+        android:maxLength="20"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        android:textColorHint="#696969"
+        android:textStyle="bold"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:id="@+id/editTextdescripcionagregarrestaurante"
+        android:hint="Descripción"
+        android:maxLength="60"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        android:inputType="textEmailAddress"
+        android:textColorHint="#696969"
+        android:textStyle="bold"
+        android:layout_below="@+id/editTextnombreagregarrestaurante"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:id="@+id/editTextplato1agregarrestaurante"
+        android:hint="Plato 1"
+        android:maxLength="20"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        android:textColorHint="#696969"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:id="@+id/editTextplato2agregarrestaurante"
+        android:hint="Plato 2"
+        android:maxLength="20"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        android:textColorHint="#696969"
+        android:layout_below="@+id/editTextplato1agregarrestaurante"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="21dp" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:id="@+id/editTextplato3agregarrestaurante"
+        android:hint="Plato 3"
+        android:maxLength="20"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        android:textColorHint="#696969"
+        android:layout_below="@+id/editTextplato2agregarrestaurante"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="21dp" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/imageViewfotounoagregarrestaurante"
+        android:src="@mipmap/ic_camara"
+        android:layout_above="@+id/imageViewfotodosagregarrestaurante"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/imageViewfotodosagregarrestaurante"
+        android:src="@mipmap/ic_camara"
+        android:layout_above="@+id/imageViewfototresagregarrestaurante"
+        android:layout_toRightOf="@+id/btnagregarrestaurante"
+        android:layout_toEndOf="@+id/btnagregarrestaurante" />
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/imageViewfototresagregarrestaurante"
+        android:src="@mipmap/ic_camara"
+        android:layout_alignTop="@+id/editTextplato1agregarrestaurante"
+        android:layout_alignLeft="@+id/imageViewfotodosagregarrestaurante"
+        android:layout_alignStart="@+id/imageViewfotodosagregarrestaurante" />
+
+    <Button
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:text="Agregar Restaurante"
+        android:id="@+id/btnagregarrestaurante"
+        android:background="@color/buttoncolor"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carta"
+        android:textSize="25sp"
+        android:id="@+id/textView"
+        android:textStyle="bold"
+        android:layout_below="@+id/editTextdescripcionagregarrestaurante"
+        android:layout_alignLeft="@+id/editTextplato2agregarrestaurante"
+        android:layout_alignStart="@+id/editTextplato2agregarrestaurante"
+        android:layout_marginTop="83dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fotos"
+        android:id="@+id/Textviewtitulofoto"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:layout_above="@+id/imageViewfotounoagregarrestaurante"
+        android:layout_alignLeft="@+id/imageViewfotodosagregarrestaurante"
+        android:layout_alignStart="@+id/imageViewfotodosagregarrestaurante" />
+
+
+</RelativeLayout>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+     <EditText
+     android:layout_width="250dp"
+     android:layout_height="100dp"
+     android:id="@+id/editTextdescripcionmostrarrestaurante"
+     android:hint="Descripción"
+     android:maxLength="60"
+         android:textSize="20sp"
+     android:textColor="#000000"
+     android:inputType="textEmailAddress"
+     android:textColorHint="#696969"
+         android:layout_alignTop="@+id/textView3"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentStart="true" />
+
+ <EditText
+     android:layout_width="200dp"
+     android:layout_height="50dp"
+     android:id="@+id/editTextplato1detallerestaurante"
+     android:hint="Plato 1"
+     android:textSize="20sp"
+     android:maxLength="20"
+     android:textColor="#000000"
+     android:textColorHint="#696969"
+     android:layout_above="@+id/editTextplato2detallerestaurante"
+     android:layout_toRightOf="@+id/editTextnombremostrarrestaurante"
+     android:layout_toEndOf="@+id/editTextnombremostrarrestaurante" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:id="@+id/editTextplato2detallerestaurante"
+        android:hint="Plato 2"
+        android:textSize="20sp"
+        android:maxLength="20"
+        android:textColor="#000000"
+        android:textColorHint="#696969"
+        android:layout_above="@+id/editTextplato3detallerestaurante"
+        android:layout_alignLeft="@+id/editTextplato3detallerestaurante"
+        android:layout_alignStart="@+id/editTextplato3detallerestaurante" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:id="@+id/editTextplato3detallerestaurante"
+        android:hint="Plato 3"
+        android:textSize="20sp"
+        android:maxLength="20"
+        android:textColor="#000000"
+        android:textColorHint="#696969"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignLeft="@+id/textViewtitulocartadetalle"
+        android:layout_alignStart="@+id/textViewtitulocartadetalle" />
+
+
+
+
+
+
+
+ <TextView
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="Carta"
+     android:textSize="20sp"
+     android:id="@+id/textViewtitulocartadetalle"
+     android:textStyle="bold"
+     android:layout_marginBottom="57dp"
+     android:layout_above="@+id/editTextplato1detallerestaurante"
+     android:layout_alignRight="@+id/editTextdescripcionmostrarrestaurante"
+     android:layout_alignEnd="@+id/editTextdescripcionmostrarrestaurante" />
+
+ <TextView
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="Descripción"
+     android:id="@+id/textView3"
+     android:textStyle="bold"
+     android:textSize="20sp"
+     android:layout_centerVertical="true"
+     android:layout_alignParentLeft="true"
+     android:layout_alignParentStart="true" />
+
+
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/imageViewfotounodetalle"
+        android:src="@mipmap/ic_camara"
+        android:layout_below="@+id/editTextnombremostrarrestaurante"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/imageViewfotodosdetalle"
+        android:src="@mipmap/ic_camara"
+        android:layout_alignTop="@+id/imageViewfototresdetalle"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_toEndOf="@+id/textView3" />
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/imageViewfototresdetalle"
+        android:src="@mipmap/ic_camara"
+        android:layout_below="@+id/ratingBarmostrarrestaurante"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:id="@+id/editTextnombremostrarrestaurante"
+        android:hint="Nombre Restaurante"
+        android:maxLength="20"
+        android:textColor="#000000"
+        android:textColorHint="#696969"
+        android:textSize="20sp"
+        android:layout_above="@+id/textViewtitulocartadetalle"
+        android:layout_toLeftOf="@+id/textViewtitulocartadetalle"
+        android:layout_toStartOf="@+id/textViewtitulocartadetalle" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:color="#ffffff"
+        android:theme="@style/RatingBar"
+        android:id="@+id/ratingBarmostrarrestaurante"
+        android:layout_below="@+id/editTextdescripcionmostrarrestaurante"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre Restaurante"
+        android:textSize="20sp"
+        android:id="@+id/textViewtitulonombrerestaurantedetalle"
+        android:textStyle="bold"
+        android:layout_above="@+id/editTextnombremostrarrestaurante"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:id="@+id/imageViewComentarioDetalle"
+        android:src="@mipmap/ic_comentario"
+        android:layout_alignBottom="@+id/imageViewfotodosdetalle"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="28dp"
+        android:layout_marginEnd="28dp" />
+
+            <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="usuario"
+        android:textSize="20sp"
+        android:id="@+id/textViewusuariocomentario"
+        android:layout_above="@+id/ratingBarmostrarrestaurante"
+        android:layout_toRightOf="@+id/editTextdescripcionmostrarrestaurante"
+        android:layout_toEndOf="@+id/editTextdescripcionmostrarrestaurante" />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:hint="comentario"
+        android:textSize="15sp"
+        android:id="@+id/editTextcomentario"
+        android:layout_above="@+id/imageViewComentarioDetalle"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comentarios : "
+        android:id="@+id/textViewtitulocomentarios"
+        android:textSize="15sp"
+        android:layout_above="@+id/textViewusuariocomentario"
+        android:layout_toRightOf="@+id/editTextdescripcionmostrarrestaurante"
+        android:layout_toEndOf="@+id/editTextdescripcionmostrarrestaurante" />
+
+            </RelativeLayout>
+
+
+
+</RelativeLayout>

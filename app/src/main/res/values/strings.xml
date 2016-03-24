@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">De La Calle</string>
+    <string name="title_activity_home_delacalleactivity">home_delacalleactivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_iniciosesion_delacalleactivity">iniciosesion_delacalleactivity
+    </string>
+    <string name="title_activity_registro_delacalleactivity">registro_delacalleactivity</string>
+    <string name="title_activity_menu_delacalleactivity">Menu</string>
+    <string name="title_activity_splashscreen_delacalleactivity">splashscreen_delacalleactivity
+    </string>
+    <string name="title_activity_agregarrestaurante_delacalleactivity">
+        Crear restaurante
+    </string>
+    <string name="title_activity_mostrarrestaurante_delacalleactivity">
+        Mostrar restaurante
+    </string>
+    <string name="facebook_app_id">807123432744026</string>
+    <string name="title_activity_resetearcontrasena_delacalleactivity">
+        resetearcontrasena_delacalleactivity
+    </string>
+    <string name="title_activity_registrarresponsable_delacalleactivity">
+        registrarresponsable_delacalleactivity
+    </string>
+    <string name="title_activity_listarestaurantesresponsable_delacalleactivity">
+        Mis restaurantes
+    </string>
+    <string name="title_activity_menu_pestanas_delacalleactivity">
+    </string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_perfilusuario_delacalleactivity">
+    </string>
+</resources>

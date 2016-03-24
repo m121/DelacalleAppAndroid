@@ -1,0 +1,88 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="Cerrar sesión"
+        android:id="@+id/btncerrarsesion"
+        android:background="@color/buttoncolor"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="76dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="Cambiar contraseña"
+        android:id="@+id/btncambiarcontrasena"
+        android:background="@color/buttoncolor"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="31dp"
+        android:layout_above="@+id/btncerrarsesion"
+        android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre : "
+            android:id="@+id/textViewtituloNombre"
+            android:layout_below="@+id/toolbar"
+            android:layout_centerHorizontal="true"
+            android:textColor="#ffffff"
+            android:layout_marginTop="45dp"
+            android:textSize="30sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Nombre"
+            android:id="@+id/textViewNombre"
+            android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:layout_below="@+id/textViewtituloNombre"
+            android:layout_alignLeft="@+id/textViewtituloNombre"
+            android:layout_alignStart="@+id/textViewtituloNombre" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Correo : "
+            android:id="@+id/textViewTitulocorreo"
+            android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:layout_below="@+id/textViewNombre"
+            android:layout_alignLeft="@+id/textViewNombre"
+            android:layout_alignStart="@+id/textViewNombre"
+            android:layout_marginTop="36dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Correo"
+            android:id="@+id/textViewcorreo"
+            android:textColorHint="#ffffff"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:layout_below="@+id/textViewTitulocorreo"
+            android:layout_alignLeft="@+id/textViewTitulocorreo"
+            android:layout_alignStart="@+id/textViewTitulocorreo" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
