@@ -10,11 +10,12 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
 
-    <supports-screens android:smallScreens="true"
-        android:normalScreens="true"
+    <supports-screens
+        android:anyDensity="true"
         android:largeScreens="true"
-        android:xlargeScreens="true"
-        android:anyDensity="true" />
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
 
     <application
         android:name=".StarterApplication"
@@ -146,6 +147,10 @@
         <activity
             android:name=".perfilusuario_delacalleactivity"
             android:label="@string/title_activity_perfilusuario_delacalleactivity" >
+        </activity>
+        <activity
+            android:name=".carta_delacalleactivity"
+            android:label="@string/title_activity_carta_delacalleactivity" >
         </activity>
     </application>
 
