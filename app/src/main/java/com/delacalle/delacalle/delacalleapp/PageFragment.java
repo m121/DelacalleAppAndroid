@@ -60,6 +60,7 @@ public class PageFragment extends Fragment {
     Bitmap pic3;
 
 
+    TextView nombrecarta;
     TextView titletxt;
     TextView descriptiontxt;
     TextView plato1txt;
@@ -352,7 +353,7 @@ public class PageFragment extends Fragment {
 
 
 
-
+        nombrecarta = (TextView) layout.findViewById(R.id.textViewtitulocartadetalle);
         titletxt = (TextView) layout.findViewById(R.id.editTextnombremostrarrestaurante);
         descriptiontxt = (TextView) layout.findViewById(R.id.editTextdescripcionmostrarrestaurante);
         plato1txt = (TextView) layout.findViewById(R.id.editTextplato1detallerestaurante);
@@ -369,6 +370,15 @@ public class PageFragment extends Fragment {
         ratingbarres = (RatingBar) layout.findViewById(R.id.ratingBarmostrarrestaurante);
         ratingbarres.setClickable(true);
         imageviewcomentario.setClickable(true);
+        nombrecarta.setClickable(true);
+
+        nombrecarta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),carta_delacalleactivity.class);
+                startActivity(intent);
+            }
+        });
 
         imageviewcomentario.setOnClickListener(new View.OnClickListener() {
             @Override

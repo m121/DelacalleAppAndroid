@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:background="#ffffff"
+    android:background="#ff0000"
     android:layout_height="match_parent">
 
     <ScrollView
@@ -173,17 +171,7 @@
         android:layout_marginEnd="28dp" />
 
 
-     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nombre"
-        android:textSize="20sp"
-        android:id="@+id/textViewtitulonombrecomentario"
-         android:layout_alignTop="@+id/editTextdescripcionmostrarrestaurante"
-         android:layout_alignRight="@+id/textViewusuariocomentario"
-         android:layout_alignEnd="@+id/textViewusuariocomentario" />
-
-    <TextView
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="usuario"
@@ -206,16 +194,6 @@
         android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/imageViewfotodosdetalle"
         android:layout_toEndOf="@+id/imageViewfotodosdetalle" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Comentarios : "
-            android:id="@+id/textViewtitulocomentarios"
-            android:textSize="15sp"
-            android:layout_alignTop="@+id/textView3"
-            android:layout_alignLeft="@+id/textViewusuariocomentario"
-            android:layout_alignStart="@+id/textViewusuariocomentario" />
 
 
     </RelativeLayout>

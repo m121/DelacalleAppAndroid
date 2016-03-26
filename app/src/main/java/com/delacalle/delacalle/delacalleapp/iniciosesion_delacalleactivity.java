@@ -21,6 +21,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,6 +53,8 @@ public class iniciosesion_delacalleactivity extends AppCompatActivity {
     private Button loginwithFace;
     private Button loginwithGmail;
     private Button loginwithTwitter;
+
+    private ImageView loginfacebook;
 
 
     private TextView txtUserName;
@@ -111,6 +114,8 @@ e.printStackTrace();
       //  loginwithFace = (Button) findViewById(R.id.btnSignInFacebook);
     //    loginwithTwitter = (Button) findViewById(R.id.btnSignInTwitter);
      //   btnLinkToResetPass = (Button) findViewById(R.id.btniraresetearcontrasena);
+        loginfacebook = (ImageView) findViewById(R.id.btnSignInFacebook);
+
 
         txtUserName = (TextView) findViewById(R.id.editTextnombreiniciarsesion);
         txtUserPass = (TextView) findViewById(R.id.editTextcontrasenainiciarsesion);
@@ -122,6 +127,9 @@ e.printStackTrace();
 
         //     final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
         //     final Animation animTranslate = AnimationUtils.loadAnimation(this, R.anim.anim_translate);
+        loginfacebook.setClickable(true);
+
+
 
         btnLogInEmail.setOnClickListener(new View.OnClickListener()
         {
@@ -154,7 +162,7 @@ e.printStackTrace();
         });
 
 
-       /* loginwithFace.setOnClickListener(new View.OnClickListener() {
+        loginfacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
@@ -181,7 +189,7 @@ e.printStackTrace();
                     }
                 });
             }
-        });*/
+        });
 
 
 

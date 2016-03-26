@@ -149,8 +149,15 @@
             android:label="@string/title_activity_perfilusuario_delacalleactivity" >
         </activity>
         <activity
+
             android:name=".carta_delacalleactivity"
-            android:label="@string/title_activity_carta_delacalleactivity" >
+            android:label="@string/title_activity_carta_delacalleactivity"
+            android:screenOrientation="portrait" >
+          <!-- <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
+
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>-->
         </activity>
     </application>
 

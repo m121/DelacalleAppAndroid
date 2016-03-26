@@ -104,7 +104,8 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                                     new ParseQueryAdapter.QueryFactory<ParseObject>() {
                                         public ParseQuery<ParseObject> create() {
                                             ParseQuery<ParseObject> query = ParseQuery.getQuery("restaurante");
-                                            query.whereEqualTo("titulo", titulo);
+                                            query.whereExists(titulo);
+
 
                                             return query;
                                         }

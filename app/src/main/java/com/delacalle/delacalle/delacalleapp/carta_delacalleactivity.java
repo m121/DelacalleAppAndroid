@@ -11,22 +11,24 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class carta_delacalleactivity extends FragmentActivity {
 
-    /**
-     * The number of pages (wizard steps) to show in this demo.
-     */
+
     private static final int NUM_PAGES = 5;
 
-    /**
-     * The pager widget, which handles animation and allows swiping horizontally to access previous
-     * and next wizard steps.
-     */
-    private ViewPager mPager;
 
-    /**
-     * The pager adapter, which provides the pages to the view pager widget.
-     */
+    private ViewPager mPager;
+    ArrayList<String> carta;
+
+
     private PagerAdapter mPagerAdapter;
 
     @Override
@@ -38,7 +40,25 @@ public class carta_delacalleactivity extends FragmentActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setPageTransformer(true, new ZoomOutPageTransformer());
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
-        mPager.setAdapter(mPagerAdapter);
+        carta = new ArrayList<String>();
+
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("restaurante");
+        query.orderByDescending("createdAt");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    for (ParseObject posts : objects) {
+                        String cartadelacalle = posts.getString("titulo");
+                        carta.add(cartadelacalle);
+                    }
+                    mPager.setAdapter(mPagerAdapter);
+                }
+            }
+        });
+
+
+
     }
 
     @Override
@@ -82,12 +102,12 @@ public class carta_delacalleactivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return new ScreenSlideCartaFragment();
+            return ScreenSlideCartaFragment.create(position+1,carta.get(position).toString());
         }
 
         @Override
         public int getCount() {
-            return NUM_PAGES;
+            return carta.size();
         }
     }
 }
