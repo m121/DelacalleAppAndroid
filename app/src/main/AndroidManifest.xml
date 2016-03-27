@@ -34,9 +34,14 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
+        <provider
+            android:authorities="com.facebook.app.FacebookContentProvider"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"/>
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="facebook_app_id" />
+            android:value="@string/facebook_app_id" />
 
         <activity
             android:name=".iniciosesion_delacalleactivity"

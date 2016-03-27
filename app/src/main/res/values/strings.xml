@@ -17,6 +17,7 @@
         Mostrar restaurante
     </string>
     <string name="facebook_app_id">807123432744026</string>
+
     <string name="title_activity_resetearcontrasena_delacalleactivity">
         resetearcontrasena_delacalleactivity
     </string>
@@ -34,4 +35,7 @@
     <string name="title_activity_perfilusuario_delacalleactivity">
     </string>
     <string name="title_activity_carta_delacalleactivity">carta_delacalleactivity</string>
+
+
+
 </resources>

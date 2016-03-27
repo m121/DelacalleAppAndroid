@@ -98,6 +98,8 @@
         android:layout_below="@+id/btnregistrarse"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="42dp" />
+
+
     </LinearLayout>
 
     <TextView

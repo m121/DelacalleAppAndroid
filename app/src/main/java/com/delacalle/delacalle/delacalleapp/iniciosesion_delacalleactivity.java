@@ -14,9 +14,11 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -26,7 +28,13 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessTokenTracker;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.parse.GetCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseACL;
@@ -54,6 +62,8 @@ public class iniciosesion_delacalleactivity extends AppCompatActivity {
     private Button loginwithGmail;
     private Button loginwithTwitter;
 
+    private LoginButton loginButton;
+
     private ImageView loginfacebook;
 
 
@@ -69,6 +79,11 @@ public class iniciosesion_delacalleactivity extends AppCompatActivity {
     private String userPass;
 
 
+    AccessTokenTracker accessTokenTracker;
+    AccessToken accessToken;
+    CallbackManager callbackManager;
+
+
 
     Button buttoniniciarsesion;
 
@@ -79,10 +94,51 @@ public class iniciosesion_delacalleactivity extends AppCompatActivity {
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(iniciosesion_delacalleactivity.this);
         setContentView(R.layout.activity_iniciosesion_delacalleactivity);
+
+
+        /*callbackManager = CallbackManager.Factory.create();
+        LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                // App code
+                Toast.makeText(getApplicationContext(), "Estas dentro", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancel() {
+                // App code
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
+            }
+        });*/
+
+     //   loginButton = (LoginButton) findViewById(R.id.login_button);
+
+     //   FacebookSdk.sdkInitialize(this.getApplicationContext());
+
+       /* accessTokenTracker = new AccessTokenTracker() {
+            @Override
+            protected void onCurrentAccessTokenChanged(
+                    AccessToken oldAccessToken,
+                    AccessToken currentAccessToken) {
+                // Set the access token using
+                // currentAccessToken when it's loaded or set.
+            }
+        };
+
+        accessToken = AccessToken.getCurrentAccessToken();
+     //*/
 
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
 
@@ -95,9 +151,9 @@ public class iniciosesion_delacalleactivity extends AppCompatActivity {
         {
 e.printStackTrace();
         }
-/*
+//**
         // Obtener el KeyHash que piden cuando agregas un dispositivo a tu app en Facebook, el KeyHash se puede ver en los logs
-        try {
+       /* try {
             PackageInfo info = getPackageManager().getPackageInfo(
                     "com.delacalle.delacalle.delacalleapp",
                     PackageManager.GET_SIGNATURES);
@@ -186,8 +242,22 @@ e.printStackTrace();
                             startActivity(intent);
                             Log.d("MyApp", "User logged in through Facebook!");
                         }
+
                     }
                 });
+
+             /*   ParseUser.becomeInBackground("f5b05e1ce25f9c1a70bd000d212fb3de", new LogInCallback() {
+                    public void done(ParseUser user, ParseException e) {
+                        if (user != null) {
+                            Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
+                            startActivity(intent);
+                            // The current user is now set to user.
+                        } else {
+                            // The token could not be validated.
+                            Log.d("De La Calle", "Error");
+                        }
+                    }
+                });*/
             }
         });
 
@@ -238,11 +308,16 @@ e.printStackTrace();
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //   ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
-        //  if (requestCode == 32665) {
-   //     ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
+       //    ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
+         /* if (requestCode == 32665) {
+        ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
 
-        //}
+
+        }*/
+
+        ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
+//        callbackManager.onActivityResult(requestCode, resultCode, data);
+
     }
 
     @Override
@@ -267,99 +342,7 @@ e.printStackTrace();
         return super.onOptionsItemSelected(item);
     }
 
-    private void displayPopupWindowPhotos(final View anchorView) {
-final        PopupWindow popup = new PopupWindow(iniciosesion_delacalleactivity.this);
-        View layout = getLayoutInflater().inflate(R.layout.popupiniciarsesioncorreo, null);
-        popup.setContentView(layout);
 
-
-        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
-
-        txtUserName = (TextView) layout.findViewById(R.id.editTextnombreiniciarsesion);
-        txtUserPass = (TextView) layout.findViewById(R.id.editTextcontrasenainiciarsesion);
-
-        btnLogInEmail = (Button) layout.findViewById(R.id.btniniciarsesion);
-        btnlinkregistrar = (Button) layout.findViewById(R.id.btnlinkregistrar);
-    //    btnLinkTosignupEmail = (Button) layout.findViewById(R.id.btnLinkToSignUp);
-    //    btnLinkToResetPass = (Button) layout.findViewById(R.id.btnLinkToresetpass);
-
-   //     final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
-   //     final Animation animTranslate = AnimationUtils.loadAnimation(this, R.anim.anim_translate);
-
-        btnLogInEmail.setOnClickListener(new View.OnClickListener()
-        {
-
-            @Override
-            public void onClick(View v) {
-                v.startAnimation(animAlpha);
-                logInEmailErrors(v);
-
-            }
-        });
-
-        btnlinkregistrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.startAnimation(animAlpha);
-                Intent intent = new Intent(iniciosesion_delacalleactivity.this,registro_delacalleactivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-      /*  btnLinkTosignupEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.startAnimation(animTranslate);
-                btnLinkToSignUpEmail(v);
-            }
-        });
-
-        btnLinkToResetPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.startAnimation(animTranslate);
-                Intent intent = new Intent(getApplication(), resetpassword_PardonActivity.class);
-                startActivity(intent);
-            }
-        });
-*/
-
-        // Set content width and height
-        popup.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
-        popup.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
-        // Closes the popup window when touch outside of it - when looses focus
-        popup.setOutsideTouchable(true);
-        popup.setFocusable(true);
-        // Show anchored to button
-        //   popup.setBackgroundDrawable(new BitmapDrawable());
-        new Handler().postDelayed(new Runnable() {
-
-            public void run() {
-                popup.showAtLocation(anchorView, Gravity.TOP | Gravity.START | Gravity.CENTER_VERTICAL,120, 300);
-                popup.showAsDropDown(anchorView);
-            }
-        },100L);
-
-
-
-
-        // Set content width and height
-        popup.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
-        popup.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
-        // Closes the popup window when touch outside of it - when looses focus
-        popup.setOutsideTouchable(true);
-        popup.setFocusable(true);
-        // Show anchored to button
-        //   popup.setBackgroundDrawable(new BitmapDrawable());
-        popup.showAtLocation(anchorView, Gravity.TOP | Gravity.LEFT, 150, 400);
-        popup.showAsDropDown(anchorView);
-
-
-
-
-
-    }
 
     public void logInEmailErrors(View view)
     {
