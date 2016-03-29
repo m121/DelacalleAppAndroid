@@ -1,25 +1,21 @@
 package com.delacalle.delacalle.delacalleapp;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -32,138 +28,209 @@ import android.widget.Toast;
 
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
-import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.ByteArrayOutputStream;
 
-public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
+public class editarrestaurante_delacalleactivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
-
-
-    private TextView textviewnombreR;
-    private TextView textviewdescripcionR;
-    private TextView textviewplato1;
-    private TextView textviewplato2;
-    private TextView textviewplato3;
-
-    private RatingBar ratingbarR;
-    private ImageView imageviewfoto1;
-    private ImageView imageviewfoto2;
-    private ImageView imageviewfoto3;
-    private Button btnagregarR;
-    private ParseFile filefoto1;
-    private ParseFile filefoto2;
-    private ParseFile filefoto3;
-
-
-    private String nombreR;
-    private String descripcionR;
-    private String plato1;
-    private String plato2;
-    private String plato3;
-    private float ratingR;
-
-
     Bitmap pic;
     Bitmap pic2;
     Bitmap pic3;
-    View focusView;
+
+    TextView titletxt;
+    TextView descriptiontxt;
+    TextView plato1txt;
+    TextView plato2txt;
+    TextView plato3txt;
+    ImageView picimageview1;
+    ImageView picimageview2;
+    ImageView picimageview3;
+    RatingBar ratingbarres;
+    ParseFile picfile1;
+    ParseFile picfile2;
+    ParseFile picfile3;
+    String id;
+
+    Button btneditar;
 
 
     // Popup fotos
     RelativeLayout relativealbum;
     RelativeLayout relativefoto;
 
-// Seleccionar la foto
+    // Seleccionar la foto
     public static final int IMAGEREQUESTCODE = 45535;
     public static final int IMAGEREQUESTCODE2 = 45536;
     public static final int IMAGEREQUESTCODE3 = 45537;
     Intent galleryIntent;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agregarrestaurante_delacalleactivity);
-
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        setContentView(R.layout.activity_editarrestaurante_delacalleactivity);
 
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
+
+
+        titletxt = (TextView) findViewById(R.id.editTextnombreeditarrestaurante);
+        descriptiontxt = (TextView) findViewById(R.id.editTextdescripcioneditarrestaurante);
+        plato1txt = (TextView) findViewById(R.id.editTextplato1editarrestaurante);
+        plato2txt = (TextView) findViewById(R.id.editTextplato2editarrestaurante);
+        plato3txt = (TextView) findViewById(R.id.editTextplato3editarrestaurante);
+        picimageview1 = (ImageView) findViewById(R.id.imageViewfotounoeditarrestaurante);
+        picimageview2 = (ImageView) findViewById(R.id.imageViewfotodoseditarrestaurante);
+        picimageview3 = (ImageView) findViewById(R.id.imageViewfototreseditarrestaurante);
+        btneditar  = (Button) findViewById(R.id.btnaeditarrestaurante);
+        picimageview1.setClickable(true);
+        picimageview2.setClickable(true);
+        picimageview3.setClickable(true);
 
         galleryIntent = new Intent(Intent.ACTION_PICK,
                 MediaStore.Images.Media.INTERNAL_CONTENT_URI);
 
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+             id = bundle.getString("id");
 
-        textviewnombreR = (TextView) findViewById(R.id.editTextnombreagregarrestaurante);
-        textviewdescripcionR = (TextView) findViewById(R.id.editTextdescripcionagregarrestaurante);
-        textviewplato1 = (TextView) findViewById(R.id.editTextplato1agregarrestaurante);
-        textviewplato2 = (TextView) findViewById(R.id.editTextplato2agregarrestaurante);
-        textviewplato3 = (TextView) findViewById(R.id.editTextplato3agregarrestaurante);
-     //   ratingbarR = (RatingBar) findViewById(R.id.ratingBaragregarrestaurante);
-        imageviewfoto1 = (ImageView) findViewById(R.id.imageViewfotounoagregarrestaurante);
-        imageviewfoto2 = (ImageView) findViewById(R.id.imageViewfotodosagregarrestaurante);
-        imageviewfoto3 = (ImageView) findViewById(R.id.imageViewfototresagregarrestaurante);
-        btnagregarR = (Button) findViewById(R.id.btnagregarrestaurante);
-        imageviewfoto1.setClickable(true);
-        imageviewfoto2.setClickable(true);
-        imageviewfoto3.setClickable(true);
+        }
 
 
 
-        btnagregarR.setOnClickListener(new View.OnClickListener() {
+        ParseQuery<ParseObject> querymostrareditar = ParseQuery.getQuery("restaurante");
+        querymostrareditar.whereEqualTo("objectId", id);
+        querymostrareditar.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
-            public void onClick(View v) {
-                v.startAnimation(animAlpha);
-                errors();
+            public void done(final ParseObject object, ParseException e) {
+                if (e == null) {
+                    titletxt.setText(object.getString("titulo"));
+                    descriptiontxt.setText(object.getString("descripcion"));
+                    plato1txt.setText(object.getString("plato1"));
+                    plato2txt.setText(object.getString("plato2"));
+                    plato3txt.setText(object.getString("plato3"));
+                    picfile1 = object.getParseFile("fotouno");
+                    picfile1.getDataInBackground(new GetDataCallback() {
+                        @Override
+                        public void done(byte[] data, ParseException e) {
+                            pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                            picimageview1.setImageBitmap(Bitmap.createScaledBitmap(pic, 200, 120, false));
+                        }
+                    });
+                    picfile2 = object.getParseFile("fotodos");
+                    picfile2.getDataInBackground(new GetDataCallback() {
+                        @Override
+                        public void done(byte[] data, ParseException e) {
+                            pic2 = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            pic2.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                            picimageview2.setImageBitmap(Bitmap.createScaledBitmap(pic2, 200, 120, false));
+                        }
+                    });
+                    picfile3 = object.getParseFile("fototres");
+                    picfile3.getDataInBackground(new GetDataCallback() {
+                        @Override
+                        public void done(byte[] data, ParseException e) {
+                            pic3 = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            pic3.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                            picimageview3.setImageBitmap(Bitmap.createScaledBitmap(pic3, 200, 120, false));
+                        }
+                    });
+
+                    picimageview1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            v.startAnimation(animAlpha);
+                            displayPopupFotos1(v);
+                        }
+                    });
+
+                    picimageview2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            v.startAnimation(animAlpha);
+                            displayPopupFotos2(v);
+                        }
+                    });
+
+                    picimageview3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            v.startAnimation(animAlpha);
+                            displayPopupFotos3(v);
+                        }
+                    });
+
+                    btneditar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            v.startAnimation(animAlpha);
+                            final String nombre = titletxt.getText().toString();
+                            final String descripcion = descriptiontxt.getText().toString();
+                            final String plato1 = plato1txt.getText().toString();
+                            final String plato2 = plato2txt.getText().toString();
+                            final String plato3 = plato3txt.getText().toString();
+
+
+                            object.put("titulo", nombre);
+                            object.put("descripcion", descripcion);
+                            object.put("plato1", plato1);
+                            object.put("plato2", plato2);
+                            object.put("plato3", plato3);
+                            object.put("fotouno",picfile1);
+                            object.put("fotodos",picfile2);
+                            object.put("fototres", picfile3);
+                            object.saveInBackground();
+
+                            Toast.makeText(getApplicationContext(), "Actualizado", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(editarrestaurante_delacalleactivity.this,listarestaurantesresponsable_delacalleactivity.class);
+                            startActivity(intent);
+
+                        }
+                    });
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Error en mostrar", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
 
-        imageviewfoto1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.startAnimation(animAlpha);
-              //  takephoto1();
-                displayPopupFotos1(v);
-
-            }
-        });
-
-        imageviewfoto2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.startAnimation(animAlpha);
-        //        takephoto2();
-                displayPopupFotos2(v);
-
-            }
-        });
-
-        imageviewfoto3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.startAnimation(animAlpha);
-          //      takephoto3();
-                displayPopupFotos3(v);
-
-
-            }
-        });
 
 
 
 
+
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_editarrestaurante_delacalleactivity, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void takephoto1()
@@ -217,8 +284,8 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
 
             byte[] data1 = stream.toByteArray();
-            filefoto1 = new ParseFile("fotorestauranteuno.jpg", data1);
-            filefoto1.saveInBackground(new SaveCallback() {
+            picfile1 = new ParseFile("fotorestauranteuno.jpg", data1);
+            picfile1.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
 
@@ -226,7 +293,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             });
 
 
-            imageviewfoto1.setImageBitmap(Bitmap.createScaledBitmap(pic,200,200,false));
+            picimageview1.setImageBitmap(Bitmap.createScaledBitmap(pic,200,120,false));
 
         }
 
@@ -237,8 +304,8 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             pic2.compress(Bitmap.CompressFormat.JPEG, 70, stream);
 
             byte[] data1 = stream.toByteArray();
-            filefoto2 = new ParseFile("fotorestaurantedos.jpg", data1);
-            filefoto2.saveInBackground(new SaveCallback() {
+            picfile2 = new ParseFile("fotorestaurantedos.jpg", data1);
+            picfile2.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
 
@@ -246,7 +313,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             });
 
 
-            imageviewfoto2.setImageBitmap(Bitmap.createScaledBitmap(pic2,400,400,false));
+            picimageview2.setImageBitmap(Bitmap.createScaledBitmap(pic2,200,120,false));
 
         }
 
@@ -257,8 +324,8 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             pic3.compress(Bitmap.CompressFormat.JPEG, 70, stream);
 
             byte[] data1 = stream.toByteArray();
-            filefoto3 = new ParseFile("fotorestaurantetres.jpg", data1);
-            filefoto3.saveInBackground(new SaveCallback() {
+            picfile3 = new ParseFile("fotorestaurantetres.jpg", data1);
+            picfile3.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
 
@@ -266,14 +333,14 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             });
 
 
-            imageviewfoto3.setImageBitmap(Bitmap.createScaledBitmap(pic3,400,400,false));
+            picimageview3.setImageBitmap(Bitmap.createScaledBitmap(pic3,200,120,false));
 
         }
 
         if(requestCode == IMAGEREQUESTCODE && resultCode == RESULT_OK)
         {
 
-                manageImageFromUri1(i.getData());
+            manageImageFromUri1(i.getData());
 
         }
         else
@@ -305,7 +372,6 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
     }
 
 
-
     private void manageImageFromUri1(Uri imageUri) {
         Bitmap bitmap = null;
 
@@ -325,15 +391,15 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
 
             byte[] data = stream.toByteArray();
-            filefoto1 = new ParseFile("fotorestaurantetres.jpg",data);
-            filefoto1.saveInBackground(new SaveCallback() {
+            picfile1 = new ParseFile("fotorestaurantetres.jpg",data);
+            picfile1.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
 
 
                 }
             });
-            imageviewfoto1.setImageBitmap(Bitmap.createScaledBitmap(pic, 400, 400, false));
+            picimageview1.setImageBitmap(Bitmap.createScaledBitmap(pic, 400, 400, false));
 
 
         }
@@ -362,15 +428,15 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             pic2.compress(Bitmap.CompressFormat.JPEG, 70, stream);
 
             byte[] data = stream.toByteArray();
-            filefoto2 = new ParseFile("fotorestaurantetres.jpg",data);
-            filefoto2.saveInBackground(new SaveCallback() {
+            picfile2 = new ParseFile("fotorestaurantetres.jpg",data);
+            picfile2.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
 
 
                 }
             });
-            imageviewfoto2.setImageBitmap(Bitmap.createScaledBitmap(pic2,400,400,false));
+            picimageview2.setImageBitmap(Bitmap.createScaledBitmap(pic2,400,400,false));
 
 
         }
@@ -399,15 +465,15 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             pic3.compress(Bitmap.CompressFormat.JPEG, 70, stream);
 
             byte[] data = stream.toByteArray();
-            filefoto3 = new ParseFile("fotorestaurantetres.jpg",data);
-            filefoto3.saveInBackground(new SaveCallback() {
+            picfile3 = new ParseFile("fotorestaurantetres.jpg",data);
+            picfile3.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
 
 
                 }
             });
-            imageviewfoto3.setImageBitmap(Bitmap.createScaledBitmap(pic3,400,400,false));
+            picimageview3.setImageBitmap(Bitmap.createScaledBitmap(pic3, 400, 400, false));
 
 
         }
@@ -418,158 +484,9 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
     }
 
 
-
-
-    public void errors()
-    {
-        cleanerrors();
-        boolean cancel = false;
-
-
-        nombreR = textviewnombreR.getText().toString();
-        descripcionR = textviewdescripcionR.getText().toString();
-        plato1 = textviewplato1.getText().toString();
-        plato2 = textviewplato2.getText().toString();
-        plato3 = textviewplato3.getText().toString();
-
-        if(TextUtils.isEmpty(nombreR))
-        {
-            textviewnombreR.setError("Es necesario escribir el nombre del restaurante");
-            focusView = textviewnombreR;
-            cancel = true;
-        }
-
-        if(TextUtils.isEmpty(descripcionR))
-        {
-            textviewdescripcionR.setError("Es necesario escribir la descripción del restaurante");
-            focusView = textviewdescripcionR;
-            cancel = true;
-        }
-
-        if(TextUtils.isEmpty(plato1))
-        {
-            textviewplato1.setError("Es necesario escribir al menos un plato");
-            focusView = textviewplato1;
-            cancel = true;
-        }
-
-        if(filefoto1 == null)
-        {
-            Toast.makeText(getApplicationContext(), "Es necesario tomar una foto del restaurante", Toast.LENGTH_SHORT).show();
-            focusView = textviewnombreR;
-            cancel = true;
-        }
-
-        if(filefoto2 == null)
-        {
-            Toast.makeText(getApplicationContext(), "Es necesario tomar la segunda foto del restaurante", Toast.LENGTH_SHORT).show();
-            focusView = textviewnombreR;
-            cancel = true;
-        }
-
-        if(filefoto3 == null)
-        {
-            Toast.makeText(getApplicationContext(), "Es necesario tomar la tercera foto del restaurante", Toast.LENGTH_SHORT).show();
-            focusView = textviewnombreR;
-            cancel = true;
-        }
-
-
-        if(cancel)
-        {
-            focusView.requestFocus();
-        }
-        else
-        {
-            agregarRestaurante();
-        }
-
-    }
-
-    public void cleanerrors()
-    {
-        textviewnombreR.setError(null);
-        textviewdescripcionR.setError(null);
-        textviewplato1.setError(null);
-
-    }
-
-    public void agregarRestaurante()
-    {
-
-//        ratingR = ratingbarR.getRating();
-
-        ParseACL acl = new ParseACL();
-        acl.setPublicWriteAccess(true);
-        acl.setPublicReadAccess(true);
-
-
-        ParseObject  restauranteA = new ParseObject("restaurante");
-        restauranteA.put("titulo",nombreR);
-        restauranteA.put("descripcion",descripcionR);
-        restauranteA.put("plato1", plato1);
-        restauranteA.put("plato2", plato2);
-        restauranteA.put("plato3", plato3);
-        restauranteA.increment("rating", 0);
-        restauranteA.put("fotouno", filefoto1);
-        restauranteA.put("fotodos", filefoto2);
-        restauranteA.put("fototres", filefoto3);
-        restauranteA.put("usuarioid", ParseUser.getCurrentUser());
-        restauranteA.increment("votos", 1);
-        restauranteA.setACL(acl);
-        restauranteA.saveInBackground();
-
-
-        Toast.makeText(getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(agregarrestaurante_delacalleactivity.this,menu_pestanas_delacalleactivity.class);
-        startActivity(intent);
-
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_agregarrestaurante_delacalleactivity, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-
-        if(id == R.id.action_mostrar)
-        {
-            Intent intent = new Intent(agregarrestaurante_delacalleactivity.this,mostrarrestaurante_delacalleactivity.class);
-            startActivity(intent);
-        }
-
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        // or call onBackPressed()
-        return true;
-    }
-
-
-
-
     private void displayPopupFotos1(final View anchorView) {
-        final PopupWindow popup = new PopupWindow(agregarrestaurante_delacalleactivity.this);
-        LayoutInflater inflater = (LayoutInflater) agregarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final PopupWindow popup = new PopupWindow(editarrestaurante_delacalleactivity.this);
+        LayoutInflater inflater = (LayoutInflater) editarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.popupfotos, null);
         popup.setContentView(layout);
 
@@ -618,8 +535,8 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
     }
 
     private void displayPopupFotos2(final View anchorView) {
-        final PopupWindow popup = new PopupWindow(agregarrestaurante_delacalleactivity.this);
-        LayoutInflater inflater = (LayoutInflater) agregarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final PopupWindow popup = new PopupWindow(editarrestaurante_delacalleactivity.this);
+        LayoutInflater inflater = (LayoutInflater) editarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.popupfotos, null);
         popup.setContentView(layout);
 
@@ -669,8 +586,8 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
 
     private void displayPopupFotos3(final View anchorView) {
-        final PopupWindow popup = new PopupWindow(agregarrestaurante_delacalleactivity.this);
-        LayoutInflater inflater = (LayoutInflater) agregarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final PopupWindow popup = new PopupWindow(editarrestaurante_delacalleactivity.this);
+        LayoutInflater inflater = (LayoutInflater) editarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.popupfotos, null);
         popup.setContentView(layout);
 
@@ -719,5 +636,6 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
 
     }
+
 
 }

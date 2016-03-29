@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/food1"
 
     android:layout_width="match_parent" android:layout_height="match_parent"
     >
@@ -62,19 +62,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />-->
 
-    <Button
-        android:id="@+id/btniraresetearcontrasena"
-        android:layout_width="fill_parent"
-        android:layout_height="90dp"
-        android:background="@null"
-        android:text="Ir a resetear contraseña"
-        android:textAllCaps="false"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="30sp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
 
     <!--<ImageView
         android:layout_width="150dp"
@@ -86,6 +73,9 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />-->
 
+
+
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
@@ -94,19 +84,19 @@
         android:padding="10dp"
         android:weightSum="1"
         android:id="@+id/linearLayout"
-        android:layout_marginBottom="196dp"
-        android:layout_above="@+id/btniraresetearcontrasena"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="70dp"
             android:id="@+id/editTextnombreiniciarsesion"
             android:layout_marginTop="67dp"
             android:hint="Nombre usuario"
             android:maxLength="20"
-            android:background="@color/edittextback"
+            android:background="@null"
             android:textColor="#ffffff"
+            android:color="#ffffff"
             android:layout_margin="4dp"
             android:textColorHint="#ffffff"
             android:layout_below="@+id/imageButtonGmail"
@@ -115,13 +105,13 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="70dp"
             android:inputType="textPassword"
             android:ems="10"
             android:hint="Contraseña"
             android:textColor="#ffffff"
             android:maxLength="20"
-            android:background="@color/edittextback"
+            android:background="@null"
             android:layout_margin="4dp"
             android:textColorHint="#ffffff"
             android:id="@+id/editTextcontrasenainiciarsesion"
@@ -132,10 +122,10 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="70dp"
             android:text="Entrar"
             android:id="@+id/btniniciarsesion"
-            android:background="@color/buttoncolor"
+            android:background="#D40000"
             android:layout_margin="4dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
@@ -145,7 +135,7 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="70dp"
             android:text="¿No tienes una cuenta? Regístrate"
             android:id="@+id/btnlinkregistrar"
             android:background="@null"
@@ -154,41 +144,44 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="35dp"
             android:textColor="#FFFFFF"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
+
+
     </LinearLayout>
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="200dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/facebook"
         android:id="@+id/btnSignInFacebook"
-        android:layout_alignTop="@+id/btnSignInTwitter"
-        android:layout_toRightOf="@+id/btnSignInTwitter"
-        android:layout_toEndOf="@+id/btnSignInTwitter"
-        android:layout_marginLeft="154dp"
-        android:layout_marginStart="154dp" />
+        android:layout_marginRight="104dp"
+        android:layout_marginEnd="104dp"
+        android:layout_alignTop="@+id/btnSignInInstagram"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="200dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
-        android:src="@drawable/gmail"
-        android:id="@+id/btnSignInTwitter"
-        android:layout_above="@+id/linearLayout"
-        android:layout_toLeftOf="@+id/textViewtituloentrar"
-        android:layout_toStartOf="@+id/textViewtituloentrar"
-        android:layout_marginBottom="116dp" />
+        android:src="@drawable/instagram"
+        android:id="@+id/btnSignInInstagram"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="198dp"
+        android:layout_marginStart="198dp" />
 
-    <TextView
+
+   <!-- <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Entrar"
-        android:textColor="#ffffff"
-        android:textSize="60sp"
-        android:fontFamily="Candara-Bold"
-        android:id="@+id/textViewtituloentrar"
         android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/relativeLayout2"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignBottom="@+id/btnSignInFacebook"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="77dp"
+        android:layout_marginStart="77dp" />-->
 
 </RelativeLayout>

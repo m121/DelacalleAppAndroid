@@ -4,7 +4,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="@color/colorPrimaryDark"
+    android:background="#a5714a"
     tools:context="com.delacalle.delacalle.delacalleapp.registrarresponsable_delacalleactivity">
 
     <RelativeLayout
@@ -75,7 +75,7 @@
             android:layout_height="50dp"
             android:text="Registrar Responsable"
             android:id="@+id/btnregistrarResponsable"
-            android:background="@color/buttoncolor"
+            android:background="#f27817"
             android:textColor="#FFFFFF"
             android:layout_centerVertical="true"
             android:layout_alignLeft="@+id/btnEnlaceMenu"

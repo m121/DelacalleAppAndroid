@@ -33,6 +33,8 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.parse.GetCallback;
@@ -46,6 +48,8 @@ import com.parse.ParseQuery;
 import com.parse.ParseRole;
 import com.parse.ParseTwitterUtils;
 import com.parse.ParseUser;
+
+import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -62,9 +66,10 @@ public class iniciosesion_delacalleactivity extends AppCompatActivity {
     private Button loginwithGmail;
     private Button loginwithTwitter;
 
-    private LoginButton loginButton;
+ //   private LoginButton loginButton;
 
     private ImageView loginfacebook;
+    private ImageView logininstagram;
 
 
     private TextView txtUserName;
@@ -82,6 +87,13 @@ public class iniciosesion_delacalleactivity extends AppCompatActivity {
     AccessTokenTracker accessTokenTracker;
     AccessToken accessToken;
     CallbackManager callbackManager;
+
+    String email;
+    String nombre;
+
+
+
+
 
 
 
@@ -171,6 +183,7 @@ e.printStackTrace();
     //    loginwithTwitter = (Button) findViewById(R.id.btnSignInTwitter);
      //   btnLinkToResetPass = (Button) findViewById(R.id.btniraresetearcontrasena);
         loginfacebook = (ImageView) findViewById(R.id.btnSignInFacebook);
+        logininstagram = (ImageView) findViewById(R.id.btnSignInInstagram);
 
 
         txtUserName = (TextView) findViewById(R.id.editTextnombreiniciarsesion);
@@ -184,11 +197,11 @@ e.printStackTrace();
         //     final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
         //     final Animation animTranslate = AnimationUtils.loadAnimation(this, R.anim.anim_translate);
         loginfacebook.setClickable(true);
+        logininstagram.setClickable(true);
 
 
 
-        btnLogInEmail.setOnClickListener(new View.OnClickListener()
-        {
+        btnLogInEmail.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -243,6 +256,8 @@ e.printStackTrace();
                             Log.d("MyApp", "User logged in through Facebook!");
                         }
 
+
+
                     }
                 });
 
@@ -258,6 +273,13 @@ e.printStackTrace();
                         }
                     }
                 });*/
+            }
+        });
+
+        logininstagram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.startAnimation(animAlpha);
             }
         });
 
@@ -475,6 +497,23 @@ e.printStackTrace();
         startActivity(intent);
     }*/
 
+
+
+
+    /*GraphRequest request = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+        @Override
+        public void onCompleted(JSONObject user, GraphResponse response) {
+            if (user != null) {
+             //   profilePictureView.setProfileId(user.optString("id"));
+                email = user.optString("email");
+                nombre = user.optString("name");
+
+            }
+        }
+        Bundle parameters = new Bundle();
+
+    }).executeAsync();
+*/
 
 
 }

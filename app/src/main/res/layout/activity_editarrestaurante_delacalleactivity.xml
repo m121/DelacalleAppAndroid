@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:id="@+id/editTextnombreeditarrestaurante"
+        android:hint="Nombre Restaurante"
+        android:maxLength="20"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textColorHint="#696969"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:id="@+id/editTextdescripcioneditarrestaurante"
+        android:hint="Descripción"
+        android:maxLength="60"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:inputType="textEmailAddress"
+        android:textColorHint="#696969"
+        android:layout_below="@+id/editTextnombreeditarrestaurante"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:id="@+id/editTextplato1editarrestaurante"
+        android:hint="Plato 1"
+        android:maxLength="20"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textColorHint="#696969"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:id="@+id/editTextplato2editarrestaurante"
+        android:hint="Plato 2"
+        android:maxLength="20"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textColorHint="#696969"
+        android:layout_below="@+id/editTextplato1editarrestaurante"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="21dp" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:id="@+id/editTextplato3editarrestaurante"
+        android:hint="Plato 3"
+        android:maxLength="20"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textColorHint="#696969"
+        android:layout_below="@+id/editTextplato2editarrestaurante"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="21dp" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/imageViewfotounoeditarrestaurante"
+        android:background="@mipmap/ic_camara"
+        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_alignTop="@+id/editTextdescripcioneditarrestaurante"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageViewfotodoseditarrestaurante"
+        android:background="@mipmap/ic_camara"
+        android:layout_above="@+id/editTextplato1editarrestaurante"
+        android:layout_toRightOf="@+id/btnaeditarrestaurante"
+        android:layout_toEndOf="@+id/btnaeditarrestaurante" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageViewfototreseditarrestaurante"
+        android:background="@mipmap/ic_camara"
+        android:layout_below="@+id/imageViewfotodoseditarrestaurante"
+        android:layout_alignLeft="@+id/imageViewfotodoseditarrestaurante"
+        android:layout_alignStart="@+id/imageViewfotodoseditarrestaurante" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="Actualizar Restaurante"
+        android:id="@+id/btnaeditarrestaurante"
+        android:background="@color/buttoncolor"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carta"
+        android:textSize="20sp"
+        android:id="@+id/textView"
+        android:layout_below="@+id/editTextdescripcioneditarrestaurante"
+        android:layout_alignLeft="@+id/editTextplato2editarrestaurante"
+        android:layout_alignStart="@+id/editTextplato2editarrestaurante"
+        android:layout_marginTop="21dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fotos"
+        android:id="@+id/Textviewtitulofoto"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_above="@+id/imageViewfotounoeditarrestaurante"
+        android:layout_alignRight="@+id/imageViewfotodoseditarrestaurante"
+        android:layout_alignEnd="@+id/imageViewfotodoseditarrestaurante" />
+
+
+</RelativeLayout>

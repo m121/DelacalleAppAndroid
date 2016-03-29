@@ -8,6 +8,7 @@
     <uses-feature android:name="android.hardware.camera" />
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
 
     <supports-screens
@@ -35,9 +36,9 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <provider
-            android:authorities="com.facebook.app.FacebookContentProvider"
             android:name="com.facebook.FacebookContentProvider"
-            android:exported="true"/>
+            android:authorities="com.facebook.app.FacebookContentProvider"
+            android:exported="true" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -154,15 +155,21 @@
             android:label="@string/title_activity_perfilusuario_delacalleactivity" >
         </activity>
         <activity
-
             android:name=".carta_delacalleactivity"
             android:label="@string/title_activity_carta_delacalleactivity"
             android:screenOrientation="portrait" >
-          <!-- <intent-filter>
+
+            <!--
+           <intent-filter>
                <action android:name="android.intent.action.MAIN" />
 
                <category android:name="android.intent.category.LAUNCHER" />
-           </intent-filter>-->
+           </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".editarrestaurante_delacalleactivity"
+            android:label="@string/title_activity_editarrestaurante_delacalleactivity" >
         </activity>
     </application>
 
