@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -142,7 +143,7 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
 
                             }
                         });
-
+                        cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
                         titletxt.setText(resta.getString("titulo"));
                         descriptiontxt.setText(resta.getString("descripcion"));
                         //        menutxt.setText(resta.getString("menu"));
@@ -295,7 +296,7 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
 
                     }
                 });
-
+                cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
                 titletxt.setText(resta.getString("titulo"));
                 descriptiontxt.setText(resta.getString("descripcion"));
                 //        menutxt.setText(resta.getString("menu"));
@@ -460,14 +461,6 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
                 popup.showAsDropDown(anchorView);
             }
         }, 100L);
-
-
-
-
-
-
-
-
 
 
     }

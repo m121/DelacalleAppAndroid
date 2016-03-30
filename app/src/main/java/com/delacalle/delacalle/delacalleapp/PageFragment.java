@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -74,6 +75,7 @@ public class PageFragment extends Fragment {
     ParseFile picfile1;
     ParseFile picfile2;
     ParseFile picfile3;
+
 
     String id;
     private float ratingR;
@@ -158,7 +160,7 @@ public class PageFragment extends Fragment {
 
                             }
                         });
-
+                        cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
                         titletxt.setText(resta.getString("titulo"));
                         descriptiontxt.setText(resta.getString("descripcion"));
                         //       menutxt.setText(resta.getString("menu"));
@@ -314,7 +316,7 @@ public class PageFragment extends Fragment {
 
                     }
                 });
-
+                cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
                 titletxt.setText(resta.getString("titulo"));
                 descriptiontxt.setText(resta.getString("descripcion"));
                 //       menutxt.setText(resta.getString("menu"));

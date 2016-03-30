@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -70,16 +71,30 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
     private String plato3;
     private float ratingR;
 
+    private Button btnpaleta;
+
 
     Bitmap pic;
     Bitmap pic2;
     Bitmap pic3;
     View focusView;
 
+    //popup paleta
+    private Button buttonColor1;
+    private Button buttonColor2;
+    private Button buttonColor3;
+    private Button buttonColor4;
+    private Button buttonColor5;
+    private Button buttonColor6;
+    private RelativeLayout relativepaleta;
+    String color;
+
+
 
     // Popup fotos
     RelativeLayout relativealbum;
     RelativeLayout relativefoto;
+
 
 // Seleccionar la foto
     public static final int IMAGEREQUESTCODE = 45535;
@@ -110,14 +125,24 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         textviewplato1 = (TextView) findViewById(R.id.editTextplato1agregarrestaurante);
         textviewplato2 = (TextView) findViewById(R.id.editTextplato2agregarrestaurante);
         textviewplato3 = (TextView) findViewById(R.id.editTextplato3agregarrestaurante);
+        relativepaleta = (RelativeLayout) findViewById(R.id.relativelayoutPaletacambiar);
      //   ratingbarR = (RatingBar) findViewById(R.id.ratingBaragregarrestaurante);
         imageviewfoto1 = (ImageView) findViewById(R.id.imageViewfotounoagregarrestaurante);
         imageviewfoto2 = (ImageView) findViewById(R.id.imageViewfotodosagregarrestaurante);
         imageviewfoto3 = (ImageView) findViewById(R.id.imageViewfototresagregarrestaurante);
         btnagregarR = (Button) findViewById(R.id.btnagregarrestaurante);
+        btnpaleta = (Button) findViewById(R.id.btnpaletacolores);
         imageviewfoto1.setClickable(true);
         imageviewfoto2.setClickable(true);
         imageviewfoto3.setClickable(true);
+
+
+        btnpaleta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayPopupPaleta(v);
+            }
+        });
 
 
 
@@ -516,6 +541,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         restauranteA.put("fototres", filefoto3);
         restauranteA.put("usuarioid", ParseUser.getCurrentUser());
         restauranteA.increment("votos", 1);
+        restauranteA.put("color",color);
         restauranteA.setACL(acl);
         restauranteA.saveInBackground();
 
@@ -719,5 +745,100 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
 
     }
+
+
+
+    private void displayPopupPaleta(final View anchorView) {
+        final PopupWindow popup = new PopupWindow(agregarrestaurante_delacalleactivity.this);
+        LayoutInflater inflater = (LayoutInflater) agregarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.popuppaleta, null);
+        popup.setContentView(layout);
+
+
+        buttonColor1 = (Button) layout.findViewById(R.id.btnColor1);
+        buttonColor2 = (Button) layout.findViewById(R.id.btnColor2);
+        buttonColor3 = (Button) layout.findViewById(R.id.btnColor3);
+        buttonColor4 = (Button) layout.findViewById(R.id.btnColor4);
+        buttonColor5 = (Button) layout.findViewById(R.id.btnColor5);
+        buttonColor6 = (Button) layout.findViewById(R.id.btnColor6);
+
+
+
+
+
+        buttonColor1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                relativepaleta.setBackgroundColor(Color.parseColor("#b56497"));
+                color = "#b56497";
+            }
+        });
+
+        buttonColor2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                relativepaleta.setBackgroundColor(Color.parseColor("#169c79"));
+                color = "#169c79";
+            }
+        });
+
+        buttonColor3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                relativepaleta.setBackgroundColor(Color.parseColor("#f05543"));
+                color = "#f05543";
+            }
+        });
+
+        buttonColor4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                relativepaleta.setBackgroundColor(Color.parseColor("#da4f70"));
+                color = "#da4f70";
+            }
+        });
+
+        buttonColor5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                relativepaleta.setBackgroundColor(Color.parseColor("#41b7ab"));
+                color = "#41b7ab";
+            }
+        });
+
+        buttonColor6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                relativepaleta.setBackgroundColor(Color.parseColor("#f0bf59"));
+                color = "##f0bf59";
+            }
+        });
+
+
+
+
+
+
+
+
+        // Set content width and height
+        popup.setHeight(600);
+        popup.setWidth(400);
+        // Closes the popup window when touch outside of it - when looses focus
+        popup.setOutsideTouchable(true);
+        popup.setFocusable(true);
+        // Show anchored to button
+        //   popup.setBackgroundDrawable(new BitmapDrawable());
+        new Handler().postDelayed(new Runnable() {
+
+            public void run() {
+                popup.showAtLocation(anchorView, Gravity.TOP | Gravity.START | Gravity.CENTER_VERTICAL, 120, 300);
+                popup.showAsDropDown(anchorView);
+            }
+        }, 100L);
+
+
+    }
+
 
 }

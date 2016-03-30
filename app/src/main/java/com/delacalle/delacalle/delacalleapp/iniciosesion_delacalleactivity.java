@@ -1,5 +1,6 @@
 package com.delacalle.delacalle.delacalleapp;
 
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -48,15 +49,15 @@ import com.parse.ParseQuery;
 import com.parse.ParseRole;
 import com.parse.ParseTwitterUtils;
 import com.parse.ParseUser;
-
 import org.json.JSONObject;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+
+
 
 public class iniciosesion_delacalleactivity extends AppCompatActivity {
 
@@ -91,6 +92,9 @@ public class iniciosesion_delacalleactivity extends AppCompatActivity {
     String email;
     String nombre;
 
+    public static final String CLIENT_ID = "your client id";
+    public static final String CLIENT_SECRET = "your client secret";
+    public static final String CALLBACK_URL = "redirect uri here";
 
 
 
@@ -515,5 +519,17 @@ e.printStackTrace();
     }).executeAsync();
 */
 
+    /*InstagramApp mApp; = new InstagramApp(this,
+                                          ApplicationData.CLIENT_ID,
+                                          ApplicationData.CLIENT_SECRET,
+                                          ApplicationData.CALLBACK_URL);*/
+
+
+
+    public class ApplicationData {
+        public static final String CLIENT_ID = "";
+        public static final String CLIENT_SECRET = "";
+        public static final String CALLBACK_URL = "";
+    }
 
 }
