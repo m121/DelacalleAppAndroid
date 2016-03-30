@@ -193,6 +193,8 @@ e.printStackTrace();
         txtUserName = (TextView) findViewById(R.id.editTextnombreiniciarsesion);
         txtUserPass = (TextView) findViewById(R.id.editTextcontrasenainiciarsesion);
 
+
+
         btnLogInEmail = (Button) findViewById(R.id.btniniciarsesion);
         btnlinkregistrar = (Button) findViewById(R.id.btnlinkregistrar);
         //    btnLinkTosignupEmail = (Button) layout.findViewById(R.id.btnLinkToSignUp);

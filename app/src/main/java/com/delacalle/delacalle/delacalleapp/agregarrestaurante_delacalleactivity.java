@@ -72,6 +72,8 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
     private float ratingR;
 
     private Button btnpaleta;
+    Bitmap bitmaperror2;
+    Bitmap bitmaperror3;
 
 
     Bitmap pic;
@@ -118,6 +120,9 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
         galleryIntent = new Intent(Intent.ACTION_PICK,
                 MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+
+        bitmaperror2 = BitmapFactory.decodeResource(getResources(), R.drawable.agregar_foto);
+        bitmaperror3 = BitmapFactory.decodeResource(getResources(), R.drawable.agregar_foto);
 
 
         textviewnombreR = (TextView) findViewById(R.id.editTextnombreagregarrestaurante);
@@ -487,16 +492,36 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
         if(filefoto2 == null)
         {
-            Toast.makeText(getApplicationContext(), "Es necesario tomar la segunda foto del restaurante", Toast.LENGTH_SHORT).show();
-            focusView = textviewnombreR;
-            cancel = true;
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmaperror2.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+
+            byte[] data = stream.toByteArray();
+            filefoto2 = new ParseFile("fotorestaurantedos.jpg",data);
+            filefoto2.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+
+
+                }
+            });
+            imageviewfoto2.setImageBitmap(bitmaperror2);
         }
 
         if(filefoto3 == null)
         {
-            Toast.makeText(getApplicationContext(), "Es necesario tomar la tercera foto del restaurante", Toast.LENGTH_SHORT).show();
-            focusView = textviewnombreR;
-            cancel = true;
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmaperror3.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+
+            byte[] data = stream.toByteArray();
+            filefoto3 = new ParseFile("fotorestaurantetres.jpg",data);
+            filefoto3.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+
+
+                }
+            });
+            imageviewfoto3.setImageBitmap(bitmaperror3);
         }
 
 
@@ -810,7 +835,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 relativepaleta.setBackgroundColor(Color.parseColor("#f0bf59"));
-                color = "##f0bf59";
+                color = "#f0bf59";
             }
         });
 

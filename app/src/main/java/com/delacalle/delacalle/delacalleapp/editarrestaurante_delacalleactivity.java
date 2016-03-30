@@ -722,7 +722,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 relativepaleta.setBackgroundColor(Color.parseColor("#f0bf59"));
-                color = "##f0bf59";
+                color = "#f0bf59";
             }
         });
 
