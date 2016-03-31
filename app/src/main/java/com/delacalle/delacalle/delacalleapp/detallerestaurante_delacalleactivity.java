@@ -1,5 +1,6 @@
 package com.delacalle.delacalle.delacalleapp;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.view.ViewPager;
@@ -56,6 +57,14 @@ public class detallerestaurante_delacalleactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detallerestaurante_delacalleactivity);
 
+        /*Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            id = bundle.getString("id");
+
+        }*/
+
+
+
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpagerdetalle);
         viewPager.setAdapter(new FragmentPagerAdapterDetalle(getSupportFragmentManager()));
@@ -64,6 +73,8 @@ public class detallerestaurante_delacalleactivity extends AppCompatActivity {
         PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabsdetalle);
         // Attach the view pager to the tab strip
         tabsStrip.setViewPager(viewPager);
+
+
 
      /*   titletxt = (TextView) findViewById(R.id.editTextnombremostrarrestaurante);
         descriptiontxt = (TextView) findViewById(R.id.editTextdescripcionmostrarrestaurante);
@@ -77,11 +88,7 @@ public class detallerestaurante_delacalleactivity extends AppCompatActivity {
         ratingbarres.setClickable(true);
 
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            id = bundle.getString("id");
 
-        }
 
 
         ParseQuery<ParseObject> querymostrareditar = ParseQuery.getQuery("restaurante");

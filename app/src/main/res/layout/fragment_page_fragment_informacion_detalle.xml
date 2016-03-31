@@ -3,83 +3,135 @@
     android:layout_height="match_parent"
     tools:context="com.delacalle.delacalle.delacalleapp.PageFragmentInformacionDetalle">
 
-
-    <android.support.design.widget.CoordinatorLayout
-        android:id="@+id/main_content"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre Restaurante"
+            android:id="@+id/textViewtituloNombreRestauranteDetalle"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
-
-
-        <FrameLayout
-            android:id="@+id/frame_layout"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffff">
+            android:layout_height="wrap_content"
+            android:text="Nombre Restaurante"
+            android:id="@+id/textViewNombreRestauranteDetalle"
+            android:textSize="25sp"
+            android:layout_below="@+id/textViewtituloNombreRestauranteDetalle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descripcion"
+            android:id="@+id/textViewTituloDescripcionDetalle"
+            android:textSize="25sp"
+            android:layout_below="@+id/textViewNombreRestauranteDetalle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="Descripcion"
+            android:id="@+id/textViewDescripcionDetalle"
+            android:textSize="25sp"
+            android:layout_below="@+id/textViewTituloDescripcionDetalle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dirección"
+            android:id="@+id/textViewTituloDireccionDetalle"
+            android:textSize="25sp"
+            android:layout_below="@+id/textViewDescripcionDetalle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dirección"
+            android:id="@+id/textViewDireccionDetalle"
+            android:textSize="25sp"
+            android:layout_below="@+id/textViewTituloDireccionDetalle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Teléfono"
+            android:id="@+id/textViewTituloTelefonoDetalle"
+            android:textSize="25sp"
+            android:layout_below="@+id/textViewDireccionDetalle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Teléfono"
+            android:id="@+id/textViewTelefonoDetalle"
+            android:textSize="25sp"
+            android:layout_below="@+id/textViewTituloTelefonoDetalle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Web"
+            android:id="@+id/textViewTituloWebDetalle"
+            android:textSize="25sp"
+            android:layout_below="@+id/textViewTelefonoDetalle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Web"
+            android:id="@+id/textViewWebDetalle"
+            android:textSize="25sp"
+            android:layout_below="@+id/textViewTituloWebDetalle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calificación"
+            android:id="@+id/textViewTituloCalificacionDetalle"
+            android:textSize="25sp"
+            android:layout_below="@+id/textViewWebDetalle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textStyle="bold" />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBarCalificacionDetalle"
+            android:theme="@style/RatingBar"
+            android:layout_below="@+id/textViewTituloCalificacionDetalle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
 
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/listViewInformacionrestaurante"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    />
-
-
-          <!--  <com.getbase.floatingactionbutton.FloatingActionsMenu
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:layout_margin="16dp"
-                android:id="@+id/fabmenu"
-                fab:fab_size="normal"
-                android:src="@drawable/ic_agregar"
-                app:layout_anchor="@id/listViewrestaurantes"
-                app:layout_anchorGravity="bottom|right|end" >
-
-                <com.getbase.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/fabeditar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|end"
-                    android:layout_margin="10dp"
-                    android:src="@mipmap/ic_editar"
-                    fab:fab_size="mini"
-                    />
-
-                <com.getbase.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/fabagregar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|end"
-                    android:layout_margin="10dp"
-                    android:src="@mipmap/ic_restaurante"
-                    fab:fab_size="mini"
-                    />
-
-                <com.getbase.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/fabperfil"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|end"
-                    android:layout_margin="10dp"
-                    android:src="@mipmap/ic_perfil"
-                    fab:fab_size="mini"
-                    />
-
-            </com.getbase.floatingactionbutton.FloatingActionsMenu>
--->
-
-
-
-
-        </FrameLayout>
-    </android.support.design.widget.CoordinatorLayout>
-
-
-
+    </RelativeLayout>
 </FrameLayout>

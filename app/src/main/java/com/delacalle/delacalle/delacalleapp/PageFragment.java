@@ -155,7 +155,7 @@ public class PageFragment extends Fragment {
                                     @Override
                                     public void done(ParseException e) {
                                         id = resta.getObjectId().toString();
-                                        Intent intent = new Intent(getActivity(),detallerestaurante_delacalleactivity.class);
+                                        Intent intent = new Intent(getActivity(),PageFragmentInformacionDetalle.class);
                                         intent.putExtra("id", id);
                                         getActivity().startActivity(intent);
                                     }
