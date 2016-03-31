@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/relativelayoutPaletacambiar"
     android:orientation="vertical">
 
     <include
@@ -10,35 +11,35 @@
         layout="@layout/toolbar" />
 
     <EditText
-        android:layout_width="400dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:id="@+id/editTextnombreagregarrestaurante"
         android:hint="Nombre Restaurante"
         android:maxLength="20"
-        android:textSize="30sp"
+        android:singleLine="true"
+        android:lines="1"
+        android:textSize="25sp"
         android:textColor="#000000"
         android:textColorHint="#696969"
         android:textStyle="bold"
         android:layout_below="@+id/toolbar"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="46dp" />
+        android:layout_alignParentStart="true" />
 
     <EditText
-        android:layout_width="250dp"
+        android:layout_width="200dp"
         android:layout_height="100dp"
         android:id="@+id/editTextdescripcionagregarrestaurante"
         android:hint="Descripción"
         android:maxLength="60"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textColor="#000000"
         android:inputType="textEmailAddress"
         android:textColorHint="#696969"
         android:textStyle="bold"
-        android:layout_marginTop="51dp"
         android:layout_below="@+id/editTextnombreagregarrestaurante"
-        android:layout_toLeftOf="@+id/btnagregarrestaurante"
-        android:layout_toStartOf="@+id/btnagregarrestaurante" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="200dp"
@@ -46,7 +47,7 @@
         android:id="@+id/editTextplato1agregarrestaurante"
         android:hint="Plato 1"
         android:maxLength="20"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textColor="#000000"
         android:textColorHint="#696969"
         android:layout_below="@+id/textView"
@@ -59,7 +60,7 @@
         android:id="@+id/editTextplato2agregarrestaurante"
         android:hint="Plato 2"
         android:maxLength="20"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textColor="#000000"
         android:textColorHint="#696969"
         android:layout_below="@+id/editTextplato1agregarrestaurante"
@@ -72,7 +73,7 @@
         android:id="@+id/editTextplato3agregarrestaurante"
         android:hint="Plato 3"
         android:maxLength="20"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textColor="#000000"
         android:textColorHint="#696969"
         android:layout_below="@+id/editTextplato2agregarrestaurante"
@@ -83,8 +84,8 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:id="@+id/imageViewfotounoagregarrestaurante"
-        android:background="@mipmap/ic_camara"
-        android:layout_below="@+id/Textviewtitulofoto"
+        android:src="@mipmap/ic_camara"
+        android:layout_above="@+id/imageViewfotodosagregarrestaurante"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -92,42 +93,56 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:id="@+id/imageViewfotodosagregarrestaurante"
-        android:background="@mipmap/ic_camara"
-        android:layout_below="@+id/imageViewfotounoagregarrestaurante"
-        android:layout_alignLeft="@+id/imageViewfotounoagregarrestaurante"
-        android:layout_alignStart="@+id/imageViewfotounoagregarrestaurante" />
+        android:src="@mipmap/ic_camara"
+        android:layout_above="@+id/imageViewfototresagregarrestaurante"
+        android:layout_toRightOf="@+id/btnagregarrestaurante"
+        android:layout_toEndOf="@+id/btnagregarrestaurante" />
 
     <ImageView
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:id="@+id/imageViewfototresagregarrestaurante"
-        android:background="@mipmap/ic_camara"
-        android:layout_below="@+id/imageViewfotodosagregarrestaurante"
-        android:layout_alignLeft="@+id/imageViewfotounoagregarrestaurante" />
+        android:src="@mipmap/ic_camara"
+        android:layout_alignTop="@+id/editTextplato1agregarrestaurante"
+        android:layout_alignLeft="@+id/imageViewfotodosagregarrestaurante"
+        android:layout_alignStart="@+id/imageViewfotodosagregarrestaurante" />
 
     <Button
-        android:layout_width="420dp"
-        android:layout_height="100dp"
+        android:layout_width="320dp"
+        android:layout_height="70dp"
         android:text="Agregar Restaurante"
         android:id="@+id/btnagregarrestaurante"
         android:background="@color/buttoncolor"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        android:layout_marginBottom="204dp"
+        android:textSize="25sp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp" />
+
+    <Button
+        android:layout_width="320dp"
+        android:layout_height="70dp"
+        android:text="Paleta"
+        android:id="@+id/btnpaletacolores"
+        android:background="@color/buttoncolor"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:layout_below="@+id/editTextplato3agregarrestaurante"
+        android:layout_alignLeft="@+id/btnagregarrestaurante"
+        android:layout_alignStart="@+id/btnagregarrestaurante"
+        android:layout_marginTop="57dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Carta"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:id="@+id/textView"
         android:textStyle="bold"
-        android:layout_marginTop="163dp"
         android:layout_below="@+id/editTextdescripcionagregarrestaurante"
         android:layout_alignLeft="@+id/editTextplato2agregarrestaurante"
-        android:layout_alignStart="@+id/editTextplato2agregarrestaurante" />
+        android:layout_alignStart="@+id/editTextplato2agregarrestaurante"
+        android:layout_marginTop="83dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -135,10 +150,10 @@
         android:text="Fotos"
         android:id="@+id/Textviewtitulofoto"
         android:textStyle="bold"
-        android:textSize="30sp"
-        android:layout_alignTop="@+id/editTextdescripcionagregarrestaurante"
-        android:layout_alignRight="@+id/imageViewfotodosagregarrestaurante"
-        android:layout_alignEnd="@+id/imageViewfotodosagregarrestaurante" />
+        android:textSize="25sp"
+        android:layout_above="@+id/imageViewfotounoagregarrestaurante"
+        android:layout_alignLeft="@+id/imageViewfotodosagregarrestaurante"
+        android:layout_alignStart="@+id/imageViewfotodosagregarrestaurante" />
 
 
 </RelativeLayout>

@@ -16,6 +16,8 @@
         android:id="@+id/editTextnombreeditarrestaurante"
         android:hint="Nombre Restaurante"
         android:maxLength="20"
+        android:singleLine="true"
+        android:lines="1"
         android:textSize="20sp"
         android:textColor="#000000"
         android:textColorHint="#696969"
@@ -83,7 +85,6 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/imageViewfotounoeditarrestaurante"
-        android:background="@mipmap/ic_camara"
         android:layout_marginRight="30dp"
         android:layout_marginEnd="30dp"
         android:layout_alignTop="@+id/editTextdescripcioneditarrestaurante"
@@ -94,7 +95,6 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/imageViewfotodoseditarrestaurante"
-        android:background="@mipmap/ic_camara"
         android:layout_above="@+id/editTextplato1editarrestaurante"
         android:layout_toRightOf="@+id/btnaeditarrestaurante"
         android:layout_toEndOf="@+id/btnaeditarrestaurante" />
@@ -103,7 +103,6 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/imageViewfototreseditarrestaurante"
-        android:background="@mipmap/ic_camara"
         android:layout_below="@+id/imageViewfotodoseditarrestaurante"
         android:layout_alignLeft="@+id/imageViewfotodoseditarrestaurante"
         android:layout_alignStart="@+id/imageViewfotodoseditarrestaurante" />

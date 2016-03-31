@@ -89,11 +89,13 @@
         android:layout_alignParentStart="true">
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:id="@+id/editTextnombreiniciarsesion"
             android:layout_marginTop="67dp"
             android:hint="Nombre usuario"
             android:maxLength="20"
+            android:singleLine="true"
+            android:lines="1"
             android:background="@null"
             android:textColor="#ffffff"
             android:color="#ffffff"
@@ -105,11 +107,13 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:inputType="textPassword"
             android:ems="10"
             android:hint="Contraseña"
             android:textColor="#ffffff"
+            android:singleLine="true"
+            android:lines="1"
             android:maxLength="20"
             android:background="@null"
             android:layout_margin="4dp"
@@ -135,7 +139,7 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="50dp"
             android:text="¿No tienes una cuenta? Regístrate"
             android:id="@+id/btnlinkregistrar"
             android:background="@null"
@@ -144,7 +148,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="35dp"
             android:textColor="#FFFFFF"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
 
     </LinearLayout>

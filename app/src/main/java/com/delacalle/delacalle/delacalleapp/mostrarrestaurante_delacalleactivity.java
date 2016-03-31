@@ -125,7 +125,7 @@ public class mostrarrestaurante_delacalleactivity extends AppCompatActivity {
                         pic = BitmapFactory.decodeByteArray(data, 0, data.length);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                        picimageview.setImageBitmap(pic);
+                        picimageview.setImageBitmap(Bitmap.createScaledBitmap(pic,400,400,false));
                     }
                 });
                 ratingbarres.setRating(resta.getInt("rating"));

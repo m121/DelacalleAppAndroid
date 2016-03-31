@@ -16,6 +16,8 @@
         android:id="@+id/editTextnombreagregarrestaurante"
         android:hint="Nombre Restaurante"
         android:maxLength="20"
+        android:singleLine="true"
+        android:lines="1"
         android:textSize="25sp"
         android:textColor="#000000"
         android:textColorHint="#696969"

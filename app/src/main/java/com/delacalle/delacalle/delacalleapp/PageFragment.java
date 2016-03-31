@@ -21,6 +21,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -154,7 +155,9 @@ public class PageFragment extends Fragment {
                                     @Override
                                     public void done(ParseException e) {
                                         id = resta.getObjectId().toString();
-                                        displayPopupdetalleResta(v);
+                                        Intent intent = new Intent(getActivity(),detallerestaurante_delacalleactivity.class);
+                                        intent.putExtra("id", id);
+                                        getActivity().startActivity(intent);
                                     }
                                 });
 
@@ -175,6 +178,8 @@ public class PageFragment extends Fragment {
                             }
                         });
                         ratingbarres.setRating(resta.getInt("rating"));
+
+
 
 
                         return view;
@@ -310,7 +315,9 @@ public class PageFragment extends Fragment {
                             @Override
                             public void done(ParseException e) {
                                 id = resta.getObjectId().toString();
-                                displayPopupdetalleResta(v);
+                                Intent intent = new Intent(getActivity(),detallerestaurante_delacalleactivity.class);
+                                intent.putExtra("id", id);
+                                getActivity().startActivity(intent);
                             }
                         });
 
@@ -589,4 +596,6 @@ public class PageFragment extends Fragment {
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
     }
+
+
 }

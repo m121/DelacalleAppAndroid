@@ -94,6 +94,8 @@
             android:layout_marginTop="67dp"
             android:hint="Nombre usuario"
             android:maxLength="20"
+            android:singleLine="true"
+            android:lines="1"
             android:background="@null"
             android:textColor="#ffffff"
             android:color="#ffffff"
@@ -101,7 +103,7 @@
             android:textColorHint="#ffffff"
             android:layout_below="@+id/imageButtonGmail"
             android:layout_centerHorizontal="true"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
 
         <EditText
             android:layout_width="match_parent"
@@ -110,6 +112,8 @@
             android:ems="10"
             android:hint="Contraseña"
             android:textColor="#ffffff"
+            android:singleLine="true"
+            android:lines="1"
             android:maxLength="20"
             android:background="@null"
             android:layout_margin="4dp"
@@ -118,7 +122,7 @@
             android:layout_below="@+id/editTextnombreiniciarsesion"
             android:layout_alignLeft="@+id/editTextnombreiniciarsesion"
             android:layout_alignStart="@+id/editTextnombreiniciarsesion"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
 
         <Button
             android:layout_width="match_parent"
@@ -131,7 +135,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="35dp"
             android:textColor="#FFFFFF"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
 
         <Button
             android:layout_width="match_parent"
@@ -144,14 +148,14 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="35dp"
             android:textColor="#FFFFFF"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
 
     </LinearLayout>
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:src="@drawable/facebook"
         android:id="@+id/btnSignInFacebook"
         android:layout_marginRight="104dp"
@@ -161,16 +165,16 @@
         android:layout_alignParentEnd="true" />
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_gravity="center"
         android:src="@drawable/instagram"
         android:id="@+id/btnSignInInstagram"
+        android:layout_marginRight="107dp"
+        android:layout_marginEnd="107dp"
         android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="198dp"
-        android:layout_marginStart="198dp" />
+        android:layout_toLeftOf="@+id/btnSignInFacebook"
+        android:layout_toStartOf="@+id/btnSignInFacebook" />
 
 
    <!-- <com.facebook.login.widget.LoginButton

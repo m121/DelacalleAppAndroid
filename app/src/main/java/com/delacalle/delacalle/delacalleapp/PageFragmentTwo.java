@@ -137,7 +137,11 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
                                     @Override
                                     public void done(ParseException e) {
                                         id = resta.getObjectId().toString();
-                                        displayPopupdetalleResta(v);
+                             //           displayPopupdetalleResta(v);
+
+                                        Intent intent = new Intent(getActivity(),detallerestaurante_delacalleactivity.class);
+                                        intent.putExtra("id", id);
+                                        getActivity().startActivity(intent);
                                     }
                                 });
 
@@ -154,7 +158,7 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
                                 pic = BitmapFactory.decodeByteArray(data, 0, data.length);
                                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                                 pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                                picimageview.setImageBitmap(pic);
+                                picimageview.setImageBitmap(Bitmap.createScaledBitmap(pic, 200, 120, false));
                             }
                         });
                         ratingbarres.setRating(resta.getInt("rating"));
@@ -290,7 +294,9 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
                             @Override
                             public void done(ParseException e) {
                                 id = resta.getObjectId().toString();
-                                displayPopupdetalleResta(v);
+                                Intent intent = new Intent(getActivity(),detallerestaurante_delacalleactivity.class);
+                                intent.putExtra("id", id);
+                                getActivity().startActivity(intent);
                             }
                         });
 
@@ -307,7 +313,7 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
                         pic = BitmapFactory.decodeByteArray(data, 0, data.length);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                        picimageview.setImageBitmap(pic);
+                        picimageview.setImageBitmap(Bitmap.createScaledBitmap(pic, 200, 120, false));
                     }
                 });
                 ratingbarres.setRating(resta.getInt("rating"));

@@ -18,11 +18,13 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
@@ -117,6 +119,13 @@ public class iniciosesion_delacalleactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(iniciosesion_delacalleactivity.this);
         setContentView(R.layout.activity_iniciosesion_delacalleactivity);
+
+       /* // Check if no view has focus:
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }*/
 
 
         /*callbackManager = CallbackManager.Factory.create();
@@ -389,14 +398,7 @@ e.printStackTrace();
             focusView = txtUserPass;
             cancel = true;
         }
-        else if(userPass.length()<6)
-        {
-            //  txtUserPass.setError("It is necessary minimum 6 characters of length");
-            Toast.makeText(getApplicationContext(), "Tiene que ser un minímo de 6 caracteres", Toast.LENGTH_SHORT).show();
-            focusView = txtUserPass;
-            cancel = true;
 
-        }
 
         // check if the nickname is valid
         if(TextUtils.isEmpty(userName))
@@ -418,6 +420,15 @@ e.printStackTrace();
         }
 
 
+    }
+
+    // Ocultar el teclado
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.
+                INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        return true;
     }
 
     private void logInEmail(String lowercase, String userpass)
