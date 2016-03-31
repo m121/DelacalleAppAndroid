@@ -162,6 +162,10 @@
             android:name=".detallerestaurante_delacalleactivity"
             android:label="@string/title_activity_detallerestaurante_delacalleactivity" >
         </activity>
+        <activity
+            android:name=".cartaDetalle_delacalleactivity"
+            android:label="@string/title_activity_carta_detalle_delacalleactivity" >
+        </activity>
     </application>
 
 </manifest>

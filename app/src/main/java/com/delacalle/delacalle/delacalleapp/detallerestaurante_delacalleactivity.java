@@ -2,6 +2,7 @@ package com.delacalle.delacalle.delacalleapp;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +12,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.astuetz.PagerSlidingTabStrip;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
@@ -54,7 +56,16 @@ public class detallerestaurante_delacalleactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detallerestaurante_delacalleactivity);
 
-        titletxt = (TextView) findViewById(R.id.editTextnombremostrarrestaurante);
+        // Get the ViewPager and set it's PagerAdapter so that it can display items
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpagerdetalle);
+        viewPager.setAdapter(new FragmentPagerAdapterDetalle(getSupportFragmentManager()));
+
+        // Give the PagerSlidingTabStrip the ViewPager
+        PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabsdetalle);
+        // Attach the view pager to the tab strip
+        tabsStrip.setViewPager(viewPager);
+
+     /*   titletxt = (TextView) findViewById(R.id.editTextnombremostrarrestaurante);
         descriptiontxt = (TextView) findViewById(R.id.editTextdescripcionmostrarrestaurante);
         plato1txt = (TextView) findViewById(R.id.editTextplato1detallerestaurante);
         plato2txt = (TextView) findViewById(R.id.editTextplato2detallerestaurante);
@@ -174,7 +185,7 @@ public class detallerestaurante_delacalleactivity extends AppCompatActivity {
                 }
             }
         });
-
+*/
     }
 
     @Override
