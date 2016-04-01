@@ -39,9 +39,11 @@
         editarrestaurante_delacalleactivity
     </string>
     <string name="title_activity_detallerestaurante_delacalleactivity">
-        detallerestaurante_delacalleactivity
+        Restaurante
     </string>
     <string name="title_activity_carta_detalle_delacalleactivity">cartaDetalle_delacalleactivity
+    </string>
+    <string name="title_activity_agregarcarta_delacalleactivity">agregarcarta_delacalleactivity
     </string>
 
 

@@ -50,17 +50,20 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
     private Toolbar mToolbar;
 
 
-    private TextView textviewnombreR;
-    private TextView textviewdescripcionR;
-    private TextView textviewplato1;
-    private TextView textviewplato2;
-    private TextView textviewplato3;
 
-    private RatingBar ratingbarR;
-    private ImageView imageviewfoto1;
-    private ImageView imageviewfoto2;
-    private ImageView imageviewfoto3;
-    private Button btnagregarR;
+    private ImageView fotologoRestauranteA;
+    private ImageView fotograndeRestauranteA;
+    private TextView  nombreRestauranteA;
+    private TextView  descripcionRestauranteA;
+    private TextView  direccionRestauranteA;
+    private TextView  telefonoRestauranteA;
+    private TextView  webRestauranteA;
+
+    private Button btnGuardarRestaurante;
+    private ImageView btnSeleccionarPaletaRestaurante;
+
+
+
     private ParseFile filefoto1;
     private ParseFile filefoto2;
     private ParseFile filefoto3;
@@ -68,10 +71,10 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
     private String nombreR;
     private String descripcionR;
-    private String plato1;
-    private String plato2;
-    private String plato3;
-    private float ratingR;
+    private String direccionR;
+    private String telefonoR;
+    private String webR;
+
 
     private Button btnpaleta;
     Bitmap bitmaperror2;
@@ -127,24 +130,24 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         bitmaperror3 = BitmapFactory.decodeResource(getResources(), R.drawable.agregar_foto);
 
 
-        textviewnombreR = (TextView) findViewById(R.id.editTextnombreagregarrestaurante);
-        textviewdescripcionR = (TextView) findViewById(R.id.editTextdescripcionagregarrestaurante);
-        textviewplato1 = (TextView) findViewById(R.id.editTextplato1agregarrestaurante);
-        textviewplato2 = (TextView) findViewById(R.id.editTextplato2agregarrestaurante);
-        textviewplato3 = (TextView) findViewById(R.id.editTextplato3agregarrestaurante);
-        relativepaleta = (RelativeLayout) findViewById(R.id.relativelayoutPaletacambiar);
-     //   ratingbarR = (RatingBar) findViewById(R.id.ratingBaragregarrestaurante);
-        imageviewfoto1 = (ImageView) findViewById(R.id.imageViewfotounoagregarrestaurante);
-        imageviewfoto2 = (ImageView) findViewById(R.id.imageViewfotodosagregarrestaurante);
-        imageviewfoto3 = (ImageView) findViewById(R.id.imageViewfototresagregarrestaurante);
-        btnagregarR = (Button) findViewById(R.id.btnagregarrestaurante);
-        btnpaleta = (Button) findViewById(R.id.btnpaletacolores);
-        imageviewfoto1.setClickable(true);
-        imageviewfoto2.setClickable(true);
-        imageviewfoto3.setClickable(true);
+
+         fotologoRestauranteA = (ImageView) findViewById(R.id.imageViewfotoLogoA);
+         fotograndeRestauranteA = (ImageView) findViewById(R.id.imageViewfotoRestauranteA);
+         nombreRestauranteA = (TextView) findViewById(R.id.editTextNombreRestauranteA);
+         descripcionRestauranteA = (TextView) findViewById(R.id.editTextDescripcionRestauranteA);
+         direccionRestauranteA = (TextView) findViewById(R.id.editTextDireccionRestauranteA);
+         telefonoRestauranteA = (TextView) findViewById(R.id.editTextTelefonoRestauranteA);
+         webRestauranteA = (TextView) findViewById(R.id.editTextWebRestauranteA);
+
+        btnGuardarRestaurante = (Button) findViewById(R.id.btnGuardarRestaurante);
+        btnSeleccionarPaletaRestaurante = (ImageView) findViewById(R.id.imageViewbtnPaletaRestaurante);
+        fotologoRestauranteA.setClickable(true);
+        fotograndeRestauranteA.setClickable(true);
+        btnSeleccionarPaletaRestaurante.setClickable(true);
 
 
-        btnpaleta.setOnClickListener(new View.OnClickListener() {
+
+        btnSeleccionarPaletaRestaurante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 displayPopupPaleta(v);
@@ -153,7 +156,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
 
 
-        btnagregarR.setOnClickListener(new View.OnClickListener() {
+        btnGuardarRestaurante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
@@ -162,7 +165,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         });
 
 
-        imageviewfoto1.setOnClickListener(new View.OnClickListener() {
+        fotologoRestauranteA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
@@ -172,7 +175,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             }
         });
 
-        imageviewfoto2.setOnClickListener(new View.OnClickListener() {
+        fotograndeRestauranteA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
@@ -182,16 +185,6 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             }
         });
 
-        imageviewfoto3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.startAnimation(animAlpha);
-          //      takephoto3();
-                displayPopupFotos3(v);
-
-
-            }
-        });
 
 
 
@@ -258,7 +251,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             });
 
 
-            imageviewfoto1.setImageBitmap(Bitmap.createScaledBitmap(pic,400,400,false));
+            fotologoRestauranteA.setImageBitmap(Bitmap.createScaledBitmap(pic, 400, 400, false));
 
         }
 
@@ -278,7 +271,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             });
 
 
-            imageviewfoto2.setImageBitmap(Bitmap.createScaledBitmap(pic2,400,400,false));
+            fotograndeRestauranteA.setImageBitmap(Bitmap.createScaledBitmap(pic2, 400, 400,false));
 
         }
 
@@ -298,7 +291,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             });
 
 
-            imageviewfoto3.setImageBitmap(Bitmap.createScaledBitmap(pic3,400,400,false));
+        //    imageviewfoto3.setImageBitmap(Bitmap.createScaledBitmap(pic3,400,400,false));
 
         }
 
@@ -365,7 +358,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
                 }
             });
-            imageviewfoto1.setImageBitmap(Bitmap.createScaledBitmap(pic, 400, 400, false));
+            fotologoRestauranteA.setImageBitmap(Bitmap.createScaledBitmap(pic, 400, 400, false));
 
 
         }
@@ -402,7 +395,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
                 }
             });
-            imageviewfoto2.setImageBitmap(Bitmap.createScaledBitmap(pic2,400,400,false));
+            fotograndeRestauranteA.setImageBitmap(Bitmap.createScaledBitmap(pic2, 400, 400,false));
 
 
         }
@@ -439,7 +432,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
                 }
             });
-            imageviewfoto3.setImageBitmap(Bitmap.createScaledBitmap(pic3,400,400,false));
+      //      imageviewfoto3.setImageBitmap(Bitmap.createScaledBitmap(pic3,400,400,false));
 
 
         }
@@ -458,37 +451,51 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         boolean cancel = false;
 
 
-        nombreR = textviewnombreR.getText().toString();
-        descripcionR = textviewdescripcionR.getText().toString();
-        plato1 = textviewplato1.getText().toString();
-        plato2 = textviewplato2.getText().toString();
-        plato3 = textviewplato3.getText().toString();
+        nombreR = nombreRestauranteA.getText().toString();
+        descripcionR = descripcionRestauranteA.getText().toString();
+        direccionR = direccionRestauranteA.getText().toString();
+        telefonoR = telefonoRestauranteA.getText().toString();
+        webR = webRestauranteA.getText().toString();
 
         if(TextUtils.isEmpty(nombreR))
         {
-            textviewnombreR.setError("Es necesario escribir el nombre del restaurante");
-            focusView = textviewnombreR;
+            nombreRestauranteA.setError("Es necesario escribir el nombre del restaurante");
+            focusView = nombreRestauranteA;
             cancel = true;
         }
 
         if(TextUtils.isEmpty(descripcionR))
         {
-            textviewdescripcionR.setError("Es necesario escribir la descripción del restaurante");
-            focusView = textviewdescripcionR;
+            descripcionRestauranteA.setError("Es necesario escribir la descripción del restaurante");
+            focusView = descripcionRestauranteA;
             cancel = true;
         }
 
-        if(TextUtils.isEmpty(plato1))
+        if(TextUtils.isEmpty(direccionR))
         {
-            textviewplato1.setError("Es necesario escribir al menos un plato");
-            focusView = textviewplato1;
+            direccionRestauranteA.setError("Es necesario escribir la dirección del restaurante");
+            focusView = direccionRestauranteA;
             cancel = true;
         }
+
+        if(TextUtils.isEmpty(telefonoR))
+        {
+            telefonoRestauranteA.setError("Es necesario escribir el teléfono del restaurante");
+            focusView = telefonoRestauranteA;
+            cancel = true;
+        }
+
+       /* if(TextUtils.isEmpty(webR))
+        {
+            webRestauranteA.setError("Es necesario escribir la web");
+            focusView = webRestauranteA;
+            cancel = true;
+        }*/
 
         if(filefoto1 == null)
         {
-            Toast.makeText(getApplicationContext(), "Es necesario tomar una foto del restaurante", Toast.LENGTH_SHORT).show();
-            focusView = textviewnombreR;
+            Toast.makeText(getApplicationContext(), "Es necesario guardar una foto del logo del restaurante", Toast.LENGTH_SHORT).show();
+            focusView = telefonoRestauranteA;
             cancel = true;
         }
 
@@ -506,25 +513,10 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
                 }
             });
-            imageviewfoto2.setImageBitmap(bitmaperror2);
+            fotograndeRestauranteA.setImageBitmap(bitmaperror2);
         }
 
-        if(filefoto3 == null)
-        {
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmaperror3.compress(Bitmap.CompressFormat.JPEG, 70, stream);
 
-            byte[] data = stream.toByteArray();
-            filefoto3 = new ParseFile("fotorestaurantetres.jpg",data);
-            filefoto3.saveInBackground(new SaveCallback() {
-                @Override
-                public void done(ParseException e) {
-
-
-                }
-            });
-            imageviewfoto3.setImageBitmap(bitmaperror3);
-        }
 
 
         if(cancel)
@@ -540,16 +532,18 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
     public void cleanerrors()
     {
-        textviewnombreR.setError(null);
-        textviewdescripcionR.setError(null);
-        textviewplato1.setError(null);
+        nombreRestauranteA.setError(null);
+        descripcionRestauranteA.setError(null);
+        direccionRestauranteA.setError(null);
+        telefonoRestauranteA.setError(null);
+        webRestauranteA.setError(null);
 
     }
 
     public void agregarRestaurante()
     {
 
-//        ratingR = ratingbarR.getRating();
+
 
         ParseACL acl = new ParseACL();
         acl.setPublicWriteAccess(true);
@@ -557,24 +551,24 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
 
         ParseObject  restauranteA = new ParseObject("restaurante");
-        restauranteA.put("titulo",nombreR);
+        restauranteA.put("nombre",nombreR);
         restauranteA.put("descripcion",descripcionR);
-        restauranteA.put("plato1", plato1);
-        restauranteA.put("plato2", plato2);
-        restauranteA.put("plato3", plato3);
+        restauranteA.put("direccion",direccionR);
+        restauranteA.put("telefono",telefonoR);
+        restauranteA.put("web",webR);
         restauranteA.increment("rating", 0);
-        restauranteA.put("fotouno", filefoto1);
-        restauranteA.put("fotodos", filefoto2);
-        restauranteA.put("fototres", filefoto3);
+        restauranteA.put("fotologo", filefoto1);
+        restauranteA.put("fotogrante", filefoto2);
         restauranteA.put("usuarioid", ParseUser.getCurrentUser());
         restauranteA.increment("votos", 1);
-        restauranteA.put("color",color);
+        restauranteA.put("color", color);
         restauranteA.setACL(acl);
         restauranteA.saveInBackground();
 
 
         Toast.makeText(getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(agregarrestaurante_delacalleactivity.this,menu_pestanas_delacalleactivity.class);
+        Log.d("delacalle","Restaurante creado");
+        Intent intent = new Intent(agregarrestaurante_delacalleactivity.this,agregarcarta_delacalleactivity.class);
         startActivity(intent);
 
 
@@ -721,57 +715,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
     }
 
 
-    private void displayPopupFotos3(final View anchorView) {
-        final PopupWindow popup = new PopupWindow(agregarrestaurante_delacalleactivity.this);
-        LayoutInflater inflater = (LayoutInflater) agregarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = inflater.inflate(R.layout.popupfotos, null);
-        popup.setContentView(layout);
 
-
-        relativealbum = (RelativeLayout) layout.findViewById(R.id.relativelayoutAlbum);
-        relativefoto = (RelativeLayout) layout.findViewById(R.id.relativelayoutTomarFoto);
-        relativealbum.setClickable(true);
-        relativefoto.setClickable(true);
-
-
-        relativealbum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectpic3();
-
-
-            }
-        });
-
-        relativefoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                takephoto3();
-            }
-        });
-
-
-
-
-
-        // Set content width and height
-        popup.setHeight(400);
-        popup.setWidth(400);
-        // Closes the popup window when touch outside of it - when looses focus
-        popup.setOutsideTouchable(true);
-        popup.setFocusable(true);
-        // Show anchored to button
-        //   popup.setBackgroundDrawable(new BitmapDrawable());
-        new Handler().postDelayed(new Runnable() {
-
-            public void run() {
-                popup.showAtLocation(anchorView, Gravity.TOP | Gravity.START | Gravity.CENTER_VERTICAL, 120, 300);
-                popup.showAsDropDown(anchorView);
-            }
-        }, 100L);
-
-
-    }
 
 
 
@@ -796,7 +740,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         buttonColor1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                relativepaleta.setBackgroundColor(Color.parseColor("#b56497"));
+       //         relativepaleta.setBackgroundColor(Color.parseColor("#b56497"));
                 color = "#b56497";
             }
         });
@@ -804,7 +748,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         buttonColor2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                relativepaleta.setBackgroundColor(Color.parseColor("#169c79"));
+        //        relativepaleta.setBackgroundColor(Color.parseColor("#169c79"));
                 color = "#169c79";
             }
         });
@@ -812,7 +756,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         buttonColor3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                relativepaleta.setBackgroundColor(Color.parseColor("#f05543"));
+       //         relativepaleta.setBackgroundColor(Color.parseColor("#f05543"));
                 color = "#f05543";
             }
         });
@@ -820,7 +764,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         buttonColor4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                relativepaleta.setBackgroundColor(Color.parseColor("#da4f70"));
+//                relativepaleta.setBackgroundColor(Color.parseColor("#da4f70"));
                 color = "#da4f70";
             }
         });
@@ -828,7 +772,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         buttonColor5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                relativepaleta.setBackgroundColor(Color.parseColor("#41b7ab"));
+        //        relativepaleta.setBackgroundColor(Color.parseColor("#41b7ab"));
                 color = "#41b7ab";
             }
         });
@@ -836,7 +780,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         buttonColor6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                relativepaleta.setBackgroundColor(Color.parseColor("#f0bf59"));
+     //           relativepaleta.setBackgroundColor(Color.parseColor("#f0bf59"));
                 color = "#f0bf59";
             }
         });

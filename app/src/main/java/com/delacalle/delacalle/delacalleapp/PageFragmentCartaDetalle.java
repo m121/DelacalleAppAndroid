@@ -1,14 +1,22 @@
 package com.delacalle.delacalle.delacalleapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.SaveCallback;
 
 
 public class PageFragmentCartaDetalle extends Fragment {
@@ -48,6 +56,9 @@ public class PageFragmentCartaDetalle extends Fragment {
 
     private int mPage;
 
+
+    String id;
+
     public static PageFragmentCartaDetalle newInstance(int page) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
@@ -60,6 +71,15 @@ public class PageFragmentCartaDetalle extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
+        Bundle bundle = getActivity().getIntent().getExtras();
+        if (bundle != null) {
+            id = bundle.getString("id");
+
+        }
+        else
+        {
+            Log.d("delacalle","Error al pasar el id " + id);
+        }
     }
 
     // Inflate the fragment layout we defined above for this fragment
@@ -100,6 +120,48 @@ public class PageFragmentCartaDetalle extends Fragment {
         relativelayoutPlato4 = (RelativeLayout) view.findViewById(R.id.relativeLayoutPlato4);
         relativelayoutPlato5 = (RelativeLayout) view.findViewById(R.id.relativeLayoutPlato5);
         relativelayoutPlato6 = (RelativeLayout) view.findViewById(R.id.relativeLayoutPlato6);
+
+        relativelayoutPlato1.setClickable(true);
+        relativelayoutPlato2.setClickable(true);
+        relativelayoutPlato3.setClickable(true);
+        relativelayoutPlato4.setClickable(true);
+        relativelayoutPlato5.setClickable(true);
+        relativelayoutPlato6.setClickable(true);
+
+
+        ParseQuery<ParseObject>  cartaquery = ParseQuery.getQuery("restaurante");
+        cartaquery.whereEqualTo("objectId",id);
+        cartaquery.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(final ParseObject carta, ParseException e) {
+                if (e == null) {
+                    nombrePlato1.setText(carta.getString("plato1"));
+                    relativelayoutPlato1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            carta.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    if (e == null)
+                                    {
+                                        id = carta.getObjectId().toString();
+                                        Intent intent = new Intent(getActivity(),cartaDetalle_delacalleactivity.class);
+                                        intent.putExtra("id", id);
+                                        getActivity().startActivity(intent);
+                                    } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND)
+                                    {
+                                        Log.d("delacalle","no se puede guardar la carta");
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                    Log.d("delacalle", "Carta no encontrada");
+                }
+            }
+        });
 
         return view;
     }

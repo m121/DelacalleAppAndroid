@@ -3,6 +3,7 @@ package com.delacalle.delacalle.delacalleapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -77,6 +78,7 @@ public class registrarresponsable_delacalleactivity extends AppCompatActivity {
                             role.saveInBackground();
 
                             Toast.makeText(getApplicationContext(), "Registrado", Toast.LENGTH_SHORT).show();
+                            Log.d("delacalle", "responsable registrado");
 
 
                         } else {

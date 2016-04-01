@@ -166,6 +166,10 @@
             android:name=".cartaDetalle_delacalleactivity"
             android:label="@string/title_activity_carta_detalle_delacalleactivity" >
         </activity>
+        <activity
+            android:name=".agregarcarta_delacalleactivity"
+            android:label="@string/title_activity_agregarcarta_delacalleactivity" >
+        </activity>
     </application>
 
 </manifest>

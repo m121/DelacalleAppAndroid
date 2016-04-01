@@ -255,20 +255,22 @@ e.printStackTrace();
                     public void done(ParseUser user, ParseException err) {
                         if (user == null) {
                             //   Log.d("myapp",err.getLocalizedMessage());
-                            Log.d("MyApp", "Uh oh. The user cancelled the Facebook login.");
+                            Log.d("delacalle","usuario es null");
                         } else if (user.isNew()) {
                             ParseACL roleACL = new ParseACL();
                             roleACL.setPublicReadAccess(true);
                             ParseRole role = new ParseRole("usuario", roleACL);
                             role.getUsers().add(ParseUser.getCurrentUser());
                             role.saveInBackground();
+                            Log.d("delacalle", "usuario Registrado con Facebook");
                             Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
                             startActivity(intent);
-                            Log.d("MyApp", "User signed up and logged in through Facebook!");
+
                         } else {
                             Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
                             startActivity(intent);
-                            Log.d("MyApp", "User logged in through Facebook!");
+                            Log.d("delacalle", "usuario inicio sesion con Facebook");
+
                         }
 
 
@@ -449,6 +451,7 @@ e.printStackTrace();
                             }
                             else
                             {
+
                                       loginSuccesfull();
                             }
                         }
@@ -464,6 +467,7 @@ e.printStackTrace();
 
     public void loginSuccesfull()
     {
+        Log.d("delacalle","usuario inicio sesion");
         Intent intent = new Intent(getApplicationContext(), menu_pestanas_delacalleactivity.class);
         startActivity(intent);
 

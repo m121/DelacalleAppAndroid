@@ -185,6 +185,7 @@ public class registro_delacalleactivity extends AppCompatActivity {
                     role.saveInBackground();
 
                     signUprMsg("registro exitoso, ¡bienvenido!");
+                    Log.d("delacalle", "usuario registrado");
                     Toast.makeText(getApplicationContext(), userName + " - " + userEmail, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), menu_pestanas_delacalleactivity
                             .class);

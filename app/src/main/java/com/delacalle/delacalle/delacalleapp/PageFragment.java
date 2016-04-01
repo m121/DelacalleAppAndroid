@@ -65,6 +65,7 @@ public class PageFragment extends Fragment {
     TextView nombrecarta;
     TextView titletxt;
     TextView descriptiontxt;
+
     TextView plato1txt;
     TextView plato2txt;
     TextView plato3txt;
@@ -143,7 +144,8 @@ public class PageFragment extends Fragment {
                         cardview.setClickable(true);
                         TextView titletxt = (TextView) view.findViewById(R.id.editTextnombremostrarrestaurante);
                         TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
-                        //     TextView menutxt = (TextView) view.findViewById(R.id.editTextmenumostrarrestaurante);
+                        TextView direcciontxt = (TextView) view.findViewById(R.id.textViewDireccionM);
+                        TextView telefonotxt = (TextView)   view.findViewById(R.id.textViewTelefonoM);
                         final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
                         RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
                         ParseFile picfile;
@@ -155,7 +157,7 @@ public class PageFragment extends Fragment {
                                     @Override
                                     public void done(ParseException e) {
                                         id = resta.getObjectId().toString();
-                                        Intent intent = new Intent(getActivity(),PageFragmentInformacionDetalle.class);
+                                        Intent intent = new Intent(getActivity(),detallerestaurante_delacalleactivity.class);
                                         intent.putExtra("id", id);
                                         getActivity().startActivity(intent);
                                     }
@@ -164,10 +166,11 @@ public class PageFragment extends Fragment {
                             }
                         });
                         cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
-                        titletxt.setText(resta.getString("titulo"));
+                        titletxt.setText(resta.getString("nombre"));
                         descriptiontxt.setText(resta.getString("descripcion"));
-                        //       menutxt.setText(resta.getString("menu"));
-                        picfile = resta.getParseFile("fotouno");
+                        direcciontxt.setText(resta.getString("direccion"));
+                        telefonotxt.setText(resta.getString("telefono"));
+                        picfile = resta.getParseFile("fotologo");
                         picfile.getDataInBackground(new GetDataCallback() {
                             @Override
                             public void done(byte[] data, ParseException e) {
@@ -303,7 +306,8 @@ public class PageFragment extends Fragment {
                 cardview.setClickable(true);
                 TextView titletxt = (TextView) view.findViewById(R.id.editTextnombremostrarrestaurante);
                 TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
-                //     TextView menutxt = (TextView) view.findViewById(R.id.editTextmenumostrarrestaurante);
+                TextView direcciontxt = (TextView) view.findViewById(R.id.textViewDireccionM);
+                TextView telefonotxt = (TextView)   view.findViewById(R.id.textViewTelefonoM);
                 final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
                 RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
                 ParseFile picfile;
@@ -324,10 +328,11 @@ public class PageFragment extends Fragment {
                     }
                 });
                 cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
-                titletxt.setText(resta.getString("titulo"));
+                titletxt.setText(resta.getString("nombre"));
                 descriptiontxt.setText(resta.getString("descripcion"));
-                //       menutxt.setText(resta.getString("menu"));
-                picfile = resta.getParseFile("fotouno");
+                direcciontxt.setText(resta.getString("direccion"));
+                telefonotxt.setText(resta.getString("telefono"));
+                picfile = resta.getParseFile("fotologo");
                 picfile.getDataInBackground(new GetDataCallback() {
                     @Override
                     public void done(byte[] data, ParseException e) {
