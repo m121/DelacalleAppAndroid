@@ -139,7 +139,7 @@
         </activity>
         <activity
             android:name=".perfilusuario_delacalleactivity"
-            android:label="@string/title_activity_perfilusuario_delacalleactivity" >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".carta_delacalleactivity"
@@ -156,19 +156,27 @@
         </activity>
         <activity
             android:name=".editarrestaurante_delacalleactivity"
-            android:label="@string/title_activity_editarrestaurante_delacalleactivity" >
+            android:label="@string/title_activity_editarrestaurante_delacalleactivity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".detallerestaurante_delacalleactivity"
-            android:label="@string/title_activity_detallerestaurante_delacalleactivity" >
+            android:label="@string/title_activity_detallerestaurante_delacalleactivity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".cartaDetalle_delacalleactivity"
-            android:label="@string/title_activity_carta_detalle_delacalleactivity" >
+            android:label="@string/title_activity_carta_detalle_delacalleactivity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".agregarcarta_delacalleactivity"
-            android:label="@string/title_activity_agregarcarta_delacalleactivity" >
+            android:label="@string/title_activity_agregarcarta_delacalleactivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".editarcartarestaurante_delacalleactivity"
+            android:label="@string/title_activity_editarcartarestaurante_delacalleactivity" >
         </activity>
     </application>
 

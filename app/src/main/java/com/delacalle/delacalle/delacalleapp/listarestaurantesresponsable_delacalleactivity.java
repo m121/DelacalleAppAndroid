@@ -187,10 +187,10 @@ public class listarestaurantesresponsable_delacalleactivity extends AppCompatAct
 
              //   id = resta.getObjectId().toString();
                 cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
-                titletxt.setText(resta.getString("titulo"));
+                titletxt.setText(resta.getString("nombre"));
                 //        descriptiontxt.setText(resta.getString("descripcion"));
                 //        menutxt.setText(resta.getString("menu"));
-                picfile = resta.getParseFile("fotouno");
+                picfile = resta.getParseFile("fotologo");
                 picfile.getDataInBackground(new GetDataCallback() {
                     @Override
                     public void done(byte[] data, ParseException e) {

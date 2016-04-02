@@ -1,5 +1,7 @@
 package com.delacalle.delacalle.delacalleapp;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -9,6 +11,15 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.parse.GetCallback;
+import com.parse.GetDataCallback;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.io.ByteArrayOutputStream;
+
 public class cartaDetalle_delacalleactivity extends AppCompatActivity {
 
     private ImageView fotologoCartaDetalle;
@@ -17,6 +28,13 @@ public class cartaDetalle_delacalleactivity extends AppCompatActivity {
     private TextView  nombreplatoCartaDetalle;
     private TextView  descripcionplatoCartaDetalle;
     private TextView  precioplatoCartaDetalle;
+
+
+    ParseFile  filefotocarta;
+    ParseFile filefotologo;
+
+    Bitmap pic;
+    Bitmap pic2;
 
     private Toolbar mToolbar;
 
@@ -50,6 +68,69 @@ public class cartaDetalle_delacalleactivity extends AppCompatActivity {
         {
             Log.d("delacalle", "Error al pasar el id " + id);
         }
+
+
+        ParseQuery<ParseObject> queryplato = ParseQuery.getQuery("carta");
+        queryplato.whereEqualTo("restauranteId",id);
+        queryplato.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject carta, ParseException e) {
+                if(e== null)
+                {
+                    filefotocarta = carta.getParseFile("fotoplato");
+                    filefotocarta.getDataInBackground(new GetDataCallback() {
+                        @Override
+                        public void done(byte[] data, ParseException e) {
+                            if(e== null)
+                            {
+                                pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                                fotorestauranteCartaDetalle.setImageBitmap(pic);
+                            }
+                            else if(e.getCode() == ParseException.OBJECT_NOT_FOUND)
+                            {
+                                Log.d("delacalle","No se puede cargar la foto");
+                            }
+                        }
+                    });
+
+                    nombreplatoCartaDetalle.setText(carta.getString("nombre"));
+                    descripcionplatoCartaDetalle.setText(carta.getString("descripcion"));
+                    precioplatoCartaDetalle.setText("$"+carta.getString("precio"));
+
+                    ParseQuery<ParseObject> queryrestaurante = ParseQuery.getQuery("restaurante");
+                    queryrestaurante.whereEqualTo("objectId", id);
+                    queryrestaurante.getFirstInBackground(new GetCallback<ParseObject>() {
+                        @Override
+                        public void done(ParseObject restaurante, ParseException e) {
+                            if (e == null)
+                            {
+                                filefotologo = restaurante.getParseFile("fotologo");
+                                filefotologo.getDataInBackground(new GetDataCallback() {
+                                    @Override
+                                    public void done(byte[] data, ParseException e) {
+                                        pic2 = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                        pic2.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                                        fotologoCartaDetalle.setImageBitmap(pic2);
+                                    }
+                                });
+                             nombrerestauranteCartaDetalle.setText(restaurante.getString("nombre"));
+                            }
+                            else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                Log.d("delacalle", "No se encuentra el restaurante");
+                            }
+                        }
+                    });
+                }
+                else if(e.getCode() == ParseException.OBJECT_NOT_FOUND)
+                {
+                    Log.d("delacalle","Plato no encontrado");
+                }
+            }
+        });
+
     }
 
     @Override

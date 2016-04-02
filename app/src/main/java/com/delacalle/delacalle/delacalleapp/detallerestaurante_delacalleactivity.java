@@ -77,7 +77,7 @@ public class detallerestaurante_delacalleactivity extends AppCompatActivity {
             public void done(ParseObject foto, ParseException e) {
                 if(e== null)
                 {
-                    picfile = foto.getParseFile("fotologo");
+                    picfile = foto.getParseFile("fotogrande");
                     picfile.getDataInBackground(new GetDataCallback() {
                         @Override
                         public void done(byte[] data, ParseException e) {
@@ -90,6 +90,8 @@ public class detallerestaurante_delacalleactivity extends AppCompatActivity {
                             }
                         }
                     });
+
+
                 }
                 else if(e.getCode() == ParseException.OBJECT_NOT_FOUND)
                 {
@@ -97,6 +99,9 @@ public class detallerestaurante_delacalleactivity extends AppCompatActivity {
                 }
             }
         });
+
+
+
 
 
 

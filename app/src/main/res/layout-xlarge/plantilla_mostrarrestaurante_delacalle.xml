@@ -6,55 +6,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.delacalle.delacalle.delacalleapp.agregarrestaurante_delacalleactivity">
 
-   <!-- <EditText
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:id="@+id/editTextdescripcionmostrarrestaurante"
-        android:hint="Descripción"
-        android:maxLength="60"
-        android:textColor="#000000"
-        android:inputType="textEmailAddress"
-        android:textColorHint="#696969"
-        android:layout_below="@+id/editTextmenumostrarrestaurante"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="27dp" />
 
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:id="@+id/editTextmenumostrarrestaurante"
-        android:hint="Menú"
-        android:maxLength="20"
-        android:textColor="#000000"
-        android:textColorHint="#696969"
-        android:layout_below="@+id/textView2"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
-
-
-
-
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Menú"
-        android:id="@+id/textView2"
-         />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Descripción"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/editTextmenumostrarrestaurante"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
--->
 
 
     <android.support.v7.widget.CardView
@@ -77,7 +29,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true" />
-        <EditText
+        <TextView
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:id="@+id/editTextnombremostrarrestaurante"
@@ -85,12 +37,13 @@
             android:maxLength="20"
             android:textColor="#000000"
             android:textColorHint="#000000"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_toRightOf="@+id/imageViewfotounomostrarrestaurante"
-            android:layout_toEndOf="@+id/imageViewfotounomostrarrestaurante" />
+            android:layout_toEndOf="@+id/imageViewfotounomostrarrestaurante"
+            android:textStyle="bold" />
 
         <RatingBar
             android:layout_width="wrap_content"
@@ -108,32 +61,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Descripcion"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 android:id="@+id/editTextdescripcionmostrarrestaurante"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginBottom="25dp" />
+                android:layout_marginBottom="25dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Teléfono"
-                android:id="@+id/textView2"
+                android:id="@+id/textViewTelefonoM"
                 android:layout_above="@+id/ratingBarmostrarrestaurante"
                 android:layout_toRightOf="@+id/imageViewfotounomostrarrestaurante"
                 android:layout_toEndOf="@+id/imageViewfotounomostrarrestaurante"
-                android:textSize="20sp" />
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Direccion"
-                android:id="@+id/textView4"
+                android:id="@+id/textViewDireccionM"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:textSize="20sp" />
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondomenublanco768x1280"
     android:id="@+id/relativelayoutPaletacambiar"
     android:orientation="vertical">
 
@@ -118,5 +119,27 @@
         android:layout_below="@+id/editTextWebRestauranteA"
         android:layout_alignLeft="@+id/btnGuardarRestaurante"
         android:layout_alignStart="@+id/btnGuardarRestaurante" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Foto grande del restaurante"
+        android:id="@+id/textViewTituloFotoGrande"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignLeft="@+id/imageViewfotoRestauranteA"
+        android:layout_alignStart="@+id/imageViewfotoRestauranteA"
+        android:layout_alignRight="@+id/imageViewfotoRestauranteA"
+        android:layout_alignEnd="@+id/imageViewfotoRestauranteA"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Foto logo"
+        android:id="@+id/textViewTituloFotoLogo"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignRight="@+id/imageViewfotoLogoA"
+        android:layout_alignEnd="@+id/imageViewfotoLogoA"
+        android:textStyle="bold" />
 
 </RelativeLayout>

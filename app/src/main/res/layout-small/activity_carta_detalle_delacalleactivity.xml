@@ -49,7 +49,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:text="Descripcion plato"
         android:id="@+id/textViewDescripcionPlatoResturanteDetalleCarta"
         android:layout_below="@+id/textViewNombrePlatoRestauranteDetalleCarta"
@@ -59,7 +59,7 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
         android:text="$2500"
         android:id="@+id/textViewPrecioPlatoRestauranteDetalleCarta"
         android:textSize="30sp"

@@ -108,6 +108,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
     public static final int IMAGEREQUESTCODE2 = 45536;
     public static final int IMAGEREQUESTCODE3 = 45537;
     Intent galleryIntent;
+    String id;
 
 
     @Override
@@ -129,7 +130,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         bitmaperror2 = BitmapFactory.decodeResource(getResources(), R.drawable.agregar_foto);
         bitmaperror3 = BitmapFactory.decodeResource(getResources(), R.drawable.agregar_foto);
 
-
+            relativepaleta = (RelativeLayout) findViewById(R.id.relativelayoutPaletacambiar);
 
          fotologoRestauranteA = (ImageView) findViewById(R.id.imageViewfotoLogoA);
          fotograndeRestauranteA = (ImageView) findViewById(R.id.imageViewfotoRestauranteA);
@@ -271,7 +272,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             });
 
 
-            fotograndeRestauranteA.setImageBitmap(Bitmap.createScaledBitmap(pic2, 400, 400,false));
+            fotograndeRestauranteA.setImageBitmap(pic2);
 
         }
 
@@ -395,7 +396,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
                 }
             });
-            fotograndeRestauranteA.setImageBitmap(Bitmap.createScaledBitmap(pic2, 400, 400,false));
+            fotograndeRestauranteA.setImageBitmap(pic2);
 
 
         }
@@ -492,6 +493,8 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             cancel = true;
         }*/
 
+
+
         if(filefoto1 == null)
         {
             Toast.makeText(getApplicationContext(), "Es necesario guardar una foto del logo del restaurante", Toast.LENGTH_SHORT).show();
@@ -514,6 +517,13 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
                 }
             });
             fotograndeRestauranteA.setImageBitmap(bitmaperror2);
+        }
+
+        if(color == null)
+        {
+            Toast.makeText(getApplicationContext(), "Es necesario elegir un color", Toast.LENGTH_SHORT).show();
+            focusView = telefonoRestauranteA;
+            cancel = true;
         }
 
 
@@ -550,26 +560,45 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         acl.setPublicReadAccess(true);
 
 
-        ParseObject  restauranteA = new ParseObject("restaurante");
+        final ParseObject  restauranteA = new ParseObject("restaurante");
         restauranteA.put("nombre",nombreR);
         restauranteA.put("descripcion",descripcionR);
         restauranteA.put("direccion",direccionR);
         restauranteA.put("telefono",telefonoR);
-        restauranteA.put("web",webR);
+        restauranteA.put("web", webR);
         restauranteA.increment("rating", 0);
         restauranteA.put("fotologo", filefoto1);
-        restauranteA.put("fotogrante", filefoto2);
+        restauranteA.put("fotogrande", filefoto2);
         restauranteA.put("usuarioid", ParseUser.getCurrentUser());
         restauranteA.increment("votos", 1);
         restauranteA.put("color", color);
         restauranteA.setACL(acl);
-        restauranteA.saveInBackground();
+        restauranteA.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e== null) {
+                    id = restauranteA.getObjectId().toString();
+                    Intent intent = new Intent(agregarrestaurante_delacalleactivity.this, agregarcarta_delacalleactivity.class);
+                    intent.putExtra("id", id);
+                    agregarrestaurante_delacalleactivity.this.startActivity(intent);
+                    Toast.makeText(getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
+                    Log.d("delacalle", "Restaurante creado");
+                }
+                else
+                {
+                    Log.d("delacalle", "Error al crear restaurante");
+                }
+
+            }
+        });
 
 
-        Toast.makeText(getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
-        Log.d("delacalle","Restaurante creado");
-        Intent intent = new Intent(agregarrestaurante_delacalleactivity.this,agregarcarta_delacalleactivity.class);
-        startActivity(intent);
+
+
+
+
+      /*  Intent intent = new Intent(agregarrestaurante_delacalleactivity.this,agregarcarta_delacalleactivity.class);
+        startActivity(intent);*/
 
 
     }
@@ -631,6 +660,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectpic();
+                popup.dismiss();
             }
         });
 
@@ -638,6 +668,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 takephoto1();
+                popup.dismiss();
             }
         });
 
@@ -681,6 +712,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectpic2();
+                popup.dismiss();
             }
         });
 
@@ -688,6 +720,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 takephoto2();
+                popup.dismiss();
             }
         });
 
@@ -740,48 +773,54 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         buttonColor1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-       //         relativepaleta.setBackgroundColor(Color.parseColor("#b56497"));
+                relativepaleta.setBackgroundColor(Color.parseColor("#b56497"));
                 color = "#b56497";
+                popup.dismiss();
             }
         });
 
         buttonColor2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-        //        relativepaleta.setBackgroundColor(Color.parseColor("#169c79"));
+                relativepaleta.setBackgroundColor(Color.parseColor("#169c79"));
                 color = "#169c79";
+                popup.dismiss();
             }
         });
 
         buttonColor3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-       //         relativepaleta.setBackgroundColor(Color.parseColor("#f05543"));
+                relativepaleta.setBackgroundColor(Color.parseColor("#f05543"));
                 color = "#f05543";
+                popup.dismiss();
             }
         });
 
         buttonColor4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                relativepaleta.setBackgroundColor(Color.parseColor("#da4f70"));
+                relativepaleta.setBackgroundColor(Color.parseColor("#da4f70"));
                 color = "#da4f70";
+                popup.dismiss();
             }
         });
 
         buttonColor5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-        //        relativepaleta.setBackgroundColor(Color.parseColor("#41b7ab"));
+                relativepaleta.setBackgroundColor(Color.parseColor("#41b7ab"));
                 color = "#41b7ab";
+                popup.dismiss();
             }
         });
 
         buttonColor6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-     //           relativepaleta.setBackgroundColor(Color.parseColor("#f0bf59"));
+               relativepaleta.setBackgroundColor(Color.parseColor("#f0bf59"));
                 color = "#f0bf59";
+                popup.dismiss();
             }
         });
 

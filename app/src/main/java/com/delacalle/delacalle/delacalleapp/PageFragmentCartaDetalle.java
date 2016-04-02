@@ -129,28 +129,203 @@ public class PageFragmentCartaDetalle extends Fragment {
         relativelayoutPlato6.setClickable(true);
 
 
-        ParseQuery<ParseObject>  cartaquery = ParseQuery.getQuery("restaurante");
-        cartaquery.whereEqualTo("objectId",id);
+        ParseQuery<ParseObject>  cartaquery = ParseQuery.getQuery("carta");
+        cartaquery.whereEqualTo("restauranteId", id);
         cartaquery.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
             public void done(final ParseObject carta, ParseException e) {
                 if (e == null) {
-                    nombrePlato1.setText(carta.getString("plato1"));
+                    nombrePlato1.setText(carta.getString("nombre"));
+                    descripcionPlato1.setText(carta.getString("descripcion"));
+                    precioPlato1.setText("$" + carta.getString("precio"));
                     relativelayoutPlato1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             carta.saveInBackground(new SaveCallback() {
                                 @Override
                                 public void done(ParseException e) {
-                                    if (e == null)
-                                    {
-                                        id = carta.getObjectId().toString();
-                                        Intent intent = new Intent(getActivity(),cartaDetalle_delacalleactivity.class);
+                                    if (e == null) {
+
+                                        Intent intent = new Intent(getActivity(), cartaDetalle_delacalleactivity.class);
                                         intent.putExtra("id", id);
                                         getActivity().startActivity(intent);
-                                    } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND)
-                                    {
-                                        Log.d("delacalle","no se puede guardar la carta");
+                                    } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                        Log.d("delacalle", "no se puede guardar la carta");
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                    Log.d("delacalle", "Carta no encontrada");
+                }
+            }
+        });
+
+        ParseQuery<ParseObject>  cartaquery2 = ParseQuery.getQuery("carta");
+        cartaquery2.whereEqualTo("restauranteId",id);
+        cartaquery2.setSkip(1);
+        cartaquery2.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(final ParseObject carta, ParseException e) {
+                if (e == null) {
+                    nombrePlato2.setText(carta.getString("nombre"));
+                    descripcionPlato2.setText(carta.getString("descripcion"));
+                    precioPlato2.setText("$"+carta.getString("precio"));
+                    relativelayoutPlato2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            carta.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    if (e == null) {
+
+                                        Intent intent = new Intent(getActivity(), cartaDetalle_delacalleactivity.class);
+                                        intent.putExtra("id", id);
+                                        getActivity().startActivity(intent);
+                                    } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                        Log.d("delacalle", "no se puede guardar la carta");
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                    Log.d("delacalle", "Carta no encontrada");
+                }
+            }
+        });
+
+        ParseQuery<ParseObject>  cartaquery3 = ParseQuery.getQuery("carta");
+        cartaquery3.whereEqualTo("restauranteId",id);
+        cartaquery3.setSkip(2);
+        cartaquery3.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(final ParseObject carta, ParseException e) {
+                if (e == null) {
+                    nombrePlato3.setText(carta.getString("nombre"));
+                    descripcionPlato3.setText(carta.getString("descripcion"));
+                    precioPlato3.setText("$"+carta.getString("precio"));
+                    relativelayoutPlato3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            carta.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    if (e == null) {
+
+                                        Intent intent = new Intent(getActivity(), cartaDetalle_delacalleactivity.class);
+                                        intent.putExtra("id", id);
+                                        getActivity().startActivity(intent);
+                                    } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                        Log.d("delacalle", "no se puede guardar la carta");
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                    Log.d("delacalle", "Carta no encontrada");
+                }
+            }
+        });
+
+        ParseQuery<ParseObject>  cartaquery4 = ParseQuery.getQuery("carta");
+        cartaquery4.whereEqualTo("restauranteId",id);
+        cartaquery4.setSkip(3);
+        cartaquery4.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(final ParseObject carta, ParseException e) {
+                if (e == null) {
+                    nombrePlato4.setText(carta.getString("nombre"));
+                    descripcionPlato4.setText(carta.getString("descripcion"));
+                    precioPlato4.setText("$"+carta.getString("precio"));
+                    relativelayoutPlato4.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            carta.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    if (e == null) {
+
+                                        Intent intent = new Intent(getActivity(), cartaDetalle_delacalleactivity.class);
+                                        intent.putExtra("id", id);
+                                        getActivity().startActivity(intent);
+                                    } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                        Log.d("delacalle", "no se puede guardar la carta");
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                    Log.d("delacalle", "Carta no encontrada");
+                }
+            }
+        });
+
+        ParseQuery<ParseObject>  cartaquery5 = ParseQuery.getQuery("carta");
+        cartaquery5.whereEqualTo("restauranteId",id);
+        cartaquery5.setSkip(4);
+        cartaquery5.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(final ParseObject carta, ParseException e) {
+                if (e == null) {
+                    nombrePlato5.setText(carta.getString("nombre"));
+                    descripcionPlato5.setText(carta.getString("descripcion"));
+                    precioPlato5.setText("$"+carta.getString("precio"));
+                    relativelayoutPlato5.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            carta.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    if (e == null) {
+
+                                        Intent intent = new Intent(getActivity(), cartaDetalle_delacalleactivity.class);
+                                        intent.putExtra("id", id);
+                                        getActivity().startActivity(intent);
+                                    } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                        Log.d("delacalle", "no se puede guardar la carta");
+                                    }
+                                }
+                            });
+                        }
+                    });
+
+                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                    Log.d("delacalle", "Carta no encontrada");
+                }
+            }
+        });
+
+        ParseQuery<ParseObject>  cartaquery6 = ParseQuery.getQuery("carta");
+        cartaquery6.whereEqualTo("restauranteId",id);
+        cartaquery6.setSkip(5);
+        cartaquery6.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(final ParseObject carta, ParseException e) {
+                if (e == null) {
+                    nombrePlato6.setText(carta.getString("nombre"));
+                    descripcionPlato6.setText(carta.getString("descripcion"));
+                    precioPlato6.setText("$"+carta.getString("precio"));
+                    relativelayoutPlato6.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            carta.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    if (e == null) {
+
+                                        Intent intent = new Intent(getActivity(), cartaDetalle_delacalleactivity.class);
+                                        intent.putExtra("id", id);
+                                        getActivity().startActivity(intent);
+                                    } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                        Log.d("delacalle", "no se puede guardar la carta");
                                     }
                                 }
                             });

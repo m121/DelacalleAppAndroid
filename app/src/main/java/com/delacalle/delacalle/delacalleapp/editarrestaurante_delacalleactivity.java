@@ -131,12 +131,9 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
             public void done(final ParseObject object, ParseException e) {
                 if (e == null) {
                     relativepaleta.setBackgroundColor(Color.parseColor(object.getString("color")));
-                    titletxt.setText(object.getString("titulo"));
+                    titletxt.setText(object.getString("nombre"));
                     descriptiontxt.setText(object.getString("descripcion"));
-                    plato1txt.setText(object.getString("plato1"));
-                    plato2txt.setText(object.getString("plato2"));
-                    plato3txt.setText(object.getString("plato3"));
-                    picfile1 = object.getParseFile("fotouno");
+                    picfile1 = object.getParseFile("fotologo");
                     picfile1.getDataInBackground(new GetDataCallback() {
                         @Override
                         public void done(byte[] data, ParseException e) {
@@ -146,26 +143,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
                             picimageview1.setImageBitmap(Bitmap.createScaledBitmap(pic, 200, 120, false));
                         }
                     });
-                    picfile2 = object.getParseFile("fotodos");
-                    picfile2.getDataInBackground(new GetDataCallback() {
-                        @Override
-                        public void done(byte[] data, ParseException e) {
-                            pic2 = BitmapFactory.decodeByteArray(data, 0, data.length);
-                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                            pic2.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                            picimageview2.setImageBitmap(Bitmap.createScaledBitmap(pic2, 200, 120, false));
-                        }
-                    });
-                    picfile3 = object.getParseFile("fototres");
-                    picfile3.getDataInBackground(new GetDataCallback() {
-                        @Override
-                        public void done(byte[] data, ParseException e) {
-                            pic3 = BitmapFactory.decodeByteArray(data, 0, data.length);
-                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                            pic3.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                            picimageview3.setImageBitmap(Bitmap.createScaledBitmap(pic3, 200, 120, false));
-                        }
-                    });
+
 
                     picimageview1.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -202,14 +180,9 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
                             final String plato3 = plato3txt.getText().toString();
 
 
-                            object.put("titulo", nombre);
+                            object.put("nombre", nombre);
                             object.put("descripcion", descripcion);
-                            object.put("plato1", plato1);
-                            object.put("plato2", plato2);
-                            object.put("plato3", plato3);
-                            object.put("fotouno",picfile1);
-                            object.put("fotodos",picfile2);
-                            object.put("fototres", picfile3);
+                            object.put("fotologo",picfile1);
                             object.put("color",color);
                             object.saveInBackground();
 

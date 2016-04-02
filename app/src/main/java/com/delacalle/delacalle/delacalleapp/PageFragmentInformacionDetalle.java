@@ -70,6 +70,9 @@ public class PageFragmentInformacionDetalle extends Fragment {
 
         nombreR = (TextView) view.findViewById(R.id.textViewNombreRestauranteDetalle);
         descripcionR = (TextView) view.findViewById(R.id.textViewDescripcionDetalle);
+        direccionR = (TextView) view.findViewById(R.id.textViewDireccionDetalle);
+        telefonoR = (TextView) view.findViewById(R.id.textViewTelefonoDetalle);
+        webR = (TextView) view.findViewById(R.id.textViewWebDetalle);
         ratingbarR = (RatingBar) view.findViewById(R.id.ratingBarCalificacionDetalle);
         ratingbarR.setClickable(true);
 
@@ -88,8 +91,11 @@ public class PageFragmentInformacionDetalle extends Fragment {
 
                     ratingR = object.getInt("rating");
                     votos = object.getInt("votos");
-                    nombreR.setText(object.getString("titulo"));
+                    nombreR.setText(object.getString("nombre"));
                     descripcionR.setText(object.getString("descripcion"));
+                    direccionR.setText(object.getString("direccion"));
+                    telefonoR.setText(object.getString("telefono"));
+                    webR.setText(object.getString("web"));
 
 
 
