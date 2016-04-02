@@ -6,11 +6,19 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseRole;
 import com.parse.ParseUser;
 
 public class perfilusuario_delacalleactivity extends AppCompatActivity {
@@ -40,6 +48,85 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
 
         btncerrarsesion = (Button) findViewById(R.id.btncerrarsesion);
         btncambiarcontrasena = (Button) findViewById(R.id.btncambiarcontrasena);
+
+        final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
+        frameLayout.getBackground().setAlpha(0);
+        final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.fabmenu);
+        final FloatingActionButton fabeditar = (FloatingActionButton) findViewById(R.id.fabeditar);
+        final FloatingActionButton  fabrestaurante = (FloatingActionButton) findViewById(R.id.fabagregar);
+        final FloatingActionButton  fabperfil = (FloatingActionButton) findViewById(R.id.fabperfil);
+
+        fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+            @Override
+            public void onMenuExpanded() {
+                frameLayout.getBackground().setAlpha(240);
+                frameLayout.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        fabMenu.collapse();
+                        return true;
+                    }
+                });
+            }
+
+            @Override
+            public void onMenuCollapsed() {
+                frameLayout.getBackground().setAlpha(0);
+                frameLayout.setOnTouchListener(null);
+            }
+        });
+
+        fabeditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(perfilusuario_delacalleactivity.this, listarestaurantesresponsable_delacalleactivity.class);
+                startActivity(intent);
+            }
+        });
+
+        fabrestaurante.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(perfilusuario_delacalleactivity.this, agregarrestaurante_delacalleactivity.class);
+                startActivity(intent);
+            }
+        });
+
+        fabperfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(perfilusuario_delacalleactivity.this, perfilusuario_delacalleactivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ParseQuery<ParseRole> roleuserusuario = ParseRole.getQuery();
+        roleuserusuario.whereEqualTo("name", "usuario");
+        roleuserusuario.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+        roleuserusuario.getFirstInBackground(new GetCallback<ParseRole>() {
+            @Override
+            public void done(ParseRole object, ParseException e) {
+                if (e == null) {
+                    fabeditar.setVisibility(View.INVISIBLE);
+                    fabrestaurante.setVisibility(View.INVISIBLE);
+                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                    ParseQuery<ParseRole> roleuserresponsable = ParseRole.getQuery();
+                    roleuserresponsable.whereEqualTo("name", "responsable");
+                    roleuserresponsable.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+                    roleuserresponsable.getFirstInBackground(new GetCallback<ParseRole>() {
+                        @Override
+                        public void done(ParseRole object, ParseException e) {
+                            if (e == null) {
+                                fabeditar.setVisibility(View.VISIBLE);
+                                fabrestaurante.setVisibility(View.VISIBLE);
+                            }
+                        }
+                    });
+                }
+
+            }
+        });
+
 
         btncerrarsesion.setOnClickListener(new View.OnClickListener() {
             @Override

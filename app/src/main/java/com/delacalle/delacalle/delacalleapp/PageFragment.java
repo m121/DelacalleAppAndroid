@@ -53,7 +53,7 @@ import java.io.ByteArrayOutputStream;
 /**
  * Created by pc on 17/11/2015.
  */
-// In this case, the fragment displays simple text based on the page
+// MENU DONDE MUESTRA LOS RESTAURANTES POR ARRIBA DE 3 ESTRELLAS
 public class PageFragment extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
     private ParseQueryAdapter<ParseObject> restaurantesQueryAdapter;

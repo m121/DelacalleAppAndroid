@@ -1,6 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.delacalle.delacalle.delacalleapp.PageFragmentCartaDetalle">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -260,4 +262,46 @@
         </ScrollView>
 
     </RelativeLayout>
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_margin="16dp"
+        android:id="@+id/fabmenu"
+        fab:fab_size="normal"
+        android:src="@drawable/ic_agregar"
+        app:layout_anchor="@id/listViewrestaurantes"
+        app:layout_anchorGravity="bottom|right|end" >
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabeditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="10dp"
+            android:src="@mipmap/ic_editar"
+            fab:fab_size="mini"
+            />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabagregar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="10dp"
+            android:src="@mipmap/ic_restaurante"
+            fab:fab_size="mini"
+            />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabperfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="10dp"
+            android:src="@mipmap/ic_perfil"
+            fab:fab_size="mini"
+            />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 </FrameLayout>

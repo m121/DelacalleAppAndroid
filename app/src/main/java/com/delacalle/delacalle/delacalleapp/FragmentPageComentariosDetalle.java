@@ -9,19 +9,24 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
@@ -29,6 +34,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
+import com.parse.ParseRole;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
@@ -81,7 +87,9 @@ public class FragmentPageComentariosDetalle extends Fragment {
     // Set the associated text for the title
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_fragment_page_comentarios_detalle ,container, false);
+    final    View view = inflater.inflate(R.layout.fragment_fragment_page_comentarios_detalle ,container, false);
+
+        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
 
         btncomentario = (Button) view.findViewById(R.id.btnGuardarComentario);
 
@@ -91,6 +99,132 @@ public class FragmentPageComentariosDetalle extends Fragment {
                 showInputDialogComentarios();
             }
         });
+
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                ParseQueryAdapter.QueryFactory<ParseObject> factory =
+                        new ParseQueryAdapter.QueryFactory<ParseObject>() {
+                            public ParseQuery<ParseObject> create() {
+                                ParseQuery<ParseObject> query = ParseQuery.getQuery("comentarios");
+                                query.whereEqualTo("restauranteid", id);
+                                return query;
+                            }
+                        };
+
+                comentariosQueryAdapter = new ParseQueryAdapter<ParseObject>(getActivity(), factory) {
+
+                    @Override
+                    public View getItemView(final ParseObject comen, View view, ViewGroup parent) {
+                        if (view == null) {
+                            view = View.inflate(getContext(), R.layout.plantilla_comentariosrestaurante, null);
+                        }
+
+                        usuarioComentario = (TextView) view.findViewById(R.id.textViewNombreUsuario);
+                        comentarioComentario = (TextView) view.findViewById(R.id.textViewComentario);
+
+                        usuarioComentario.setText(comen.getString("nombreusuario"));
+                        comentarioComentario.setText(comen.getString("comentario"));
+
+
+                        Log.d("delacalle", "comentario mostrado");
+
+                        return view;
+                    }
+                };
+
+                ListView comentariosListView = (ListView) view.findViewById(R.id.listViewComentariosrestaurante);
+                comentariosListView.setAdapter(comentariosQueryAdapter);
+
+                swipeRefreshLayout.setRefreshing(false);
+
+            }
+        });
+
+        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
+        final FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout);
+        frameLayout.getBackground().setAlpha(0);
+        final FloatingActionsMenu fabMenu = (FloatingActionsMenu) view.findViewById(R.id.fabmenu);
+        final FloatingActionButton fabeditar = (FloatingActionButton) view.findViewById(R.id.fabeditar);
+        final FloatingActionButton  fabrestaurante = (FloatingActionButton) view.findViewById(R.id.fabagregar);
+        final FloatingActionButton  fabperfil = (FloatingActionButton) view.findViewById(R.id.fabperfil);
+
+        fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+            @Override
+            public void onMenuExpanded() {
+                frameLayout.getBackground().setAlpha(240);
+                frameLayout.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        fabMenu.collapse();
+                        return true;
+                    }
+                });
+            }
+
+            @Override
+            public void onMenuCollapsed() {
+                frameLayout.getBackground().setAlpha(0);
+                frameLayout.setOnTouchListener(null);
+            }
+        });
+
+        fabeditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), listarestaurantesresponsable_delacalleactivity.class);
+                startActivity(intent);
+            }
+        });
+
+        fabrestaurante.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), agregarrestaurante_delacalleactivity.class);
+                startActivity(intent);
+            }
+        });
+
+        fabperfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), perfilusuario_delacalleactivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ParseQuery<ParseRole> roleuserusuario = ParseRole.getQuery();
+        roleuserusuario.whereEqualTo("name", "usuario");
+        roleuserusuario.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+        roleuserusuario.getFirstInBackground(new GetCallback<ParseRole>() {
+            @Override
+            public void done(ParseRole object, ParseException e) {
+                if (e == null) {
+                    fabeditar.setVisibility(View.INVISIBLE);
+                    fabrestaurante.setVisibility(View.INVISIBLE);
+                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                    ParseQuery<ParseRole> roleuserresponsable = ParseRole.getQuery();
+                    roleuserresponsable.whereEqualTo("name", "responsable");
+                    roleuserresponsable.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+                    roleuserresponsable.getFirstInBackground(new GetCallback<ParseRole>() {
+                        @Override
+                        public void done(ParseRole object, ParseException e) {
+                            if (e == null) {
+                                fabeditar.setVisibility(View.VISIBLE);
+                                fabrestaurante.setVisibility(View.VISIBLE);
+                            }
+                        }
+                    });
+                }
+
+            }
+        });
+
 
         ParseQueryAdapter.QueryFactory<ParseObject> factory =
                 new ParseQueryAdapter.QueryFactory<ParseObject>() {

@@ -43,6 +43,7 @@ import com.parse.SaveCallback;
 import java.io.ByteArrayOutputStream;
 
 
+// MENU DONDE MUESTRA TODOS LOS RESTAURANTES
 public class PageFragmentTwo extends android.support.v4.app.Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
     private ParseQueryAdapter<ParseObject> restaurantesQueryAdapter;

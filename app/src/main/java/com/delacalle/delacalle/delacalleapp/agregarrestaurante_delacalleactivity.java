@@ -26,6 +26,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RatingBar;
@@ -33,6 +34,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseACL;
@@ -40,6 +43,7 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseRole;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
@@ -146,6 +150,85 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         fotograndeRestauranteA.setClickable(true);
         btnSeleccionarPaletaRestaurante.setClickable(true);
 
+        final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
+        frameLayout.getBackground().setAlpha(0);
+        final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.fabmenu);
+        final FloatingActionButton fabeditar = (FloatingActionButton) findViewById(R.id.fabeditar);
+        final FloatingActionButton  fabrestaurante = (FloatingActionButton) findViewById(R.id.fabagregar);
+        final FloatingActionButton  fabperfil = (FloatingActionButton) findViewById(R.id.fabperfil);
+
+        fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+            @Override
+            public void onMenuExpanded() {
+                frameLayout.getBackground().setAlpha(240);
+                frameLayout.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        fabMenu.collapse();
+                        return true;
+                    }
+                });
+            }
+
+            @Override
+            public void onMenuCollapsed() {
+                frameLayout.getBackground().setAlpha(0);
+                frameLayout.setOnTouchListener(null);
+            }
+        });
+
+        fabeditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(agregarrestaurante_delacalleactivity.this, listarestaurantesresponsable_delacalleactivity.class);
+                startActivity(intent);
+            }
+        });
+
+        fabrestaurante.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(agregarrestaurante_delacalleactivity.this, agregarrestaurante_delacalleactivity.class);
+                startActivity(intent);
+            }
+        });
+
+        fabperfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(agregarrestaurante_delacalleactivity.this, perfilusuario_delacalleactivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ParseQuery<ParseRole> roleuserusuario = ParseRole.getQuery();
+        roleuserusuario.whereEqualTo("name", "usuario");
+        roleuserusuario.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+        roleuserusuario.getFirstInBackground(new GetCallback<ParseRole>() {
+            @Override
+            public void done(ParseRole object, ParseException e) {
+                if (e == null) {
+                    fabeditar.setVisibility(View.INVISIBLE);
+                    fabrestaurante.setVisibility(View.INVISIBLE);
+                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                    ParseQuery<ParseRole> roleuserresponsable = ParseRole.getQuery();
+                    roleuserresponsable.whereEqualTo("name", "responsable");
+                    roleuserresponsable.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+                    roleuserresponsable.getFirstInBackground(new GetCallback<ParseRole>() {
+                        @Override
+                        public void done(ParseRole object, ParseException e) {
+                            if (e == null) {
+                                fabeditar.setVisibility(View.VISIBLE);
+                                fabrestaurante.setVisibility(View.VISIBLE);
+                            }
+                        }
+                    });
+                }
+
+            }
+        });
+
+
 
 
         btnSeleccionarPaletaRestaurante.setOnClickListener(new View.OnClickListener() {
@@ -243,7 +326,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
 
             byte[] data1 = stream.toByteArray();
-            filefoto1 = new ParseFile("fotorestauranteuno.jpg", data1);
+            filefoto1 = new ParseFile("fotologorestaurante.jpg", data1);
             filefoto1.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
@@ -263,7 +346,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             pic2.compress(Bitmap.CompressFormat.JPEG, 70, stream);
 
             byte[] data1 = stream.toByteArray();
-            filefoto2 = new ParseFile("fotorestaurantedos.jpg", data1);
+            filefoto2 = new ParseFile("fotogranderestaurante.jpg", data1);
             filefoto2.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
@@ -351,7 +434,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
 
             byte[] data = stream.toByteArray();
-            filefoto1 = new ParseFile("fotorestaurantetres.jpg",data);
+            filefoto1 = new ParseFile("fotologorestaurante.jpg",data);
             filefoto1.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
@@ -388,7 +471,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             pic2.compress(Bitmap.CompressFormat.JPEG, 70, stream);
 
             byte[] data = stream.toByteArray();
-            filefoto2 = new ParseFile("fotorestaurantetres.jpg",data);
+            filefoto2 = new ParseFile("fotogranderestaurante.jpg",data);
             filefoto2.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
@@ -508,7 +591,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             bitmaperror2.compress(Bitmap.CompressFormat.JPEG, 70, stream);
 
             byte[] data = stream.toByteArray();
-            filefoto2 = new ParseFile("fotorestaurantedos.jpg",data);
+            filefoto2 = new ParseFile("fotogranderestaurante.jpg",data);
             filefoto2.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {

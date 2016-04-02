@@ -3,154 +3,140 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/relativelayoutpaletaactualizar"
+    android:background="@drawable/fondomenublanco768x1280"
+    android:id="@+id/relativelayoutPaletacambiar"
     android:orientation="vertical">
+
+
+
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <EditText
-        android:layout_width="200dp"
+    <ImageView
+        android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/editTextnombreeditarrestaurante"
+        android:id="@+id/imageViewfotoLogoA"
+        android:background="#000000"
+        android:layout_below="@+id/textViewTituloFotoGrande"
+        android:layout_alignLeft="@+id/imageViewbtnPaletaRestaurante"
+        android:layout_alignStart="@+id/imageViewbtnPaletaRestaurante" />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/imageViewfotoRestauranteA"
+        android:background="#000000"
+        android:layout_alignTop="@+id/imageViewfotoLogoA"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="73dp"
+        android:layout_marginEnd="73dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:hint="Nombre Restaurante"
-        android:maxLength="20"
+        android:id="@+id/editTextNombreRestauranteA"
+        android:textSize="20sp"
         android:singleLine="true"
         android:lines="1"
-        android:textSize="20sp"
-        android:textColor="#000000"
-        android:textColorHint="#696969"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/imageViewfotoRestauranteA"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold" />
+        android:layout_alignParentStart="true" />
 
     <EditText
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:id="@+id/editTextdescripcioneditarrestaurante"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
         android:hint="Descripción"
-        android:maxLength="60"
+        android:id="@+id/editTextDescripcionRestauranteA"
         android:textSize="20sp"
-        android:textColor="#000000"
-        android:inputType="textEmailAddress"
-        android:textColorHint="#696969"
-        android:layout_below="@+id/editTextnombreeditarrestaurante"
+        android:lines="2"
+        android:layout_below="@+id/editTextNombreRestauranteA"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textStyle="bold" />
+        android:layout_alignParentStart="true" />
 
     <EditText
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:id="@+id/editTextplato1editarrestaurante"
-        android:hint="Plato 1"
-        android:maxLength="20"
+        android:hint="Dirección"
+        android:id="@+id/editTextDireccionRestauranteA"
         android:textSize="20sp"
-        android:textColor="#000000"
-        android:textColorHint="#696969"
-        android:layout_below="@+id/textView"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
+        android:singleLine="true"
+        android:lines="1"
+        android:layout_below="@+id/editTextDescripcionRestauranteA"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:id="@+id/editTextplato2editarrestaurante"
-        android:hint="Plato 2"
-        android:maxLength="20"
+        android:hint="Telefono"
+        android:inputType="phone"
+        android:singleLine="true"
+        android:lines="1"
+        android:id="@+id/editTextTelefonoRestauranteA"
         android:textSize="20sp"
-        android:textColor="#000000"
-        android:textColorHint="#696969"
-        android:layout_below="@+id/editTextplato1editarrestaurante"
+        android:layout_below="@+id/editTextDireccionRestauranteA"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="21dp" />
+        android:layout_alignParentStart="true" />
 
     <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Sitio web/Red social"
+        android:singleLine="true"
+        android:lines="1"
+        android:inputType="textUri"
+        android:id="@+id/editTextWebRestauranteA"
+        android:textSize="20sp"
+        android:layout_below="@+id/editTextTelefonoRestauranteA"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:id="@+id/editTextplato3editarrestaurante"
-        android:hint="Plato 3"
-        android:maxLength="20"
+        android:text="Actualizar y seguir"
+        android:id="@+id/btnActualizarRestaurante"
+        android:textColor="#ffffff"
+        android:background="@color/buttoncolor"
         android:textSize="20sp"
-        android:textColor="#000000"
-        android:textColorHint="#696969"
-        android:layout_below="@+id/editTextplato2editarrestaurante"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="21dp" />
+        android:layout_below="@+id/imageViewbtnPaletaRestaurante"
+        android:layout_centerHorizontal="true" />
 
     <ImageView
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:id="@+id/imageViewbtnPaletaRestaurante"
+        android:background="@drawable/botonpaleta"
+        android:layout_below="@+id/editTextWebRestauranteA"
+        android:layout_alignLeft="@+id/btnActualizarRestaurante"
+        android:layout_alignStart="@+id/btnActualizarRestaurante" />
+
+    <TextView
         android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/imageViewfotounoeditarrestaurante"
-        android:layout_marginRight="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_alignTop="@+id/editTextdescripcioneditarrestaurante"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/imageViewfotodoseditarrestaurante"
-        android:layout_above="@+id/editTextplato1editarrestaurante"
-        android:layout_toRightOf="@+id/btnaeditarrestaurante"
-        android:layout_toEndOf="@+id/btnaeditarrestaurante" />
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/imageViewfototreseditarrestaurante"
-        android:layout_below="@+id/imageViewfotodoseditarrestaurante"
-        android:layout_alignLeft="@+id/imageViewfotodoseditarrestaurante"
-        android:layout_alignStart="@+id/imageViewfotodoseditarrestaurante" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:text="Actualizar Restaurante"
-        android:id="@+id/btnaeditarrestaurante"
-        android:background="@color/buttoncolor"
-        android:textColor="#FFFFFF"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:text="Paleta"
-        android:id="@+id/btnapaletaactualizarrestaurante"
-        android:background="@color/buttoncolor"
-        android:textColor="#FFFFFF"
-        android:layout_below="@+id/editTextplato3editarrestaurante"
-        android:layout_alignLeft="@+id/btnaeditarrestaurante"
-        android:layout_alignStart="@+id/btnaeditarrestaurante" />
-
-    <TextView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Carta"
-        android:textSize="20sp"
-        android:id="@+id/textView"
-        android:layout_below="@+id/editTextdescripcioneditarrestaurante"
-        android:layout_alignLeft="@+id/editTextplato2editarrestaurante"
-        android:layout_alignStart="@+id/editTextplato2editarrestaurante"
-        android:layout_marginTop="21dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fotos"
-        android:id="@+id/Textviewtitulofoto"
+        android:text="Foto grande del restaurante"
+        android:id="@+id/textViewTituloFotoGrande"
+        android:layout_below="@+id/toolbar"
         android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_above="@+id/imageViewfotounoeditarrestaurante"
-        android:layout_alignRight="@+id/imageViewfotodoseditarrestaurante"
-        android:layout_alignEnd="@+id/imageViewfotodoseditarrestaurante" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="15sp"
+        android:layout_toRightOf="@+id/textViewTituloFotoLogo"
+        android:layout_toEndOf="@+id/textViewTituloFotoLogo" />
 
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Foto logo"
+        android:id="@+id/textViewTituloFotoLogo"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_above="@+id/imageViewfotoLogoA"
+        android:layout_alignLeft="@+id/imageViewfotoLogoA"
+        android:layout_alignStart="@+id/imageViewfotoLogoA" />
 
 </RelativeLayout>
