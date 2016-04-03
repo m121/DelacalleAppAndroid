@@ -151,7 +151,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         btnSeleccionarPaletaRestaurante.setClickable(true);
 
         final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
-        frameLayout.getBackground().setAlpha(0);
+  //      frameLayout.getBackground().setAlpha(0);
         final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.fabmenu);
         final FloatingActionButton fabeditar = (FloatingActionButton) findViewById(R.id.fabeditar);
         final FloatingActionButton  fabrestaurante = (FloatingActionButton) findViewById(R.id.fabagregar);
@@ -160,7 +160,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
             public void onMenuExpanded() {
-                frameLayout.getBackground().setAlpha(240);
+        //        frameLayout.getBackground().setAlpha(240);
                 frameLayout.setOnTouchListener(new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
@@ -172,7 +172,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
             @Override
             public void onMenuCollapsed() {
-                frameLayout.getBackground().setAlpha(0);
+      //          frameLayout.getBackground().setAlpha(0);
                 frameLayout.setOnTouchListener(null);
             }
         });

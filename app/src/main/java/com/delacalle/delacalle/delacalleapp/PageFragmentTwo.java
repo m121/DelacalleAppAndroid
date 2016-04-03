@@ -159,7 +159,7 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
                                 pic = BitmapFactory.decodeByteArray(data, 0, data.length);
                                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                                 pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                                picimageview.setImageBitmap(Bitmap.createScaledBitmap(pic, 200, 120, false));
+                                picimageview.setImageBitmap(pic);
                             }
                         });
                         ratingbarres.setRating(resta.getInt("rating"));
@@ -183,7 +183,7 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
 
 
         final FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout);
-        frameLayout.getBackground().setAlpha(0);
+   //     frameLayout.getBackground().setAlpha(0);
         final FloatingActionsMenu fabMenu = (FloatingActionsMenu) view.findViewById(R.id.fabmenu);
         final FloatingActionButton fabeditar = (FloatingActionButton) view.findViewById(R.id.fabeditar);
         final FloatingActionButton  fabrestaurante = (FloatingActionButton) view.findViewById(R.id.fabagregar);
@@ -191,7 +191,7 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
         fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
             public void onMenuExpanded() {
-                frameLayout.getBackground().setAlpha(240);
+//                frameLayout.getBackground().setAlpha(240);
                 frameLayout.setOnTouchListener(new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
@@ -203,7 +203,7 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
 
             @Override
             public void onMenuCollapsed() {
-                frameLayout.getBackground().setAlpha(0);
+//                frameLayout.getBackground().setAlpha(0);
                 frameLayout.setOnTouchListener(null);
             }
         });
@@ -316,7 +316,7 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
                         pic = BitmapFactory.decodeByteArray(data, 0, data.length);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                        picimageview.setImageBitmap(Bitmap.createScaledBitmap(pic, 200, 120, false));
+                        picimageview.setImageBitmap(pic);
                     }
                 });
                 ratingbarres.setRating(resta.getInt("rating"));
@@ -333,144 +333,5 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
         return view;
     }
 
-    private void displayPopupdetalleResta(final View anchorView) {
-        final PopupWindow popup = new PopupWindow(getActivity().getBaseContext());
-        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = inflater.inflate(R.layout.popupdetallerestaurante, null);
-        popup.setContentView(layout);
 
-
-        titletxt = (TextView) layout.findViewById(R.id.editTextnombremostrarrestaurante);
-        descriptiontxt = (TextView) layout.findViewById(R.id.editTextdescripcionmostrarrestaurante);
-        plato1txt = (TextView) layout.findViewById(R.id.editTextplato1detallerestaurante);
-        plato2txt = (TextView) layout.findViewById(R.id.editTextplato2detallerestaurante);
-        plato3txt = (TextView) layout.findViewById(R.id.editTextplato3detallerestaurante);
-        picimageview1 = (ImageView) layout.findViewById(R.id.imageViewfotounodetalle);
-        picimageview2 = (ImageView) layout.findViewById(R.id.imageViewfotodosdetalle);
-        picimageview3 = (ImageView) layout.findViewById(R.id.imageViewfototresdetalle);
-        ratingbarres = (RatingBar) layout.findViewById(R.id.ratingBarmostrarrestaurante);
-        ratingbarres.setClickable(true);
-
-
-        ParseQuery<ParseObject> querymostrareditar = ParseQuery.getQuery("restaurante");
-        querymostrareditar.whereEqualTo("objectId", id);
-        querymostrareditar.getFirstInBackground(new GetCallback<ParseObject>() {
-            @Override
-            public void done(final ParseObject object, ParseException e) {
-                if (e == null) {
-
-                    ratingR = object.getInt("rating");
-                    votos = object.getInt("votos");
-                    titletxt.setText(object.getString("titulo"));
-                    descriptiontxt.setText(object.getString("descripcion"));
-                    plato1txt.setText(object.getString("plato1"));
-                    plato2txt.setText(object.getString("plato2"));
-                    plato3txt.setText(object.getString("plato3"));
-                    picfile1 = object.getParseFile("fotouno");
-                    picfile1.getDataInBackground(new GetDataCallback() {
-                        @Override
-                        public void done(byte[] data, ParseException e) {
-                            pic = BitmapFactory.decodeByteArray(data, 0, data.length);
-                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                            pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                            picimageview1.setImageBitmap(Bitmap.createScaledBitmap(pic, 200, 70, false));
-                        }
-                    });
-                    picfile2 = object.getParseFile("fotodos");
-                    picfile2.getDataInBackground(new GetDataCallback() {
-                        @Override
-                        public void done(byte[] data, ParseException e) {
-                            pic2 = BitmapFactory.decodeByteArray(data, 0, data.length);
-                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                            pic2.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                            picimageview2.setImageBitmap(Bitmap.createScaledBitmap(pic2, 200, 120, false));
-                        }
-                    });
-                    picfile3 = object.getParseFile("fototres");
-                    picfile3.getDataInBackground(new GetDataCallback() {
-                        @Override
-                        public void done(byte[] data, ParseException e) {
-                            pic3 = BitmapFactory.decodeByteArray(data, 0, data.length);
-                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                            pic3.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                            picimageview3.setImageBitmap(Bitmap.createScaledBitmap(pic3, 200, 120, false));
-                        }
-                    });
-
-                    ratingbarres.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-                        @Override
-                        public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                            rating = (rating + ratingR) / votos;
-                            final float rate = rating;
-
-                            final ParseQuery<ParseObject> usuarioRvotarq = ParseQuery.getQuery("restaurante");
-                            usuarioRvotarq.whereEqualTo("objectId", id);
-                            usuarioRvotarq.whereEqualTo("usuarioid", ParseUser.getCurrentUser());
-                            usuarioRvotarq.getFirstInBackground(new GetCallback<ParseObject>() {
-                                @Override
-                                public void done(ParseObject objs, ParseException e) {
-                                    if (e == null) {
-                                        Toast.makeText(getActivity(), "¡No puedes votar en tus restaurantes!", Toast.LENGTH_SHORT).show();
-                                    } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-                                        ParseQuery<ParseObject> usuariovotoq = ParseQuery.getQuery("calificacion");
-                                        usuariovotoq.whereEqualTo("idrestaurante", id);
-                                        usuariovotoq.whereEqualTo("idusuario", ParseUser.getCurrentUser().getObjectId());
-                                        usuariovotoq.whereEqualTo("voto", 1);
-                                        usuariovotoq.getFirstInBackground(new GetCallback<ParseObject>() {
-                                            @Override
-                                            public void done(ParseObject obj, ParseException e) {
-                                                if (e == null) {
-                                                    Toast.makeText(getActivity(), "¡Solamente puedes calificar una vez este restaurante!", Toast.LENGTH_SHORT).show();
-                                                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-
-                                                    object.increment("votos", 1);
-                                                    object.put("rating", rate);
-                                                    object.saveEventually();
-                                                    Toast.makeText(getActivity(), "Gracias por votar", Toast.LENGTH_SHORT).show();
-
-                                                    ParseObject votosusuario = new ParseObject("calificacion");
-                                                    votosusuario.put("idrestaurante", id);
-                                                    votosusuario.put("idusuario", ParseUser.getCurrentUser().getObjectId());
-                                                    votosusuario.put("voto", 1);
-                                                    votosusuario.saveInBackground();
-
-
-                                                }
-                                            }
-                                        });
-                                    }
-
-                                }
-                            });
-
-
-                        }
-                    });
-
-
-                } else {
-                    Toast.makeText(getActivity(), "Error en mostrar", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-
-        // Set content width and height
-        popup.setHeight(WindowManager.LayoutParams.MATCH_PARENT);
-        popup.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
-        // Closes the popup window when touch outside of it - when looses focus
-        popup.setOutsideTouchable(true);
-        popup.setFocusable(true);
-        // Show anchored to button
-        //   popup.setBackgroundDrawable(new BitmapDrawable());
-        new Handler().postDelayed(new Runnable() {
-
-            public void run() {
-                popup.showAtLocation(anchorView, Gravity.TOP | Gravity.START | Gravity.CENTER_VERTICAL, 120, 300);
-                popup.showAsDropDown(anchorView);
-            }
-        }, 100L);
-
-
-    }
 }

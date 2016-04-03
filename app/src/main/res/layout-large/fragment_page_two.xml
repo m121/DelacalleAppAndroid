@@ -23,7 +23,7 @@
             android:id="@+id/frame_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ffffff">
+            android:background="@null">
 
             <android.support.v4.widget.SwipeRefreshLayout
                 android:id="@+id/activity_main_swipe_refresh_layout"

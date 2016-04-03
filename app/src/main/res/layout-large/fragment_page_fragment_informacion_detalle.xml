@@ -136,6 +136,11 @@
 
 
     </RelativeLayout>
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null">
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -177,5 +182,7 @@
             fab:fab_size="mini"
             />
 
+
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
+        </FrameLayout>
 </FrameLayout>

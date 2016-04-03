@@ -1,15 +1,27 @@
 package com.delacalle.delacalle.delacalleapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.Image;
+import android.net.Uri;
+import android.os.Handler;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,9 +29,13 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.parse.GetCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseQuery;
 import com.parse.ParseRole;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
+
+import java.io.ByteArrayOutputStream;
 
 public class perfilusuario_delacalleactivity extends AppCompatActivity {
 
@@ -27,9 +43,28 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
 
     TextView nombre;
     TextView correo;
+    TextView edad;
+    TextView ciudad;
+    TextView username;
+    ImageView fotousuario;
 
-    Button btncerrarsesion;
-    Button btncambiarcontrasena;
+    Bitmap pic;
+
+    ParseFile filefoto;
+
+    Intent galleryIntent;
+
+    public static final int IMAGEREQUESTCODE = 45535;
+
+    // Popup fotos
+    RelativeLayout relativealbum;
+    RelativeLayout relativefoto;
+
+
+
+
+   /* Button btncerrarsesion;
+    Button btncambiarcontrasena;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +77,32 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        nombre = (TextView) findViewById(R.id.textViewNombre);
-        correo = (TextView) findViewById(R.id.textViewcorreo);
+        nombre = (TextView) findViewById(R.id.textViewNombreUsuario);
+        correo = (TextView) findViewById(R.id.textViewCorreoUsuario);
+        edad = (TextView) findViewById(R.id.textViewEdadUsuario);
+        ciudad = (TextView) findViewById(R.id.textViewCiudadUsuario);
+        username = (TextView) findViewById(R.id.textViewUsernameUsuario);
+        fotousuario = (ImageView) findViewById(R.id.imageViewFotoPerfil);
+        fotousuario.setClickable(true);
+
+        galleryIntent = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.INTERNAL_CONTENT_URI);
 
 
-        btncerrarsesion = (Button) findViewById(R.id.btncerrarsesion);
-        btncambiarcontrasena = (Button) findViewById(R.id.btncambiarcontrasena);
+        fotousuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayPopupFotoPlato1(v);
+            }
+        });
+
+
+
+       /* btncerrarsesion = (Button) findViewById(R.id.btncerrarsesion);
+        btncambiarcontrasena = (Button) findViewById(R.id.btncambiarcontrasena);*/
 
         final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
-        frameLayout.getBackground().setAlpha(0);
+      //  frameLayout.getBackground().setAlpha(0);
         final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.fabmenu);
         final FloatingActionButton fabeditar = (FloatingActionButton) findViewById(R.id.fabeditar);
         final FloatingActionButton  fabrestaurante = (FloatingActionButton) findViewById(R.id.fabagregar);
@@ -59,7 +111,7 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
         fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
             public void onMenuExpanded() {
-                frameLayout.getBackground().setAlpha(240);
+      //          frameLayout.getBackground().setAlpha(240);
                 frameLayout.setOnTouchListener(new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
@@ -71,7 +123,7 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
 
             @Override
             public void onMenuCollapsed() {
-                frameLayout.getBackground().setAlpha(0);
+       //         frameLayout.getBackground().setAlpha(0);
                 frameLayout.setOnTouchListener(null);
             }
         });
@@ -128,7 +180,7 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
         });
 
 
-        btncerrarsesion.setOnClickListener(new View.OnClickListener() {
+       /* btncerrarsesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ParseUser.logOut();
@@ -144,7 +196,7 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
                 Intent intent = new Intent(perfilusuario_delacalleactivity.this,resetearcontrasena_delacalleactivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
         nombre.setText(ParseUser.getCurrentUser().getUsername());
         correo.setText(ParseUser.getCurrentUser().getEmail());
@@ -169,6 +221,21 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
             return true;
         }*/
 
+        if(id == R.id.action_cambiar)
+        {
+            Intent intent = new Intent(perfilusuario_delacalleactivity.this,resetearcontrasena_delacalleactivity.class);
+            startActivity(intent);
+        }
+
+        if(id == R.id.action_cerrar)
+        {
+            ParseUser.logOut();
+            Log.d("delacalle","usuario cierra sesion");
+            Toast.makeText(getApplicationContext(), "Cerrando sesión", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(perfilusuario_delacalleactivity.this,iniciosesion_delacalleactivity.class);
+            startActivity(intent);
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -177,5 +244,150 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
         finish();
         // or call onBackPressed()
         return true;
+    }
+
+    private void displayPopupFotoPlato1(final View anchorView) {
+        final PopupWindow popup = new PopupWindow(perfilusuario_delacalleactivity.this);
+        LayoutInflater inflater = (LayoutInflater) perfilusuario_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.popupfotos, null);
+        popup.setContentView(layout);
+
+
+        relativealbum = (RelativeLayout) layout.findViewById(R.id.relativelayoutAlbum);
+        relativefoto = (RelativeLayout) layout.findViewById(R.id.relativelayoutTomarFoto);
+        relativealbum.setClickable(true);
+        relativefoto.setClickable(true);
+
+
+        relativealbum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectpic();
+                popup.dismiss();
+            }
+        });
+
+        relativefoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                takephoto1();
+                popup.dismiss();
+            }
+        });
+
+
+
+
+
+        // Set content width and height
+        popup.setHeight(400);
+        popup.setWidth(400);
+        // Closes the popup window when touch outside of it - when looses focus
+        popup.setOutsideTouchable(true);
+        popup.setFocusable(true);
+        // Show anchored to button
+        //   popup.setBackgroundDrawable(new BitmapDrawable());
+        new Handler().postDelayed(new Runnable() {
+
+            public void run() {
+                popup.showAtLocation(anchorView, Gravity.TOP | Gravity.START | Gravity.CENTER_VERTICAL, 120, 300);
+                popup.showAsDropDown(anchorView);
+            }
+        }, 100L);
+
+
+    }
+
+    public void takephoto1()
+    {
+        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        startActivityForResult(intent, 1);
+    }
+
+    public void selectpic()
+    {
+
+        //select pic from gallery
+        startActivityForResult(galleryIntent, IMAGEREQUESTCODE);
+    }
+
+    protected final void onActivityResult(final int requestCode,
+                                          final int resultCode, final Intent i) {
+        super.onActivityResult(requestCode, resultCode, i);
+
+
+        // take pic
+
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            Bundle extras = i.getExtras();
+            pic = (Bitmap) extras.get("data");
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+
+            byte[] data1 = stream.toByteArray();
+            filefoto = new ParseFile("fotousuario.jpg", data1);
+            filefoto.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+
+                }
+            });
+
+
+            fotousuario.setImageBitmap(pic);
+
+        }
+
+
+
+        if(requestCode == IMAGEREQUESTCODE && resultCode == RESULT_OK)
+        {
+
+            manageImageFromUri1(i.getData());
+
+        }
+        else
+        {
+            Log.d("DeLaCalle", "Error en seleccionar la foto");
+        }
+
+
+    }
+
+    private void manageImageFromUri1(Uri imageUri) {
+        Bitmap bitmap = null;
+
+        try {
+            bitmap = MediaStore.Images.Media.getBitmap(
+                    this.getContentResolver(), imageUri);
+
+        } catch (Exception e) {
+            // Manage exception ...
+
+        }
+
+        if (bitmap != null) {
+            // Here you can use bitmap in your application ...
+            pic = bitmap;
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+
+            byte[] data = stream.toByteArray();
+            filefoto = new ParseFile("fotousuario.jpg",data);
+            filefoto.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+
+
+                }
+            });
+            fotousuario.setImageBitmap(pic);
+
+
+        }
+        else
+        {
+            Log.d("Delacalle", "Error bitmap  null");
+        }
     }
 }

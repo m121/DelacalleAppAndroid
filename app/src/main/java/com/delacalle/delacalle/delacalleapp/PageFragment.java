@@ -177,7 +177,7 @@ public class PageFragment extends Fragment {
                                 pic = BitmapFactory.decodeByteArray(data, 0, data.length);
                                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                                 pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                                picimageview.setImageBitmap(Bitmap.createScaledBitmap(pic, 200, 120, false));
+                                picimageview.setImageBitmap(pic);
                             }
                         });
                         ratingbarres.setRating(resta.getInt("rating"));
@@ -203,7 +203,7 @@ public class PageFragment extends Fragment {
                 android.R.color.holo_red_light);
 
         final FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout);
-        frameLayout.getBackground().setAlpha(0);
+      //  frameLayout.getBackground().setAlpha(0);
         final FloatingActionsMenu fabMenu = (FloatingActionsMenu) view.findViewById(R.id.fabmenu);
         final FloatingActionButton fabeditar = (FloatingActionButton) view.findViewById(R.id.fabeditar);
         final FloatingActionButton  fabrestaurante = (FloatingActionButton) view.findViewById(R.id.fabagregar);
@@ -214,7 +214,7 @@ public class PageFragment extends Fragment {
         fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
             public void onMenuExpanded() {
-                frameLayout.getBackground().setAlpha(240);
+        //        frameLayout.getBackground().setAlpha(240);
                 frameLayout.setOnTouchListener(new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
@@ -226,7 +226,7 @@ public class PageFragment extends Fragment {
 
             @Override
             public void onMenuCollapsed() {
-                frameLayout.getBackground().setAlpha(0);
+        //        frameLayout.getBackground().setAlpha(0);
                 frameLayout.setOnTouchListener(null);
             }
         });
@@ -339,7 +339,7 @@ public class PageFragment extends Fragment {
                         pic = BitmapFactory.decodeByteArray(data, 0, data.length);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                        picimageview.setImageBitmap(Bitmap.createScaledBitmap(pic,200,120,false));
+                        picimageview.setImageBitmap(pic);
                     }
                 });
                 ratingbarres.setRating(resta.getInt("rating"));

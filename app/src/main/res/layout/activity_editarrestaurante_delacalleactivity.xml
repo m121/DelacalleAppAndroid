@@ -14,11 +14,23 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+   <!-- <ImageView
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:id="@+id/imageViewfotoLogoA"
+    android:background="#000000"
+    android:layout_below="@+id/textViewTituloFotoGrande"
+    android:layout_alignLeft="@+id/imageViewbtnPaletaRestaurante"
+    android:layout_alignStart="@+id/imageViewbtnPaletaRestaurante" />-->
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/imageViewfotoLogoA"
-        android:background="#000000"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:src="@drawable/agregar_foto"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"
         android:layout_below="@+id/textViewTituloFotoGrande"
         android:layout_alignLeft="@+id/imageViewbtnPaletaRestaurante"
         android:layout_alignStart="@+id/imageViewbtnPaletaRestaurante" />
@@ -27,12 +39,12 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:id="@+id/imageViewfotoRestauranteA"
-        android:background="#000000"
-        android:layout_alignTop="@+id/imageViewfotoLogoA"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="73dp"
-        android:layout_marginEnd="73dp" />
+        android:background="@drawable/agregar_foto"
+        android:layout_below="@+id/textViewTituloFotoGrande"
+        android:layout_toRightOf="@+id/textViewTituloFotoLogo"
+        android:layout_toEndOf="@+id/textViewTituloFotoLogo"
+        android:layout_marginLeft="52dp"
+        android:layout_marginStart="52dp" />
 
     <EditText
         android:layout_width="match_parent"
@@ -96,15 +108,29 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:layout_width="200dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="Actualizar y seguir"
         android:id="@+id/btnActualizarRestaurante"
         android:textColor="#ffffff"
         android:background="@color/buttoncolor"
-        android:textSize="20sp"
-        android:layout_below="@+id/imageViewbtnPaletaRestaurante"
-        android:layout_centerHorizontal="true" />
+        android:textSize="15sp"
+        android:layout_alignTop="@+id/btnEliminarRestaurante"
+        android:layout_alignRight="@+id/imageViewfotoLogoA"
+        android:layout_alignEnd="@+id/imageViewfotoLogoA" />
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:text="Eliminar Restaurante"
+        android:id="@+id/btnEliminarRestaurante"
+        android:textColor="#ffffff"
+        android:background="@color/buttoncolor"
+        android:textSize="15sp"
+        android:layout_marginBottom="14dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/imageViewfotoRestauranteA"
+        android:layout_alignStart="@+id/imageViewfotoRestauranteA" />
 
     <ImageView
         android:layout_width="200dp"
@@ -112,8 +138,7 @@
         android:id="@+id/imageViewbtnPaletaRestaurante"
         android:background="@drawable/botonpaleta"
         android:layout_below="@+id/editTextWebRestauranteA"
-        android:layout_alignLeft="@+id/btnActualizarRestaurante"
-        android:layout_alignStart="@+id/btnActualizarRestaurante" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="100dp"

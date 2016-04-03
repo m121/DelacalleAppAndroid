@@ -29,6 +29,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.DeleteCallback;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
@@ -38,6 +39,7 @@ import com.parse.ParseQuery;
 import com.parse.SaveCallback;
 
 import java.io.ByteArrayOutputStream;
+import java.util.List;
 
 public class editarrestaurante_delacalleactivity extends AppCompatActivity {
 
@@ -64,6 +66,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
     String id;
 
     Button btneditar;
+    private Button btneliminarrestaurante;
 
     //popup paleta
     private Button buttonColor1;
@@ -74,7 +77,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
     private Button buttonColor6;
     private RelativeLayout relativepaleta;
     String color;
-    Button btnactualizarpaleta;
+    ImageView btnactualizarpaleta;
 
 
     // Popup fotos
@@ -102,10 +105,10 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
         direccionRestauranteA = (TextView) findViewById(R.id.editTextDireccionRestauranteA);
         telefonoRestauranteA = (TextView) findViewById(R.id.editTextTelefonoRestauranteA);
         webRestauranteA = (TextView) findViewById(R.id.editTextWebRestauranteA);
-
-        btneditar  = (Button) findViewById(R.id.btnaeditarrestaurante);
-        btnactualizarpaleta = (Button) findViewById(R.id.btnapaletaactualizarrestaurante);
-        relativepaleta = (RelativeLayout) findViewById(R.id.relativelayoutpaletaactualizar);
+        btneliminarrestaurante = (Button) findViewById(R.id.btnEliminarRestaurante);
+        btneditar  = (Button) findViewById(R.id.btnActualizarRestaurante);
+        btnactualizarpaleta = (ImageView) findViewById(R.id.imageViewbtnPaletaRestaurante);
+        relativepaleta = (RelativeLayout) findViewById(R.id.relativelayoutPaletacambiar);
         fotologoRestauranteA.setClickable(true);
         fotograndeRestauranteA.setClickable(true);
 
@@ -118,6 +121,62 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
              id = bundle.getString("id");
 
         }
+        btneliminarrestaurante.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseQuery<ParseObject> queryeliminar = ParseQuery.getQuery("restaurante");
+                queryeliminar.whereEqualTo("objectId", id);
+                queryeliminar.getFirstInBackground(new GetCallback<ParseObject>() {
+                    @Override
+                    public void done(ParseObject eliminar, ParseException e) {
+                        if (e == null) {
+                            eliminar.deleteInBackground(new DeleteCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    if (e == null) {
+                                        Toast.makeText(getApplicationContext(), "Restaurante eliminado", Toast.LENGTH_SHORT).show();
+                                        Log.d("delacalle", "Restaurante eliminado");
+                                    } else {
+                                        Log.d("delacalle", "No se puede eliminar el restaurante");
+                                    }
+                                }
+                            });
+
+                            ParseQuery<ParseObject> cartaeliminarquery = ParseQuery.getQuery("carta");
+                            cartaeliminarquery.whereEqualTo("restauranteId", id);
+                            final List<ParseObject> cartalist;
+
+                            try {
+                                cartalist = cartaeliminarquery.find();
+
+                                for (final ParseObject cartas : cartalist) {
+                                    cartas.deleteInBackground(new DeleteCallback() {
+                                        @Override
+                                        public void done(ParseException e) {
+                                            if (e == null) {
+                                                Log.d("delacalle", "Carta eliminada");
+                                            } else {
+                                                Log.d("delacalle", "Carta no eliminada");
+                                            }
+                                        }
+                                    });
+                                }
+                            } catch (ParseException ae) {
+                                Log.d("delacalle", "Error" + ae);
+                            }
+                            Intent intent = new Intent(editarrestaurante_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
+                            startActivity(intent);
+                        } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                            Log.d("delacalle", "Restaurante no encontrado, no se puede eliminar");
+                        }
+
+
+                    }
+                });
+
+
+            }
+        });
 
 
         btnactualizarpaleta.setOnClickListener(new View.OnClickListener() {

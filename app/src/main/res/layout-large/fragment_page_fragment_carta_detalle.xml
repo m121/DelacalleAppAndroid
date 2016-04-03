@@ -24,7 +24,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nombre Plato"
                         android:id="@+id/textViewPlatoCarta1"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentLeft="true"
@@ -34,7 +33,6 @@
                     <TextView
                         android:layout_width="280dp"
                         android:layout_height="100dp"
-                        android:text="Descripción plato"
                         android:id="@+id/textViewDescripcionCarta1"
                         android:layout_below="@+id/textViewPlatoCarta1"
                         android:layout_alignParentLeft="true"
@@ -44,7 +42,6 @@
                     <TextView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:text="$2500"
                         android:id="@+id/textViewPrecioCarta1"
                         android:layout_below="@+id/textViewPlatoCarta1"
                         android:layout_alignParentRight="true"
@@ -65,7 +62,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nombre Plato"
                         android:id="@+id/textViewPlatoCarta2"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentLeft="true"
@@ -75,7 +71,6 @@
                     <TextView
                         android:layout_width="280dp"
                         android:layout_height="100dp"
-                        android:text="Descripción plato"
                         android:id="@+id/textViewDescripcionCarta2"
                         android:layout_below="@+id/textViewPlatoCarta2"
                         android:layout_alignParentLeft="true"
@@ -85,7 +80,6 @@
                     <TextView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:text="$2500"
                         android:id="@+id/textViewPrecioCarta2"
                         android:layout_below="@+id/textViewPlatoCarta2"
                         android:layout_alignParentRight="true"
@@ -106,7 +100,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nombre Plato"
                         android:id="@+id/textViewPlatoCarta3"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentLeft="true"
@@ -116,7 +109,6 @@
                     <TextView
                         android:layout_width="280dp"
                         android:layout_height="100dp"
-                        android:text="Descripción plato"
                         android:id="@+id/textViewDescripcionCarta3"
                         android:layout_below="@+id/textViewPlatoCarta3"
                         android:layout_alignParentLeft="true"
@@ -126,7 +118,6 @@
                     <TextView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:text="$2500"
                         android:id="@+id/textViewPrecioCarta3"
                         android:layout_below="@+id/textViewPlatoCarta3"
                         android:layout_alignParentRight="true"
@@ -147,7 +138,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nombre Plato"
                         android:id="@+id/textViewPlatoCarta4"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentLeft="true"
@@ -157,7 +147,6 @@
                     <TextView
                         android:layout_width="280dp"
                         android:layout_height="100dp"
-                        android:text="Descripción plato"
                         android:id="@+id/textViewDescripcionCarta4"
                         android:layout_below="@+id/textViewPlatoCarta4"
                         android:layout_alignParentLeft="true"
@@ -167,7 +156,6 @@
                     <TextView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:text="$2500"
                         android:id="@+id/textViewPrecioCarta4"
                         android:layout_below="@+id/textViewPlatoCarta4"
                         android:layout_alignParentRight="true"
@@ -189,7 +177,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nombre Plato"
                         android:id="@+id/textViewPlatoCarta5"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentLeft="true"
@@ -199,7 +186,6 @@
                     <TextView
                         android:layout_width="280dp"
                         android:layout_height="100dp"
-                        android:text="Descripción plato"
                         android:id="@+id/textViewDescripcionCarta5"
                         android:layout_below="@+id/textViewPlatoCarta5"
                         android:layout_alignParentLeft="true"
@@ -209,7 +195,6 @@
                     <TextView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:text="$2500"
                         android:id="@+id/textViewPrecioCarta5"
                         android:layout_below="@+id/textViewPlatoCarta5"
                         android:layout_alignParentRight="true"
@@ -229,7 +214,6 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nombre Plato"
                         android:id="@+id/textViewPlatoCarta6"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentLeft="true"
@@ -239,7 +223,6 @@
                     <TextView
                         android:layout_width="280dp"
                         android:layout_height="100dp"
-                        android:text="Descripción plato"
                         android:id="@+id/textViewDescripcionCarta6"
                         android:layout_below="@+id/textViewPlatoCarta6"
                         android:layout_alignParentLeft="true"
@@ -249,7 +232,6 @@
                     <TextView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:text="$2500"
                         android:id="@+id/textViewPrecioCarta6"
                         android:layout_below="@+id/textViewPlatoCarta6"
                         android:layout_alignParentRight="true"
@@ -262,6 +244,12 @@
         </ScrollView>
 
     </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null">
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -304,4 +292,5 @@
             />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
+        </FrameLayout>
 </FrameLayout>

@@ -4,6 +4,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
     android:background="@drawable/fondomenublanco768x1280"
+    xmlns:fab="http://schemas.android.com/tools"
 android:orientation="vertical">
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -34,5 +35,55 @@ android:orientation="vertical">
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null">
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:id="@+id/fabmenu"
+            fab:fab_size="normal"
+            android:src="@drawable/ic_agregar"
+            app:layout_anchorGravity="bottom|right|end"
+            android:layout_below="@+id/editTextNombreRestauranteA"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabeditar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="10dp"
+                android:src="@mipmap/ic_editar"
+                fab:fab_size="mini"
+                />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabagregar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="10dp"
+                android:src="@mipmap/ic_restaurante"
+                fab:fab_size="mini"
+                />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabperfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="10dp"
+                android:src="@mipmap/ic_perfil"
+                fab:fab_size="mini"
+                />
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+    </FrameLayout>
 
 </RelativeLayout>

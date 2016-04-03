@@ -129,7 +129,7 @@
             android:layout_height="70dp"
             android:text="Entrar"
             android:id="@+id/btniniciarsesion"
-            android:background="#D40000"
+            android:background="@color/buttoncolor"
             android:layout_margin="4dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"

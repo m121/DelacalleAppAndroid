@@ -4,4 +4,21 @@
     tools:context="com.delacalle.delacalle.delacalleapp.perfilusuario_delacalleactivity">
    <!-- <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />-->
+
+    <item android:id="@+id/action_cambiar"
+        android:orderInCategory="5"
+        android:title="Cambiar contraseña"
+        android:icon="@drawable/ic_cambioclave"
+        app:showAsAction="ifRoom|collapseActionView"
+         />
+
+    <item android:id="@+id/action_cerrar"
+        android:orderInCategory="5"
+        android:title="Cerrar sesión"
+        android:icon="@drawable/ic_cerrarsesion"
+        app:showAsAction="ifRoom|collapseActionView"
+        />
+
+
+
 </menu>

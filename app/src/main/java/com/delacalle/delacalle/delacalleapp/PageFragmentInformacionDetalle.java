@@ -87,7 +87,7 @@ public class PageFragmentInformacionDetalle extends Fragment {
 
 
         final FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout);
-        frameLayout.getBackground().setAlpha(0);
+    //    frameLayout.getBackground().setAlpha(0);
         final FloatingActionsMenu fabMenu = (FloatingActionsMenu) view.findViewById(R.id.fabmenu);
         final FloatingActionButton fabeditar = (FloatingActionButton) view.findViewById(R.id.fabeditar);
         final FloatingActionButton  fabrestaurante = (FloatingActionButton) view.findViewById(R.id.fabagregar);
@@ -96,7 +96,7 @@ public class PageFragmentInformacionDetalle extends Fragment {
         fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
             public void onMenuExpanded() {
-                frameLayout.getBackground().setAlpha(240);
+       //         frameLayout.getBackground().setAlpha(240);
                 frameLayout.setOnTouchListener(new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
@@ -108,7 +108,7 @@ public class PageFragmentInformacionDetalle extends Fragment {
 
             @Override
             public void onMenuCollapsed() {
-                frameLayout.getBackground().setAlpha(0);
+       //         frameLayout.getBackground().setAlpha(0);
                 frameLayout.setOnTouchListener(null);
             }
         });

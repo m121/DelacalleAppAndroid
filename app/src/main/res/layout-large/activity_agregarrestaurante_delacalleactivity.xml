@@ -6,7 +6,6 @@
     android:background="@drawable/fondomenublanco768x1280"
     android:id="@+id/relativelayoutPaletacambiar"
     xmlns:fab="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
 
@@ -16,7 +15,7 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <ImageView
+   <!-- <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/imageViewfotoLogoA"
@@ -26,13 +25,30 @@
         android:layout_toLeftOf="@+id/imageViewfotoRestauranteA"
         android:layout_toStartOf="@+id/imageViewfotoRestauranteA"
         android:layout_marginRight="38dp"
-        android:layout_marginEnd="38dp" />
+        android:layout_marginEnd="38dp" />-->
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/imageViewfotoLogoA"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/agregar_foto"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        app:civ_border_width="2dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="29dp"
+        android:layout_toLeftOf="@+id/imageViewfotoRestauranteA"
+        android:layout_toStartOf="@+id/imageViewfotoRestauranteA"
+        android:layout_marginRight="38dp"
+        android:layout_marginEnd="38dp"
+        app:civ_border_color="#FF000000"/>
 
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:id="@+id/imageViewfotoRestauranteA"
-        android:background="#000000"
+        android:background="@drawable/agregar_foto"
         android:layout_alignTop="@+id/imageViewfotoLogoA"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -144,6 +160,11 @@
         android:layout_alignEnd="@+id/imageViewfotoLogoA"
         android:textStyle="bold" />
 
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null">
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -151,7 +172,6 @@
         android:id="@+id/fabmenu"
         fab:fab_size="normal"
         android:src="@drawable/ic_agregar"
-        app:layout_anchor="@id/listViewrestaurantes"
         app:layout_anchorGravity="bottom|right|end"
         android:layout_below="@+id/editTextNombreRestauranteA"
         android:layout_alignParentRight="true"
@@ -188,5 +208,6 @@
             />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
+    </FrameLayout>
 
 </RelativeLayout>

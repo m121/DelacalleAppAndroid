@@ -18,12 +18,14 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -32,6 +34,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
@@ -71,6 +75,58 @@ public class listarestaurantesresponsable_delacalleactivity extends AppCompatAct
 
         final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
 
+        final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
+        //     frameLayout.getBackground().setAlpha(0);
+        final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.fabmenu);
+        final FloatingActionButton fabeditar = (FloatingActionButton) findViewById(R.id.fabeditar);
+        final FloatingActionButton  fabrestaurante = (FloatingActionButton) findViewById(R.id.fabagregar);
+        final FloatingActionButton  fabperfil = (FloatingActionButton) findViewById(R.id.fabperfil);
+
+        fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+            @Override
+            public void onMenuExpanded() {
+                //           frameLayout.getBackground().setAlpha(240);
+                frameLayout.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        fabMenu.collapse();
+                        return true;
+                    }
+                });
+            }
+
+            @Override
+            public void onMenuCollapsed() {
+                //         frameLayout.getBackground().setAlpha(0);
+                frameLayout.setOnTouchListener(null);
+            }
+        });
+
+        fabeditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(listarestaurantesresponsable_delacalleactivity.this, listarestaurantesresponsable_delacalleactivity.class);
+                startActivity(intent);
+            }
+        });
+
+        fabrestaurante.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(listarestaurantesresponsable_delacalleactivity.this, agregarrestaurante_delacalleactivity.class);
+                startActivity(intent);
+            }
+        });
+
+        fabperfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(listarestaurantesresponsable_delacalleactivity.this, perfilusuario_delacalleactivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -105,17 +161,17 @@ public class listarestaurantesresponsable_delacalleactivity extends AppCompatAct
 
                         //   id = resta.getObjectId().toString();
                         cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
-                        titletxt.setText(resta.getString("titulo"));
+                        titletxt.setText(resta.getString("nombre"));
                         descriptiontxt.setText(resta.getString("descripcion"));
                         //        menutxt.setText(resta.getString("menu"));
-                        picfile = resta.getParseFile("fotouno");
+                        picfile = resta.getParseFile("fotologo");
                         picfile.getDataInBackground(new GetDataCallback() {
                             @Override
                             public void done(byte[] data, ParseException e) {
                                 pic = BitmapFactory.decodeByteArray(data, 0, data.length);
                                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                                 pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                                picimageview.setImageBitmap(Bitmap.createScaledBitmap(pic, 200, 120, false));
+                                picimageview.setImageBitmap(pic);
                             }
                         });
                         ratingbarres.setRating(resta.getInt("rating"));
@@ -185,11 +241,9 @@ public class listarestaurantesresponsable_delacalleactivity extends AppCompatAct
                 RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
                 ParseFile picfile;
 
-             //   id = resta.getObjectId().toString();
+
                 cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
                 titletxt.setText(resta.getString("nombre"));
-                //        descriptiontxt.setText(resta.getString("descripcion"));
-                //        menutxt.setText(resta.getString("menu"));
                 picfile = resta.getParseFile("fotologo");
                 picfile.getDataInBackground(new GetDataCallback() {
                     @Override
@@ -197,7 +251,7 @@ public class listarestaurantesresponsable_delacalleactivity extends AppCompatAct
                         pic = BitmapFactory.decodeByteArray(data, 0, data.length);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                        picimageview.setImageBitmap(Bitmap.createScaledBitmap(pic, 200, 120, false));
+                        picimageview.setImageBitmap(pic);
                     }
                 });
                 ratingbarres.setRating(resta.getInt("rating"));
