@@ -50,8 +50,12 @@ public class FragmentPageComentariosDetalle extends Fragment {
     private TextView  usuarioComentario;
     private TextView  comentarioComentario;
 
+    ParseFile filefoto;
+    Bitmap pic;
+
 
     String id;
+    String nombreusuario;
 
     //Comentarios
     TextView comentario;
@@ -120,12 +124,37 @@ public class FragmentPageComentariosDetalle extends Fragment {
                         if (view == null) {
                             view = View.inflate(getContext(), R.layout.plantilla_comentariosrestaurante, null);
                         }
-
+                        fotoUsuarioComentario = (ImageView) view.findViewById(R.id.imageViewFotoUsuarioComentario);
                         usuarioComentario = (TextView) view.findViewById(R.id.textViewNombreUsuario);
                         comentarioComentario = (TextView) view.findViewById(R.id.textViewComentario);
+                        nombreusuario  = comen.getString("nombreusuario");
+
 
                         usuarioComentario.setText(comen.getString("nombreusuario"));
                         comentarioComentario.setText(comen.getString("comentario"));
+                        ParseQuery<ParseUser> userfotoq = ParseUser.getQuery();
+                        userfotoq.whereEqualTo("username", nombreusuario);
+                        userfotoq.getFirstInBackground(new GetCallback<ParseUser>() {
+                            @Override
+                            public void done(ParseUser usuario, ParseException e) {
+                                if (e == null) {
+                                    filefoto = usuario.getParseFile("fotousuario");
+                                    filefoto.getDataInBackground(new GetDataCallback() {
+                                        @Override
+                                        public void done(byte[] data, ParseException e) {
+                                            pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                            pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                                            fotoUsuarioComentario.setImageBitmap(pic);
+
+                                        }
+                                    });
+                                    Log.d("delacalle", "foto usuario mostrada");
+                                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                    Log.d("delacalle", "No se encuentra el usuario con el nombre");
+                                }
+                            }
+                        });
 
 
                         Log.d("delacalle", "comentario mostrado");
@@ -242,13 +271,36 @@ public class FragmentPageComentariosDetalle extends Fragment {
                 if (view == null) {
                     view = View.inflate(getContext(), R.layout.plantilla_comentariosrestaurante, null);
                 }
-
+                fotoUsuarioComentario = (ImageView) view.findViewById(R.id.imageViewFotoUsuarioComentario);
                 usuarioComentario = (TextView) view.findViewById(R.id.textViewNombreUsuario);
                 comentarioComentario = (TextView) view.findViewById(R.id.textViewComentario);
+                nombreusuario  = comen.getString("nombreusuario");
 
                 usuarioComentario.setText(comen.getString("nombreusuario"));
                 comentarioComentario.setText(comen.getString("comentario"));
+                ParseQuery<ParseUser> userfotoq = ParseUser.getQuery();
+                userfotoq.whereEqualTo("username", nombreusuario);
+                userfotoq.getFirstInBackground(new GetCallback<ParseUser>() {
+                    @Override
+                    public void done(ParseUser usuario, ParseException e) {
+                        if (e == null) {
+                            filefoto = usuario.getParseFile("fotousuario");
+                            filefoto.getDataInBackground(new GetDataCallback() {
+                                @Override
+                                public void done(byte[] data, ParseException e) {
+                                    pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                    pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                                    fotoUsuarioComentario.setImageBitmap(pic);
 
+                                }
+                            });
+                            Log.d("delacalle", "foto usuario mostrada");
+                        } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                            Log.d("delacalle", "No se encuentra el usuario con el nombre");
+                        }
+                    }
+                });
 
 
                 Log.d("delacalle","comentario mostrado");

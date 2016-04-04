@@ -3,6 +3,7 @@ package com.delacalle.delacalle.delacalleapp;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Handler;
@@ -28,6 +29,7 @@ import android.widget.Toast;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseQuery;
@@ -179,27 +181,28 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
             }
         });
 
+try {
+    username.setText(ParseUser.getCurrentUser().getUsername());
+    correo.setText(ParseUser.getCurrentUser().getEmail());
+    edad.setText(ParseUser.getCurrentUser().getString("edad"));
+    ciudad.setText(ParseUser.getCurrentUser().getString("ciudad"));
+    nombre.setText(ParseUser.getCurrentUser().getString("nombre"));
+    filefoto = ParseUser.getCurrentUser().getParseFile("fotousuario");
+    filefoto.getDataInBackground(new GetDataCallback() {
+        @Override
+        public void done(byte[] data, ParseException e) {
+            pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+            fotousuario.setImageBitmap(pic);
+        }
+    });
+}catch (Exception ae)
+{
+    Log.d("delacalle","No se puede mostrar la informacion del usuario");
+    Toast.makeText(getApplicationContext(), "No se puede mostrar la informacion del usuario", Toast.LENGTH_SHORT).show();
 
-       /* btncerrarsesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ParseUser.logOut();
-                Toast.makeText(getApplicationContext(), "Cerrando sesión", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(perfilusuario_delacalleactivity.this,iniciosesion_delacalleactivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btncambiarcontrasena.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(perfilusuario_delacalleactivity.this,resetearcontrasena_delacalleactivity.class);
-                startActivity(intent);
-            }
-        });*/
-
-        nombre.setText(ParseUser.getCurrentUser().getUsername());
-        correo.setText(ParseUser.getCurrentUser().getEmail());
+}
     }
 
     @Override
@@ -225,6 +228,36 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
         {
             Intent intent = new Intent(perfilusuario_delacalleactivity.this,resetearcontrasena_delacalleactivity.class);
             startActivity(intent);
+        }
+
+        if(id == R.id.action_editar)
+        {
+
+
+
+            ParseQuery<ParseUser> userquery = ParseUser.getQuery();
+            userquery.whereEqualTo("objectId",ParseUser.getCurrentUser().getObjectId());
+            userquery.getFirstInBackground(new GetCallback<ParseUser>() {
+                @Override
+                public void done(ParseUser usuario, ParseException e) {
+                    if(e == null)
+                    {
+                        usuario.put("fotousuario",filefoto);
+                        usuario.put("nombre",nombre.getText().toString());
+                        usuario.put("edad",edad.getText().toString());
+                        usuario.put("ciudad",ciudad.getText().toString());
+                        usuario.saveInBackground();
+                        Log.d("delacalle", "Usuario actualizado");
+                        Toast.makeText(getApplicationContext(), "Perfil actualizado", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(perfilusuario_delacalleactivity.this,menu_pestanas_delacalleactivity.class);
+                        startActivity(intent);
+                    }
+                    else if(e.getCode() == ParseException.OBJECT_NOT_FOUND)
+                    {
+                        Log.d("delacalle","Usuario no encontrado");
+                    }
+                }
+            });
         }
 
         if(id == R.id.action_cerrar)

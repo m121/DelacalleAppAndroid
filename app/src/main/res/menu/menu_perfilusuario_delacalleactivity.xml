@@ -12,6 +12,13 @@
         app:showAsAction="ifRoom|collapseActionView"
          />
 
+    <item android:id="@+id/action_editar"
+        android:orderInCategory="5"
+        android:title="Editar perfil"
+        android:icon="@mipmap/ic_editar"
+        app:showAsAction="ifRoom|collapseActionView"
+        />
+
     <item android:id="@+id/action_cerrar"
         android:orderInCategory="5"
         android:title="Cerrar sesión"
