@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </android.support.design.widget.CoordinatorLayout>
+
 
 
     <FrameLayout
@@ -39,12 +39,10 @@ android:background="@null">
         android:layout_width="match_parent"
         android:layout_height="609dp"
         android:id="@+id/listViewComentariosrestaurante"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_gravity="left|top" />
+         />
 
 </FrameLayout>
-
+        </android.support.design.widget.CoordinatorLayout>
     </RelativeLayout>
 </ScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>

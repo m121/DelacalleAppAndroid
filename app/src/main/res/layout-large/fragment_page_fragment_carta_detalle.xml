@@ -21,23 +21,47 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/relativeLayoutPlato1">
 
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/hamb"
+                        android:id="@+id/imageViewplato1"
+                        android:layout_alignBottom="@+id/textViewPrecioCarta1"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="#FF000000"/>
+
+                    <!--<ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#000000"
+                        android:id="@+id/imageViewplato1"
+                        android:layout_alignBottom="@+id/textViewPrecioCarta1"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />-->
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/textViewPlatoCarta1"
+                        android:text="Hamburguesa BBQ"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
-                        android:textSize="25sp" />
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="280dp"
                         android:layout_height="100dp"
                         android:id="@+id/textViewDescripcionCarta1"
                         android:layout_below="@+id/textViewPlatoCarta1"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:textSize="25sp" />
+                        android:text="Hamburguesa con tomate, doble queso, pepino"
+                        android:textSize="25sp"
+                        android:layout_toRightOf="@+id/imageViewplato1"
+                        android:layout_toEndOf="@+id/imageViewplato1" />
 
                     <TextView
                         android:layout_width="80dp"
@@ -46,6 +70,7 @@
                         android:layout_below="@+id/textViewPlatoCarta1"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
+                        android:text="$26000"
                         android:layout_toRightOf="@+id/textViewDescripcionCarta1"
                         android:layout_toEndOf="@+id/textViewDescripcionCarta1"
                         android:textSize="25sp" />
@@ -59,29 +84,47 @@
                     android:layout_alignParentStart="true"
                     android:id="@+id/relativeLayoutPlato2">
 
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/albondiga"
+                        android:id="@+id/imageViewplato2"
+                        android:layout_alignBottom="@+id/textViewPrecioCarta2"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="#FF000000"/>
+
+
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/textViewPlatoCarta2"
+                        android:text="Albondiga"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
-                        android:textSize="25sp" />
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="280dp"
                         android:layout_height="100dp"
                         android:id="@+id/textViewDescripcionCarta2"
-                        android:layout_below="@+id/textViewPlatoCarta2"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:textSize="25sp" />
+                        android:text="Albondiga alemana, con salsas"
+                        android:textSize="25sp"
+                        android:layout_alignTop="@+id/imageViewplato2"
+                        android:layout_toRightOf="@+id/imageViewplato2"
+                        android:layout_toEndOf="@+id/imageViewplato2" />
 
                     <TextView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:id="@+id/textViewPrecioCarta2"
                         android:layout_below="@+id/textViewPlatoCarta2"
+                        android:text="$6000"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
                         android:layout_toRightOf="@+id/textViewDescripcionCarta2"
@@ -97,28 +140,46 @@
                     android:layout_alignParentStart="true"
                     android:id="@+id/relativeLayoutPlato3">
 
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/perro"
+                        android:id="@+id/imageViewplato3"
+                        android:layout_alignBottom="@+id/textViewPrecioCarta3"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="#FF000000"/>
+
+
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/textViewPlatoCarta3"
+                        android:text="Perro caliente"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
-                        android:textSize="25sp" />
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="280dp"
                         android:layout_height="100dp"
                         android:id="@+id/textViewDescripcionCarta3"
-                        android:layout_below="@+id/textViewPlatoCarta3"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:textSize="25sp" />
+                        android:text="El mejor perro caliente de la ciudad "
+                        android:textSize="25sp"
+                        android:layout_alignTop="@+id/textViewPrecioCarta3"
+                        android:layout_toRightOf="@+id/imageViewplato3"
+                        android:layout_toEndOf="@+id/imageViewplato3" />
 
                     <TextView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:id="@+id/textViewPrecioCarta3"
+                        android:text="$4000"
                         android:layout_below="@+id/textViewPlatoCarta3"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
@@ -135,28 +196,46 @@
                     android:id="@+id/relativeLayoutPlato4"
                     android:layout_alignParentStart="true">
 
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/sanduche"
+                        android:id="@+id/imageViewplato4"
+                        android:layout_alignBottom="@+id/textViewPrecioCarta4"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="#FF000000"/>
+
+
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/textViewPlatoCarta4"
+                        android:text="Sanduche"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
-                        android:textSize="25sp" />
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="280dp"
                         android:layout_height="100dp"
                         android:id="@+id/textViewDescripcionCarta4"
+                        android:text="Sanduche con extra queso y papitas"
                         android:layout_below="@+id/textViewPlatoCarta4"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
+                        android:layout_toRightOf="@+id/imageViewplato4"
+                        android:layout_toEndOf="@+id/imageViewplato4"
                         android:textSize="25sp" />
 
                     <TextView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:id="@+id/textViewPrecioCarta4"
+                        android:text="$10000"
                         android:layout_below="@+id/textViewPlatoCarta4"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
@@ -170,82 +249,109 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/relativeLayoutPlato6"
-                    android:layout_below="@+id/relativeLayoutPlato5"
+                    android:id="@+id/relativeLayoutPlato5"
+                    android:layout_below="@+id/relativeLayoutPlato4"
                     >
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/salchicha"
+                        android:id="@+id/imageViewplato5"
+                        android:layout_alignBottom="@+id/textViewPrecioCarta5"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="#FF000000"/>
+
+
+
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/textViewPlatoCarta5"
+                        android:text="Salchicha Alemana"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
-                        android:textSize="25sp" />
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="280dp"
                         android:layout_height="100dp"
+                        android:text="La mejor salchicha Alemana de la ciudad, con deliciosas salsas"
                         android:id="@+id/textViewDescripcionCarta5"
                         android:layout_below="@+id/textViewPlatoCarta5"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
+                        android:layout_toRightOf="@+id/imageViewplato5"
+                        android:layout_toEndOf="@+id/imageViewplato5"
                         android:textSize="25sp" />
 
                     <TextView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:id="@+id/textViewPrecioCarta5"
+                        android:text="$12000"
                         android:layout_below="@+id/textViewPlatoCarta5"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
                         android:layout_toRightOf="@+id/textViewDescripcionCarta5"
                         android:layout_toEndOf="@+id/textViewDescripcionCarta5"
                         android:textSize="25sp" />
-                </RelativeLayout>
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/relativeLayoutPlato5"
-                    android:layout_below="@+id/relativeLayoutPlato4"
-                    >
-
-                    <TextView
-                        android:layout_width="match_parent"
+            <!--        <RelativeLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textViewPlatoCarta6"
-                        android:layout_alignParentTop="true"
+                        android:id="@+id/relativeLayoutPlato6"
+                        android:layout_below="@+id/imageViewplato5"
                         android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:textSize="25sp" />
+                        android:layout_alignParentStart="true">
 
-                    <TextView
-                        android:layout_width="280dp"
-                        android:layout_height="100dp"
-                        android:id="@+id/textViewDescripcionCarta6"
-                        android:layout_below="@+id/textViewPlatoCarta6"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:textSize="25sp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textViewPlatoCarta6"
+                            android:text="Hamburguesa BBQ"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:id="@+id/textViewPrecioCarta6"
-                        android:layout_below="@+id/textViewPlatoCarta6"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_toRightOf="@+id/textViewDescripcionCarta6"
-                        android:layout_toEndOf="@+id/textViewDescripcionCarta6"
-                        android:textSize="25sp" />
-                </RelativeLayout>
+                        <TextView
+                            android:layout_width="280dp"
+                            android:layout_height="100dp"
+                            android:text="Hamburguesa con tomate, doble queso, pepino"
+                            android:id="@+id/textViewDescripcionCarta6"
+                            android:textSize="25sp"
+                            android:layout_marginLeft="69dp"
+                            android:layout_marginStart="69dp"
+                            android:layout_below="@+id/textViewPlatoCarta6"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:id="@+id/textViewPrecioCarta6"
+                            android:text="$26000"
+                            android:layout_below="@+id/textViewPlatoCarta6"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_toRightOf="@+id/textViewDescripcionCarta6"
+                            android:layout_toEndOf="@+id/textViewDescripcionCarta6"
+                            android:textSize="25sp" />
+                    </RelativeLayout>
+            -->    </RelativeLayout>
+
             </RelativeLayout>
         </ScrollView>
 
     </RelativeLayout>
 
-    <FrameLayout
+  <!--  <FrameLayout
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -292,5 +398,5 @@
             />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
-        </FrameLayout>
+        </FrameLayout>-->
 </FrameLayout>

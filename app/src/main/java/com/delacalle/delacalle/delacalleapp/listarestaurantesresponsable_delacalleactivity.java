@@ -154,12 +154,14 @@ public class listarestaurantesresponsable_delacalleactivity extends AppCompatAct
                         cardview.setClickable(true);
                         TextView titletxt = (TextView) view.findViewById(R.id.editTextnombremostrarrestaurante);
                         TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
-                        //       TextView menutxt = (TextView) view.findViewById(R.id.editTextmenumostrarrestaurante);
+                        TextView telefonotxt = (TextView) view.findViewById(R.id.textViewTelefonoM);
+                        TextView direcciontxt = (TextView) view.findViewById(R.id.textViewDireccionM);
                         final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
                         RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
                         ParseFile picfile;
 
-                        //   id = resta.getObjectId().toString();
+                       telefonotxt.setText(resta.getString("telefono"));
+                        direcciontxt.setText(resta.getString("direccion"));
                         cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
                         titletxt.setText(resta.getString("nombre"));
                         descriptiontxt.setText(resta.getString("descripcion"));
@@ -235,13 +237,16 @@ public class listarestaurantesresponsable_delacalleactivity extends AppCompatAct
                 CardView cardview = (CardView) view.findViewById(R.id.cardView);
                 cardview.setClickable(true);
                 TextView titletxt = (TextView) view.findViewById(R.id.editTextnombremostrarrestaurante);
-                //        TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
-                //       TextView menutxt = (TextView) view.findViewById(R.id.editTextmenumostrarrestaurante);
+                TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
+                TextView telefonotxt = (TextView) view.findViewById(R.id.textViewTelefonoM);
+                TextView direcciontxt = (TextView) view.findViewById(R.id.textViewDireccionM);
                 final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
                 RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
                 ParseFile picfile;
 
-
+                telefonotxt.setText(resta.getString("telefono"));
+                direcciontxt.setText(resta.getString("direccion"));
+                descriptiontxt.setText(resta.getString("descripcion"));
                 cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
                 titletxt.setText(resta.getString("nombre"));
                 picfile = resta.getParseFile("fotologo");

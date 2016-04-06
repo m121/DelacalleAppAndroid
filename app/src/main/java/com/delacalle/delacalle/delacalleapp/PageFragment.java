@@ -15,6 +15,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -104,6 +105,8 @@ public class PageFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
+
+
     }
 
     // Inflate the fragment layout we defined above for this fragment
@@ -274,6 +277,9 @@ public class PageFragment extends Fragment {
                             if (e == null) {
                                 fabeditar.setVisibility(View.VISIBLE);
                                 fabrestaurante.setVisibility(View.VISIBLE);
+                            } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                Log.d("delacalle","eres administrador");
+
                             }
                         }
                     });

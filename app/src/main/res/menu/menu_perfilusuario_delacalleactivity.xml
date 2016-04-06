@@ -15,7 +15,7 @@
     <item android:id="@+id/action_editar"
         android:orderInCategory="5"
         android:title="Editar perfil"
-        android:icon="@mipmap/ic_editar"
+        android:icon="@drawable/ic_guardar"
         app:showAsAction="ifRoom|collapseActionView"
         />
 

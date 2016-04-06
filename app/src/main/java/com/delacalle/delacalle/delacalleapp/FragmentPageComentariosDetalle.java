@@ -46,9 +46,9 @@ public class FragmentPageComentariosDetalle extends Fragment {
 
     private ParseQueryAdapter<ParseObject> comentariosQueryAdapter;
 
-    private ImageView fotoUsuarioComentario;
+   /* private ImageView fotoUsuarioComentario;
     private TextView  usuarioComentario;
-    private TextView  comentarioComentario;
+    private TextView  comentarioComentario;*/
 
     ParseFile filefoto;
     Bitmap pic;
@@ -113,6 +113,7 @@ public class FragmentPageComentariosDetalle extends Fragment {
                             public ParseQuery<ParseObject> create() {
                                 ParseQuery<ParseObject> query = ParseQuery.getQuery("comentarios");
                                 query.whereEqualTo("restauranteid", id);
+                                query.orderByAscending("createdAt");
                                 return query;
                             }
                         };
@@ -124,9 +125,9 @@ public class FragmentPageComentariosDetalle extends Fragment {
                         if (view == null) {
                             view = View.inflate(getContext(), R.layout.plantilla_comentariosrestaurante, null);
                         }
-                        fotoUsuarioComentario = (ImageView) view.findViewById(R.id.imageViewFotoUsuarioComentario);
-                        usuarioComentario = (TextView) view.findViewById(R.id.textViewNombreUsuario);
-                        comentarioComentario = (TextView) view.findViewById(R.id.textViewComentario);
+                 final ImageView fotoUsuarioComentario = (ImageView) view.findViewById(R.id.imageViewFotoUsuarioComentario);
+                 TextView       usuarioComentario = (TextView) view.findViewById(R.id.textViewNombreUsuario);
+                 TextView       comentarioComentario = (TextView) view.findViewById(R.id.textViewComentario);
                         nombreusuario  = comen.getString("nombreusuario");
 
 
@@ -186,7 +187,7 @@ public class FragmentPageComentariosDetalle extends Fragment {
         fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
             public void onMenuExpanded() {
-      //          frameLayout.getBackground().setAlpha(240);
+                //          frameLayout.getBackground().setAlpha(240);
                 frameLayout.setOnTouchListener(new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
@@ -198,7 +199,7 @@ public class FragmentPageComentariosDetalle extends Fragment {
 
             @Override
             public void onMenuCollapsed() {
-     //           frameLayout.getBackground().setAlpha(0);
+                //           frameLayout.getBackground().setAlpha(0);
                 frameLayout.setOnTouchListener(null);
             }
         });
@@ -260,6 +261,7 @@ public class FragmentPageComentariosDetalle extends Fragment {
                     public ParseQuery<ParseObject> create() {
                         ParseQuery<ParseObject> query = ParseQuery.getQuery("comentarios");
                         query.whereEqualTo("restauranteid", id);
+                        query.orderByAscending("createdAt");
                         return query;
                     }
                 };
@@ -267,13 +269,13 @@ public class FragmentPageComentariosDetalle extends Fragment {
         comentariosQueryAdapter = new ParseQueryAdapter<ParseObject>(getActivity(), factory) {
 
             @Override
-            public View getItemView(final ParseObject comen, View view, ViewGroup parent) {
-                if (view == null) {
-                    view = View.inflate(getContext(), R.layout.plantilla_comentariosrestaurante, null);
+            public View getItemView(final ParseObject comen, View vista, ViewGroup parent) {
+                if (vista == null) {
+                    vista = View.inflate(getContext(), R.layout.plantilla_comentariosrestaurante, null);
                 }
-                fotoUsuarioComentario = (ImageView) view.findViewById(R.id.imageViewFotoUsuarioComentario);
-                usuarioComentario = (TextView) view.findViewById(R.id.textViewNombreUsuario);
-                comentarioComentario = (TextView) view.findViewById(R.id.textViewComentario);
+            final ImageView    fotoUsuarioComentario = (ImageView) vista.findViewById(R.id.imageViewFotoUsuarioComentario);
+           TextView     usuarioComentario = (TextView) vista.findViewById(R.id.textViewNombreUsuario);
+           TextView     comentarioComentario = (TextView) vista.findViewById(R.id.textViewComentario);
                 nombreusuario  = comen.getString("nombreusuario");
 
                 usuarioComentario.setText(comen.getString("nombreusuario"));
@@ -305,8 +307,10 @@ public class FragmentPageComentariosDetalle extends Fragment {
 
                 Log.d("delacalle","comentario mostrado");
 
-                return view;
+                return vista;
+
             }
+
         };
 
         ListView comentariosListView = (ListView) view.findViewById(R.id.listViewComentariosrestaurante);

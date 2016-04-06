@@ -29,8 +29,8 @@
                 android:layout_height="48dp"
                 android:textSize="14sp"
                 android:textColor="#ffffff"
-                android:background="@null"
-                app:pstsIndicatorColor="#ffffff"
+                android:background="#000000"
+                app:pstsIndicatorColor="@color/colorAccent"
                 app:pstsTabPaddingLeftRight="14dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
@@ -44,9 +44,13 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpagerdetalle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        android:layout_height="620dp"
+        android:background="@drawable/fondomenublanco768x1280"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 </RelativeLayout>

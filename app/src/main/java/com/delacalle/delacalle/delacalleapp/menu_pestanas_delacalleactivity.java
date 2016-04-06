@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,11 +23,14 @@ import android.widget.Toast;
 import com.astuetz.PagerSlidingTabStrip;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
+import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
+import com.parse.ParseRole;
+import com.parse.ParseUser;
 
 import java.io.ByteArrayOutputStream;
 
@@ -42,6 +46,7 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_pestanas_delacalleactivity);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setLogo(R.mipmap.ic_logo);

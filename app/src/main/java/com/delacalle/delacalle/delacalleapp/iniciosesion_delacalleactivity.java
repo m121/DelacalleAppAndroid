@@ -100,7 +100,8 @@ public class iniciosesion_delacalleactivity extends AppCompatActivity {
 
 
 
-
+    boolean isInternetPresent = false;
+    ConnectionDetector cd;
 
 
     Button buttoniniciarsesion;
@@ -119,6 +120,10 @@ public class iniciosesion_delacalleactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(iniciosesion_delacalleactivity.this);
         setContentView(R.layout.activity_iniciosesion_delacalleactivity);
+
+        cd = new ConnectionDetector(getApplicationContext());
+        // get Internet status
+        isInternetPresent = cd.isConnectingToInternet();
 
        /* // Check if no view has focus:
         View view = this.getCurrentFocus();
@@ -221,7 +226,16 @@ e.printStackTrace();
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
-                logInEmailErrors(v);
+                if (isInternetPresent)
+                {
+                    logInEmailErrors(v);
+                }
+                else
+                {
+                    Log.d("delacalle","No hay internet");
+                    Toast.makeText(getApplicationContext(), "No puedes conectarte usar la app sin Internet ", Toast.LENGTH_SHORT).show();
+
+                }
 
             }
         });
@@ -240,8 +254,18 @@ e.printStackTrace();
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
-              //  displayPopupWindowPhotos(v);
-                logInEmailErrors(v);
+                if (isInternetPresent)
+                {
+                    logInEmailErrors(v);
+                }
+                else
+                {
+                    Log.d("delacalle","No hay internet");
+                    Toast.makeText(getApplicationContext(), "No puedes conectarte usar la app sin Internet ", Toast.LENGTH_SHORT).show();
+
+                }
+
+
             }
         });
 
@@ -250,46 +274,40 @@ e.printStackTrace();
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
-                ParseFacebookUtils.logInWithReadPermissionsInBackground(iniciosesion_delacalleactivity.this, mPermissions, new LogInCallback() {
-                    @Override
-                    public void done(ParseUser user, ParseException err) {
-                        if (user == null) {
-                            //   Log.d("myapp",err.getLocalizedMessage());
-                            Log.d("delacalle","usuario es null");
-                        } else if (user.isNew()) {
-                            ParseACL roleACL = new ParseACL();
-                            roleACL.setPublicReadAccess(true);
-                            ParseRole role = new ParseRole("usuario", roleACL);
-                            role.getUsers().add(ParseUser.getCurrentUser());
-                            role.saveInBackground();
-                            Log.d("delacalle", "usuario Registrado con Facebook");
-                            Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
-                            startActivity(intent);
+                if(isInternetPresent) {
+                    ParseFacebookUtils.logInWithReadPermissionsInBackground(iniciosesion_delacalleactivity.this, mPermissions, new LogInCallback() {
+                        @Override
+                        public void done(ParseUser user, ParseException err) {
+                            if (user == null) {
+                                //   Log.d("myapp",err.getLocalizedMessage());
+                                Log.d("delacalle", "usuario es null");
+                            } else if (user.isNew()) {
+                                ParseACL roleACL = new ParseACL();
+                                roleACL.setPublicReadAccess(true);
+                                ParseRole role = new ParseRole("usuario", roleACL);
+                                role.getUsers().add(ParseUser.getCurrentUser());
+                                role.saveInBackground();
+                                Log.d("delacalle", "usuario Registrado con Facebook");
+                                Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
+                                startActivity(intent);
 
-                        } else {
-                            Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
-                            startActivity(intent);
-                            Log.d("delacalle", "usuario inicio sesion con Facebook");
+                            } else {
+                                Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
+                                startActivity(intent);
+                                Log.d("delacalle", "usuario inicio sesion con Facebook");
+
+                            }
+
 
                         }
+                    });
 
-
-
-                    }
-                });
-
-             /*   ParseUser.becomeInBackground("f5b05e1ce25f9c1a70bd000d212fb3de", new LogInCallback() {
-                    public void done(ParseUser user, ParseException e) {
-                        if (user != null) {
-                            Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
-                            startActivity(intent);
-                            // The current user is now set to user.
-                        } else {
-                            // The token could not be validated.
-                            Log.d("De La Calle", "Error");
-                        }
-                    }
-                });*/
+                }
+                else
+                {
+                    Log.d("delacalle","No hay internet");
+                    Toast.makeText(getApplicationContext(), "No puedes conectarte usar la app sin Internet ", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -297,6 +315,14 @@ e.printStackTrace();
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
+                if(isInternetPresent) {
+
+                }
+                else
+                {
+                    Log.d("delacalle","No hay internet");
+                    Toast.makeText(getApplicationContext(), "No puedes conectarte usar la app sin Internet ", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

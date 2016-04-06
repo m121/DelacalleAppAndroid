@@ -107,6 +107,8 @@ public class registro_delacalleactivity extends AppCompatActivity {
             cancel = true;
         }
 
+
+
         // verificar la confirmación del password
         if(TextUtils.isEmpty(userRePass))
         {
@@ -155,6 +157,8 @@ public class registro_delacalleactivity extends AppCompatActivity {
         }
         else
         {
+            TextUtils.concat(userName);
+            Toast.makeText(getApplicationContext(), "Tu nombre de usuario es " + userName, Toast.LENGTH_SHORT).show();
             Toast.makeText(getApplicationContext(), "Guardando ", Toast.LENGTH_SHORT).show();
             signUp(userName.toLowerCase(Locale.getDefault()), userEmail, userPass);
         }
@@ -178,11 +182,28 @@ public class registro_delacalleactivity extends AppCompatActivity {
             public void done(ParseException e) {
                 if (e == null) {
 
-                    ParseACL roleACL = new ParseACL();
-                    roleACL.setPublicReadAccess(true);
-                    ParseRole role = new ParseRole("usuario", roleACL);
-                    role.getUsers().add(ParseUser.getCurrentUser());
-                    role.saveInBackground();
+                    ParseQuery<ParseRole> roleq = ParseRole.getQuery();
+                    roleq.whereEqualTo("name", "usuario");
+                    roleq.getFirstInBackground(new GetCallback<ParseRole>() {
+                        @Override
+                        public void done(ParseRole rol, ParseException e) {
+                            if (e == null) {
+                                rol.getUsers().add(ParseUser.getCurrentUser());
+                                Log.d("delacalle", "Usuario agregado a Rol Usuario");
+                            } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                ParseACL roleACL = new ParseACL();
+                                roleACL.setPublicReadAccess(true);
+                                ParseRole role = new ParseRole("usuario", roleACL);
+                                role.getUsers().add(ParseUser.getCurrentUser());
+                                role.saveInBackground();
+                                Log.d("delacalle", "Rol usuario creado y usuario agregado");
+                            }
+
+                        }
+                    });
+
+
+
 
                     signUprMsg("registro exitoso, ¡bienvenido!");
                     Log.d("delacalle", "usuario registrado");

@@ -32,7 +32,7 @@
         android:layout_height="50dp"
         android:id="@+id/editTextnombreregistro"
         android:layout_marginTop="50dp"
-        android:hint="Nombre"
+        android:hint="Nombre usuario"
         android:maxLength="20"
         android:background="@color/edittextback"
         android:textColor="#ffffff"

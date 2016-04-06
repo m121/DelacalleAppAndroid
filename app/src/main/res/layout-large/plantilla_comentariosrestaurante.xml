@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/fondomenublanco768x1280"
+    android:layout_height="match_parent">
+
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/relativeLayout10"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:id="@+id/relativeLayout11">
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/imageViewFotoUsuarioComentario1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/winter"
+        app:civ_border_width="2dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:civ_border_color="#FF000000"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="carlos"
+        android:id="@+id/textViewNombreUsuario1"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imageViewFotoUsuarioComentario1"
+        android:layout_toEndOf="@+id/imageViewFotoUsuarioComentario1"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="Se han olvidado de las papitas en la hamburguesa, pero me encanta el sabor"
+        android:id="@+id/textViewComentario1"
+        android:layout_below="@+id/textViewNombreUsuario1"
+        android:layout_toRightOf="@+id/imageViewFotoUsuarioComentario1"
+        android:layout_toEndOf="@+id/imageViewFotoUsuarioComentario1"
+        android:textSize="25sp" />
+</RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/relativeLayout9"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/imageViewFotoUsuarioComentario2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ghost"
+            app:civ_border_width="2dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            app:civ_border_color="#FF000000"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="arturo"
+            android:id="@+id/textViewNombreUsuario2"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageViewFotoUsuarioComentario2"
+            android:layout_toEndOf="@+id/imageViewFotoUsuarioComentario2"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="Bonito lugar"
+            android:id="@+id/textViewComentario2"
+            android:layout_below="@+id/textViewNombreUsuario2"
+            android:layout_toRightOf="@+id/imageViewFotoUsuarioComentario2"
+            android:layout_toEndOf="@+id/imageViewFotoUsuarioComentario2"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/relativeLayout8"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout9">
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/imageViewFotoUsuarioComentario3"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/yo"
+            app:civ_border_width="2dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            app:civ_border_color="#FF000000"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="mariaJose"
+            android:id="@+id/textViewNombreUsuario3"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageViewFotoUsuarioComentario3"
+            android:layout_toEndOf="@+id/imageViewFotoUsuarioComentario3"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="Me gustaría tener más albondigas como estas"
+            android:id="@+id/textViewComentario3"
+            android:layout_below="@+id/textViewNombreUsuario3"
+            android:layout_toRightOf="@+id/imageViewFotoUsuarioComentario3"
+            android:layout_toEndOf="@+id/imageViewFotoUsuarioComentario3"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="136dp"
+        android:id="@+id/relativeLayout8">
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/imageViewFotoUsuarioComentario4"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/merlin"
+            app:civ_border_width="2dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            app:civ_border_color="#FF000000"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="manuela"
+            android:id="@+id/textViewNombreUsuario4"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageViewFotoUsuarioComentario4"
+            android:layout_toEndOf="@+id/imageViewFotoUsuarioComentario4"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="El mejor lugar"
+            android:id="@+id/textViewComentario4"
+            android:textSize="25sp"
+            android:layout_below="@+id/textViewNombreUsuario4"
+            android:layout_toRightOf="@+id/imageViewFotoUsuarioComentario4"
+            android:layout_toEndOf="@+id/imageViewFotoUsuarioComentario4" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout10">
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/imageViewFotoUsuarioComentario5"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/nana"
+            app:civ_border_width="2dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            app:civ_border_color="#FF000000"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="maria"
+            android:id="@+id/textViewNombreUsuario5"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageViewFotoUsuarioComentario5"
+            android:layout_toEndOf="@+id/imageViewFotoUsuarioComentario5"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="Me encanta la hamburguesa, es bastante grande"
+            android:id="@+id/textViewComentario5"
+            android:layout_below="@+id/textViewNombreUsuario5"
+            android:layout_toEndOf="@+id/imageViewFotoUsuarioComentario5"
+            android:textSize="25sp"
+            android:layout_toRightOf="@+id/imageViewFotoUsuarioComentario5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout11"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/imageViewFotoUsuarioComentario6"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/perro1"
+            app:civ_border_width="2dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            app:civ_border_color="#FF000000"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="alejandra"
+            android:id="@+id/textViewNombreUsuario6"
+            android:textSize="20sp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageViewFotoUsuarioComentario6"
+            android:layout_toEndOf="@+id/imageViewFotoUsuarioComentario6" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="Buena atención y buenos precios"
+            android:id="@+id/textViewComentario6"
+            android:textSize="25sp"
+            android:layout_below="@+id/textViewNombreUsuario6"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/imageViewFotoUsuarioComentario6"
+            android:layout_toEndOf="@+id/imageViewFotoUsuarioComentario6" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

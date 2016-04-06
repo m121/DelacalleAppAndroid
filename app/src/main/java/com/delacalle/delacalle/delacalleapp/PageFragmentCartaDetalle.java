@@ -2,6 +2,7 @@ package com.delacalle.delacalle.delacalleapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,7 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.parse.GetCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseRole;
@@ -93,6 +95,10 @@ public class PageFragmentCartaDetalle extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_page_fragment_carta_detalle ,container, false);
+
+
+        Bitmap pic;
+        ParseFile filefotocarta;
 
 
           nombrePlato1 = (TextView) view.findViewById(R.id.textViewPlatoCarta1);
@@ -211,7 +217,7 @@ public class PageFragmentCartaDetalle extends Fragment {
 
             }
         });
-
+/*
 
 
         ParseQuery<ParseObject>  cartaquery = ParseQuery.getQuery("carta");
@@ -422,7 +428,7 @@ public class PageFragmentCartaDetalle extends Fragment {
                 }
             }
         });
-
+*/
         return view;
     }
 
