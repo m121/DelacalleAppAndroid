@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -62,6 +63,9 @@ public class PageFragmentCartaDetalle extends Fragment {
     private RelativeLayout relativelayoutPlato5;
     private RelativeLayout relativelayoutPlato6;
 
+
+    private LinearLayout linear;
+
     private int mPage;
 
 
@@ -101,7 +105,20 @@ public class PageFragmentCartaDetalle extends Fragment {
         ParseFile filefotocarta;
 
 
-          nombrePlato1 = (TextView) view.findViewById(R.id.textViewPlatoCarta1);
+        linear = (LinearLayout) view.findViewById(R.id.linear1);
+        linear.setClickable(true);
+
+        linear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),cartaDetalle_delacalleactivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+      /*    nombrePlato1 = (TextView) view.findViewById(R.id.textViewPlatoCarta1);
           descripcionPlato1 = (TextView) view.findViewById(R.id.textViewDescripcionCarta1);
           precioPlato1 = (TextView) view.findViewById(R.id.textViewPrecioCarta1);
 
@@ -138,9 +155,9 @@ public class PageFragmentCartaDetalle extends Fragment {
         relativelayoutPlato3.setClickable(true);
         relativelayoutPlato4.setClickable(true);
         relativelayoutPlato5.setClickable(true);
-        relativelayoutPlato6.setClickable(true);
+        relativelayoutPlato6.setClickable(true);*/
 
-        final FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout);
+     /*   final FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout);
  //       frameLayout.getBackground().setAlpha(0);
         final FloatingActionsMenu fabMenu = (FloatingActionsMenu) view.findViewById(R.id.fabmenu);
         final FloatingActionButton fabeditar = (FloatingActionButton) view.findViewById(R.id.fabeditar);
@@ -216,7 +233,7 @@ public class PageFragmentCartaDetalle extends Fragment {
                 }
 
             }
-        });
+        });*/
 /*
 
 

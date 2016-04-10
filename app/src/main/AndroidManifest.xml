@@ -136,6 +136,13 @@
             android:name=".menu_pestanas_delacalleactivity"
             android:label="@string/title_activity_menu_pestanas_delacalleactivity"
             android:screenOrientation="portrait" >
+            <!--
+          <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
+
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
+           &ndash;&gt;-->
         </activity>
         <activity
             android:name=".perfilusuario_delacalleactivity"

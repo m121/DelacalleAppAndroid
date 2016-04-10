@@ -51,6 +51,8 @@ import com.parse.ParseQuery;
 import com.parse.ParseRole;
 import com.parse.ParseTwitterUtils;
 import com.parse.ParseUser;
+
+import org.json.JSONException;
 import org.json.JSONObject;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -99,6 +101,7 @@ public class iniciosesion_delacalleactivity extends AppCompatActivity {
     public static final String CALLBACK_URL = "redirect uri here";
 
 
+    JSONObject memail;
 
     boolean isInternetPresent = false;
     ConnectionDetector cd;
@@ -226,13 +229,10 @@ e.printStackTrace();
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
-                if (isInternetPresent)
-                {
+                if (isInternetPresent) {
                     logInEmailErrors(v);
-                }
-                else
-                {
-                    Log.d("delacalle","No hay internet");
+                } else {
+                    Log.d("delacalle", "No hay internet");
                     Toast.makeText(getApplicationContext(), "No puedes conectarte usar la app sin Internet ", Toast.LENGTH_SHORT).show();
 
                 }
@@ -244,7 +244,7 @@ e.printStackTrace();
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
-                Intent intent = new Intent(iniciosesion_delacalleactivity.this,registro_delacalleactivity.class);
+                Intent intent = new Intent(iniciosesion_delacalleactivity.this, registro_delacalleactivity.class);
                 startActivity(intent);
             }
         });
@@ -254,13 +254,10 @@ e.printStackTrace();
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
-                if (isInternetPresent)
-                {
+                if (isInternetPresent) {
                     logInEmailErrors(v);
-                }
-                else
-                {
-                    Log.d("delacalle","No hay internet");
+                } else {
+                    Log.d("delacalle", "No hay internet");
                     Toast.makeText(getApplicationContext(), "No puedes conectarte usar la app sin Internet ", Toast.LENGTH_SHORT).show();
 
                 }
@@ -274,20 +271,26 @@ e.printStackTrace();
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
-                if(isInternetPresent) {
+                if (isInternetPresent) {
                     ParseFacebookUtils.logInWithReadPermissionsInBackground(iniciosesion_delacalleactivity.this, mPermissions, new LogInCallback() {
                         @Override
                         public void done(ParseUser user, ParseException err) {
                             if (user == null) {
+                                ParseUser.logOut();
                                 //   Log.d("myapp",err.getLocalizedMessage());
                                 Log.d("delacalle", "usuario es null");
                             } else if (user.isNew()) {
+
+
                                 ParseACL roleACL = new ParseACL();
                                 roleACL.setPublicReadAccess(true);
                                 ParseRole role = new ParseRole("usuario", roleACL);
                                 role.getUsers().add(ParseUser.getCurrentUser());
                                 role.saveInBackground();
                                 Log.d("delacalle", "usuario Registrado con Facebook");
+
+
+
                                 Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
                                 startActivity(intent);
 
@@ -302,14 +305,14 @@ e.printStackTrace();
                         }
                     });
 
-                }
-                else
-                {
-                    Log.d("delacalle","No hay internet");
+                } else {
+                    Log.d("delacalle", "No hay internet");
                     Toast.makeText(getApplicationContext(), "No puedes conectarte usar la app sin Internet ", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+
 
         logininstagram.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -383,6 +386,51 @@ e.printStackTrace();
         ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
 //        callbackManager.onActivityResult(requestCode, resultCode, data);
 
+        GraphRequest.GraphJSONObjectCallback mCallback = new GraphRequest.GraphJSONObjectCallback()
+        {
+            @Override
+            public void onCompleted(JSONObject mData, GraphResponse mResponse)
+            {
+                if(mResponse.getError() == null)
+                {
+                    try
+                    {
+
+
+                       String email = mData.getString("email");
+                        String username = mData.getString("name");
+
+                        Log.d("delacalle","Email es " + email);
+                        Log.d("delacalle", "nombre es " + username);
+
+                        ParseUser user = ParseUser.getCurrentUser();
+                        user.put("email", email);
+                        user.put("username",username);
+                        user.saveInBackground();
+                    }
+
+                    catch (JSONException e)
+                    {
+                        //JSON Error, DEBUG
+                    }
+                }
+
+                else
+                {
+                    //Facebook GraphResponse error, DEBUG
+                }
+            }
+        };
+
+        Bundle mBundle = new Bundle();
+        mBundle.putString("fields", "email,name");
+
+        GraphRequest mGetUserRequest = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), mCallback);
+        mGetUserRequest.setParameters(mBundle);
+
+//if running this on the MAIN THREAD then use .executeAsync()
+        mGetUserRequest.executeAsync();
+
     }
 
     @Override
@@ -391,6 +439,8 @@ e.printStackTrace();
         getMenuInflater().inflate(R.menu.menu_iniciosesion_delacalleactivity, menu);
         return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

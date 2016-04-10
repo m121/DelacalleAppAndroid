@@ -187,7 +187,7 @@ try {
     edad.setText(ParseUser.getCurrentUser().getString("edad"));
     ciudad.setText(ParseUser.getCurrentUser().getString("ciudad"));
     nombre.setText(ParseUser.getCurrentUser().getString("nombre"));
-    filefoto = ParseUser.getCurrentUser().getParseFile("fotousuario");
+   /* filefoto = ParseUser.getCurrentUser().getParseFile("fotousuario");
     filefoto.getDataInBackground(new GetDataCallback() {
         @Override
         public void done(byte[] data, ParseException e) {
@@ -196,7 +196,7 @@ try {
             pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
             fotousuario.setImageBitmap(pic);
         }
-    });
+    });*/
 }catch (Exception ae)
 {
     Log.d("delacalle","No se puede mostrar la informacion del usuario");

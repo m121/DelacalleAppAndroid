@@ -39,6 +39,7 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.ByteArrayOutputStream;
+import java.util.List;
 
 
 public class FragmentPageComentariosDetalle extends Fragment {
@@ -60,6 +61,10 @@ public class FragmentPageComentariosDetalle extends Fragment {
     //Comentarios
     TextView comentario;
     Button btncomentario;
+
+    ImageView    fotoUsuarioComentario;
+    TextView     usuarioComentario;
+    TextView     comentarioComentario;
 
 
     private int mPage;
@@ -95,6 +100,10 @@ public class FragmentPageComentariosDetalle extends Fragment {
 
         final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
 
+        fotoUsuarioComentario = (ImageView) view.findViewById(R.id.imageViewFotoUsuarioComentario);
+        usuarioComentario = (TextView) view.findViewById(R.id.textViewNombreUsuario);
+        comentarioComentario = (TextView) view.findViewById(R.id.textViewComentario);
+
         btncomentario = (Button) view.findViewById(R.id.btnGuardarComentario);
 
         btncomentario.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +112,6 @@ public class FragmentPageComentariosDetalle extends Fragment {
                 showInputDialogComentarios();
             }
         });
-
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -315,6 +323,61 @@ public class FragmentPageComentariosDetalle extends Fragment {
 
         ListView comentariosListView = (ListView) view.findViewById(R.id.listViewComentariosrestaurante);
         comentariosListView.setAdapter(comentariosQueryAdapter);
+
+
+
+   /*     final   ParseQuery<ParseObject> query = ParseQuery.getQuery("comentarios");
+  //      query.whereEqualTo("restauranteid", id);
+        query.orderByAscending("createdAt");
+
+
+
+
+        final List<ParseObject> comenlista;
+        try {
+
+            comenlista = query.find();
+
+            for (final ParseObject comens : comenlista) {
+
+
+                nombreusuario  = comens.getString("nombreusuario");
+                usuarioComentario.setText(comens.getString("nombreusuario"));
+                comentarioComentario.setText(comens.getString("comentario"));
+                ParseQuery<ParseUser> userfotoq = ParseUser.getQuery();
+                userfotoq.whereEqualTo("username", nombreusuario);
+                userfotoq.getFirstInBackground(new GetCallback<ParseUser>() {
+                    @Override
+                    public void done(ParseUser usuario, ParseException e) {
+                        if (e == null) {
+                            filefoto = usuario.getParseFile("fotousuario");
+                            filefoto.getDataInBackground(new GetDataCallback() {
+                                @Override
+                                public void done(byte[] data, ParseException e) {
+                                    pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                    pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                                    fotoUsuarioComentario.setImageBitmap(pic);
+
+                                }
+                            });
+                            Log.d("delacalle", "foto usuario mostrada");
+                        } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                            Log.d("delacalle", "No se encuentra el usuario con el nombre");
+                        }
+                    }
+                });
+
+
+                Log.d("delacalle","comentario mostrado");
+
+
+            }
+        }catch(ParseException e)
+        {
+
+        }*/
+
 
 
         return view;
