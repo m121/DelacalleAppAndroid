@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="380dp"
+        android:layout_height="680dp"
         android:background="@drawable/fondomenu768x1280"
         android:id="@+id/relativeLayout7">
 
@@ -25,8 +25,8 @@
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/imageViewFotoPerfil"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:src="@drawable/agregar_foto"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
@@ -34,16 +34,16 @@
             app:civ_border_color="#FF000000"/>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="User name"
             android:id="@+id/textViewUsernameUsuario"
-            android:layout_below="@+id/imageViewFotoPerfil"
-            android:textSize="25sp"
+            android:textSize="35sp"
             android:textColor="#ffffff"
             android:textAlignment="center"
-            android:layout_alignLeft="@+id/imageViewFotoPerfil"
-            android:layout_alignStart="@+id/imageViewFotoPerfil" />
+            android:layout_below="@+id/imageViewFotoPerfil"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp" />
 
 
     </RelativeLayout>
@@ -65,7 +65,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <EditText
@@ -78,7 +78,7 @@
             android:layout_below="@+id/textViewTituloNombreUsuario"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textSize="25sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -88,7 +88,7 @@
             android:layout_below="@+id/textViewNombreUsuario"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <EditText
@@ -102,18 +102,19 @@
             android:layout_below="@+id/textViewTituloEdadUsuario"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textSize="25sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Correo"
             android:id="@+id/textViewTituloCorreoUsuario"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:layout_below="@+id/textViewEdadUsuario"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textIsSelectable="false" />
 
         <EditText
             android:layout_width="match_parent"
@@ -123,7 +124,7 @@
             android:layout_below="@+id/textViewTituloCorreoUsuario"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textSize="25sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -133,7 +134,7 @@
             android:layout_below="@+id/textViewCorreoUsuario"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <EditText
@@ -146,63 +147,66 @@
             android:layout_below="@+id/textViewTituloCiudadUsuario"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textSize="25sp" />
-    </RelativeLayout>
+            android:textSize="30sp" />
 
-
-    <FrameLayout
-        android:id="@+id/frame_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@null">
-        <com.getbase.floatingactionbutton.FloatingActionsMenu
+        <FrameLayout
+            android:id="@+id/frame_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right|bottom"
-            android:id="@+id/fabmenu"
-            fab:fab_size="normal"
-            android:src="@drawable/ic_agregar"
-            app:layout_anchor="@id/listViewrestaurantes"
-            app:layout_anchorGravity="bottom|right|end"
+            android:background="@null"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true">
-
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabeditar"
+            <com.getbase.floatingactionbutton.FloatingActionsMenu
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="10dp"
-                android:src="@mipmap/ic_editar"
-                fab:fab_size="mini"
-                />
+                android:layout_gravity="right|bottom"
+                android:id="@+id/fabmenu"
+                fab:fab_size="normal"
+                android:src="@drawable/ic_agregar"
+                app:layout_anchor="@id/listViewrestaurantes"
+                app:layout_anchorGravity="bottom|right|end"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true">
 
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabagregar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="10dp"
-                android:src="@mipmap/ic_restaurante"
-                fab:fab_size="mini"
-                />
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabeditar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="10dp"
+                    android:src="@mipmap/ic_editar"
+                    fab:fab_size="mini"
+                    />
 
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabperfil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="10dp"
-                android:src="@mipmap/ic_perfil"
-                fab:fab_size="mini"
-                />
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabagregar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="10dp"
+                    android:src="@mipmap/ic_restaurante"
+                    fab:fab_size="mini"
+                    />
 
-        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabperfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="10dp"
+                    android:src="@mipmap/ic_perfil"
+                    fab:fab_size="mini"
+                    />
 
-    </FrameLayout>
+            </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
-   <!-- </RelativeLayout>-->
+        </FrameLayout>
+    </RelativeLayout>
+
+
+    <!-- </RelativeLayout>-->
 
     <include
         android:id="@+id/toolbar"

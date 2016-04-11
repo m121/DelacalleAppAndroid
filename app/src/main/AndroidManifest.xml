@@ -146,6 +146,7 @@
         </activity>
         <activity
             android:name=".perfilusuario_delacalleactivity"
+            android:label="Perfil"
             android:screenOrientation="portrait" >
         </activity>
         <activity

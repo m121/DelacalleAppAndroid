@@ -3,6 +3,8 @@ package com.delacalle.delacalle.delacalleapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,6 +22,7 @@ import android.widget.TextView;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -27,6 +31,8 @@ import com.parse.ParseRole;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import java.io.ByteArrayOutputStream;
+
 
 public class PageFragmentCartaDetalle extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
@@ -34,26 +40,32 @@ public class PageFragmentCartaDetalle extends Fragment {
     private TextView nombrePlato1;
     private TextView descripcionPlato1;
     private TextView precioPlato1;
+    private ImageView fotoPlato1;
 
     private TextView nombrePlato2;
     private TextView descripcionPlato2;
     private TextView precioPlato2;
+    private ImageView fotoPlato2;
 
     private TextView nombrePlato3;
     private TextView descripcionPlato3;
     private TextView precioPlato3;
+    private ImageView fotoPlato3;
 
     private TextView nombrePlato4;
     private TextView descripcionPlato4;
     private TextView precioPlato4;
+    private ImageView fotoPlato4;
 
     private TextView nombrePlato5;
     private TextView descripcionPlato5;
     private TextView precioPlato5;
+    private ImageView fotoPlato5;
 
     private TextView nombrePlato6;
     private TextView descripcionPlato6;
     private TextView precioPlato6;
+    private ImageView fotoPlato6;
 
 
     private RelativeLayout relativelayoutPlato1;
@@ -64,7 +76,21 @@ public class PageFragmentCartaDetalle extends Fragment {
     private RelativeLayout relativelayoutPlato6;
 
 
-    private LinearLayout linear;
+   // Bitmap pic;
+    Bitmap pic2;
+    Bitmap pic3;
+    Bitmap pic4;
+    Bitmap pic5;
+    Bitmap pic6;
+
+
+    ParseFile fotofileplato1;
+    ParseFile fotofileplato2;
+    ParseFile fotofileplato3;
+    ParseFile fotofileplato4;
+    ParseFile fotofileplato5;
+    ParseFile fotofileplato6;
+
 
     private int mPage;
 
@@ -105,59 +131,62 @@ public class PageFragmentCartaDetalle extends Fragment {
         ParseFile filefotocarta;
 
 
-        linear = (LinearLayout) view.findViewById(R.id.linear1);
-        linear.setClickable(true);
-
-        linear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),cartaDetalle_delacalleactivity.class);
-                startActivity(intent);
-            }
-        });
 
 
 
-      /*    nombrePlato1 = (TextView) view.findViewById(R.id.textViewPlatoCarta1);
+          nombrePlato1 = (TextView) view.findViewById(R.id.textViewPlatoCarta1);
           descripcionPlato1 = (TextView) view.findViewById(R.id.textViewDescripcionCarta1);
           precioPlato1 = (TextView) view.findViewById(R.id.textViewPrecioCarta1);
+         fotoPlato1 = (ImageView) view.findViewById(R.id.imageViewplato1);
 
         nombrePlato2 = (TextView) view.findViewById(R.id.textViewPlatoCarta2);
         descripcionPlato2 = (TextView) view.findViewById(R.id.textViewDescripcionCarta2);
         precioPlato2 = (TextView) view.findViewById(R.id.textViewPrecioCarta2);
+        fotoPlato2 = (ImageView) view.findViewById(R.id.imageViewplato2);
+
 
         nombrePlato3 = (TextView) view.findViewById(R.id.textViewPlatoCarta3);
         descripcionPlato3 = (TextView) view.findViewById(R.id.textViewDescripcionCarta3);
         precioPlato3 = (TextView) view.findViewById(R.id.textViewPrecioCarta3);
+        fotoPlato3 = (ImageView) view.findViewById(R.id.imageViewplato3);
+
 
         nombrePlato4 = (TextView) view.findViewById(R.id.textViewPlatoCarta4);
         descripcionPlato4 = (TextView) view.findViewById(R.id.textViewDescripcionCarta4);
         precioPlato4 = (TextView) view.findViewById(R.id.textViewPrecioCarta4);
+        fotoPlato4 = (ImageView) view.findViewById(R.id.imageViewplato4);
+
 
         nombrePlato5 = (TextView) view.findViewById(R.id.textViewPlatoCarta5);
         descripcionPlato5 = (TextView) view.findViewById(R.id.textViewDescripcionCarta5);
         precioPlato5 = (TextView) view.findViewById(R.id.textViewPrecioCarta5);
+        fotoPlato5 = (ImageView) view.findViewById(R.id.imageViewplato5);
+
 
         nombrePlato6 = (TextView) view.findViewById(R.id.textViewPlatoCarta6);
         descripcionPlato6 = (TextView) view.findViewById(R.id.textViewDescripcionCarta6);
         precioPlato6 = (TextView) view.findViewById(R.id.textViewPrecioCarta6);
+        fotoPlato6 = (ImageView) view.findViewById(R.id.imageViewplato6);
 
 
-        relativelayoutPlato1 = (RelativeLayout) view.findViewById(R.id.relativeLayoutPlato1);
-        relativelayoutPlato2 = (RelativeLayout) view.findViewById(R.id.relativeLayoutPlato2);
-        relativelayoutPlato3 = (RelativeLayout) view.findViewById(R.id.relativeLayoutPlato3);
-        relativelayoutPlato4 = (RelativeLayout) view.findViewById(R.id.relativeLayoutPlato4);
-        relativelayoutPlato5 = (RelativeLayout) view.findViewById(R.id.relativeLayoutPlato5);
-        relativelayoutPlato6 = (RelativeLayout) view.findViewById(R.id.relativeLayoutPlato6);
+
+        relativelayoutPlato1 = (RelativeLayout) view.findViewById(R.id.relative1);
+        relativelayoutPlato2 = (RelativeLayout) view.findViewById(R.id.relative2);
+        relativelayoutPlato3 = (RelativeLayout) view.findViewById(R.id.relative3);
+        relativelayoutPlato4 = (RelativeLayout) view.findViewById(R.id.relative4);
+        relativelayoutPlato5 = (RelativeLayout) view.findViewById(R.id.relative5);
+        relativelayoutPlato6 = (RelativeLayout) view.findViewById(R.id.relative6);
 
         relativelayoutPlato1.setClickable(true);
         relativelayoutPlato2.setClickable(true);
         relativelayoutPlato3.setClickable(true);
         relativelayoutPlato4.setClickable(true);
         relativelayoutPlato5.setClickable(true);
-        relativelayoutPlato6.setClickable(true);*/
+        relativelayoutPlato6.setClickable(true);
 
-     /*   final FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout);
+
+
+        final FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout);
  //       frameLayout.getBackground().setAlpha(0);
         final FloatingActionsMenu fabMenu = (FloatingActionsMenu) view.findViewById(R.id.fabmenu);
         final FloatingActionButton fabeditar = (FloatingActionButton) view.findViewById(R.id.fabeditar);
@@ -233,8 +262,7 @@ public class PageFragmentCartaDetalle extends Fragment {
                 }
 
             }
-        });*/
-/*
+        });
 
 
         ParseQuery<ParseObject>  cartaquery = ParseQuery.getQuery("carta");
@@ -246,6 +274,16 @@ public class PageFragmentCartaDetalle extends Fragment {
                     nombrePlato1.setText(carta.getString("nombre"));
                     descripcionPlato1.setText(carta.getString("descripcion"));
                     precioPlato1.setText("$" + carta.getString("precio"));
+                    fotofileplato1 = carta.getParseFile("fotoplato");
+                    fotofileplato1.getDataInBackground(new GetDataCallback() {
+                        @Override
+                        public void done(byte[] data, ParseException e) {
+                    Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                            fotoPlato1.setImageBitmap(pic);
+                        }
+                    });
                     relativelayoutPlato1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -281,6 +319,16 @@ public class PageFragmentCartaDetalle extends Fragment {
                     nombrePlato2.setText(carta.getString("nombre"));
                     descripcionPlato2.setText(carta.getString("descripcion"));
                     precioPlato2.setText("$"+carta.getString("precio"));
+                    fotofileplato2 = carta.getParseFile("fotoplato");
+                    fotofileplato2.getDataInBackground(new GetDataCallback() {
+                        @Override
+                        public void done(byte[] data, ParseException e) {
+                            Bitmap pic2 = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            pic2.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                            fotoPlato2.setImageBitmap(pic2);
+                        }
+                    });
                     relativelayoutPlato2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -316,6 +364,16 @@ public class PageFragmentCartaDetalle extends Fragment {
                     nombrePlato3.setText(carta.getString("nombre"));
                     descripcionPlato3.setText(carta.getString("descripcion"));
                     precioPlato3.setText("$"+carta.getString("precio"));
+                    fotofileplato3 = carta.getParseFile("fotoplato");
+                    fotofileplato3.getDataInBackground(new GetDataCallback() {
+                        @Override
+                        public void done(byte[] data, ParseException e) {
+                            Bitmap pic3 = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            pic3.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                            fotoPlato3.setImageBitmap(pic3);
+                        }
+                    });
                     relativelayoutPlato3.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -351,6 +409,16 @@ public class PageFragmentCartaDetalle extends Fragment {
                     nombrePlato4.setText(carta.getString("nombre"));
                     descripcionPlato4.setText(carta.getString("descripcion"));
                     precioPlato4.setText("$"+carta.getString("precio"));
+                    fotofileplato4 = carta.getParseFile("fotoplato");
+                    fotofileplato4.getDataInBackground(new GetDataCallback() {
+                        @Override
+                        public void done(byte[] data, ParseException e) {
+                            Bitmap pic4 = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            pic4.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                            fotoPlato4.setImageBitmap(pic4);
+                        }
+                    });
                     relativelayoutPlato4.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -386,6 +454,16 @@ public class PageFragmentCartaDetalle extends Fragment {
                     nombrePlato5.setText(carta.getString("nombre"));
                     descripcionPlato5.setText(carta.getString("descripcion"));
                     precioPlato5.setText("$"+carta.getString("precio"));
+                    fotofileplato5 = carta.getParseFile("fotoplato");
+                    fotofileplato5.getDataInBackground(new GetDataCallback() {
+                        @Override
+                        public void done(byte[] data, ParseException e) {
+                            Bitmap pic5 = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            pic5.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                            fotoPlato5.setImageBitmap(pic5);
+                        }
+                    });
                     relativelayoutPlato5.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -421,6 +499,16 @@ public class PageFragmentCartaDetalle extends Fragment {
                     nombrePlato6.setText(carta.getString("nombre"));
                     descripcionPlato6.setText(carta.getString("descripcion"));
                     precioPlato6.setText("$"+carta.getString("precio"));
+                    fotofileplato6 = carta.getParseFile("fotoplato");
+                    fotofileplato6.getDataInBackground(new GetDataCallback() {
+                        @Override
+                        public void done(byte[] data, ParseException e) {
+                            Bitmap pic6 = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            pic6.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                            fotoPlato6.setImageBitmap(pic6);
+                        }
+                    });
                     relativelayoutPlato6.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -445,7 +533,6 @@ public class PageFragmentCartaDetalle extends Fragment {
                 }
             }
         });
-*/
         return view;
     }
 

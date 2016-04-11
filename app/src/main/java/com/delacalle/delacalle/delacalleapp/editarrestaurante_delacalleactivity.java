@@ -97,6 +97,12 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
 
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
 
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         fotologoRestauranteA = (ImageView) findViewById(R.id.imageViewfotoLogoA);
          fotograndeRestauranteA = (ImageView) findViewById(R.id.imageViewfotoRestauranteA);
@@ -193,6 +199,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
             public void done(final ParseObject object, ParseException e) {
                 if (e == null) {
                     relativepaleta.setBackgroundColor(Color.parseColor(object.getString("color")));
+                    color = object.getString("color");
                     nombreRestauranteA.setText(object.getString("nombre"));
                     descripcionRestauranteA.setText(object.getString("descripcion"));
                     direccionRestauranteA.setText(object.getString("direccion"));
@@ -248,6 +255,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
                             final String direccion = direccionRestauranteA.getText().toString();
                             final String telefono = telefonoRestauranteA.getText().toString();
                             final String web = webRestauranteA.getText().toString();
+
 
 
                             object.put("nombre", nombre);
@@ -824,6 +832,13 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.
                 INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        return true;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        // or call onBackPressed()
         return true;
     }
 

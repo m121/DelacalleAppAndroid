@@ -9,24 +9,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="450dp"
         android:background="@drawable/fondomenu768x1280"
         android:id="@+id/relativeLayout7">
 
 
-       <!-- <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="#000000"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/imageViewFotoPerfil" />-->
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/imageViewFotoPerfil"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:src="@drawable/agregar_foto"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
@@ -34,16 +27,16 @@
             app:civ_border_color="#FF000000"/>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="User name"
             android:id="@+id/textViewUsernameUsuario"
-            android:layout_below="@+id/imageViewFotoPerfil"
-            android:textSize="20sp"
+            android:textSize="30dp"
             android:textColor="#ffffff"
-            android:textAlignment="center"
-            android:layout_alignLeft="@+id/imageViewFotoPerfil"
-            android:layout_alignStart="@+id/imageViewFotoPerfil" />
+            android:layout_gravity="right|center_vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="43dp" />
 
 
     </RelativeLayout>
@@ -147,62 +140,67 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:textSize="20sp" />
+
+        <FrameLayout
+            android:id="@+id/frame_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+            <com.getbase.floatingactionbutton.FloatingActionsMenu
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:id="@+id/fabmenu"
+                fab:fab_size="normal"
+                android:src="@drawable/ic_agregar"
+                app:layout_anchor="@id/listViewrestaurantes"
+                app:layout_anchorGravity="bottom|right|end"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true">
+
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabeditar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="10dp"
+                    android:src="@mipmap/ic_editar"
+                    fab:fab_size="mini"
+                    />
+
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabagregar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="10dp"
+                    android:src="@mipmap/ic_restaurante"
+                    fab:fab_size="mini"
+                    />
+
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabperfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="10dp"
+                    android:src="@mipmap/ic_perfil"
+                    fab:fab_size="mini"
+                    />
+
+            </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+
+
+        </FrameLayout>
     </RelativeLayout>
 
 
-    <FrameLayout
-        android:id="@+id/frame_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@null">
-        <com.getbase.floatingactionbutton.FloatingActionsMenu
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|bottom"
-            android:id="@+id/fabmenu"
-            fab:fab_size="normal"
-            android:src="@drawable/ic_agregar"
-            app:layout_anchor="@id/listViewrestaurantes"
-            app:layout_anchorGravity="bottom|right|end"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true">
-
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabeditar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="10dp"
-                android:src="@mipmap/ic_editar"
-                fab:fab_size="mini"
-                />
-
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabagregar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="10dp"
-                android:src="@mipmap/ic_restaurante"
-                fab:fab_size="mini"
-                />
-
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabperfil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="10dp"
-                android:src="@mipmap/ic_perfil"
-                fab:fab_size="mini"
-                />
-
-        </com.getbase.floatingactionbutton.FloatingActionsMenu>
-
-    </FrameLayout>
-
-   <!-- </RelativeLayout>-->
+    <!-- </RelativeLayout>-->
 
     <include
         android:id="@+id/toolbar"

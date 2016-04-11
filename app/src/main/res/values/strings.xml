@@ -34,9 +34,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_perfilusuario_delacalleactivity">
     </string>
-    <string name="title_activity_carta_delacalleactivity">carta_delacalleactivity</string>
+    <string name="title_activity_carta_delacalleactivity">Carta Detalle</string>
     <string name="title_activity_editarrestaurante_delacalleactivity">
-        editarrestaurante_delacalleactivity
+        Editar Restaurante
     </string>
     <string name="title_activity_detallerestaurante_delacalleactivity">
         Restaurante
@@ -46,7 +46,7 @@
     <string name="title_activity_agregarcarta_delacalleactivity"> Agregar Carta
     </string>
     <string name="title_activity_editarcartarestaurante_delacalleactivity">
-        editarcartarestaurante_delacalleactivity
+       Editar carta
     </string>
 
 

@@ -542,10 +542,10 @@ public class agregarcarta_delacalleactivity extends AppCompatActivity {
 
 
         ParseObject carta1 = new ParseObject("carta");
-        carta1.put("nombre",nombreplato1C);
-        carta1.put("descripcion",descripcionplato1C);
+        carta1.put("nombre", nombreplato1C);
+        carta1.put("descripcion", descripcionplato1C);
         carta1.put("precio", precioplato1C);
-        carta1.put("fotoplato",fotocartafile1);
+        carta1.put("fotoplato", fotocartafile1);
         carta1.put("restauranteId", id);
         carta1.setACL(acl);
         carta1.saveInBackground();
@@ -1459,5 +1459,12 @@ public class agregarcarta_delacalleactivity extends AppCompatActivity {
         {
             Log.d("Delacalle", "Error bitmap  null");
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        // or call onBackPressed()
+        return true;
     }
 }

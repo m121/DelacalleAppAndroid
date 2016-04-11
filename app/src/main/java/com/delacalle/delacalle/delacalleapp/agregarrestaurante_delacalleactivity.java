@@ -604,9 +604,10 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
         if(color == null)
         {
-            Toast.makeText(getApplicationContext(), "Es necesario elegir un color", Toast.LENGTH_SHORT).show();
+            /*Toast.makeText(getApplicationContext(), "Es necesario elegir un color", Toast.LENGTH_SHORT).show();
             focusView = telefonoRestauranteA;
-            cancel = true;
+            cancel = true;*/
+            color = "#ffffff";
         }
 
 

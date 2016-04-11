@@ -85,31 +85,6 @@
             android:layout_marginTop="96dp"
             android:textSize="30sp" />
 
-        <Button
-            android:layout_width="400dp"
-            android:layout_height="90dp"
-            android:text="Menu"
-            android:id="@+id/btnEnlaceMenu"
-            android:background="@null"
-            android:textColor="#FFFFFF"
-            android:layout_below="@+id/btnregistrarResponsable"
-            android:layout_alignLeft="@+id/btnregistrarResponsable"
-            android:layout_alignStart="@+id/btnregistrarResponsable"
-            android:layout_marginTop="24dp"
-            android:textSize="30sp" />
-
-        <Button
-            android:layout_width="400dp"
-            android:layout_height="90dp"
-            android:text="Cerrar sesión"
-            android:id="@+id/btnlogout"
-            android:background="@null"
-            android:textColor="#FFFFFF"
-            android:layout_below="@+id/btnEnlaceMenu"
-            android:layout_alignLeft="@+id/btnEnlaceMenu"
-            android:layout_alignStart="@+id/btnEnlaceMenu"
-            android:textSize="30sp" />
-
     </RelativeLayout>
 
 

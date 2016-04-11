@@ -30,8 +30,7 @@ public class registrarresponsable_delacalleactivity extends AppCompatActivity {
 
 
     Button btnregistrarresponsable;
-    Button btnenlacemenu;
-    Button btncerrarsesion;
+
 
     String   nombre;
     String   email;
@@ -49,8 +48,7 @@ public class registrarresponsable_delacalleactivity extends AppCompatActivity {
         txtclave = (TextView) findViewById(R.id.editTextpassregistroResponsable);
         txtRclave = (TextView) findViewById(R.id.editTextrepassregistroResponsable);
         btnregistrarresponsable = (Button) findViewById(R.id.btnregistrarResponsable);
-        btnenlacemenu = (Button) findViewById(R.id.btnEnlaceMenu);
-        btncerrarsesion = (Button) findViewById(R.id.btnlogout);
+
 
         btnregistrarresponsable.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,26 +103,14 @@ public class registrarresponsable_delacalleactivity extends AppCompatActivity {
                     }
                 });
 
-
-            }
-        });
-
-
-        btnenlacemenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(registrarresponsable_delacalleactivity.this,menu_pestanas_delacalleactivity.class);
+                ParseUser.getCurrentUser().logOut();
+                Intent intent = new Intent(registrarresponsable_delacalleactivity.this,iniciosesion_delacalleactivity.class);
                 startActivity(intent);
             }
         });
 
-        btncerrarsesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                   ParseUser.getCurrentUser().logOut();
-                Toast.makeText(getApplicationContext(), "Cerrado", Toast.LENGTH_SHORT).show();
-            }
-        });
+
+
 
     }
 
