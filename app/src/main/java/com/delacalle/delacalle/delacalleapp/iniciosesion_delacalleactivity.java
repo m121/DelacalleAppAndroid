@@ -282,12 +282,27 @@ e.printStackTrace();
                             } else if (user.isNew()) {
 
 
-                                ParseACL roleACL = new ParseACL();
-                                roleACL.setPublicReadAccess(true);
-                                ParseRole role = new ParseRole("usuario", roleACL);
-                                role.getUsers().add(ParseUser.getCurrentUser());
-                                role.saveInBackground();
-                                Log.d("delacalle", "usuario Registrado con Facebook");
+                                ParseQuery<ParseRole> roleq = ParseRole.getQuery();
+                                roleq.whereEqualTo("name", "usuario");
+                                roleq.getFirstInBackground(new GetCallback<ParseRole>() {
+                                    @Override
+                                    public void done(ParseRole rol, ParseException e) {
+                                        if (e == null) {
+                                            rol.getUsers().add(ParseUser.getCurrentUser());
+                                            rol.saveInBackground();
+                                            Log.d("delacalle", "Usuario agregado a Rol Usuario");
+                                        } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                            ParseACL roleACL = new ParseACL();
+                                            roleACL.setPublicReadAccess(true);
+                                            roleACL.setPublicWriteAccess(true);
+                                            ParseRole role = new ParseRole("usuario", roleACL);
+                                            role.getUsers().add(ParseUser.getCurrentUser());
+                                            role.saveInBackground();
+                                            Log.d("delacalle", "Rol usuario creado y usuario agregado");
+                                        }
+
+                                    }
+                                });
 
 
 

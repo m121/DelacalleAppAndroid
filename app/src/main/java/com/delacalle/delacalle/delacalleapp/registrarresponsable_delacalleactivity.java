@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.GetCallback;
 import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -70,14 +71,31 @@ public class registrarresponsable_delacalleactivity extends AppCompatActivity {
 
                     public void done(ParseException e) {
                         if (e == null) {
-                            ParseACL roleACL = new ParseACL();
-                            roleACL.setPublicReadAccess(true);
-                            roleACL.setPublicWriteAccess(true);
-                            ParseRole role = new ParseRole("responsable", roleACL);
-                            role.getUsers().add(ParseUser.getCurrentUser());
-                            role.saveInBackground();
 
-                            Toast.makeText(getApplicationContext(), "Registrado", Toast.LENGTH_SHORT).show();
+                            ParseQuery<ParseRole> roleq = ParseRole.getQuery();
+                            roleq.whereEqualTo("name", "responsable");
+                            roleq.getFirstInBackground(new GetCallback<ParseRole>() {
+                                @Override
+                                public void done(ParseRole rol, ParseException e) {
+                                    if (e == null) {
+                                        rol.getUsers().add(ParseUser.getCurrentUser());
+                                        rol.saveInBackground();
+
+                                        Log.d("delacalle", "usuario agregado al rol responsable");
+                                        Toast.makeText(getApplicationContext(), "Registrado", Toast.LENGTH_SHORT).show();
+                                    } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                        ParseACL roleACL = new ParseACL();
+                                        roleACL.setPublicReadAccess(true);
+                                        roleACL.setPublicWriteAccess(true);
+                                        ParseRole role = new ParseRole("responsable", roleACL);
+                                        role.getUsers().add(ParseUser.getCurrentUser());
+                                        role.saveInBackground();
+
+                                        Toast.makeText(getApplicationContext(), "Registrado", Toast.LENGTH_SHORT).show();
+
+                                    }
+                                }
+                            });
                             Log.d("delacalle", "responsable registrado");
 
 

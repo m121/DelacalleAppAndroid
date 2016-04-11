@@ -189,10 +189,12 @@ public class registro_delacalleactivity extends AppCompatActivity {
                         public void done(ParseRole rol, ParseException e) {
                             if (e == null) {
                                 rol.getUsers().add(ParseUser.getCurrentUser());
+                                rol.saveInBackground();
                                 Log.d("delacalle", "Usuario agregado a Rol Usuario");
                             } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
                                 ParseACL roleACL = new ParseACL();
                                 roleACL.setPublicReadAccess(true);
+                                roleACL.setPublicWriteAccess(true);
                                 ParseRole role = new ParseRole("usuario", roleACL);
                                 role.getUsers().add(ParseUser.getCurrentUser());
                                 role.saveInBackground();

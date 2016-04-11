@@ -60,6 +60,9 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
         PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         // Attach the view pager to the tab strip
         tabsStrip.setViewPager(viewPager);
+
+
+
     }
 
 
