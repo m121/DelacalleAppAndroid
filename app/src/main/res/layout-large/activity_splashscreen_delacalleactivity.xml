@@ -8,11 +8,5 @@
     android:theme="@style/MyMaterialTheme"
     tools:context="com.delacalle.delacalle.delacalleapp.splashscreen_delacalleactivity">
 
-   <!-- <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/imageViewlogodelacalle"
-        android:src="@drawable/logo"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />-->
+
 </RelativeLayout>

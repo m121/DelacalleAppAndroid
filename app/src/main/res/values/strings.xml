@@ -48,6 +48,9 @@
     <string name="title_activity_editarcartarestaurante_delacalleactivity">
        Editar carta
     </string>
+    <string name="title_activity_resetearcontrasenadesdelogin_delacalleactivity">
+       Cambiar contraseña
+    </string>
 
 
 

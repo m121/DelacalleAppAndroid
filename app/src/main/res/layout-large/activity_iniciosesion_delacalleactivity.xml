@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/food1"
+    android:background="@drawable/foodmenuprincipal"
 
     android:layout_width="match_parent" android:layout_height="match_parent"
     >
@@ -142,6 +142,19 @@
             android:layout_height="70dp"
             android:text="¿No tienes una cuenta? Regístrate"
             android:id="@+id/btnlinkregistrar"
+            android:background="@null"
+            android:layout_margin="4dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="35dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="¿Te has olvidado de la contraseña?"
+            android:id="@+id/btnlinkreseteardesdelogin"
             android:background="@null"
             android:layout_margin="4dp"
             android:layout_alignParentBottom="true"

@@ -5,7 +5,7 @@
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="windowBackground">#FFFFFF</color>
     <color name="buttoncolor">#f27817</color>
-    <color name="edittextback">#4b2d22</color>
+    <color name="edittextback">#a5714a</color>
     <color name="navigationBarColor">#370c03</color>
     <color name="colorAccent">#41b7ab</color>
 </resources>

@@ -262,11 +262,18 @@ try {
 
         if(id == R.id.action_cerrar)
         {
-            ParseUser.logOut();
-            Log.d("delacalle","usuario cierra sesion");
-            Toast.makeText(getApplicationContext(), "Cerrando sesión", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(perfilusuario_delacalleactivity.this,iniciosesion_delacalleactivity.class);
-            startActivity(intent);
+            try {
+                ParseUser.logOut();
+                Log.d("delacalle", "usuario cierra sesion");
+                Toast.makeText(getApplicationContext(), "Cerrando sesión", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(perfilusuario_delacalleactivity.this, iniciosesion_delacalleactivity.class);
+                startActivity(intent);
+            }catch (Exception e)
+            {
+                Log.d("delacalle","error " + e);
+                Intent intent = new Intent(perfilusuario_delacalleactivity.this, iniciosesion_delacalleactivity.class);
+                startActivity(intent);
+            }
         }
 
         return super.onOptionsItemSelected(item);

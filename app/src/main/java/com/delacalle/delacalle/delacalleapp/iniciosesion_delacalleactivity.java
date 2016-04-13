@@ -40,6 +40,11 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.instagram.instagramapi.activities.InstagramAuthActivity;
+import com.instagram.instagramapi.engine.InstagramEngine;
+import com.instagram.instagramapi.engine.InstagramKitConstants;
+import com.instagram.instagramapi.objects.IGSession;
+import com.instagram.instagramapi.utils.InstagramKitLoginScope;
 import com.parse.GetCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseACL;
@@ -99,6 +104,7 @@ public class iniciosesion_delacalleactivity extends AppCompatActivity {
     public static final String CLIENT_ID = "your client id";
     public static final String CLIENT_SECRET = "your client secret";
     public static final String CALLBACK_URL = "redirect uri here";
+
 
 
     JSONObject memail;
@@ -200,9 +206,7 @@ e.printStackTrace();
         }*/
 
         buttoniniciarsesion = (Button) findViewById(R.id.btniniciarsesion);
-      //  loginwithFace = (Button) findViewById(R.id.btnSignInFacebook);
-    //    loginwithTwitter = (Button) findViewById(R.id.btnSignInTwitter);
-     //   btnLinkToResetPass = (Button) findViewById(R.id.btniraresetearcontrasena);
+        btnLinkToResetPass = (Button) findViewById(R.id.btnlinkreseteardesdelogin);
         loginfacebook = (ImageView) findViewById(R.id.btnSignInFacebook);
         logininstagram = (ImageView) findViewById(R.id.btnSignInInstagram);
 
@@ -333,8 +337,19 @@ e.printStackTrace();
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
-                if(isInternetPresent) {
+                if(isInternetPresent)
+                {
+                    String[] scopes = {InstagramKitLoginScope.BASIC, InstagramKitLoginScope.COMMENTS};
 
+                    Intent intent = new Intent(iniciosesion_delacalleactivity.this, InstagramAuthActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                            Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+                    intent.putExtra(InstagramEngine.TYPE, InstagramEngine.TYPE_LOGIN);
+                    //add scopes if you want to have more than basic access
+                    intent.putExtra(InstagramEngine.SCOPE, scopes);
+
+                    startActivityForResult(intent, 0);
                 }
                 else
                 {
@@ -375,28 +390,29 @@ e.printStackTrace();
             }
         });*/
 
-/*
+//**
         btnLinkToResetPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
-                Intent intent = new Intent(iniciosesion_delacalleactivity.this,resetearcontrasena_delacalleactivity.class);
+                Intent intent = new Intent(iniciosesion_delacalleactivity.this,resetearcontrasenadesdelogin_delacalleactivity.class);
                 startActivity(intent);
             }
         });
-*/
+
 
     }
 
     @Override
+    protected  void onResume()
+    {
+        super.onResume();
+
+
+    }
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-       //    ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
-         /* if (requestCode == 32665) {
-        ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
-
-
-        }*/
 
         ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
 //        callbackManager.onActivityResult(requestCode, resultCode, data);
@@ -412,7 +428,7 @@ e.printStackTrace();
                     {
 
 
-                       String email = mData.getString("email");
+                        String email = mData.getString("email");
                         String username = mData.getString("name");
 
                         Log.d("delacalle","Email es " + email);
@@ -428,6 +444,8 @@ e.printStackTrace();
                     {
                         //JSON Error, DEBUG
                     }
+
+
                 }
 
                 else
@@ -446,7 +464,26 @@ e.printStackTrace();
 //if running this on the MAIN THREAD then use .executeAsync()
         mGetUserRequest.executeAsync();
 
+
+
+        if (resultCode == RESULT_OK) {
+
+            Bundle bundle = data.getExtras();
+
+            if (bundle.containsKey(InstagramKitConstants.kSessionKey)) {
+
+                IGSession session = (IGSession) bundle.getSerializable(InstagramKitConstants.kSessionKey);
+
+                Toast.makeText(iniciosesion_delacalleactivity.this, "Woohooo!!! User trusts you :) " + session.getAccessToken(),
+                        Toast.LENGTH_LONG).show();
+            }
+        }
+
+
+
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -609,35 +646,5 @@ e.printStackTrace();
         startActivity(intent);
     }*/
 
-
-
-
-    /*GraphRequest request = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-        @Override
-        public void onCompleted(JSONObject user, GraphResponse response) {
-            if (user != null) {
-             //   profilePictureView.setProfileId(user.optString("id"));
-                email = user.optString("email");
-                nombre = user.optString("name");
-
-            }
-        }
-        Bundle parameters = new Bundle();
-
-    }).executeAsync();
-*/
-
-    /*InstagramApp mApp; = new InstagramApp(this,
-                                          ApplicationData.CLIENT_ID,
-                                          ApplicationData.CLIENT_SECRET,
-                                          ApplicationData.CALLBACK_URL);*/
-
-
-
-    public class ApplicationData {
-        public static final String CLIENT_ID = "";
-        public static final String CLIENT_SECRET = "";
-        public static final String CALLBACK_URL = "";
-    }
 
 }

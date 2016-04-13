@@ -27,14 +27,13 @@
                 android:id="@+id/imageViewfotounomostrarrestaurante"
                 android:layout_width="210dp"
                 android:layout_height="120dp"
-                android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 app:civ_border_width="2dp"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                app:civ_border_color="#FF000000"/>
+                app:civ_border_color="#FF000000"
+                android:layout_above="@+id/editTextdescripcionmostrarrestaurante" />
         <TextView
             android:layout_width="150dp"
             android:layout_height="50dp"
@@ -58,6 +57,7 @@
             android:theme="@style/RatingBar"
             android:isIndicator="true"
             android:numStars="5"
+            android:paddingLeft="5sp"
             android:id="@+id/ratingBarmostrarrestaurante"
             android:layout_centerVertical="true"
             android:layout_alignLeft="@+id/editTextnombremostrarrestaurante"
@@ -72,7 +72,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:paddingTop="15sp"
+                android:paddingTop="5sp"
                 android:layout_marginBottom="25dp"
                 android:textStyle="bold" />
 
@@ -85,6 +85,7 @@
                 android:layout_toRightOf="@+id/imageViewfotounomostrarrestaurante"
                 android:layout_toEndOf="@+id/imageViewfotounomostrarrestaurante"
                 android:textSize="20sp"
+                android:paddingLeft="5sp"
                 android:textStyle="bold" />
 
             <TextView

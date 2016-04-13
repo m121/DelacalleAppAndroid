@@ -14,13 +14,7 @@
         android:id="@+id/relativeLayout7">
 
 
-       <!-- <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="#000000"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/imageViewFotoPerfil" />-->
+
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -54,6 +48,7 @@
         android:background="@drawable/fondomenublanco768x1280"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:paddingLeft="10dp"
         android:layout_below="@+id/relativeLayout7">
 
 

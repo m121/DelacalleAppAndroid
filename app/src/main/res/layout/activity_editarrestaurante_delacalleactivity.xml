@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondomenublanco768x1280"
     android:id="@+id/relativelayoutPaletacambiar"
+    xmlns:fab="http://schemas.android.com/tools"
     android:orientation="vertical">
 
 
@@ -14,14 +15,7 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-   <!-- <ImageView
-    android:layout_width="50dp"
-    android:layout_height="50dp"
-    android:id="@+id/imageViewfotoLogoA"
-    android:background="#000000"
-    android:layout_below="@+id/textViewTituloFotoGrande"
-    android:layout_alignLeft="@+id/imageViewbtnPaletaRestaurante"
-    android:layout_alignStart="@+id/imageViewbtnPaletaRestaurante" />-->
+
 
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -54,6 +48,7 @@
         android:textSize="20sp"
         android:singleLine="true"
         android:lines="1"
+        android:paddingLeft="5dp"
         android:layout_below="@+id/imageViewfotoRestauranteA"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -65,6 +60,7 @@
         android:id="@+id/editTextDescripcionRestauranteA"
         android:textSize="20sp"
         android:lines="2"
+        android:paddingLeft="5dp"
         android:layout_below="@+id/editTextNombreRestauranteA"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -77,6 +73,7 @@
         android:textSize="20sp"
         android:singleLine="true"
         android:lines="1"
+        android:paddingLeft="5dp"
         android:layout_below="@+id/editTextDescripcionRestauranteA"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -84,10 +81,11 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Telefono"
+        android:hint="Teléfono"
         android:inputType="phone"
         android:singleLine="true"
         android:lines="1"
+        android:paddingLeft="5dp"
         android:id="@+id/editTextTelefonoRestauranteA"
         android:textSize="20sp"
         android:layout_below="@+id/editTextDireccionRestauranteA"
@@ -103,6 +101,7 @@
         android:inputType="textUri"
         android:id="@+id/editTextWebRestauranteA"
         android:textSize="20sp"
+        android:paddingLeft="5dp"
         android:layout_below="@+id/editTextTelefonoRestauranteA"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -117,7 +116,9 @@
         android:textSize="15sp"
         android:layout_alignTop="@+id/btnEliminarRestaurante"
         android:layout_alignRight="@+id/imageViewfotoLogoA"
-        android:layout_alignEnd="@+id/imageViewfotoLogoA" />
+        android:layout_alignEnd="@+id/imageViewfotoLogoA"
+        android:layout_marginRight="28dp"
+        android:layout_marginEnd="28dp" />
 
     <Button
         android:layout_width="110dp"
@@ -127,10 +128,10 @@
         android:textColor="#ffffff"
         android:background="@color/buttoncolor"
         android:textSize="15sp"
-        android:layout_marginBottom="14dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/imageViewfotoRestauranteA"
-        android:layout_alignStart="@+id/imageViewfotoRestauranteA" />
+        android:layout_below="@+id/imageViewbtnPaletaRestaurante"
+        android:layout_alignRight="@+id/imageViewfotoRestauranteA"
+        android:layout_alignEnd="@+id/imageViewfotoRestauranteA"
+        android:layout_marginTop="16dp" />
 
     <ImageView
         android:layout_width="200dp"
@@ -163,5 +164,58 @@
         android:layout_above="@+id/imageViewfotoLogoA"
         android:layout_alignLeft="@+id/imageViewfotoLogoA"
         android:layout_alignStart="@+id/imageViewfotoLogoA" />
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:layout_below="@+id/imageViewfotoRestauranteA"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:id="@+id/fabmenu"
+            fab:fab_size="normal"
+            android:src="@drawable/ic_agregar"
+            app:layout_anchorGravity="bottom|right|end"
+            android:layout_below="@+id/editTextNombreRestauranteA"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabeditar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="10dp"
+                android:src="@mipmap/ic_editar"
+                fab:fab_size="mini"
+                />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabagregar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="10dp"
+                android:src="@mipmap/ic_restaurante"
+                fab:fab_size="mini"
+                />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabperfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="10dp"
+                android:src="@mipmap/ic_perfil"
+                fab:fab_size="mini"
+                />
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+    </FrameLayout>
 
 </RelativeLayout>

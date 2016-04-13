@@ -136,13 +136,15 @@
             android:name=".menu_pestanas_delacalleactivity"
             android:label="@string/title_activity_menu_pestanas_delacalleactivity"
             android:screenOrientation="portrait" >
+
             <!--
           <intent-filter>
                <action android:name="android.intent.action.MAIN" />
 
                <category android:name="android.intent.category.LAUNCHER" />
            </intent-filter>
-           &ndash;&gt;-->
+           &ndash;&gt;
+            -->
         </activity>
         <activity
             android:name=".perfilusuario_delacalleactivity"
@@ -184,8 +186,22 @@
         </activity>
         <activity
             android:name=".editarcartarestaurante_delacalleactivity"
-            android:label="@string/title_activity_editarcartarestaurante_delacalleactivity" >
+            android:label="@string/title_activity_editarcartarestaurante_delacalleactivity"
+            android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".resetearcontrasenadesdelogin_delacalleactivity"
+            android:label="@string/title_activity_resetearcontrasenadesdelogin_delacalleactivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <meta-data
+            android:name="com.instagram.instagramapi.InstagramAppClientId"
+            android:value="6d7d18dd19784c67af7fadc0ec8d7dd0" />
+
+        <meta-data
+            android:name="com.instagram.instagramapi.InstagramAppRedirectURL"
+            android:value="http://delacalle.co" />
     </application>
 
 </manifest>

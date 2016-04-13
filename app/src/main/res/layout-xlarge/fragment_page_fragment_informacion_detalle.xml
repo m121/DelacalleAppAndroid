@@ -33,7 +33,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descripcion"
+            android:text="Descripción"
             android:id="@+id/textViewTituloDescripcionDetalle"
             android:textSize="30sp"
             android:layout_below="@+id/textViewNombreRestauranteDetalle"

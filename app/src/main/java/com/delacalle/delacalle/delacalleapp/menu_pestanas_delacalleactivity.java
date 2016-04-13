@@ -131,14 +131,14 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                                     }
 
                                     TextView titletxt = (TextView) view.findViewById(R.id.editTextnombremostrarrestaurante);
-                                          TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
+                                    TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
                                     //         TextView menutxt = (TextView) view.findViewById(R.id.editTextmenumostrarrestaurante);
                                     final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
                                     RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
                                     ParseFile picfile;
 
                                     titletxt.setText(resta.getString("titulo"));
-                                          descriptiontxt.setText(resta.getString("descripcion"));
+                                    descriptiontxt.setText(resta.getString("descripcion"));
                                     //        menutxt.setText(resta.getString("menu"));
                                     picfile = resta.getParseFile("fotouno");
                                     picfile.getDataInBackground(new GetDataCallback() {
@@ -181,6 +181,14 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
             }
         });
         return super.onCreateOptionsMenu(menu);
+
+    }
+
+    @Override
+    protected  void onResume()
+    {
+        super.onResume();
+
 
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/food1"
+    android:background="@drawable/foodmenuprincipal"
 
     android:layout_width="match_parent" android:layout_height="match_parent"
     >
@@ -48,19 +48,19 @@
 
 
 
-    <!-- <Button
-         android:layout_width="200dp"
-         android:layout_height="50dp"
-         android:text="Iniciar sesión con correo"
-         android:id="@+id/btniniciarsesion"
-         android:background="#b75627"
-         android:textColor="#FFFFFF"
-         android:layout_alignParentBottom="true"
-         android:layout_marginBottom="54dp"
-         android:layout_alignParentRight="true"
-         android:layout_alignParentEnd="true"
-         android:layout_alignParentLeft="true"
-         android:layout_alignParentStart="true" />-->
+   <!-- <Button
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="Iniciar sesión con correo"
+        android:id="@+id/btniniciarsesion"
+        android:background="#b75627"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="54dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />-->
 
 
     <!--<ImageView
@@ -89,7 +89,7 @@
         android:layout_alignParentStart="true">
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="70dp"
             android:id="@+id/editTextnombreiniciarsesion"
             android:layout_marginTop="67dp"
             android:hint="Nombre usuario"
@@ -107,7 +107,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="70dp"
             android:inputType="textPassword"
             android:ems="10"
             android:hint="Contraseña"
@@ -126,10 +126,23 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="70dp"
             android:text="Entrar"
             android:id="@+id/btniniciarsesion"
-            android:background="#D40000"
+            android:background="@color/buttoncolor"
+            android:layout_margin="4dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="35dp"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="¿No tienes una cuenta? Regístrate"
+            android:id="@+id/btnlinkregistrar"
+            android:background="@null"
             android:layout_margin="4dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
@@ -139,9 +152,9 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="¿No tienes una cuenta? Regístrate"
-            android:id="@+id/btnlinkregistrar"
+            android:layout_height="70dp"
+            android:text="¿Te has olvidado de la contraseña?"
+            android:id="@+id/btnlinkreseteardesdelogin"
             android:background="@null"
             android:layout_margin="4dp"
             android:layout_alignParentBottom="true"
@@ -154,8 +167,8 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:src="@drawable/facebook"
         android:id="@+id/btnSignInFacebook"
         android:layout_marginRight="104dp"
@@ -165,8 +178,8 @@
         android:layout_alignParentEnd="true" />
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_gravity="center"
         android:src="@drawable/instagram"
         android:id="@+id/btnSignInInstagram"
@@ -177,15 +190,15 @@
         android:layout_toStartOf="@+id/btnSignInFacebook" />
 
 
-    <!-- <com.facebook.login.widget.LoginButton
-         android:id="@+id/login_button"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_gravity="center_horizontal"
-         android:layout_alignBottom="@+id/btnSignInFacebook"
-         android:layout_alignParentLeft="true"
-         android:layout_alignParentStart="true"
-         android:layout_marginLeft="77dp"
-         android:layout_marginStart="77dp" />-->
+   <!-- <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignBottom="@+id/btnSignInFacebook"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="77dp"
+        android:layout_marginStart="77dp" />-->
 
 </RelativeLayout>

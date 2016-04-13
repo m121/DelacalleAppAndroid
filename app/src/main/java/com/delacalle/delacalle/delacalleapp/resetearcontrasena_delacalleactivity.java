@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,8 +25,9 @@ public class resetearcontrasena_delacalleactivity extends AppCompatActivity {
 
     private EditText edittextemail;
     private Button buttonresetpass;
-    private Button  buttonlinktomenulogin;
 
+
+    private Toolbar mToolbar;
 
     private String textemail;
 
@@ -34,12 +36,18 @@ public class resetearcontrasena_delacalleactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resetearcontrasena_delacalleactivity);
 
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
   //      final Animation animTranslate = AnimationUtils.loadAnimation(this, R.anim.anim_translate);
 
         edittextemail = (EditText) findViewById(R.id.edittextcorreoresetearcontrasena);
         buttonresetpass = (Button) findViewById(R.id.btnresetearcontrasena);
-        buttonlinktomenulogin = (Button) findViewById(R.id.btniramenuinicio);
+
 
 
         buttonresetpass.setOnClickListener(new View.OnClickListener() {
@@ -54,15 +62,7 @@ public class resetearcontrasena_delacalleactivity extends AppCompatActivity {
         });
 
 
-        buttonlinktomenulogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.startAnimation(animAlpha);
-                Intent intent = new Intent(getApplication(), iniciosesion_delacalleactivity.class);
-                startActivity(intent);
 
-            }
-        });
 
 
 
@@ -156,10 +156,17 @@ public class resetearcontrasena_delacalleactivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+       /* if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        // or call onBackPressed()
+        return true;
     }
 }
