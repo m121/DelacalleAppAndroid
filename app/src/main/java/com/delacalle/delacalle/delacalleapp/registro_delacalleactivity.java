@@ -174,9 +174,10 @@ public class registro_delacalleactivity extends AppCompatActivity {
 
 
         final   ParseUser user = new ParseUser();
-        user.setUsername(userName);
+        user.setUsername(userEmail);
         user.setPassword(userPass);
         user.setEmail(userEmail);
+        user.put("nombre",userName);
         user.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(ParseException e) {

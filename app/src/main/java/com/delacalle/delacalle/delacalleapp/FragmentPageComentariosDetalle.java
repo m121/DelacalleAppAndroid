@@ -148,17 +148,19 @@ public class FragmentPageComentariosDetalle extends Fragment {
                             public void done(ParseUser usuario, ParseException e) {
                                 if (e == null) {
                                     filefoto = usuario.getParseFile("fotousuario");
-                                    filefoto.getDataInBackground(new GetDataCallback() {
-                                        @Override
-                                        public void done(byte[] data, ParseException e) {
-                                            pic = BitmapFactory.decodeByteArray(data, 0, data.length);
-                                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                            pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                                            fotoUsuarioComentario.setImageBitmap(pic);
+                                    if (filefoto != null) {
+                                        filefoto.getDataInBackground(new GetDataCallback() {
+                                            @Override
+                                            public void done(byte[] data, ParseException e) {
+                                                pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                                pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                                                fotoUsuarioComentario.setImageBitmap(pic);
 
-                                        }
-                                    });
-                                    Log.d("delacalle", "foto usuario mostrada");
+                                            }
+                                        });
+                                        Log.d("delacalle", "foto usuario mostrada");
+                                    }
                                 } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
                                     Log.d("delacalle", "No se encuentra el usuario con el nombre");
                                 }
@@ -295,17 +297,19 @@ public class FragmentPageComentariosDetalle extends Fragment {
                     public void done(ParseUser usuario, ParseException e) {
                         if (e == null) {
                             filefoto = usuario.getParseFile("fotousuario");
-                            filefoto.getDataInBackground(new GetDataCallback() {
-                                @Override
-                                public void done(byte[] data, ParseException e) {
-                                    pic = BitmapFactory.decodeByteArray(data, 0, data.length);
-                                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                    pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                                    fotoUsuarioComentario.setImageBitmap(pic);
+                            if (filefoto != null) {
+                                filefoto.getDataInBackground(new GetDataCallback() {
+                                    @Override
+                                    public void done(byte[] data, ParseException e) {
+                                        pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                        pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                                        fotoUsuarioComentario.setImageBitmap(pic);
 
-                                }
-                            });
-                            Log.d("delacalle", "foto usuario mostrada");
+                                    }
+                                });
+                                Log.d("delacalle", "foto usuario mostrada");
+                            }
                         } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
                             Log.d("delacalle", "No se encuentra el usuario con el nombre");
                         }
@@ -313,7 +317,7 @@ public class FragmentPageComentariosDetalle extends Fragment {
                 });
 
 
-                Log.d("delacalle","comentario mostrado");
+                Log.d("delacalle", "comentario mostrado");
 
                 return vista;
 
@@ -410,7 +414,7 @@ public class FragmentPageComentariosDetalle extends Fragment {
                                 } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
                                     ParseObject objcomentario = new ParseObject("comentarios");
                                     objcomentario.put("userid", ParseUser.getCurrentUser());
-                                    objcomentario.put("nombreusuario", ParseUser.getCurrentUser().getUsername());
+                                    objcomentario.put("nombreusuario", ParseUser.getCurrentUser().getString("nombre"));
                                     objcomentario.put("restauranteid", id);
                                     objcomentario.put("comentario", comen);
                                     objcomentario.put("numcom", 1);

@@ -79,7 +79,7 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        nombre = (TextView) findViewById(R.id.textViewNombreUsuario);
+   //     nombre = (TextView) findViewById(R.id.textViewNombreUsuario);
         correo = (TextView) findViewById(R.id.textViewCorreoUsuario);
         edad = (TextView) findViewById(R.id.textViewEdadUsuario);
         ciudad = (TextView) findViewById(R.id.textViewCiudadUsuario);
@@ -110,50 +110,55 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
         final FloatingActionButton  fabrestaurante = (FloatingActionButton) findViewById(R.id.fabagregar);
         final FloatingActionButton  fabperfil = (FloatingActionButton) findViewById(R.id.fabperfil);
 
-        fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
-            @Override
-            public void onMenuExpanded() {
-      //          frameLayout.getBackground().setAlpha(240);
-                frameLayout.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        fabMenu.collapse();
-                        return true;
-                    }
-                });
-            }
+        try {
+            fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+                @Override
+                public void onMenuExpanded() {
+                    //          frameLayout.getBackground().setAlpha(240);
+                    frameLayout.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View v, MotionEvent event) {
+                            fabMenu.collapse();
+                            return true;
+                        }
+                    });
+                }
 
-            @Override
-            public void onMenuCollapsed() {
-       //         frameLayout.getBackground().setAlpha(0);
-                frameLayout.setOnTouchListener(null);
-            }
-        });
+                @Override
+                public void onMenuCollapsed() {
+                    //         frameLayout.getBackground().setAlpha(0);
+                    frameLayout.setOnTouchListener(null);
+                }
+            });
 
-        fabeditar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(perfilusuario_delacalleactivity.this, listarestaurantesresponsable_delacalleactivity.class);
-                startActivity(intent);
-            }
-        });
+            fabeditar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(perfilusuario_delacalleactivity.this, listarestaurantesresponsable_delacalleactivity.class);
+                    startActivity(intent);
+                }
+            });
 
-        fabrestaurante.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(perfilusuario_delacalleactivity.this, agregarrestaurante_delacalleactivity.class);
-                startActivity(intent);
-            }
-        });
+            fabrestaurante.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(perfilusuario_delacalleactivity.this, agregarrestaurante_delacalleactivity.class);
+                    startActivity(intent);
+                }
+            });
 
-        fabperfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(perfilusuario_delacalleactivity.this, perfilusuario_delacalleactivity.class);
-                startActivity(intent);
-            }
-        });
+            fabperfil.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(perfilusuario_delacalleactivity.this, perfilusuario_delacalleactivity.class);
+                    startActivity(intent);
+                }
+            });
 
+        }catch (Exception e)
+        {
+            Log.d("delacalle","error " + e);
+        }
         ParseQuery<ParseRole> roleuserusuario = ParseRole.getQuery();
         roleuserusuario.whereEqualTo("name", "usuario");
         roleuserusuario.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
@@ -182,21 +187,25 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
         });
 
 try {
-    username.setText(ParseUser.getCurrentUser().getUsername());
+    username.setText(ParseUser.getCurrentUser().getString("nombre"));
     correo.setText(ParseUser.getCurrentUser().getEmail());
     edad.setText(ParseUser.getCurrentUser().getString("edad"));
     ciudad.setText(ParseUser.getCurrentUser().getString("ciudad"));
-    nombre.setText(ParseUser.getCurrentUser().getString("nombre"));
-   /* filefoto = ParseUser.getCurrentUser().getParseFile("fotousuario");
-    filefoto.getDataInBackground(new GetDataCallback() {
-        @Override
-        public void done(byte[] data, ParseException e) {
-            pic = BitmapFactory.decodeByteArray(data, 0, data.length);
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-            fotousuario.setImageBitmap(pic);
-        }
-    });*/
+  //  nombre.setText(ParseUser.getCurrentUser().getString("nombre"));
+    filefoto = ParseUser.getCurrentUser().getParseFile("fotousuario");
+    if(filefoto != null) {
+        filefoto.getDataInBackground(new GetDataCallback() {
+            @Override
+            public void done(byte[] data, ParseException e) {
+                pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                fotousuario.setImageBitmap(pic);
+            }
+        });
+        Log.d("delacalle","foto mostrada");
+    }
+    Log.d("delacalle","informacion mostrada");
 }catch (Exception ae)
 {
     Log.d("delacalle","No se puede mostrar la informacion del usuario");
@@ -233,31 +242,41 @@ try {
         if(id == R.id.action_editar)
         {
 
+try {
 
-
-            ParseQuery<ParseUser> userquery = ParseUser.getQuery();
-            userquery.whereEqualTo("objectId",ParseUser.getCurrentUser().getObjectId());
-            userquery.getFirstInBackground(new GetCallback<ParseUser>() {
-                @Override
-                public void done(ParseUser usuario, ParseException e) {
-                    if(e == null)
-                    {
-                        usuario.put("fotousuario",filefoto);
-                        usuario.put("nombre",nombre.getText().toString());
-                        usuario.put("edad",edad.getText().toString());
-                        usuario.put("ciudad",ciudad.getText().toString());
-                        usuario.saveInBackground();
-                        Log.d("delacalle", "Usuario actualizado");
-                        Toast.makeText(getApplicationContext(), "Perfil actualizado", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(perfilusuario_delacalleactivity.this,menu_pestanas_delacalleactivity.class);
-                        startActivity(intent);
-                    }
-                    else if(e.getCode() == ParseException.OBJECT_NOT_FOUND)
-                    {
-                        Log.d("delacalle","Usuario no encontrado");
-                    }
+    ParseQuery<ParseUser> userquery = ParseUser.getQuery();
+    userquery.whereEqualTo("objectId", ParseUser.getCurrentUser().getObjectId());
+    userquery.getFirstInBackground(new GetCallback<ParseUser>() {
+        @Override
+        public void done(ParseUser usuario, ParseException e) {
+            if (e == null) {
+                if (filefoto != null)
+                {
+                    usuario.put("fotousuario", filefoto);
                 }
-            });
+
+
+            //    usuario.put("nombre", nombre.getText().toString());
+                usuario.put("edad", edad.getText().toString());
+                usuario.put("ciudad", ciudad.getText().toString());
+                usuario.saveInBackground();
+                Log.d("delacalle", "Usuario actualizado");
+                Toast.makeText(getApplicationContext(), "Perfil actualizado", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(perfilusuario_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
+                startActivity(intent);
+            } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                Log.d("delacalle", "Usuario no encontrado");
+            }
+        }
+    });
+
+            }catch (Exception e)
+             {
+                 Log.d("delacalle","error, no se puede guardar sin datos ");
+                 e.printStackTrace();
+                    Intent intent = new Intent(perfilusuario_delacalleactivity.this,menu_pestanas_delacalleactivity.class);
+                        startActivity(intent);
+            }
         }
 
         if(id == R.id.action_cerrar)

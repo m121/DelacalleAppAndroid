@@ -436,7 +436,8 @@ e.printStackTrace();
 
                         ParseUser user = ParseUser.getCurrentUser();
                         user.put("email", email);
-                        user.put("username",username);
+                        user.put("username",email);
+                        user.put("nombre",username);
                         user.saveInBackground();
                     }
 
@@ -466,7 +467,7 @@ e.printStackTrace();
 
 
 
-        if (resultCode == RESULT_OK) {
+     /*   if (resultCode == RESULT_OK) {
 
             Bundle bundle = data.getExtras();
 
@@ -479,7 +480,7 @@ e.printStackTrace();
             }
         }
 
-
+*/
 
     }
 
@@ -534,7 +535,7 @@ e.printStackTrace();
         if(TextUtils.isEmpty(userName))
         {
             // txtUserName.setError("It is necessary write your nickname");
-            Toast.makeText(getApplicationContext(), "Tienes que ingresar tu nombre", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Tienes que ingresar tu correo", Toast.LENGTH_SHORT).show();
             focusView = txtUserName;
             cancel = true;
         }
