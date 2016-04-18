@@ -105,13 +105,13 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(final String titulo) {
                 // perform query here
                 ParseQuery<ParseObject> querybuscar = ParseQuery.getQuery("restaurante");
-                querybuscar.whereEqualTo("titulo", titulo);
+                querybuscar.whereEqualTo("nombre", titulo);
                 querybuscar.getFirstInBackground(new GetCallback<ParseObject>() {
                     @Override
                     public void done(ParseObject object, ParseException e) {
                         if (e == null) {
                             // Show results  in listview with my own adapter ParseQueryAdapter
-                            ParseQueryAdapter.QueryFactory<ParseObject> factory =
+                          /*  ParseQueryAdapter.QueryFactory<ParseObject> factory =
                                     new ParseQueryAdapter.QueryFactory<ParseObject>() {
                                         public ParseQuery<ParseObject> create() {
                                             ParseQuery<ParseObject> query = ParseQuery.getQuery("restaurante");
@@ -137,10 +137,10 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                                     RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
                                     ParseFile picfile;
 
-                                    titletxt.setText(resta.getString("titulo"));
+                                    titletxt.setText(resta.getString("nombre"));
                                     descriptiontxt.setText(resta.getString("descripcion"));
                                     //        menutxt.setText(resta.getString("menu"));
-                                    picfile = resta.getParseFile("fotouno");
+                                    picfile = resta.getParseFile("fotologo");
                                     picfile.getDataInBackground(new GetDataCallback() {
                                         @Override
                                         public void done(byte[] data, ParseException e) {
@@ -159,9 +159,40 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
 
                             ListView restaListView = (ListView) findViewById(R.id.listViewrestaurantes);
                             restaListView.setAdapter(restaurantesQueryAdapter);
-                            searchView.requestFocus();
+                            searchView.requestFocus();*/
+                            Intent intent = new Intent(menu_pestanas_delacalleactivity.this,busquedanombre_delacalleactivity.class);
+                            startActivity(intent);
                             Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo has encontrado!", Toast.LENGTH_SHORT).show();
-                        } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                        }
+                         else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+
+                            ParseQuery<ParseObject> queryprecio = ParseQuery.getQuery("carta");
+                            queryprecio.whereEqualTo("precio", titulo);
+                            queryprecio.getFirstInBackground(new GetCallback<ParseObject>() {
+                                @Override
+                                public void done(ParseObject precio, ParseException e) {
+                                    if (e == null) {
+                                        String id = precio.getString("restauranteidId");
+                                        Intent intent = new Intent(menu_pestanas_delacalleactivity.this,busquedaprecio_delacalleactivity.class);
+                                        startActivity(intent);
+                                        Toast.makeText(menu_pestanas_delacalleactivity.this, "¡Lo has encontrado!,restaurantes con precios desde " + titulo + " pesos", Toast.LENGTH_SHORT).show();
+                                        ParseQuery<ParseObject> queryresta = ParseQuery.getQuery("restaurante");
+                                      /*  queryresta.getInBackground(id, new GetCallback<ParseObject>() {
+                                            @Override
+                                            public void done(ParseObject restaurante, ParseException e) {
+                                                if (e == null) {
+
+                                                    searchView.requestFocus();
+                                                    Intent intent = new Intent(menu_pestanas_delacalleactivity.this,busquedaprecio_delacalleactivity.class);
+                                                    startActivity(intent);
+                                                    Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo has encontrado!", Toast.LENGTH_SHORT).show();
+
+                                                }
+                                            }
+                                        });*/
+                                    }
+                                }
+                            });
                             Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
                         }
                     }

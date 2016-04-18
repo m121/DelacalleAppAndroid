@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -214,10 +215,20 @@ e.printStackTrace();
         txtUserName = (TextView) findViewById(R.id.editTextnombreiniciarsesion);
         txtUserPass = (TextView) findViewById(R.id.editTextcontrasenainiciarsesion);
 
+        Typeface primerfontcandara = Typeface.createFromAsset(getAssets(),"fonts/CandaraBold.ttf");
+        Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(),"fonts/CaviarDreams.ttf");
+        txtUserName.setTypeface(segundafontcaviar);
+        txtUserPass.setTypeface(segundafontcaviar);
+        buttoniniciarsesion.setTypeface(primerfontcandara);
+
+
 
 
         btnLogInEmail = (Button) findViewById(R.id.btniniciarsesion);
         btnlinkregistrar = (Button) findViewById(R.id.btnlinkregistrar);
+        btnLogInEmail.setTypeface(primerfontcandara);
+        btnlinkregistrar.setTypeface(primerfontcandara);
+        btnLinkToResetPass.setTypeface(primerfontcandara);
         //    btnLinkTosignupEmail = (Button) layout.findViewById(R.id.btnLinkToSignUp);
         //    btnLinkToResetPass = (Button) layout.findViewById(R.id.btnLinkToresetpass);
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Handler;
@@ -43,6 +44,12 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
 
+
+    TextView tcorreo;
+    TextView tedad;
+    TextView tciudad;
+    TextView tusername;
+
     TextView nombre;
     TextView correo;
     TextView edad;
@@ -75,9 +82,16 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
+        Typeface primerfontcandara = Typeface.createFromAsset(getAssets(),"fonts/CandaraBold.ttf");
+        Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(),"fonts/CaviarDreams.ttf");
+
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        tedad = (TextView) findViewById(R.id.textViewTituloEdadUsuario);
+        tciudad = (TextView) findViewById(R.id.textViewTituloCiudadUsuario);
+        tcorreo = (TextView) findViewById(R.id.textViewTituloCorreoUsuario);
 
    //     nombre = (TextView) findViewById(R.id.textViewNombreUsuario);
         correo = (TextView) findViewById(R.id.textViewCorreoUsuario);
@@ -85,6 +99,15 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
         ciudad = (TextView) findViewById(R.id.textViewCiudadUsuario);
         username = (TextView) findViewById(R.id.textViewUsernameUsuario);
         fotousuario = (ImageView) findViewById(R.id.imageViewFotoPerfil);
+        tedad.setTypeface(primerfontcandara);
+        tciudad.setTypeface(primerfontcandara);
+        tcorreo.setTypeface(primerfontcandara);
+        correo.setTypeface(segundafontcaviar);
+        edad.setTypeface(segundafontcaviar);
+        ciudad.setTypeface(segundafontcaviar);
+        username.setTypeface(primerfontcandara);
+
+
         fotousuario.setClickable(true);
 
         galleryIntent = new Intent(Intent.ACTION_PICK,

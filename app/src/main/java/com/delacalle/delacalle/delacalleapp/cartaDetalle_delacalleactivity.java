@@ -3,6 +3,7 @@ package com.delacalle.delacalle.delacalleapp;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -59,13 +60,21 @@ public class cartaDetalle_delacalleactivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        final Typeface primerfontcandara = Typeface.createFromAsset(getAssets(), "fonts/CandaraBold.ttf");
+        final Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
 
-          fotologoCartaDetalle = (ImageView) findViewById(R.id.imageViewLogoDetalleCarta);
+
+
+        fotologoCartaDetalle = (ImageView) findViewById(R.id.imageViewLogoDetalleCarta);
           fotorestauranteCartaDetalle = (ImageView) findViewById(R.id.imageViewFotoRestauranteDetalleCarta);
           nombrerestauranteCartaDetalle = (TextView) findViewById(R.id.textViewNombreRestauranteDetalleCarta);
           nombreplatoCartaDetalle = (TextView) findViewById(R.id.textViewNombrePlatoRestauranteDetalleCarta);
           descripcionplatoCartaDetalle = (TextView) findViewById(R.id.textViewDescripcionPlatoResturanteDetalleCarta);
           precioplatoCartaDetalle = (TextView) findViewById(R.id.textViewPrecioPlatoRestauranteDetalleCarta);
+        nombrerestauranteCartaDetalle.setTypeface(primerfontcandara);
+        nombreplatoCartaDetalle.setTypeface(primerfontcandara);
+        descripcionplatoCartaDetalle.setTypeface(segundafontcaviar);
+        precioplatoCartaDetalle.setTypeface(primerfontcandara);
 
         final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
     //    frameLayout.getBackground().setAlpha(0);

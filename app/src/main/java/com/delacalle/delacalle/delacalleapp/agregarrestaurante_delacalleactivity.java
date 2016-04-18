@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -126,6 +127,10 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        final Typeface primerfontcandara = Typeface.createFromAsset(getAssets(), "fonts/CandaraBold.ttf");
+        final Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
+
+
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
 
         galleryIntent = new Intent(Intent.ACTION_PICK,
@@ -143,8 +148,14 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
          direccionRestauranteA = (TextView) findViewById(R.id.editTextDireccionRestauranteA);
          telefonoRestauranteA = (TextView) findViewById(R.id.editTextTelefonoRestauranteA);
          webRestauranteA = (TextView) findViewById(R.id.editTextWebRestauranteA);
+        nombreRestauranteA.setTypeface(segundafontcaviar);
+        descripcionRestauranteA.setTypeface(segundafontcaviar);
+        direccionRestauranteA.setTypeface(segundafontcaviar);
+        telefonoRestauranteA.setTypeface(segundafontcaviar);
+        webRestauranteA.setTypeface(segundafontcaviar);
 
         btnGuardarRestaurante = (Button) findViewById(R.id.btnGuardarRestaurante);
+        btnGuardarRestaurante.setTypeface(primerfontcandara);
         btnSeleccionarPaletaRestaurante = (ImageView) findViewById(R.id.imageViewbtnPaletaRestaurante);
         fotologoRestauranteA.setClickable(true);
         fotograndeRestauranteA.setClickable(true);

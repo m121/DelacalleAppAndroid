@@ -19,7 +19,7 @@
     <string name="facebook_app_id">807123432744026</string>
 
     <string name="title_activity_resetearcontrasena_delacalleactivity">
-        resetearcontrasena_delacalleactivity
+        Resetear contraseña
     </string>
     <string name="title_activity_registrarresponsable_delacalleactivity">
         registrarresponsable_delacalleactivity
@@ -50,6 +50,12 @@
     </string>
     <string name="title_activity_resetearcontrasenadesdelogin_delacalleactivity">
        Cambiar contraseña
+    </string>
+    <string name="title_activity_busquedanombre_delacalleactivity">
+        busquedanombre_delacalleactivity
+    </string>
+    <string name="title_activity_busquedaprecio_delacalleactivity">
+        busquedaprecio_delacalleactivity
     </string>
 
 

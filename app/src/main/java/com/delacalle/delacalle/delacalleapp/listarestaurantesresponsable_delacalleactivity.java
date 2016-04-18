@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -67,7 +68,8 @@ public class listarestaurantesresponsable_delacalleactivity extends AppCompatAct
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
-
+        final Typeface primerfontcandara = Typeface.createFromAsset(getAssets(), "fonts/CandaraBold.ttf");
+        final Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -159,6 +161,11 @@ public class listarestaurantesresponsable_delacalleactivity extends AppCompatAct
                         final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
                         RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
                         ParseFile picfile;
+                        titletxt.setTypeface(primerfontcandara);
+                        descriptiontxt.setTypeface(segundafontcaviar);
+                        telefonotxt.setTypeface(segundafontcaviar);
+                        direcciontxt.setTypeface(segundafontcaviar);
+
 
                        telefonotxt.setText(resta.getString("telefono"));
                         direcciontxt.setText(resta.getString("direccion"));
@@ -243,6 +250,10 @@ public class listarestaurantesresponsable_delacalleactivity extends AppCompatAct
                 final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
                 RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
                 ParseFile picfile;
+                titletxt.setTypeface(primerfontcandara);
+                descriptiontxt.setTypeface(segundafontcaviar);
+                telefonotxt.setTypeface(segundafontcaviar);
+                direcciontxt.setTypeface(segundafontcaviar);
 
                 telefonotxt.setText(resta.getString("telefono"));
                 direcciontxt.setText(resta.getString("direccion"));

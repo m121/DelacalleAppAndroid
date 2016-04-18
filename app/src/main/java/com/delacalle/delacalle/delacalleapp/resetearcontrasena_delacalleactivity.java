@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -42,11 +43,17 @@ public class resetearcontrasena_delacalleactivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        Typeface primerfontcandara = Typeface.createFromAsset(getAssets(),"fonts/CandaraBold.ttf");
+        Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(),"fonts/CaviarDreams.ttf");
+
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
   //      final Animation animTranslate = AnimationUtils.loadAnimation(this, R.anim.anim_translate);
 
         edittextemail = (EditText) findViewById(R.id.edittextcorreoresetearcontrasena);
         buttonresetpass = (Button) findViewById(R.id.btnresetearcontrasena);
+
+        edittextemail.setTypeface(segundafontcaviar);
+        buttonresetpass.setTypeface(primerfontcandara);
 
 
 

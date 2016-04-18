@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -35,6 +36,7 @@ public class registro_delacalleactivity extends AppCompatActivity {
     private TextView txtUserRePass;
     private Button buttonSignUpEmail;
     private Button buttonLinkTologinEmail;
+    TextView textviewtitulo;
 
     private String userName;
     private String userEmail;
@@ -51,6 +53,11 @@ public class registro_delacalleactivity extends AppCompatActivity {
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
    //     final Animation animTranslate = AnimationUtils.loadAnimation(this, R.anim.anim_translate);
 
+        Typeface primerfontcandara = Typeface.createFromAsset(getAssets(),"fonts/CandaraBold.ttf");
+        Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
+
+         textviewtitulo = (TextView) findViewById(R.id.textViewtituloregistrarse);
+
 
         txtUserName = (TextView) findViewById(R.id.editTextnombreregistro);
         txtUserEmail = (TextView) findViewById(R.id.editTextemailregistro);
@@ -58,6 +65,14 @@ public class registro_delacalleactivity extends AppCompatActivity {
         txtUserRePass = (TextView) findViewById(R.id.editTextrepassregistro);
         buttonSignUpEmail = (Button) findViewById(R.id.btnregistrarse);
         buttonLinkTologinEmail = (Button) findViewById(R.id.buttonenlacealogin);
+
+        txtUserName.setTypeface(segundafontcaviar);
+        txtUserEmail.setTypeface(segundafontcaviar);
+        txtUserPass.setTypeface(segundafontcaviar);
+        txtUserRePass.setTypeface(segundafontcaviar);
+        textviewtitulo.setTypeface(primerfontcandara);
+        buttonSignUpEmail.setTypeface(primerfontcandara);
+        buttonLinkTologinEmail.setTypeface(primerfontcandara);
 
        // ParseUser currentUser = ParseUser.getCurrentUser();
      //   currentUser.logOut();

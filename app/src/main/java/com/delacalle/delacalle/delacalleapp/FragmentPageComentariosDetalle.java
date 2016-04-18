@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -100,11 +101,16 @@ public class FragmentPageComentariosDetalle extends Fragment {
 
         final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
 
+        final Typeface primerfontcandara = Typeface.createFromAsset(getActivity().getAssets(), "fonts/CandaraBold.ttf");
+        final Typeface segundafontcaviar = Typeface.createFromAsset(getActivity().getAssets(), "fonts/CaviarDreams.ttf");
+
+
         fotoUsuarioComentario = (ImageView) view.findViewById(R.id.imageViewFotoUsuarioComentario);
         usuarioComentario = (TextView) view.findViewById(R.id.textViewNombreUsuario);
         comentarioComentario = (TextView) view.findViewById(R.id.textViewComentario);
 
         btncomentario = (Button) view.findViewById(R.id.btnGuardarComentario);
+        btncomentario.setTypeface(primerfontcandara);
 
         btncomentario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +142,9 @@ public class FragmentPageComentariosDetalle extends Fragment {
                  final ImageView fotoUsuarioComentario = (ImageView) view.findViewById(R.id.imageViewFotoUsuarioComentario);
                  TextView       usuarioComentario = (TextView) view.findViewById(R.id.textViewNombreUsuario);
                  TextView       comentarioComentario = (TextView) view.findViewById(R.id.textViewComentario);
+                        usuarioComentario.setTypeface(primerfontcandara);
+                        comentarioComentario.setTypeface(segundafontcaviar);
+
                         nombreusuario  = comen.getString("nombreusuario");
 
 
@@ -286,6 +295,9 @@ public class FragmentPageComentariosDetalle extends Fragment {
             final ImageView    fotoUsuarioComentario = (ImageView) vista.findViewById(R.id.imageViewFotoUsuarioComentario);
            TextView     usuarioComentario = (TextView) vista.findViewById(R.id.textViewNombreUsuario);
            TextView     comentarioComentario = (TextView) vista.findViewById(R.id.textViewComentario);
+                usuarioComentario.setTypeface(primerfontcandara);
+                comentarioComentario.setTypeface(segundafontcaviar);
+
                 nombreusuario  = comen.getString("nombreusuario");
 
                 usuarioComentario.setText(comen.getString("nombreusuario"));

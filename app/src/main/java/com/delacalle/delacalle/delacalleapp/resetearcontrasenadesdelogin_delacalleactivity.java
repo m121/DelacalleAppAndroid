@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -41,9 +42,16 @@ public class resetearcontrasenadesdelogin_delacalleactivity extends AppCompatAct
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
         //      final Animation animTranslate = AnimationUtils.loadAnimation(this, R.anim.anim_translate);
 
+        Typeface primerfontcandara = Typeface.createFromAsset(getAssets(),"fonts/CandaraBold.ttf");
+        Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
+
         edittextemail = (EditText) findViewById(R.id.edittextcorreoresetearcontrasena);
         buttonresetpass = (Button) findViewById(R.id.btnresetearcontrasena);
         buttonlinktomenulogin = (Button) findViewById(R.id.btniramenuinicio);
+
+        edittextemail.setTypeface(segundafontcaviar);
+        buttonresetpass.setTypeface(primerfontcandara);
+        buttonlinktomenulogin.setTypeface(primerfontcandara);
 
 
         buttonresetpass.setOnClickListener(new View.OnClickListener() {

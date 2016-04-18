@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -148,6 +149,10 @@ public class editarcartarestaurante_delacalleactivity extends AppCompatActivity 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        final Typeface primerfontcandara = Typeface.createFromAsset(getAssets(), "fonts/CandaraBold.ttf");
+        final Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
+
+
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             id = bundle.getString("id");
@@ -163,33 +168,52 @@ public class editarcartarestaurante_delacalleactivity extends AppCompatActivity 
         nombreplato1 = (TextView) findViewById(R.id.editTextAnombreplato1);
         descripcionplato1 = (TextView) findViewById(R.id.editTextAdescripcionplato1);
         precioplato1 = (TextView) findViewById(R.id.editTextAprecioplato1);
+        nombreplato1.setTypeface(segundafontcaviar);
+        descripcionplato1.setTypeface(segundafontcaviar);
+        precioplato1.setTypeface(segundafontcaviar);
 
         fotocartaplato2 = (ImageView) findViewById(R.id.imageViewAfotoplato2);
         nombreplato2 = (TextView) findViewById(R.id.editTextAnombreplato2);
         descripcionplato2 = (TextView) findViewById(R.id.editTextAdescripcionplato2);
         precioplato2 = (TextView) findViewById(R.id.editTextAprecioplato2);
+        nombreplato2.setTypeface(segundafontcaviar);
+        descripcionplato2.setTypeface(segundafontcaviar);
+        precioplato2.setTypeface(segundafontcaviar);
 
         fotocartaplato3 = (ImageView) findViewById(R.id.imageViewAfotoplato3);
         nombreplato3 = (TextView) findViewById(R.id.editTextAnombreplato3);
         descripcionplato3 = (TextView) findViewById(R.id.editTextAdescripcionplato3);
         precioplato3 = (TextView) findViewById(R.id.editTextAprecioplato3);
+        nombreplato3.setTypeface(segundafontcaviar);
+        descripcionplato3.setTypeface(segundafontcaviar);
+        precioplato3.setTypeface(segundafontcaviar);
 
         fotocartaplato4 = (ImageView) findViewById(R.id.imageViewAfotoplato4);
         nombreplato4 = (TextView) findViewById(R.id.editTextAnombreplato4);
         descripcionplato4 = (TextView) findViewById(R.id.editTextAdescripcionplato4);
         precioplato4 = (TextView) findViewById(R.id.editTextAprecioplato4);
+        nombreplato4.setTypeface(segundafontcaviar);
+        descripcionplato4.setTypeface(segundafontcaviar);
+        precioplato4.setTypeface(segundafontcaviar);
 
         fotocartaplato5 = (ImageView) findViewById(R.id.imageViewAfotoplato5);
         nombreplato5 = (TextView) findViewById(R.id.editTextAnombreplato5);
         descripcionplato5 = (TextView) findViewById(R.id.editTextAdescripcionplato5);
         precioplato5 = (TextView) findViewById(R.id.editTextAprecioplato5);
+        nombreplato5.setTypeface(segundafontcaviar);
+        descripcionplato5.setTypeface(segundafontcaviar);
+        precioplato5.setTypeface(segundafontcaviar);
 
         fotocartaplato6 = (ImageView) findViewById(R.id.imageViewAfotoplato6);
         nombreplato6 = (TextView) findViewById(R.id.editTextAnombreplato6);
         descripcionplato6 = (TextView) findViewById(R.id.editTextAdescripcionplato6);
         precioplato6 = (TextView) findViewById(R.id.editTextAprecioplato6);
+        nombreplato6.setTypeface(segundafontcaviar);
+        descripcionplato6.setTypeface(segundafontcaviar);
+        precioplato6.setTypeface(segundafontcaviar);
 
         btneditarrcarta = (Button) findViewById(R.id.btnActualizarCarta);
+        btneditarrcarta.setTypeface(primerfontcandara);
 
         bitmaperror2 = BitmapFactory.decodeResource(getResources(), R.drawable.agregar_foto);
         bitmaperror3 = BitmapFactory.decodeResource(getResources(), R.drawable.agregar_foto);

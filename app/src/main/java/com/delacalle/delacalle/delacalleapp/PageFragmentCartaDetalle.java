@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -130,7 +131,8 @@ public class PageFragmentCartaDetalle extends Fragment {
         Bitmap pic;
         ParseFile filefotocarta;
 
-
+        final Typeface primerfontcandara = Typeface.createFromAsset(getActivity().getAssets(), "fonts/CandaraBold.ttf");
+        final Typeface segundafontcaviar = Typeface.createFromAsset(getActivity().getAssets(), "fonts/CaviarDreams.ttf");
 
 
 
@@ -138,35 +140,58 @@ public class PageFragmentCartaDetalle extends Fragment {
           descripcionPlato1 = (TextView) view.findViewById(R.id.textViewDescripcionCarta1);
           precioPlato1 = (TextView) view.findViewById(R.id.textViewPrecioCarta1);
          fotoPlato1 = (ImageView) view.findViewById(R.id.imageViewplato1);
+        nombrePlato1.setTypeface(primerfontcandara);
+        descripcionPlato1.setTypeface(segundafontcaviar);
+        precioPlato1.setTypeface(primerfontcandara);
 
         nombrePlato2 = (TextView) view.findViewById(R.id.textViewPlatoCarta2);
         descripcionPlato2 = (TextView) view.findViewById(R.id.textViewDescripcionCarta2);
         precioPlato2 = (TextView) view.findViewById(R.id.textViewPrecioCarta2);
         fotoPlato2 = (ImageView) view.findViewById(R.id.imageViewplato2);
+        nombrePlato2.setTypeface(primerfontcandara);
+        descripcionPlato2.setTypeface(segundafontcaviar);
+        precioPlato2.setTypeface(primerfontcandara);
+
 
 
         nombrePlato3 = (TextView) view.findViewById(R.id.textViewPlatoCarta3);
         descripcionPlato3 = (TextView) view.findViewById(R.id.textViewDescripcionCarta3);
         precioPlato3 = (TextView) view.findViewById(R.id.textViewPrecioCarta3);
         fotoPlato3 = (ImageView) view.findViewById(R.id.imageViewplato3);
+        nombrePlato3.setTypeface(primerfontcandara);
+        descripcionPlato3.setTypeface(segundafontcaviar);
+        precioPlato3.setTypeface(primerfontcandara);
+
 
 
         nombrePlato4 = (TextView) view.findViewById(R.id.textViewPlatoCarta4);
         descripcionPlato4 = (TextView) view.findViewById(R.id.textViewDescripcionCarta4);
         precioPlato4 = (TextView) view.findViewById(R.id.textViewPrecioCarta4);
         fotoPlato4 = (ImageView) view.findViewById(R.id.imageViewplato4);
+        nombrePlato4.setTypeface(primerfontcandara);
+        descripcionPlato4.setTypeface(segundafontcaviar);
+        precioPlato4.setTypeface(primerfontcandara);
+
 
 
         nombrePlato5 = (TextView) view.findViewById(R.id.textViewPlatoCarta5);
         descripcionPlato5 = (TextView) view.findViewById(R.id.textViewDescripcionCarta5);
         precioPlato5 = (TextView) view.findViewById(R.id.textViewPrecioCarta5);
         fotoPlato5 = (ImageView) view.findViewById(R.id.imageViewplato5);
+        nombrePlato5.setTypeface(primerfontcandara);
+        descripcionPlato5.setTypeface(segundafontcaviar);
+        precioPlato5.setTypeface(primerfontcandara);
+
 
 
         nombrePlato6 = (TextView) view.findViewById(R.id.textViewPlatoCarta6);
         descripcionPlato6 = (TextView) view.findViewById(R.id.textViewDescripcionCarta6);
         precioPlato6 = (TextView) view.findViewById(R.id.textViewPrecioCarta6);
         fotoPlato6 = (ImageView) view.findViewById(R.id.imageViewplato6);
+        nombrePlato6.setTypeface(primerfontcandara);
+        descripcionPlato6.setTypeface(segundafontcaviar);
+        precioPlato6.setTypeface(primerfontcandara);
+
 
 
 

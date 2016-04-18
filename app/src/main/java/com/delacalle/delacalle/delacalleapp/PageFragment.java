@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -117,6 +118,8 @@ public class PageFragment extends Fragment {
       //  TextView tvTitle = (TextView) view.findViewById(R.id.tvTitle);
     //    tvTitle.setText("Fragment #" + mPage);
 
+        final Typeface primerfontcandara = Typeface.createFromAsset(getActivity().getAssets(),"fonts/CandaraBold.ttf");
+        final Typeface segundafontcaviar = Typeface.createFromAsset(getActivity().getAssets(), "fonts/CaviarDreams.ttf");
 
    final     SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
 
@@ -152,6 +155,10 @@ public class PageFragment extends Fragment {
                         final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
                         RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
                         ParseFile picfile;
+                        titletxt.setTypeface(primerfontcandara);
+                        descriptiontxt.setTypeface(segundafontcaviar);
+                        direcciontxt.setTypeface(segundafontcaviar);
+                        telefonotxt.setTypeface(segundafontcaviar);
 
                         cardview.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -317,6 +324,10 @@ public class PageFragment extends Fragment {
                 final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
                 RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
                 ParseFile picfile;
+                titletxt.setTypeface(primerfontcandara);
+                descriptiontxt.setTypeface(segundafontcaviar);
+                direcciontxt.setTypeface(segundafontcaviar);
+                telefonotxt.setTypeface(segundafontcaviar);
 
                 cardview.setOnClickListener(new View.OnClickListener() {
                     @Override

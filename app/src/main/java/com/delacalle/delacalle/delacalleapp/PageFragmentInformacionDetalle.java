@@ -2,6 +2,7 @@ package com.delacalle.delacalle.delacalleapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -39,6 +40,12 @@ public class PageFragmentInformacionDetalle extends Fragment {
     private TextView webR;
     private RatingBar ratingbarR;
 
+    private TextView nombreT;
+    private TextView descripcionT;
+    private TextView direccionT;
+    private TextView telefonoT;
+    private TextView webT;
+
     String id;
     private float ratingR;
     int votos;
@@ -74,6 +81,15 @@ public class PageFragmentInformacionDetalle extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_page_fragment_informacion_detalle, container, false);
 
+        final Typeface primerfontcandara = Typeface.createFromAsset(getActivity().getAssets(), "fonts/CandaraBold.ttf");
+        final Typeface segundafontcaviar = Typeface.createFromAsset(getActivity().getAssets(), "fonts/CaviarDreams.ttf");
+
+        nombreT = (TextView) view.findViewById(R.id.textViewtituloNombreRestauranteDetalle);
+        descripcionT = (TextView) view.findViewById(R.id.textViewTituloDescripcionDetalle);
+        direccionT = (TextView) view.findViewById(R.id.textViewTituloDireccionDetalle);
+        telefonoT = (TextView) view.findViewById(R.id.textViewTituloTelefonoDetalle);
+        webT = (TextView) view.findViewById(R.id.textViewTituloWebDetalle);
+
         nombreR = (TextView) view.findViewById(R.id.textViewNombreRestauranteDetalle);
         descripcionR = (TextView) view.findViewById(R.id.textViewDescripcionDetalle);
         direccionR = (TextView) view.findViewById(R.id.textViewDireccionDetalle);
@@ -81,6 +97,16 @@ public class PageFragmentInformacionDetalle extends Fragment {
         webR = (TextView) view.findViewById(R.id.textViewWebDetalle);
         ratingbarR = (RatingBar) view.findViewById(R.id.ratingBarCalificacionDetalle);
         ratingbarR.setClickable(true);
+        nombreT.setTypeface(primerfontcandara);
+        descripcionT.setTypeface(primerfontcandara);
+        direccionT.setTypeface(primerfontcandara);
+        telefonoT.setTypeface(primerfontcandara);
+        webT.setTypeface(primerfontcandara);
+        nombreR.setTypeface(segundafontcaviar);
+        descripcionR.setTypeface(segundafontcaviar);
+        direccionR.setTypeface(segundafontcaviar);
+        telefonoR.setTypeface(segundafontcaviar);
+        webR.setTypeface(segundafontcaviar);
 
 
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -104,6 +105,10 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
+        final Typeface primerfontcandara = Typeface.createFromAsset(getAssets(), "fonts/CandaraBold.ttf");
+        final Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
+
+
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -122,6 +127,13 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
         relativepaleta = (RelativeLayout) findViewById(R.id.relativelayoutPaletacambiar);
         fotologoRestauranteA.setClickable(true);
         fotograndeRestauranteA.setClickable(true);
+        nombreRestauranteA.setTypeface(segundafontcaviar);
+        descripcionRestauranteA.setTypeface(segundafontcaviar);
+        direccionRestauranteA.setTypeface(segundafontcaviar);
+        telefonoRestauranteA.setTypeface(segundafontcaviar);
+        webRestauranteA.setTypeface(segundafontcaviar);
+        btneliminarrestaurante.setTypeface(primerfontcandara);
+        btneditar.setTypeface(primerfontcandara);
 
 
         galleryIntent = new Intent(Intent.ACTION_PICK,
