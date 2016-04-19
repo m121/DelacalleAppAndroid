@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
+import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseACL;
@@ -33,12 +34,16 @@ import com.parse.ParseRole;
 import com.parse.ParseUser;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class menu_pestanas_delacalleactivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
     Bitmap pic;
     private ParseQueryAdapter<ParseObject> restaurantesQueryAdapter;
+
+    ArrayList<String> precio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +66,7 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
         // Attach the view pager to the tab strip
         tabsStrip.setViewPager(viewPager);
 
-
+    final ArrayList<String>   precio = new ArrayList<String>();
 
     }
 
@@ -110,97 +115,61 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                     @Override
                     public void done(ParseObject object, ParseException e) {
                         if (e == null) {
-                            // Show results  in listview with my own adapter ParseQueryAdapter
-                          /*  ParseQueryAdapter.QueryFactory<ParseObject> factory =
-                                    new ParseQueryAdapter.QueryFactory<ParseObject>() {
-                                        public ParseQuery<ParseObject> create() {
-                                            ParseQuery<ParseObject> query = ParseQuery.getQuery("restaurante");
-                                            query.whereExists(titulo);
-
-
-                                            return query;
-                                        }
-                                    };
-
-                            restaurantesQueryAdapter = new ParseQueryAdapter<ParseObject>(getApplication(), factory) {
-
-                                @Override
-                                public View getItemView(final ParseObject resta, View view, ViewGroup parent) {
-                                    if (view == null) {
-                                        view = View.inflate(getContext(), R.layout.plantilla_mostrarrestaurante_delacalle, null);
-                                    }
-
-                                    TextView titletxt = (TextView) view.findViewById(R.id.editTextnombremostrarrestaurante);
-                                    TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
-                                    //         TextView menutxt = (TextView) view.findViewById(R.id.editTextmenumostrarrestaurante);
-                                    final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
-                                    RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
-                                    ParseFile picfile;
-
-                                    titletxt.setText(resta.getString("nombre"));
-                                    descriptiontxt.setText(resta.getString("descripcion"));
-                                    //        menutxt.setText(resta.getString("menu"));
-                                    picfile = resta.getParseFile("fotologo");
-                                    picfile.getDataInBackground(new GetDataCallback() {
-                                        @Override
-                                        public void done(byte[] data, ParseException e) {
-                                            pic = BitmapFactory.decodeByteArray(data, 0, data.length);
-                                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                            pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                                            picimageview.setImageBitmap(pic);
-                                        }
-                                    });
-                                    ratingbarres.setRating(resta.getInt("rating"));
-
-
-                                    return view;
-                                }
-                            };
-
-                            ListView restaListView = (ListView) findViewById(R.id.listViewrestaurantes);
-                            restaListView.setAdapter(restaurantesQueryAdapter);
-                            searchView.requestFocus();*/
                             Intent intent = new Intent(menu_pestanas_delacalleactivity.this,busquedanombre_delacalleactivity.class);
+                            intent.putExtra("titulo", titulo);
                             startActivity(intent);
+                            Log.d("delacalle","nombre de restaurante encontrado");
                             Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo has encontrado!", Toast.LENGTH_SHORT).show();
                         }
-                         else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-
-                            ParseQuery<ParseObject> queryprecio = ParseQuery.getQuery("carta");
-                            queryprecio.whereEqualTo("precio", titulo);
-                            queryprecio.getFirstInBackground(new GetCallback<ParseObject>() {
-                                @Override
-                                public void done(ParseObject precio, ParseException e) {
-                                    if (e == null) {
-                                        String id = precio.getString("restauranteidId");
-                                        Intent intent = new Intent(menu_pestanas_delacalleactivity.this,busquedaprecio_delacalleactivity.class);
-                                        startActivity(intent);
-                                        Toast.makeText(menu_pestanas_delacalleactivity.this, "¡Lo has encontrado!,restaurantes con precios desde " + titulo + " pesos", Toast.LENGTH_SHORT).show();
-                                        ParseQuery<ParseObject> queryresta = ParseQuery.getQuery("restaurante");
-                                      /*  queryresta.getInBackground(id, new GetCallback<ParseObject>() {
-                                            @Override
-                                            public void done(ParseObject restaurante, ParseException e) {
-                                                if (e == null) {
-
-                                                    searchView.requestFocus();
-                                                    Intent intent = new Intent(menu_pestanas_delacalleactivity.this,busquedaprecio_delacalleactivity.class);
-                                                    startActivity(intent);
-                                                    Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo has encontrado!", Toast.LENGTH_SHORT).show();
-
-                                                }
-                                            }
-                                        });*/
-                                    }
-                                }
-                            });
+                         else if (e.getCode() == ParseException.OBJECT_NOT_FOUND)
+                        {
+                            Log.d("delacalle","nombre de restaurante no encontrado");
                             Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
 
+                ParseQuery<ParseObject> queryprecio = new ParseQuery<ParseObject>("carta");
+                queryprecio.whereEqualTo("precio", titulo);
+                queryprecio.getFirstInBackground(new GetCallback<ParseObject>() {
+                    @Override
+                    public void done(ParseObject pre, ParseException e) {
+                        if (e == null) {
+                            Intent intent = new Intent(menu_pestanas_delacalleactivity.this, busquedaprecio_delacalleactivity.class);
+                            intent.putExtra("titulo", titulo);
+                            startActivity(intent);
+                            Log.d("delacalle", "precio de plato encontrado");
+                            Toast.makeText(menu_pestanas_delacalleactivity.this, "¡Lo has encontrado!,restaurantes con precios hasta " + titulo + " pesos", Toast.LENGTH_SHORT).show();
 
-                // workaround to avoid issues with some emulators and keyboard devices firing twice if a keyboard enter is used
-                // see https://code.google.com/p/android/issues/detail?id=24599
+
+                        } else if(e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                            Log.d("delacalle", "precio de plato no encontrado");
+                            Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
+                ParseQuery<ParseObject> querycartan = new ParseQuery<ParseObject>("carta");
+                querycartan.whereEqualTo("nombre", titulo);
+                querycartan.getFirstInBackground(new GetCallback<ParseObject>() {
+                    @Override
+                    public void done(ParseObject car, ParseException e) {
+                        if (e == null) {
+                            Intent intent = new Intent(menu_pestanas_delacalleactivity.this, busquedacarta_delacalleactivity.class);
+                            intent.putExtra("titulo", titulo);
+                            startActivity(intent);
+                            Log.d("delacalle", "nombre de plato encontrado");
+                            Toast.makeText(menu_pestanas_delacalleactivity.this, "¡Lo has encontrado!,cartas con platos de " + titulo , Toast.LENGTH_SHORT).show();
+
+
+                        } else if(e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                            Log.d("delacalle", "nombre de plato no encontrado");
+                              Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
                 searchView.clearFocus();
 
                 return true;

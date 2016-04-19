@@ -210,6 +210,10 @@
             android:name=".busquedaprecio_delacalleactivity"
             android:label="@string/title_activity_busquedaprecio_delacalleactivity" >
         </activity>
+        <activity
+            android:name=".busquedacarta_delacalleactivity"
+            android:label="@string/title_activity_busquedacarta_delacalleactivity" >
+        </activity>
     </application>
 
 </manifest>

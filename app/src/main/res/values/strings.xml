@@ -52,10 +52,12 @@
        Cambiar contraseña
     </string>
     <string name="title_activity_busquedanombre_delacalleactivity">
-        busquedanombre_delacalleactivity
+        Búsqueda por nombre
     </string>
     <string name="title_activity_busquedaprecio_delacalleactivity">
-        busquedaprecio_delacalleactivity
+       Búsqueda por precio
+    </string>
+    <string name="title_activity_busquedacarta_delacalleactivity">Búsqueda por nombre plato
     </string>
 
 

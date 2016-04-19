@@ -1,53 +1,27 @@
 package com.delacalle.delacalle.delacalleapp;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.Typeface;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.RatingBar;
-import android.widget.TextView;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.parse.FindCallback;
-import com.parse.GetCallback;
-import com.parse.GetDataCallback;
 import com.parse.ParseException;
-import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.ParseQueryAdapter;
-import com.parse.SaveCallback;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import java.io.ByteArrayOutputStream;
+
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class busquedaprecio_delacalleactivity  extends AppCompatActivity {
-
-
-
+public class busquedacarta_delacalleactivity extends AppCompatActivity {
     private ViewPager mPager;
 
     private PagerAdapter mPagerAdapter;
@@ -59,18 +33,17 @@ public class busquedaprecio_delacalleactivity  extends AppCompatActivity {
     Bitmap pic;
 
     String id;
-      ArrayList<String> precio;
 
- //   String precio;
-
+ArrayList<String> carta;
     String titulo;
 
-    String restaid;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_busquedaprecio_delacalleactivity);
+        setContentView(R.layout.activity_busquedacarta_delacalleactivity);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -92,42 +65,27 @@ public class busquedaprecio_delacalleactivity  extends AppCompatActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setPageTransformer(true, new ZoomOutPageTransformer());
-        precio = new ArrayList<>();
+        carta = new ArrayList<>();
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("carta");
-        query.whereLessThanOrEqualTo("precio", titulo);
+        query.whereMatches("nombre", titulo);
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
                 if (e == null) {
                     for (ParseObject restaurantes : objects) {
-                        String carta = restaurantes.getString("nombre");
-                        precio.add(carta);
+                        String cartas = restaurantes.getString("nombre");
+                        carta.add(cartas);
                     }
                     mPager.setAdapter(mPagerAdapter);
                 }
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_busquedaprecio_delacalleactivity, menu);
+        getMenuInflater().inflate(R.menu.menu_busquedacarta_delacalleactivity, menu);
         return true;
     }
 
@@ -146,7 +104,6 @@ public class busquedaprecio_delacalleactivity  extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     public boolean onSupportNavigateUp(){
         finish();
         // or call onBackPressed()
@@ -160,13 +117,12 @@ public class busquedaprecio_delacalleactivity  extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return ScreenSlideCartaFragment.create(position+1,precio.get(position).toString());
+            return ScreenSlideCartaFragment.create(position+1,carta.get(position).toString());
         }
 
         @Override
         public int getCount() {
-            return precio.size();
+            return carta.size();
         }
     }
 }
-
