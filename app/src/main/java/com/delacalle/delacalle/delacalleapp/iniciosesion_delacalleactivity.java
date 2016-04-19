@@ -209,7 +209,7 @@ e.printStackTrace();
         buttoniniciarsesion = (Button) findViewById(R.id.btniniciarsesion);
         btnLinkToResetPass = (Button) findViewById(R.id.btnlinkreseteardesdelogin);
         loginfacebook = (ImageView) findViewById(R.id.btnSignInFacebook);
-        logininstagram = (ImageView) findViewById(R.id.btnSignInInstagram);
+    //    logininstagram = (ImageView) findViewById(R.id.btnSignInInstagram);
 
 
         txtUserName = (TextView) findViewById(R.id.editTextnombreiniciarsesion);
@@ -235,7 +235,7 @@ e.printStackTrace();
         //     final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
         //     final Animation animTranslate = AnimationUtils.loadAnimation(this, R.anim.anim_translate);
         loginfacebook.setClickable(true);
-        logininstagram.setClickable(true);
+  //      logininstagram.setClickable(true);
 
 
 
@@ -344,7 +344,7 @@ e.printStackTrace();
 
 
 
-        logininstagram.setOnClickListener(new View.OnClickListener() {
+      /*  logininstagram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
@@ -368,7 +368,7 @@ e.printStackTrace();
                     Toast.makeText(getApplicationContext(), "No puedes conectarte usar la app sin Internet ", Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });*/
 
 
 

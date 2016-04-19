@@ -16,62 +16,12 @@
         android:layout_alignParentStart="true"
         android:id="@+id/relativeLayout2">
 
-        <!--  <Button
-        android:text="Iniciar sesión con Facebook"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:id="@+id/btnSignInFacebook"
-        android:padding="10dp"
-        android:layout_gravity="center"
-        android:textColor="#f6f6f6"
-        android:background="#3b5998"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="66dp" />-->
-
-        <!--<Button
-        android:text="Iniciar sesión con Twitter"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:id="@+id/btnSignInTwitter"
-        android:padding="10dp"
-        android:layout_gravity="center"
-        android:textColor="#f6f6f6"
-        android:background="#00aced"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/btnSignInFacebook"
-        android:layout_alignLeft="@+id/btnSignInFacebook"
-        android:layout_alignStart="@+id/btnSignInFacebook" />-->
 
     </LinearLayout>
 
 
 
 
-   <!-- <Button
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:text="Iniciar sesión con correo"
-        android:id="@+id/btniniciarsesion"
-        android:background="#b75627"
-        android:textColor="#FFFFFF"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="54dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />-->
-
-
-    <!--<ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:id="@+id/imageView"
-        android:layout_centerVertical="true"
-        android:background="@drawable/logo"
-        android:layout_marginTop="42dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />-->
 
 
 
@@ -171,13 +121,10 @@
         android:layout_height="80dp"
         android:src="@drawable/facebook"
         android:id="@+id/btnSignInFacebook"
-        android:layout_marginRight="104dp"
-        android:layout_marginEnd="104dp"
-        android:layout_alignTop="@+id/btnSignInInstagram"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_above="@+id/linearLayout"
+        android:layout_centerHorizontal="true" />
 
-    <ImageView
+  <!--  <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
@@ -187,18 +134,9 @@
         android:layout_marginEnd="107dp"
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/btnSignInFacebook"
-        android:layout_toStartOf="@+id/btnSignInFacebook" />
+        android:layout_toStartOf="@+id/btnSignInFacebook" />-->
 
 
-   <!-- <com.facebook.login.widget.LoginButton
-        android:id="@+id/login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_alignBottom="@+id/btnSignInFacebook"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="77dp"
-        android:layout_marginStart="77dp" />-->
+
 
 </RelativeLayout>

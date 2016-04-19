@@ -1,6 +1,7 @@
 package com.delacalle.delacalle.delacalleapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
@@ -97,6 +98,7 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
         nombreplatoCartaDetalle.setTypeface(primerfontcandara);
         descripcionplatoCartaDetalle.setTypeface(segundafontcaviar);
         precioplatoCartaDetalle.setTypeface(primerfontcandara);
+        fotologoCartaDetalle.setClickable(true);
 
 
         final ParseQuery<ParseObject> query = ParseQuery.getQuery("carta");
@@ -109,7 +111,7 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
 
 
 
-            for (ParseObject cartas : cartatlista) {
+            for (final ParseObject cartas : cartatlista) {
 
 
                 filefotocarta = cartas.getParseFile("fotoplato");
@@ -156,7 +158,13 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
                         }
                     }
                 });
-
+ /*       fotologoCartaDetalle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    String id = cartas.getString("restauranteId");
+                Intent intent = new Intent(getActivity(),detallerestaurante_delacalleactivity.class);
+                }
+});*/
 
             }
         }

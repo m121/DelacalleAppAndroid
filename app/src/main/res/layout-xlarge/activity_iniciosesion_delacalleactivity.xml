@@ -171,13 +171,10 @@
         android:layout_height="120dp"
         android:src="@drawable/facebook"
         android:id="@+id/btnSignInFacebook"
-        android:layout_marginRight="104dp"
-        android:layout_marginEnd="104dp"
-        android:layout_alignTop="@+id/btnSignInInstagram"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
-    <ImageView
+   <!-- <ImageView
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_gravity="center"
@@ -188,17 +185,8 @@
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/btnSignInFacebook"
         android:layout_toStartOf="@+id/btnSignInFacebook" />
+-->
 
 
-   <!-- <com.facebook.login.widget.LoginButton
-        android:id="@+id/login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_alignBottom="@+id/btnSignInFacebook"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="77dp"
-        android:layout_marginStart="77dp" />-->
 
 </RelativeLayout>
