@@ -103,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewPlatoCarta2"
-                android:text="Hamburguesa BBQ"
+                android:text=""
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -131,7 +131,7 @@
                     android:id="@+id/textViewDescripcionCarta2"
                     android:layout_below="@+id/textViewPlatoCarta2"
                     android:layout_gravity="center_horizontal"
-                    android:text="Hamburguesa con tomate, doble queso, pepino"
+                    android:text=""
                     android:textSize="25sp"
                     android:layout_weight="0.3"
                     />
@@ -143,7 +143,7 @@
                     android:layout_below="@+id/textViewPlatoCarta2"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
-                    android:text="$26000"
+                    android:text=""
                     android:textSize="25sp"
                     android:layout_weight="0.3"
                     android:layout_gravity="center_horizontal"
@@ -184,7 +184,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewPlatoCarta3"
-                android:text="Hamburguesa BBQ"
+                android:text=""
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -212,7 +212,7 @@
                     android:id="@+id/textViewDescripcionCarta3"
                     android:layout_below="@+id/textViewPlatoCarta3"
                     android:layout_gravity="center_horizontal"
-                    android:text="Hamburguesa con tomate, doble queso, pepino"
+                    android:text=""
                     android:textSize="25sp"
                     android:layout_weight="0.3"
                     />
@@ -224,7 +224,7 @@
                     android:layout_below="@+id/textViewPlatoCarta3"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
-                    android:text="$26000"
+                    android:text=""
                     android:textSize="25sp"
                     android:layout_weight="0.3"
                     android:layout_gravity="center_horizontal"
@@ -265,7 +265,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textViewPlatoCarta4"
-            android:text="Hamburguesa BBQ"
+            android:text=""
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -293,7 +293,7 @@
                 android:id="@+id/textViewDescripcionCarta4"
                 android:layout_below="@+id/textViewPlatoCarta4"
                 android:layout_gravity="center_horizontal"
-                android:text="Hamburguesa con tomate, doble queso, pepino"
+                android:text=""
                 android:textSize="25sp"
                 android:layout_weight="0.3"
                 />
@@ -305,7 +305,7 @@
                 android:layout_below="@+id/textViewPlatoCarta4"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:text="$26000"
+                android:text=""
                 android:textSize="25sp"
                 android:layout_weight="0.3"
                 android:layout_gravity="center_horizontal"
@@ -345,7 +345,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewPlatoCarta5"
-                android:text="Hamburguesa BBQ"
+                android:text=""
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -373,7 +373,7 @@
                     android:id="@+id/textViewDescripcionCarta5"
                     android:layout_below="@+id/textViewPlatoCarta5"
                     android:layout_gravity="center_horizontal"
-                    android:text="Hamburguesa con tomate, doble queso, pepino"
+                    android:text=""
                     android:textSize="25sp"
                     android:layout_weight="0.3"
                     />
@@ -385,7 +385,7 @@
                     android:layout_below="@+id/textViewPlatoCarta5"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
-                    android:text="$26000"
+                    android:text=""
                     android:textSize="25sp"
                     android:layout_weight="0.3"
                     android:layout_gravity="center_horizontal"
@@ -425,7 +425,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textViewPlatoCarta6"
-                android:text="Hamburguesa BBQ"
+                android:text=""
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -453,7 +453,7 @@
                     android:id="@+id/textViewDescripcionCarta6"
                     android:layout_below="@+id/textViewPlatoCarta6"
                     android:layout_gravity="center_horizontal"
-                    android:text="Hamburguesa con tomate, doble queso, pepino"
+                    android:text=""
                     android:textSize="25sp"
                     android:layout_weight="0.3"
                     />
@@ -465,7 +465,7 @@
                     android:layout_below="@+id/textViewPlatoCarta6"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
-                    android:text="$26000"
+                    android:text=""
                     android:textSize="25sp"
                     android:layout_weight="0.3"
                     android:layout_gravity="center_horizontal"

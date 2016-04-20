@@ -316,12 +316,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         startActivityForResult(galleryIntent, IMAGEREQUESTCODE2);
     }
 
-    public void selectpic3()
-    {
 
-        //select pic from gallery
-        startActivityForResult(galleryIntent, IMAGEREQUESTCODE3);
-    }
 
     protected final void onActivityResult(final int requestCode,
                                           final int resultCode, final Intent i) {
@@ -346,7 +341,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             });
 
 
-            fotologoRestauranteA.setImageBitmap(Bitmap.createScaledBitmap(pic, 400, 400, false));
+            fotologoRestauranteA.setImageBitmap(Bitmap.createScaledBitmap(pic, 578, 345, false));
 
         }
 
@@ -375,6 +370,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             pic3 = (Bitmap) extras.get("data");
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             pic3.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+
 
             byte[] data1 = stream.toByteArray();
             filefoto3 = new ParseFile("fotorestaurantetres.jpg", data1);
@@ -444,6 +440,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
 
+
             byte[] data = stream.toByteArray();
             filefoto1 = new ParseFile("fotologorestaurante.jpg",data);
             filefoto1.saveInBackground(new SaveCallback() {
@@ -453,7 +450,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
                 }
             });
-            fotologoRestauranteA.setImageBitmap(Bitmap.createScaledBitmap(pic, 400, 400, false));
+            fotologoRestauranteA.setImageBitmap(Bitmap.createScaledBitmap(pic, 578, 345, false));
 
 
         }
