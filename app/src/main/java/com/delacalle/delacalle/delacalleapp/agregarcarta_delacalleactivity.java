@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -299,27 +300,27 @@ public class agregarcarta_delacalleactivity extends AppCompatActivity {
         boolean cancel = false;
 
 
-        nombreplato1C = nombreplato1.getText().toString();
+        nombreplato1C = nombreplato1.getText().toString().toLowerCase();
         descripcionplato1C = descripcionplato1.getText().toString();
         precioplato1C = precioplato1.getText().toString();
 
-        nombreplato2C = nombreplato2.getText().toString();
+        nombreplato2C = nombreplato2.getText().toString().toLowerCase();
         descripcionplato2C = descripcionplato2.getText().toString();
         precioplato2C = precioplato2.getText().toString();
 
-        nombreplato3C = nombreplato3.getText().toString();
+        nombreplato3C = nombreplato3.getText().toString().toLowerCase();
         descripcionplato3C = descripcionplato3.getText().toString();
         precioplato3C = precioplato3.getText().toString();
 
-        nombreplato4C = nombreplato4.getText().toString();
+        nombreplato4C = nombreplato4.getText().toString().toLowerCase();
         descripcionplato4C = descripcionplato4.getText().toString();
         precioplato4C = precioplato4.getText().toString();
 
-        nombreplato5C = nombreplato5.getText().toString();
+        nombreplato5C = nombreplato5.getText().toString().toLowerCase();
         descripcionplato5C = descripcionplato5.getText().toString();
         precioplato5C = precioplato5.getText().toString();
 
-        nombreplato6C = nombreplato6.getText().toString();
+        nombreplato6C = nombreplato6.getText().toString().toLowerCase();
         descripcionplato6C = descripcionplato6.getText().toString();
         precioplato6C = precioplato6.getText().toString();
 
@@ -1418,6 +1419,15 @@ public class agregarcarta_delacalleactivity extends AppCompatActivity {
     public boolean onSupportNavigateUp(){
         finish();
         // or call onBackPressed()
+        return true;
+    }
+
+    // Ocultar el teclado
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.
+                INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         return true;
     }
 }

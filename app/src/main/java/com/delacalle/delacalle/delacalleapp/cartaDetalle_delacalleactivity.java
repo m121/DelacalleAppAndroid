@@ -14,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -37,6 +38,8 @@ public class cartaDetalle_delacalleactivity extends AppCompatActivity {
     private TextView  nombreplatoCartaDetalle;
     private TextView  descripcionplatoCartaDetalle;
     private TextView  precioplatoCartaDetalle;
+
+    private RelativeLayout milayoutrestaurantelink;
 
 
     ParseFile  filefotocarta;
@@ -71,10 +74,13 @@ public class cartaDetalle_delacalleactivity extends AppCompatActivity {
           nombreplatoCartaDetalle = (TextView) findViewById(R.id.textViewNombrePlatoRestauranteDetalleCarta);
           descripcionplatoCartaDetalle = (TextView) findViewById(R.id.textViewDescripcionPlatoResturanteDetalleCarta);
           precioplatoCartaDetalle = (TextView) findViewById(R.id.textViewPrecioPlatoRestauranteDetalleCarta);
+        milayoutrestaurantelink = (RelativeLayout) findViewById(R.id.relativerestaurante);
         nombrerestauranteCartaDetalle.setTypeface(primerfontcandara);
         nombreplatoCartaDetalle.setTypeface(primerfontcandara);
         descripcionplatoCartaDetalle.setTypeface(segundafontcaviar);
         precioplatoCartaDetalle.setTypeface(primerfontcandara);
+        milayoutrestaurantelink.setClickable(true);
+
 
         final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
     //    frameLayout.getBackground().setAlpha(0);
@@ -86,7 +92,7 @@ public class cartaDetalle_delacalleactivity extends AppCompatActivity {
         fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
             public void onMenuExpanded() {
-     //           frameLayout.getBackground().setAlpha(240);
+                //           frameLayout.getBackground().setAlpha(240);
                 frameLayout.setOnTouchListener(new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
@@ -98,7 +104,7 @@ public class cartaDetalle_delacalleactivity extends AppCompatActivity {
 
             @Override
             public void onMenuCollapsed() {
-       //         frameLayout.getBackground().setAlpha(0);
+                //         frameLayout.getBackground().setAlpha(0);
                 frameLayout.setOnTouchListener(null);
             }
         });
@@ -155,6 +161,9 @@ public class cartaDetalle_delacalleactivity extends AppCompatActivity {
         });
 
 
+
+
+
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             id = bundle.getString("id");
@@ -164,6 +173,17 @@ public class cartaDetalle_delacalleactivity extends AppCompatActivity {
         {
             Log.d("delacalle", "Error al pasar el id " + id);
         }
+
+        milayoutrestaurantelink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(cartaDetalle_delacalleactivity.this, detallerestaurante_delacalleactivity.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
+                Log.d("delacalle", "Se envia el id " + id + " y envia al usuario al restaurante");
+            }
+        });
 
 
         ParseQuery<ParseObject> queryplato = ParseQuery.getQuery("carta");
@@ -191,7 +211,7 @@ public class cartaDetalle_delacalleactivity extends AppCompatActivity {
                         }
                     });
 
-                    nombreplatoCartaDetalle.setText(carta.getString("nombre"));
+                    nombreplatoCartaDetalle.setText(carta.getString("nombre").toUpperCase());
                     descripcionplatoCartaDetalle.setText(carta.getString("descripcion"));
                     precioplatoCartaDetalle.setText("$"+carta.getString("precio"));
 

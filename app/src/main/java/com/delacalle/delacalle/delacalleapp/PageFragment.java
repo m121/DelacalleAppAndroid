@@ -134,7 +134,7 @@ public class PageFragment extends Fragment {
                         new ParseQueryAdapter.QueryFactory<ParseObject>() {
                             public ParseQuery<ParseObject> create() {
                                 ParseQuery<ParseObject> query = ParseQuery.getQuery("restaurante");
-                                query.whereGreaterThan("rating", 3);
+                                query.whereGreaterThan("rating", 4);
                                 return query;
                             }
                         };
@@ -300,7 +300,7 @@ public class PageFragment extends Fragment {
                 new  ParseQueryAdapter.QueryFactory<ParseObject>(){
                     public ParseQuery<ParseObject> create () {
                         ParseQuery<ParseObject>  query = ParseQuery.getQuery("restaurante");
-                        query.whereGreaterThan("rating",3);
+                        query.whereGreaterThan("rating",4);
                         return query;
                     }
                 };

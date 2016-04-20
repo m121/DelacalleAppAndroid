@@ -118,7 +118,8 @@
         android:src="@drawable/facebook"
         android:id="@+id/btnSignInFacebook"
         android:layout_above="@+id/linearLayout"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="68dp" />
 
    <!-- <ImageView
         android:layout_width="80dp"

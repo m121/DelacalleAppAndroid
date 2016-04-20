@@ -1,8 +1,10 @@
 package com.delacalle.delacalle.delacalleapp;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +24,7 @@ import com.parse.SignUpCallback;
 
 public class registrarresponsable_delacalleactivity extends AppCompatActivity {
 
+    private Toolbar mToolbar;
 
     TextView txtnombre;
     TextView txtemail;
@@ -41,7 +44,14 @@ public class registrarresponsable_delacalleactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrarresponsable_delacalleactivity);
 
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
+        final Typeface primerfontcandara = Typeface.createFromAsset(getAssets(), "fonts/CandaraBold.ttf");
+        final Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
+
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         txtnombre = (TextView) findViewById(R.id.editTextnombreregistroResponsable);
         txtemail = (TextView) findViewById(R.id.editTextemailregistroResponsable);
@@ -59,9 +69,10 @@ public class registrarresponsable_delacalleactivity extends AppCompatActivity {
                 clave = txtclave.getText().toString();
 
                 ParseUser user = new ParseUser();
-                user.setUsername(nombre);
+                user.setUsername(email);
                 user.setEmail(email);
                 user.setPassword(clave);
+                user.put("nombre", nombre);
 
                 user.signUpInBackground(new SignUpCallback() {
 
@@ -129,8 +140,17 @@ public class registrarresponsable_delacalleactivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_cerrar) {
+            ParseUser.getCurrentUser().logOut();
+            Intent intent = new Intent(registrarresponsable_delacalleactivity.this,iniciosesion_delacalleactivity.class);
+            startActivity(intent);
+
+        }
+
+        if(id == R.id.action_menu)
+        {
+            Intent intent = new Intent(registrarresponsable_delacalleactivity.this,menu_pestanas_delacalleactivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

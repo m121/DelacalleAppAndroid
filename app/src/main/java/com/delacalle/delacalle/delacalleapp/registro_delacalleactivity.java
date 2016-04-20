@@ -45,12 +45,20 @@ public class registro_delacalleactivity extends AppCompatActivity {
     private String userPass;
     private String userRePass;
 
+    boolean cancel = false;
+    View focusView = null;
 
+    boolean isInternetPresent = false;
+    ConnectionDetector cd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_delacalleactivity);
+
+        cd = new ConnectionDetector(getApplicationContext());
+        // get Internet status
+        isInternetPresent = cd.isConnectingToInternet();
 
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
    //     final Animation animTranslate = AnimationUtils.loadAnimation(this, R.anim.anim_translate);
@@ -84,7 +92,14 @@ public class registro_delacalleactivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
-                signUpErrors(v);
+                if (isInternetPresent) {
+                    signUpErrors(v);
+                }
+                else
+                {
+                    Log.d("delacalle", "No hay internet");
+                    Toast.makeText(getApplicationContext(), "No puedes  usar la app sin Internet ", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -108,14 +123,30 @@ public class registro_delacalleactivity extends AppCompatActivity {
     public void signUpErrors(View view)
     {
         clearErrors();
-        boolean cancel = false;
-        View focusView = null;
+     //   boolean cancel = false;
+   //     View focusView = null;
 
 
         userName = txtUserName.getText().toString();
         userEmail = txtUserEmail.getText().toString();
         userPass = txtUserPass.getText().toString();
         userRePass = txtUserRePass.getText().toString();
+
+        ParseQuery<ParseUser> userq = ParseUser.getQuery();
+        userq.whereEqualTo("email",userEmail);
+        userq.getFirstInBackground(new GetCallback<ParseUser>() {
+            @Override
+            public void done(ParseUser object, ParseException e) {
+                if(e==null)
+                {
+                    txtUserEmail.setError("Ya tenemos un usuario con ese correo " + userEmail);
+                    Toast.makeText(getApplicationContext(), "Ya tenemos un usuario con ese correo " + userEmail, Toast.LENGTH_SHORT).show();
+                    focusView = txtUserEmail;
+                    cancel = true;
+                }
+
+            }
+        });
 
         if(TextUtils.isEmpty(userName))
         {
@@ -174,7 +205,7 @@ public class registro_delacalleactivity extends AppCompatActivity {
         }
         else
         {
-            TextUtils.concat(userName);
+           /* TextUtils.concat(userName);*/
             Toast.makeText(getApplicationContext(), "Tu nombre de usuario es " + userName, Toast.LENGTH_SHORT).show();
             Toast.makeText(getApplicationContext(), "Guardando ", Toast.LENGTH_SHORT).show();
             signUp(userName.toLowerCase(Locale.getDefault()), userEmail, userPass);

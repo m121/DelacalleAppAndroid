@@ -10,14 +10,11 @@
 
 
 
-   <!-- <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/imageViewLogoDetalleCarta"
-        android:background="#000000"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />-->
+        android:id="@+id/relativerestaurante">
 
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -26,7 +23,6 @@
         android:layout_height="200dp"
         android:src="@drawable/mostrar_foto"
         app:civ_border_width="2dp"
-        android:layout_below="@+id/toolbar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         app:civ_border_color="#FF000000"/>
@@ -37,18 +33,18 @@
         android:text="Nombre Restaurante"
         android:id="@+id/textViewNombreRestauranteDetalleCarta"
         android:textSize="35sp"
-        android:layout_below="@+id/toolbar"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/imageViewLogoDetalleCarta"
         android:layout_toEndOf="@+id/imageViewLogoDetalleCarta" />
+        </RelativeLayout>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:id="@+id/imageViewFotoRestauranteDetalleCarta"
         android:background="#000000"
-        android:layout_below="@+id/imageViewLogoDetalleCarta"
+        android:layout_below="@+id/relativerestaurante"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

@@ -248,7 +248,7 @@ e.printStackTrace();
                     logInEmailErrors(v);
                 } else {
                     Log.d("delacalle", "No hay internet");
-                    Toast.makeText(getApplicationContext(), "No puedes conectarte usar la app sin Internet ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "No puedes  usar la app sin Internet ", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -273,7 +273,7 @@ e.printStackTrace();
                     logInEmailErrors(v);
                 } else {
                     Log.d("delacalle", "No hay internet");
-                    Toast.makeText(getApplicationContext(), "No puedes conectarte usar la app sin Internet ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "No puedes  usar la app sin Internet ", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -290,6 +290,7 @@ e.printStackTrace();
                     ParseFacebookUtils.logInWithReadPermissionsInBackground(iniciosesion_delacalleactivity.this, mPermissions, new LogInCallback() {
                         @Override
                         public void done(ParseUser user, ParseException err) {
+                            Toast.makeText(getApplicationContext(), "Iniciando sesión", Toast.LENGTH_SHORT).show();
                             if (user == null) {
                                 ParseUser.logOut();
                                 //   Log.d("myapp",err.getLocalizedMessage());
@@ -327,7 +328,9 @@ e.printStackTrace();
                             } else {
                                 Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
                                 startActivity(intent);
+                                Toast.makeText(getApplicationContext(), "¡Bienvenido otra vez! " + user.getUsername(), Toast.LENGTH_SHORT).show();
                                 Log.d("delacalle", "usuario inicio sesion con Facebook");
+
 
                             }
 
@@ -337,7 +340,7 @@ e.printStackTrace();
 
                 } else {
                     Log.d("delacalle", "No hay internet");
-                    Toast.makeText(getApplicationContext(), "No puedes conectarte usar la app sin Internet ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "No puedes  usar la app sin Internet ", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -438,18 +441,32 @@ e.printStackTrace();
                     try
                     {
 
+                      final   String email = mData.getString("email");
+                      final  String username = mData.getString("name");
 
-                        String email = mData.getString("email");
-                        String username = mData.getString("name");
-
-                        Log.d("delacalle","Email es " + email);
+                        Log.d("delacalle", "Email es " + email);
                         Log.d("delacalle", "nombre es " + username);
 
-                        ParseUser user = ParseUser.getCurrentUser();
-                        user.put("email", email);
-                        user.put("username",email);
-                        user.put("nombre",username);
-                        user.saveInBackground();
+                        ParseQuery<ParseUser> userq = ParseUser.getQuery();
+                        userq.whereEqualTo("email", email);
+                        userq.getFirstInBackground(new GetCallback<ParseUser>() {
+                            @Override
+                            public void done(ParseUser us, ParseException e) {
+                                if (e == null) {
+                                    Log.d("delacalle", "el usuario ya se encuentra registrado");
+                                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                    ParseUser user = ParseUser.getCurrentUser();
+                                    user.put("email", email);
+                                    user.put("username", email);
+                                    user.put("nombre", username);
+                                    user.saveInBackground();
+
+                                    Log.d("delacalle", "El usuario se ha registrado con facebook");
+                                }
+                            }
+                        });
+
+
                     }
 
                     catch (JSONException e)
@@ -559,6 +576,7 @@ e.printStackTrace();
         {
             logInEmail(userName.toLowerCase(Locale.getDefault()), userPass);
             Toast.makeText(getApplicationContext(), "Iniciando sesión", Toast.LENGTH_SHORT).show();
+
         }
 
 
@@ -610,13 +628,14 @@ e.printStackTrace();
         Log.d("delacalle","usuario inicio sesion");
         Intent intent = new Intent(getApplicationContext(), menu_pestanas_delacalleactivity.class);
         startActivity(intent);
+        Toast.makeText(getApplicationContext(), "¡Bienvenido otra vez! " + userName, Toast.LENGTH_SHORT).show();
 
     }
 
     public void loginFail()
     {
         Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
-        showAlertDialog(iniciosesion_delacalleactivity.this, "Inicio de sesión con correo", "Tu nombre o contraseña son incorrectos, intenta otra vez", false);
+        showAlertDialog(iniciosesion_delacalleactivity.this, "Inicio de sesión con correo", "Tu correo o contraseña son incorrectos, intenta otra vez", false);
 
     }
 

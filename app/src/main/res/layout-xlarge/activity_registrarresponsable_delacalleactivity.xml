@@ -1,10 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:layout_height="match_parent"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/fondomenublanco768x1280"
     tools:context="com.delacalle.delacalle.delacalleapp.registrarresponsable_delacalleactivity">
 
     <RelativeLayout
@@ -14,91 +13,87 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:id="@+id/editTextnombreregistroResponsable"
-        android:layout_marginTop="119dp"
-        android:hint="Nombre"
-        android:maxLength="20"
-        android:textColor="#ffffff"
-        android:textColorHint="#ffffff"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/btnregistrarse"
-        android:layout_alignStart="@+id/btnregistrarse"
-        android:textSize="30sp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/editTextnombreregistroResponsable"
+            android:layout_marginTop="229dp"
+            android:hint="Nombre"
+            android:maxLength="20"
+            android:paddingLeft="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="30sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:id="@+id/editTextemailregistroResponsable"
-        android:hint="Email"
-        android:maxLength="40"
-        android:textColor="#ffffff"
-        android:inputType="textEmailAddress"
-        android:textColorHint="#ffffff"
-        android:layout_below="@+id/editTextnombreregistroResponsable"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="30sp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/editTextemailregistroResponsable"
+            android:hint="Email"
+            android:maxLength="40"
+            android:textColor="#000000"
+            android:paddingLeft="10dp"
+            android:inputType="textEmailAddress"
+            android:textColorHint="#000000"
+            android:layout_alignParentStart="true"
+            android:textSize="30sp"
+            android:layout_below="@+id/editTextnombreregistroResponsable"
+            android:layout_alignParentLeft="true" />
 
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:id="@+id/editTextpassregistroResponsable"
-        android:hint="Clave"
-        android:maxLength="20"
-        android:textColor="#ffffff"
-        android:inputType="textPassword"
-        android:textColorHint="#ffffff"
-        android:layout_below="@+id/editTextemailregistroResponsable"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="30sp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/editTextpassregistroResponsable"
+            android:hint="Clave"
+            android:maxLength="20"
+            android:paddingLeft="10dp"
+            android:textColor="#000000"
+            android:inputType="textPassword"
+            android:textColorHint="#000000"
+            android:textSize="30sp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/editTextemailregistroResponsable"
+            android:layout_alignParentLeft="true" />
 
-    <EditText
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:id="@+id/editTextrepassregistroResponsable"
-        android:hint="Repetir clave"
-        android:maxLength="20"
-        android:textColor="#ffffff"
-        android:inputType="textPassword"
-        android:textColorHint="#ffffff"
-        android:layout_below="@+id/editTextemailregistroResponsable"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="73dp"
-        android:textSize="30sp"
-        android:layout_alignRight="@+id/btnregistrarResponsable"
-        android:layout_alignEnd="@+id/btnregistrarResponsable" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/editTextrepassregistroResponsable"
+            android:hint="Repetir clave"
+            android:maxLength="20"
+            android:paddingLeft="10dp"
+            android:textColor="#000000"
+            android:inputType="textPassword"
+            android:textColorHint="#000000"
+            android:textSize="30sp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/editTextpassregistroResponsable"
+            android:layout_alignParentLeft="true" />
 
         <Button
             android:layout_width="400dp"
-            android:layout_height="90dp"
+            android:layout_height="70dp"
             android:text="Registrar Responsable"
             android:id="@+id/btnregistrarResponsable"
-            android:background="@color/buttoncolor"
+            android:background="#f27817"
             android:textColor="#FFFFFF"
-            android:layout_below="@+id/editTextpassregistroResponsable"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="96dp"
+            android:layout_marginBottom="240dp"
             android:textSize="30sp" />
+
+
+
 
     </RelativeLayout>
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Registrar Responsable"
-        android:id="@+id/textViewtituloregistrarseResponsable"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/editTextnombreregistro"
-        android:layout_alignStart="@+id/editTextnombreregistro"
-        android:layout_marginTop="42dp"
-        android:textColor="#ffffff"
-        android:textSize="35sp" />
 
 
 </RelativeLayout>

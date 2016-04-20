@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#a5714a"
+    android:background="@drawable/fondomenublanco768x1280"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
 
@@ -22,11 +22,11 @@
         android:id="@+id/editTextnombreregistro"
         android:layout_marginTop="50dp"
         android:hint="Nombre"
+            android:singleLine="true"
             android:textSize="20sp"
         android:maxLength="20"
-        android:background="#a5714a"
-        android:textColor="#ffffff"
-        android:textColorHint="#ffffff"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/btnregistrarse"
         android:layout_alignStart="@+id/btnregistrarse" />
@@ -36,12 +36,12 @@
         android:layout_height="70dp"
         android:id="@+id/editTextemailregistro"
         android:hint="Email"
-        android:background="#a5714a"
+        android:singleLine="true"
         android:maxLength="40"
-        android:textColor="#ffffff"
+        android:textColor="#000000"
         android:inputType="textEmailAddress"
         android:textSize="20sp"
-        android:textColorHint="#ffffff"
+        android:textColorHint="#000000"
         android:layout_below="@+id/editTextnombreregistro"
         android:layout_alignLeft="@+id/btnregistrarse" />
 
@@ -50,12 +50,12 @@
         android:layout_height="70dp"
         android:id="@+id/editTextpassregistro"
         android:hint="Clave"
-        android:background="#a5714a"
+        android:singleLine="true"
         android:maxLength="20"
-        android:textColor="#ffffff"
+        android:textColor="#000000"
         android:inputType="textPassword"
         android:textSize="20sp"
-        android:textColorHint="#ffffff"
+        android:textColorHint="#000000"
         android:layout_below="@+id/editTextemailregistro"
         android:layout_alignLeft="@+id/btnregistrarse" />
 
@@ -65,18 +65,18 @@
         android:id="@+id/editTextrepassregistro"
         android:hint="Repetir clave"
         android:maxLength="20"
-        android:background="#a5714a"
-        android:textColor="#ffffff"
+        android:singleLine="true"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:inputType="textPassword"
-        android:textColorHint="#ffffff"
+        android:textColorHint="#000000"
         android:layout_below="@+id/editTextpassregistro"
         android:layout_alignLeft="@+id/btnregistrarse" />
 
     <Button
         android:layout_width="300dp"
         android:layout_height="70dp"
-        android:text="Registrarse"
+        android:text="Registro"
         android:id="@+id/btnregistrarse"
         android:background="#f27817"
         android:textColor="#FFFFFF"
@@ -93,7 +93,7 @@
         android:background="@null"
         android:text="Enlace a iniciar sesión"
         android:textAllCaps="false"
-        android:textColor="#ffffff"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:layout_below="@+id/btnregistrarse"
         android:layout_centerHorizontal="true"
@@ -107,7 +107,7 @@
         android:layout_height="wrap_content"
         android:text="Registro usuario"
         android:id="@+id/textViewtituloregistrarse"
-        android:textColor="#ffffff"
+        android:textColor="#000000"
         android:textSize="35sp"
         android:layout_gravity="center_horizontal"
         android:layout_above="@+id/linearLayout3"

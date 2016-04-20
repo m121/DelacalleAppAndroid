@@ -11,9 +11,11 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -88,6 +90,8 @@ public class resetearcontrasenadesdelogin_delacalleactivity extends AppCompatAct
                 if (e == null) {
                     // An email was successfully sent with reset instructions.
                     showAlertDialog(resetearcontrasenadesdelogin_delacalleactivity.this, "Resetear contraseña", "Un email será enviado con instrucciones", false);
+                    Intent intent = new Intent(resetearcontrasenadesdelogin_delacalleactivity.this,iniciosesion_delacalleactivity.class);
+                    startActivity(intent);
                 } else {
                     // Something went wrong. Look at the ParseException to see what's up.
                     Toast.makeText(getApplicationContext(), "No existe el correo  " + textemail, Toast.LENGTH_SHORT).show();
@@ -173,5 +177,14 @@ public class resetearcontrasenadesdelogin_delacalleactivity extends AppCompatAct
         }*/
 
         return super.onOptionsItemSelected(item);
+    }
+
+    // Ocultar el teclado
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.
+                INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        return true;
     }
 }

@@ -10,18 +10,27 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseRole;
+import com.parse.ParseUser;
 
 import java.io.ByteArrayOutputStream;
 import java.util.List;
@@ -36,6 +45,8 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
     private TextView  descripcionplatoCartaDetalle;
     private TextView  precioplatoCartaDetalle;
 
+    private RelativeLayout milayoutrestaurantelink;
+
 
     ParseFile  filefotocarta;
     ParseFile filefotologo;
@@ -43,6 +54,7 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
     Bitmap pic;
     Bitmap pic2;
 
+    String id;
 
     public static final String ARG_PAGE = "ARG_PAGE";
     public String nuevocarta;
@@ -77,7 +89,7 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.fragment_screen_slide_carta, container, false);
@@ -86,7 +98,7 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
         final Typeface primerfontcandara = Typeface.createFromAsset(getActivity().getAssets(), "fonts/CandaraBold.ttf");
         final Typeface segundafontcaviar = Typeface.createFromAsset(getActivity().getAssets(), "fonts/CaviarDreams.ttf");
 
-
+        final Animation animAlpha = AnimationUtils.loadAnimation(getActivity(), R.anim.anim_alpha);
 
         fotologoCartaDetalle = (ImageView) rootView.findViewById(R.id.imageViewLogoDetalleCarta);
         fotorestauranteCartaDetalle = (ImageView) rootView.findViewById(R.id.imageViewFotoRestauranteDetalleCarta);
@@ -94,12 +106,95 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
         nombreplatoCartaDetalle = (TextView) rootView.findViewById(R.id.textViewNombrePlatoRestauranteDetalleCarta);
         descripcionplatoCartaDetalle = (TextView) rootView.findViewById(R.id.textViewDescripcionPlatoResturanteDetalleCarta);
         precioplatoCartaDetalle = (TextView) rootView.findViewById(R.id.textViewPrecioPlatoRestauranteDetalleCarta);
+        milayoutrestaurantelink = (RelativeLayout) rootView.findViewById(R.id.relativerestaurante);
         nombrerestauranteCartaDetalle.setTypeface(primerfontcandara);
         nombreplatoCartaDetalle.setTypeface(primerfontcandara);
         descripcionplatoCartaDetalle.setTypeface(segundafontcaviar);
         precioplatoCartaDetalle.setTypeface(primerfontcandara);
-        fotologoCartaDetalle.setClickable(true);
+        milayoutrestaurantelink.setClickable(true);
 
+        final FrameLayout frameLayout = (FrameLayout) rootView.findViewById(R.id.frame_layout);
+        //  frameLayout.getBackground().setAlpha(0);
+        final FloatingActionsMenu fabMenu = (FloatingActionsMenu) rootView.findViewById(R.id.fabmenu);
+        final FloatingActionButton fabeditar = (FloatingActionButton) rootView.findViewById(R.id.fabeditar);
+        final FloatingActionButton  fabrestaurante = (FloatingActionButton) rootView.findViewById(R.id.fabagregar);
+        final FloatingActionButton  fabperfil = (FloatingActionButton) rootView.findViewById(R.id.fabperfil);
+
+
+
+        fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+            @Override
+            public void onMenuExpanded() {
+                //        frameLayout.getBackground().setAlpha(240);
+                frameLayout.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        fabMenu.collapse();
+                        return true;
+                    }
+                });
+            }
+
+            @Override
+            public void onMenuCollapsed() {
+                //        frameLayout.getBackground().setAlpha(0);
+                frameLayout.setOnTouchListener(null);
+            }
+        });
+
+        fabeditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), listarestaurantesresponsable_delacalleactivity.class);
+                startActivity(intent);
+            }
+        });
+
+        fabrestaurante.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), agregarrestaurante_delacalleactivity.class);
+                startActivity(intent);
+            }
+        });
+
+        fabperfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), perfilusuario_delacalleactivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ParseQuery<ParseRole> roleuserusuario = ParseRole.getQuery();
+        roleuserusuario.whereEqualTo("name", "usuario");
+        roleuserusuario.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+        roleuserusuario.getFirstInBackground(new GetCallback<ParseRole>() {
+            @Override
+            public void done(ParseRole object, ParseException e) {
+                if (e == null) {
+                    fabeditar.setVisibility(View.INVISIBLE);
+                    fabrestaurante.setVisibility(View.INVISIBLE);
+                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                    ParseQuery<ParseRole> roleuserresponsable = ParseRole.getQuery();
+                    roleuserresponsable.whereEqualTo("name", "responsable");
+                    roleuserresponsable.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+                    roleuserresponsable.getFirstInBackground(new GetCallback<ParseRole>() {
+                        @Override
+                        public void done(ParseRole object, ParseException e) {
+                            if (e == null) {
+                                fabeditar.setVisibility(View.VISIBLE);
+                                fabrestaurante.setVisibility(View.VISIBLE);
+                            } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                Log.d("delacalle","eres administrador");
+
+                            }
+                        }
+                    });
+                }
+
+            }
+        });
 
         final ParseQuery<ParseObject> query = ParseQuery.getQuery("carta");
         query.whereEqualTo("nombre", nuevocarta);
@@ -112,6 +207,18 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
 
 
             for (final ParseObject cartas : cartatlista) {
+
+                id = cartas.getString("restauranteId");
+                milayoutrestaurantelink.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        v.setAnimation(animAlpha);
+                        Intent intent = new Intent(getActivity(),detallerestaurante_delacalleactivity.class);
+                        intent.putExtra("id",id);
+                        startActivity(intent);
+                        Log.d("delacalle","Se envia el id " + id + " y envia al usuario al restaurante");
+                    }
+                });
 
 
                 filefotocarta = cartas.getParseFile("fotoplato");
@@ -132,7 +239,7 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
                     }
                 });
 
-                nombreplatoCartaDetalle.setText(cartas.getString("nombre"));
+                nombreplatoCartaDetalle.setText(cartas.getString("nombre").toUpperCase());
                 descripcionplatoCartaDetalle.setText(cartas.getString("descripcion"));
                 precioplatoCartaDetalle.setText("$"+cartas.getString("precio"));
 
@@ -158,13 +265,7 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
                         }
                     }
                 });
- /*       fotologoCartaDetalle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    String id = cartas.getString("restauranteId");
-                Intent intent = new Intent(getActivity(),detallerestaurante_delacalleactivity.class);
-                }
-});*/
+
 
             }
         }

@@ -1,5 +1,6 @@
 package com.delacalle.delacalle.delacalleapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,8 +13,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
@@ -115,15 +118,13 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                     @Override
                     public void done(ParseObject object, ParseException e) {
                         if (e == null) {
-                            Intent intent = new Intent(menu_pestanas_delacalleactivity.this,busquedanombre_delacalleactivity.class);
+                            Intent intent = new Intent(menu_pestanas_delacalleactivity.this, busquedanombre_delacalleactivity.class);
                             intent.putExtra("titulo", titulo);
                             startActivity(intent);
-                            Log.d("delacalle","nombre de restaurante encontrado");
+                            Log.d("delacalle", "nombre de restaurante encontrado");
                             Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo has encontrado!", Toast.LENGTH_SHORT).show();
-                        }
-                         else if (e.getCode() == ParseException.OBJECT_NOT_FOUND)
-                        {
-                            Log.d("delacalle","nombre de restaurante no encontrado");
+                        } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                            Log.d("delacalle", "nombre de restaurante no encontrado");
                             Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -142,7 +143,7 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                             Toast.makeText(menu_pestanas_delacalleactivity.this, "¡Lo has encontrado!,restaurantes con precios hasta " + titulo + " pesos", Toast.LENGTH_SHORT).show();
 
 
-                        } else if(e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                        } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
                             Log.d("delacalle", "precio de plato no encontrado");
                             Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
                         }
@@ -160,12 +161,12 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                             intent.putExtra("titulo", titulo);
                             startActivity(intent);
                             Log.d("delacalle", "nombre de plato encontrado");
-                            Toast.makeText(menu_pestanas_delacalleactivity.this, "¡Lo has encontrado!,cartas con platos de " + titulo , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(menu_pestanas_delacalleactivity.this, "¡Lo has encontrado!,cartas con platos de " + titulo, Toast.LENGTH_SHORT).show();
 
 
-                        } else if(e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                        } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
                             Log.d("delacalle", "nombre de plato no encontrado");
-                              Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -190,5 +191,14 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
         super.onResume();
 
 
+    }
+
+    // Ocultar el teclado
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.
+                INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        return true;
     }
 }

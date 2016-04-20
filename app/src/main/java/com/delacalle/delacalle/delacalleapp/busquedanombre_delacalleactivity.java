@@ -24,12 +24,14 @@ import android.widget.TextView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
+import com.parse.ParseRole;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
@@ -73,16 +75,18 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
         final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
 
         final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
-        //     frameLayout.getBackground().setAlpha(0);
+        //  frameLayout.getBackground().setAlpha(0);
         final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.fabmenu);
         final FloatingActionButton fabeditar = (FloatingActionButton) findViewById(R.id.fabeditar);
         final FloatingActionButton  fabrestaurante = (FloatingActionButton) findViewById(R.id.fabagregar);
         final FloatingActionButton  fabperfil = (FloatingActionButton) findViewById(R.id.fabperfil);
 
+
+
         fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
             public void onMenuExpanded() {
-                //           frameLayout.getBackground().setAlpha(240);
+                //        frameLayout.getBackground().setAlpha(240);
                 frameLayout.setOnTouchListener(new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
@@ -94,7 +98,7 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
 
             @Override
             public void onMenuCollapsed() {
-                //         frameLayout.getBackground().setAlpha(0);
+                //        frameLayout.getBackground().setAlpha(0);
                 frameLayout.setOnTouchListener(null);
             }
         });
@@ -120,6 +124,36 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(busquedanombre_delacalleactivity.this, perfilusuario_delacalleactivity.class);
                 startActivity(intent);
+            }
+        });
+
+        ParseQuery<ParseRole> roleuserusuario = ParseRole.getQuery();
+        roleuserusuario.whereEqualTo("name", "usuario");
+        roleuserusuario.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+        roleuserusuario.getFirstInBackground(new GetCallback<ParseRole>() {
+            @Override
+            public void done(ParseRole object, ParseException e) {
+                if (e == null) {
+                    fabeditar.setVisibility(View.INVISIBLE);
+                    fabrestaurante.setVisibility(View.INVISIBLE);
+                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                    ParseQuery<ParseRole> roleuserresponsable = ParseRole.getQuery();
+                    roleuserresponsable.whereEqualTo("name", "responsable");
+                    roleuserresponsable.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+                    roleuserresponsable.getFirstInBackground(new GetCallback<ParseRole>() {
+                        @Override
+                        public void done(ParseRole object, ParseException e) {
+                            if (e == null) {
+                                fabeditar.setVisibility(View.VISIBLE);
+                                fabrestaurante.setVisibility(View.VISIBLE);
+                            } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                Log.d("delacalle", "eres administrador");
+
+                            }
+                        }
+                    });
+                }
+
             }
         });
 
@@ -189,7 +223,7 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
                                         id = resta.getObjectId().toString();
                                         //    displayPopupdetalleMiResta(v);
 
-                                        Intent intent = new Intent(busquedanombre_delacalleactivity.this,editarrestaurante_delacalleactivity.class);
+                                        Intent intent = new Intent(busquedanombre_delacalleactivity.this,detallerestaurante_delacalleactivity.class);
                                         intent.putExtra("id", id);
                                         busquedanombre_delacalleactivity.this.startActivity(intent);
                                     }
@@ -274,7 +308,7 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
                             @Override
                             public void done(ParseException e) {
                                 id = resta.getObjectId().toString();
-                                Intent intent = new Intent(busquedanombre_delacalleactivity.this,editarrestaurante_delacalleactivity.class);
+                                Intent intent = new Intent(busquedanombre_delacalleactivity.this,detallerestaurante_delacalleactivity.class);
                                 intent.putExtra("id", id);
                                 busquedanombre_delacalleactivity.this.startActivity(intent);
                             }
@@ -307,10 +341,10 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+      /*  //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }

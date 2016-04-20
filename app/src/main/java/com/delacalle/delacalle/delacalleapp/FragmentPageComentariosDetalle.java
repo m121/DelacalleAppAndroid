@@ -145,7 +145,7 @@ public class FragmentPageComentariosDetalle extends Fragment {
                         usuarioComentario.setTypeface(primerfontcandara);
                         comentarioComentario.setTypeface(segundafontcaviar);
 
-                        nombreusuario  = comen.getString("nombreusuario");
+                        nombreusuario  = comen.getString("username");
 
 
                         usuarioComentario.setText(comen.getString("nombreusuario"));
@@ -161,7 +161,7 @@ public class FragmentPageComentariosDetalle extends Fragment {
                                         filefoto.getDataInBackground(new GetDataCallback() {
                                             @Override
                                             public void done(byte[] data, ParseException e) {
-                                                pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                     pic = BitmapFactory.decodeByteArray(data, 0, data.length);
                                                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                                                 pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                                                 fotoUsuarioComentario.setImageBitmap(pic);
@@ -298,7 +298,7 @@ public class FragmentPageComentariosDetalle extends Fragment {
                 usuarioComentario.setTypeface(primerfontcandara);
                 comentarioComentario.setTypeface(segundafontcaviar);
 
-                nombreusuario  = comen.getString("nombreusuario");
+                nombreusuario  = comen.getString("username");
 
                 usuarioComentario.setText(comen.getString("nombreusuario"));
                 comentarioComentario.setText(comen.getString("comentario"));
@@ -313,7 +313,7 @@ public class FragmentPageComentariosDetalle extends Fragment {
                                 filefoto.getDataInBackground(new GetDataCallback() {
                                     @Override
                                     public void done(byte[] data, ParseException e) {
-                                        pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                  pic = BitmapFactory.decodeByteArray(data, 0, data.length);
                                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                                         pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                                         fotoUsuarioComentario.setImageBitmap(pic);
@@ -342,57 +342,7 @@ public class FragmentPageComentariosDetalle extends Fragment {
 
 
 
-   /*     final   ParseQuery<ParseObject> query = ParseQuery.getQuery("comentarios");
-  //      query.whereEqualTo("restauranteid", id);
-        query.orderByAscending("createdAt");
 
-
-
-
-        final List<ParseObject> comenlista;
-        try {
-
-            comenlista = query.find();
-
-            for (final ParseObject comens : comenlista) {
-
-
-                nombreusuario  = comens.getString("nombreusuario");
-                usuarioComentario.setText(comens.getString("nombreusuario"));
-                comentarioComentario.setText(comens.getString("comentario"));
-                ParseQuery<ParseUser> userfotoq = ParseUser.getQuery();
-                userfotoq.whereEqualTo("username", nombreusuario);
-                userfotoq.getFirstInBackground(new GetCallback<ParseUser>() {
-                    @Override
-                    public void done(ParseUser usuario, ParseException e) {
-                        if (e == null) {
-                            filefoto = usuario.getParseFile("fotousuario");
-                            filefoto.getDataInBackground(new GetDataCallback() {
-                                @Override
-                                public void done(byte[] data, ParseException e) {
-                                    pic = BitmapFactory.decodeByteArray(data, 0, data.length);
-                                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                    pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                                    fotoUsuarioComentario.setImageBitmap(pic);
-
-                                }
-                            });
-                            Log.d("delacalle", "foto usuario mostrada");
-                        } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-                            Log.d("delacalle", "No se encuentra el usuario con el nombre");
-                        }
-                    }
-                });
-
-
-                Log.d("delacalle","comentario mostrado");
-
-
-            }
-        }catch(ParseException e)
-        {
-
-        }*/
 
 
 
@@ -426,7 +376,16 @@ public class FragmentPageComentariosDetalle extends Fragment {
                                 } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
                                     ParseObject objcomentario = new ParseObject("comentarios");
                                     objcomentario.put("userid", ParseUser.getCurrentUser());
-                                    objcomentario.put("nombreusuario", ParseUser.getCurrentUser().getString("nombre"));
+                                    String nombreusuario = ParseUser.getCurrentUser().getString("nombre");
+                                    // Si el usuario no tiene nombre aun, entonces se pondra el username que en este caso es el correo
+                                    if(nombreusuario != null) {
+                                        objcomentario.put("nombreusuario", nombreusuario);
+                                    }
+                                    else
+                                    {
+                                        objcomentario.put("nombreusuario",ParseUser.getCurrentUser().getUsername());
+                                    }
+                                    objcomentario.put("username",ParseUser.getCurrentUser().getUsername());
                                     objcomentario.put("restauranteid", id);
                                     objcomentario.put("comentario", comen);
                                     objcomentario.put("numcom", 1);

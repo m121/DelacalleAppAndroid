@@ -296,7 +296,7 @@ public class PageFragmentCartaDetalle extends Fragment {
             @Override
             public void done(final ParseObject carta, ParseException e) {
                 if (e == null) {
-                    nombrePlato1.setText(carta.getString("nombre"));
+                    nombrePlato1.setText(carta.getString("nombre").toUpperCase());
                     descripcionPlato1.setText(carta.getString("descripcion"));
                     precioPlato1.setText("$" + carta.getString("precio"));
                     fotofileplato1 = carta.getParseFile("fotoplato");
@@ -341,7 +341,7 @@ public class PageFragmentCartaDetalle extends Fragment {
             @Override
             public void done(final ParseObject carta, ParseException e) {
                 if (e == null) {
-                    nombrePlato2.setText(carta.getString("nombre"));
+                    nombrePlato2.setText(carta.getString("nombre").toUpperCase());
                     descripcionPlato2.setText(carta.getString("descripcion"));
                     precioPlato2.setText("$"+carta.getString("precio"));
                     fotofileplato2 = carta.getParseFile("fotoplato");
@@ -386,7 +386,7 @@ public class PageFragmentCartaDetalle extends Fragment {
             @Override
             public void done(final ParseObject carta, ParseException e) {
                 if (e == null) {
-                    nombrePlato3.setText(carta.getString("nombre"));
+                    nombrePlato3.setText(carta.getString("nombre").toUpperCase());
                     descripcionPlato3.setText(carta.getString("descripcion"));
                     precioPlato3.setText("$"+carta.getString("precio"));
                     fotofileplato3 = carta.getParseFile("fotoplato");
@@ -431,7 +431,7 @@ public class PageFragmentCartaDetalle extends Fragment {
             @Override
             public void done(final ParseObject carta, ParseException e) {
                 if (e == null) {
-                    nombrePlato4.setText(carta.getString("nombre"));
+                    nombrePlato4.setText(carta.getString("nombre").toUpperCase());
                     descripcionPlato4.setText(carta.getString("descripcion"));
                     precioPlato4.setText("$"+carta.getString("precio"));
                     fotofileplato4 = carta.getParseFile("fotoplato");
@@ -476,7 +476,7 @@ public class PageFragmentCartaDetalle extends Fragment {
             @Override
             public void done(final ParseObject carta, ParseException e) {
                 if (e == null) {
-                    nombrePlato5.setText(carta.getString("nombre"));
+                    nombrePlato5.setText(carta.getString("nombre").toUpperCase());
                     descripcionPlato5.setText(carta.getString("descripcion"));
                     precioPlato5.setText("$"+carta.getString("precio"));
                     fotofileplato5 = carta.getParseFile("fotoplato");
@@ -521,7 +521,7 @@ public class PageFragmentCartaDetalle extends Fragment {
             @Override
             public void done(final ParseObject carta, ParseException e) {
                 if (e == null) {
-                    nombrePlato6.setText(carta.getString("nombre"));
+                    nombrePlato6.setText(carta.getString("nombre").toUpperCase());
                     descripcionPlato6.setText(carta.getString("descripcion"));
                     precioPlato6.setText("$"+carta.getString("precio"));
                     fotofileplato6 = carta.getParseFile("fotoplato");
