@@ -226,6 +226,8 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
         btneliminarrestaurante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try
+                {
                 ParseQuery<ParseObject> queryeliminar = ParseQuery.getQuery("restaurante");
                 queryeliminar.whereEqualTo("objectId", id);
                 queryeliminar.getFirstInBackground(new GetCallback<ParseObject>() {
@@ -276,8 +278,13 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
                     }
                 });
 
-
+                }catch(Exception e)
+                {
+                    e.getStackTrace();
+                    Log.d("delacalle", "error en eliminar restaurante");
+                }
             }
+
         });
 
 
@@ -288,6 +295,8 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
             }
         });
 
+        try
+        {
         ParseQuery<ParseObject> querymostrareditar = ParseQuery.getQuery("restaurante");
         querymostrareditar.whereEqualTo("objectId", id);
         querymostrareditar.getFirstInBackground(new GetCallback<ParseObject>() {
@@ -342,6 +351,8 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
 
 
 
+
+
                     btneditar.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -389,7 +400,15 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Error en mostrar", Toast.LENGTH_SHORT).show();
                 }
             }
+
+
         });
+
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar restaurante");
+        }
 
 
 
@@ -676,6 +695,9 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
 */
 
     private void displayPopupFotos1(final View anchorView) {
+
+        try
+        {
         final PopupWindow popup = new PopupWindow(editarrestaurante_delacalleactivity.this);
         LayoutInflater inflater = (LayoutInflater) editarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.popupfotos, null);
@@ -722,10 +744,17 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
             }
         }, 100L);
 
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar popup fotos");
+        }
 
     }
 
     private void displayPopupFotos2(final View anchorView) {
+        try
+        {
         final PopupWindow popup = new PopupWindow(editarrestaurante_delacalleactivity.this);
         LayoutInflater inflater = (LayoutInflater) editarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.popupfotos, null);
@@ -772,152 +801,102 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
             }
         }, 100L);
 
-
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar popup fotos");
+        }
     }
 
 
-  /*  private void displayPopupFotos3(final View anchorView) {
-        final PopupWindow popup = new PopupWindow(editarrestaurante_delacalleactivity.this);
-        LayoutInflater inflater = (LayoutInflater) editarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = inflater.inflate(R.layout.popupfotos, null);
-        popup.setContentView(layout);
 
-
-        relativealbum = (RelativeLayout) layout.findViewById(R.id.relativelayoutAlbum);
-        relativefoto = (RelativeLayout) layout.findViewById(R.id.relativelayoutTomarFoto);
-        relativealbum.setClickable(true);
-        relativefoto.setClickable(true);
-
-
-        relativealbum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectpic3();
-
-
-            }
-        });
-
-        relativefoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                takephoto3();
-            }
-        });
-
-
-
-
-
-        // Set content width and height
-        popup.setHeight(400);
-        popup.setWidth(400);
-        // Closes the popup window when touch outside of it - when looses focus
-        popup.setOutsideTouchable(true);
-        popup.setFocusable(true);
-        // Show anchored to button
-        //   popup.setBackgroundDrawable(new BitmapDrawable());
-        new Handler().postDelayed(new Runnable() {
-
-            public void run() {
-                popup.showAtLocation(anchorView, Gravity.TOP | Gravity.START | Gravity.CENTER_VERTICAL, 120, 300);
-                popup.showAsDropDown(anchorView);
-            }
-        }, 100L);
-
-
-    }
-*/
 
     private void displayPopupPaleta(final View anchorView) {
-        final PopupWindow popup = new PopupWindow(editarrestaurante_delacalleactivity.this);
-        LayoutInflater inflater = (LayoutInflater) editarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = inflater.inflate(R.layout.popuppaleta, null);
-        popup.setContentView(layout);
+        try {
+            final PopupWindow popup = new PopupWindow(editarrestaurante_delacalleactivity.this);
+            LayoutInflater inflater = (LayoutInflater) editarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View layout = inflater.inflate(R.layout.popuppaleta, null);
+            popup.setContentView(layout);
 
 
-        buttonColor1 = (Button) layout.findViewById(R.id.btnColor1);
-        buttonColor2 = (Button) layout.findViewById(R.id.btnColor2);
-        buttonColor3 = (Button) layout.findViewById(R.id.btnColor3);
-        buttonColor4 = (Button) layout.findViewById(R.id.btnColor4);
-        buttonColor5 = (Button) layout.findViewById(R.id.btnColor5);
-        buttonColor6 = (Button) layout.findViewById(R.id.btnColor6);
+            buttonColor1 = (Button) layout.findViewById(R.id.btnColor1);
+            buttonColor2 = (Button) layout.findViewById(R.id.btnColor2);
+            buttonColor3 = (Button) layout.findViewById(R.id.btnColor3);
+            buttonColor4 = (Button) layout.findViewById(R.id.btnColor4);
+            buttonColor5 = (Button) layout.findViewById(R.id.btnColor5);
+            buttonColor6 = (Button) layout.findViewById(R.id.btnColor6);
 
 
+            buttonColor1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    relativepaleta.setBackgroundColor(Color.parseColor("#b56497"));
+                    color = "#b56497";
+                }
+            });
+
+            buttonColor2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    relativepaleta.setBackgroundColor(Color.parseColor("#169c79"));
+                    color = "#169c79";
+                }
+            });
+
+            buttonColor3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    relativepaleta.setBackgroundColor(Color.parseColor("#f05543"));
+                    color = "#f05543";
+                }
+            });
+
+            buttonColor4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    relativepaleta.setBackgroundColor(Color.parseColor("#da4f70"));
+                    color = "#da4f70";
+                }
+            });
+
+            buttonColor5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    relativepaleta.setBackgroundColor(Color.parseColor("#41b7ab"));
+                    color = "#41b7ab";
+                }
+            });
+
+            buttonColor6.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    relativepaleta.setBackgroundColor(Color.parseColor("#f0bf59"));
+                    color = "#f0bf59";
+                }
+            });
 
 
+            // Set content width and height
+            popup.setHeight(600);
+            popup.setWidth(400);
+            // Closes the popup window when touch outside of it - when looses focus
+            popup.setOutsideTouchable(true);
+            popup.setFocusable(true);
+            // Show anchored to button
+            //   popup.setBackgroundDrawable(new BitmapDrawable());
+            new Handler().postDelayed(new Runnable() {
 
-        buttonColor1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                relativepaleta.setBackgroundColor(Color.parseColor("#b56497"));
-                color = "#b56497";
-            }
-        });
+                public void run() {
+                    popup.showAtLocation(anchorView, Gravity.TOP | Gravity.START | Gravity.CENTER_VERTICAL, 120, 300);
+                    popup.showAsDropDown(anchorView);
+                }
+            }, 100L);
 
-        buttonColor2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                relativepaleta.setBackgroundColor(Color.parseColor("#169c79"));
-                color = "#169c79";
-            }
-        });
-
-        buttonColor3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                relativepaleta.setBackgroundColor(Color.parseColor("#f05543"));
-                color = "#f05543";
-            }
-        });
-
-        buttonColor4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                relativepaleta.setBackgroundColor(Color.parseColor("#da4f70"));
-                color = "#da4f70";
-            }
-        });
-
-        buttonColor5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                relativepaleta.setBackgroundColor(Color.parseColor("#41b7ab"));
-                color = "#41b7ab";
-            }
-        });
-
-        buttonColor6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                relativepaleta.setBackgroundColor(Color.parseColor("#f0bf59"));
-                color = "#f0bf59";
-            }
-        });
-
-
-
-
-
-
-
-
-        // Set content width and height
-        popup.setHeight(600);
-        popup.setWidth(400);
-        // Closes the popup window when touch outside of it - when looses focus
-        popup.setOutsideTouchable(true);
-        popup.setFocusable(true);
-        // Show anchored to button
-        //   popup.setBackgroundDrawable(new BitmapDrawable());
-        new Handler().postDelayed(new Runnable() {
-
-            public void run() {
-                popup.showAtLocation(anchorView, Gravity.TOP | Gravity.START | Gravity.CENTER_VERTICAL, 120, 300);
-                popup.showAsDropDown(anchorView);
-            }
-        }, 100L);
-
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar popup paleta colores");
+        }
 
     }
 

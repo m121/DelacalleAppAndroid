@@ -208,6 +208,9 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
 
             for (final ParseObject cartas : cartatlista) {
 
+                try
+                {
+
                 id = cartas.getString("restauranteId");
                 milayoutrestaurantelink.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -266,7 +269,11 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
                     }
                 });
 
-
+                }catch(Exception e)
+                {
+                    e.getStackTrace();
+                    Log.d("delacalle", "error en mostrar carta en screenslide");
+                }
             }
         }
     catch(ParseException e)

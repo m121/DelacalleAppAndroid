@@ -135,50 +135,10 @@ public class iniciosesion_delacalleactivity extends AppCompatActivity {
         // get Internet status
         isInternetPresent = cd.isConnectingToInternet();
 
-       /* // Check if no view has focus:
-        View view = this.getCurrentFocus();
-        if (view != null) {
-            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }*/
 
 
-        /*callbackManager = CallbackManager.Factory.create();
-        LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                // App code
-                Toast.makeText(getApplicationContext(), "Estas dentro", Toast.LENGTH_SHORT).show();
-            }
 
-            @Override
-            public void onCancel() {
-                // App code
-            }
 
-            @Override
-            public void onError(FacebookException exception) {
-                // App code
-            }
-        });*/
-
-     //   loginButton = (LoginButton) findViewById(R.id.login_button);
-
-     //   FacebookSdk.sdkInitialize(this.getApplicationContext());
-
-       /* accessTokenTracker = new AccessTokenTracker() {
-            @Override
-            protected void onCurrentAccessTokenChanged(
-                    AccessToken oldAccessToken,
-                    AccessToken currentAccessToken) {
-                // Set the access token using
-                // currentAccessToken when it's loaded or set.
-            }
-        };
-
-        accessToken = AccessToken.getCurrentAccessToken();
-     //*/
 
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
 
@@ -229,10 +189,7 @@ e.printStackTrace();
         btnLogInEmail.setTypeface(primerfontcandara);
         btnlinkregistrar.setTypeface(primerfontcandara);
         btnLinkToResetPass.setTypeface(primerfontcandara);
-        //    btnLinkTosignupEmail = (Button) layout.findViewById(R.id.btnLinkToSignUp);
-        //    btnLinkToResetPass = (Button) layout.findViewById(R.id.btnLinkToresetpass);
-
-        //     final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
+              //     final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
         //     final Animation animTranslate = AnimationUtils.loadAnimation(this, R.anim.anim_translate);
         loginfacebook.setClickable(true);
   //      logininstagram.setClickable(true);
@@ -281,71 +238,74 @@ e.printStackTrace();
             }
         });
 
+try {
+    loginfacebook.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            v.startAnimation(animAlpha);
+            if (isInternetPresent) {
+                ParseFacebookUtils.logInWithReadPermissionsInBackground(iniciosesion_delacalleactivity.this, mPermissions, new LogInCallback() {
+                    @Override
+                    public void done(ParseUser user, ParseException err) {
+                        Toast.makeText(getApplicationContext(), "Iniciando sesión", Toast.LENGTH_SHORT).show();
+                        if (user == null) {
+                            ParseUser.logOut();
+                            //   Log.d("myapp",err.getLocalizedMessage());
+                            Log.d("delacalle", "usuario es null");
+                        } else if (user.isNew()) {
 
-        loginfacebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.startAnimation(animAlpha);
-                if (isInternetPresent) {
-                    ParseFacebookUtils.logInWithReadPermissionsInBackground(iniciosesion_delacalleactivity.this, mPermissions, new LogInCallback() {
-                        @Override
-                        public void done(ParseUser user, ParseException err) {
-                            Toast.makeText(getApplicationContext(), "Iniciando sesión", Toast.LENGTH_SHORT).show();
-                            if (user == null) {
-                                ParseUser.logOut();
-                                //   Log.d("myapp",err.getLocalizedMessage());
-                                Log.d("delacalle", "usuario es null");
-                            } else if (user.isNew()) {
 
-
-                                ParseQuery<ParseRole> roleq = ParseRole.getQuery();
-                                roleq.whereEqualTo("name", "usuario");
-                                roleq.getFirstInBackground(new GetCallback<ParseRole>() {
-                                    @Override
-                                    public void done(ParseRole rol, ParseException e) {
-                                        if (e == null) {
-                                            rol.getUsers().add(ParseUser.getCurrentUser());
-                                            rol.saveInBackground();
-                                            Log.d("delacalle", "Usuario agregado a Rol Usuario");
-                                        } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-                                            ParseACL roleACL = new ParseACL();
-                                            roleACL.setPublicReadAccess(true);
-                                            roleACL.setPublicWriteAccess(true);
-                                            ParseRole role = new ParseRole("usuario", roleACL);
-                                            role.getUsers().add(ParseUser.getCurrentUser());
-                                            role.saveInBackground();
-                                            Log.d("delacalle", "Rol usuario creado y usuario agregado");
-                                        }
-
+                            ParseQuery<ParseRole> roleq = ParseRole.getQuery();
+                            roleq.whereEqualTo("name", "usuario");
+                            roleq.getFirstInBackground(new GetCallback<ParseRole>() {
+                                @Override
+                                public void done(ParseRole rol, ParseException e) {
+                                    if (e == null) {
+                                        rol.getUsers().add(ParseUser.getCurrentUser());
+                                        rol.saveInBackground();
+                                        Log.d("delacalle", "Usuario agregado a Rol Usuario");
+                                    } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                        ParseACL roleACL = new ParseACL();
+                                        roleACL.setPublicReadAccess(true);
+                                        roleACL.setPublicWriteAccess(true);
+                                        ParseRole role = new ParseRole("usuario", roleACL);
+                                        role.getUsers().add(ParseUser.getCurrentUser());
+                                        role.saveInBackground();
+                                        Log.d("delacalle", "Rol usuario creado y usuario agregado");
                                     }
-                                });
+
+                                }
+                            });
 
 
+                            Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
+                            startActivity(intent);
 
-                                Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
-                                startActivity(intent);
-
-                            } else {
-                                Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
-                                startActivity(intent);
-                                Toast.makeText(getApplicationContext(), "¡Bienvenido otra vez! " + user.getUsername(), Toast.LENGTH_SHORT).show();
-                                Log.d("delacalle", "usuario inicio sesion con Facebook");
-
-
-                            }
+                        } else {
+                            Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
+                            startActivity(intent);
+                            Toast.makeText(getApplicationContext(), "¡Bienvenido otra vez! " + user.getUsername(), Toast.LENGTH_SHORT).show();
+                            Log.d("delacalle", "usuario inicio sesion con Facebook");
 
 
                         }
-                    });
 
-                } else {
-                    Log.d("delacalle", "No hay internet");
-                    Toast.makeText(getApplicationContext(), "No puedes  usar la app sin Internet ", Toast.LENGTH_SHORT).show();
-                }
+
+                    }
+                });
+
+            } else {
+                Log.d("delacalle", "No hay internet");
+                Toast.makeText(getApplicationContext(), "No puedes  usar la app sin Internet ", Toast.LENGTH_SHORT).show();
             }
-        });
+        }
+    });
 
-
+}catch (Exception e)
+{
+    e.getStackTrace();
+    Log.d("delacalle","error en Facebook login");
+}
 
       /*  logininstagram.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -375,34 +335,7 @@ e.printStackTrace();
 
 
 
-       /* loginwithTwitter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.startAnimation(animAlpha);
-                ParseTwitterUtils.logIn(iniciosesion_delacalleactivity.this, new LogInCallback() {
-                    @Override
-                    public void done(ParseUser user, ParseException err) {
-                        if (user == null) {
-                            Log.d("MyApp", "Uh oh. The user cancelled the Twitter login.");
-                        } else if (user.isNew()) {
-                            ParseACL roleACL = new ParseACL();
-                            roleACL.setPublicReadAccess(true);
-                            ParseRole role = new ParseRole("usuario", roleACL);
-                            role.getUsers().add(ParseUser.getCurrentUser());
-                            role.saveInBackground();
-                            Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
-                            startActivity(intent);
-                            Log.d("MyApp", "User signed up and logged in through Twitter!");
-                        } else {
-                            Log.d("MyApp", "User logged in through Twitter!");
-                            Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
-                            startActivity(intent);
-                        }
-                    }
-                });
 
-            }
-        });*/
 
 //**
         btnLinkToResetPass.setOnClickListener(new View.OnClickListener() {
@@ -424,25 +357,24 @@ e.printStackTrace();
 
 
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        @Override
+        protected void onActivityResult ( int requestCode, int resultCode, Intent data){
+            try
+            {
         super.onActivityResult(requestCode, resultCode, data);
 
         ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
 //        callbackManager.onActivityResult(requestCode, resultCode, data);
 
-        GraphRequest.GraphJSONObjectCallback mCallback = new GraphRequest.GraphJSONObjectCallback()
-        {
+        GraphRequest.GraphJSONObjectCallback mCallback = new GraphRequest.GraphJSONObjectCallback() {
             @Override
-            public void onCompleted(JSONObject mData, GraphResponse mResponse)
-            {
-                if(mResponse.getError() == null)
-                {
-                    try
-                    {
+            public void onCompleted(JSONObject mData, GraphResponse mResponse) {
+                if (mResponse.getError() == null) {
+                    try {
 
-                      final   String email = mData.getString("email");
-                      final  String username = mData.getString("name");
+                        final String email = mData.getString("email");
+                        final String username = mData.getString("name");
 
                         Log.d("delacalle", "Email es " + email);
                         Log.d("delacalle", "nombre es " + username);
@@ -467,18 +399,12 @@ e.printStackTrace();
                         });
 
 
-                    }
-
-                    catch (JSONException e)
-                    {
+                    } catch (JSONException e) {
                         //JSON Error, DEBUG
                     }
 
 
-                }
-
-                else
-                {
+                } else {
                     //Facebook GraphResponse error, DEBUG
                 }
             }
@@ -510,6 +436,11 @@ e.printStackTrace();
 
 */
 
+            }catch(Exception e)
+            {
+                e.getStackTrace();
+               Log.d("delacalle","error en onactivityresult");
+            }
     }
 
 
@@ -591,37 +522,43 @@ e.printStackTrace();
         return true;
     }
 
-    private void logInEmail(String lowercase, String userpass)
-    {
-        ParseUser.logInInBackground(lowercase, userpass, new LogInCallback() {
-            @Override
-            public void done(ParseUser user, ParseException e) {
-                if (e == null) {
-                    ParseQuery<ParseRole> roleadmin = ParseRole.getQuery();
-                    roleadmin.whereEqualTo("name","Administrador");
-                    roleadmin.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
-                    roleadmin.getFirstInBackground(new GetCallback<ParseRole>() {
-                        @Override
-                        public void done(ParseRole object, ParseException e) {
-                            if (e == null) {
-                                Intent intent = new Intent(iniciosesion_delacalleactivity.this, registrarresponsable_delacalleactivity.class);
-                                startActivity(intent);
+    // iniciar sesion por correo
+        private void logInEmail (String lowercase, String userpass)
+        {
+            try
+            {
+            ParseUser.logInInBackground(lowercase, userpass, new LogInCallback() {
+                @Override
+                public void done(ParseUser user, ParseException e) {
+                    if (e == null) {
+                        ParseQuery<ParseRole> roleadmin = ParseRole.getQuery();
+                        roleadmin.whereEqualTo("name", "Administrador");
+                        roleadmin.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+                        roleadmin.getFirstInBackground(new GetCallback<ParseRole>() {
+                            @Override
+                            public void done(ParseRole object, ParseException e) {
+                                if (e == null) {
+                                    Intent intent = new Intent(iniciosesion_delacalleactivity.this, registrarresponsable_delacalleactivity.class);
+                                    startActivity(intent);
+                                } else {
+
+                                    loginSuccesfull();
+                                }
                             }
-                            else
-                            {
-
-                                      loginSuccesfull();
-                            }
-                        }
-                    });
+                        });
 
 
-                } else {
-                    loginFail();
+                    } else {
+                        loginFail();
+                    }
                 }
+            });
+            }catch(Exception ae)
+            {
+                ae.getStackTrace();
             }
-        });
-    }
+        }
+
 
     public void loginSuccesfull()
     {
@@ -668,14 +605,7 @@ e.printStackTrace();
         txtUserPass.setError(null);
     }
 
-   /* @Override
-    public void onBackPressed() {
 
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-    }*/
 
 
 }

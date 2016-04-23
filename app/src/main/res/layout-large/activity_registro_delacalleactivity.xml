@@ -86,18 +86,19 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp" />
 
-        <Button
-        android:id="@+id/buttonenlacealogin"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:background="@null"
-        android:text="Enlace a iniciar sesión"
-        android:textAllCaps="false"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:layout_below="@+id/btnregistrarse"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp" />
+        <ImageButton
+            android:id="@+id/buttonenlacealogin"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:background="#f27817"
+            android:src="@mipmap/ic_home"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:layout_below="@+id/btnregistrarse"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="42dp"
+            android:layout_gravity="center_horizontal" />
 
 
     </LinearLayout>

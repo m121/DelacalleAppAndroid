@@ -78,6 +78,9 @@ public class busquedaprecio_delacalleactivity  extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        try
+        {
+
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             titulo = bundle.getString("titulo");
@@ -110,7 +113,11 @@ public class busquedaprecio_delacalleactivity  extends AppCompatActivity {
 
 
 
-
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar busqueda precio");
+        }
 
 
 

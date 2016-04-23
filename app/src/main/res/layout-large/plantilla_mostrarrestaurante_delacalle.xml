@@ -68,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:text="Descripcion"
                 android:textSize="20sp"
+                android:inputType="textCapWords"
                 android:id="@+id/editTextdescripcionmostrarrestaurante"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"

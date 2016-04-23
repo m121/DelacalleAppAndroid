@@ -488,6 +488,9 @@ public class agregarcarta_delacalleactivity extends AppCompatActivity {
     public void agregarCarta()
     {
 
+try
+{
+
 
 
         ParseACL acl = new ParseACL();
@@ -583,6 +586,12 @@ public class agregarcarta_delacalleactivity extends AppCompatActivity {
         Intent intent = new Intent(agregarcarta_delacalleactivity.this,menu_pestanas_delacalleactivity.class);
         startActivity(intent);
 
+}catch(Exception e)
+{
+    e.getStackTrace();
+    Log.d("delacalle", "error en guardar carta");
+}
+
 
     }
 
@@ -609,6 +618,8 @@ public class agregarcarta_delacalleactivity extends AppCompatActivity {
     }
 
     private void displayPopupFotoPlato1(final View anchorView) {
+        try
+        {
         final PopupWindow popup = new PopupWindow(agregarcarta_delacalleactivity.this);
         LayoutInflater inflater = (LayoutInflater) agregarcarta_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.popupfotos, null);
@@ -657,10 +668,16 @@ public class agregarcarta_delacalleactivity extends AppCompatActivity {
             }
         }, 100L);
 
-
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar popup de fotos");
+        }
     }
 
     private void displayPopupFotoPlato2(final View anchorView) {
+        try
+        {
         final PopupWindow popup = new PopupWindow(agregarcarta_delacalleactivity.this);
         LayoutInflater inflater = (LayoutInflater) agregarcarta_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.popupfotos, null);
@@ -709,10 +726,16 @@ public class agregarcarta_delacalleactivity extends AppCompatActivity {
             }
         }, 100L);
 
-
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar popup de fotos");
+        }
     }
 
     private void displayPopupFotoPlato3(final View anchorView) {
+        try
+        {
         final PopupWindow popup = new PopupWindow(agregarcarta_delacalleactivity.this);
         LayoutInflater inflater = (LayoutInflater) agregarcarta_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.popupfotos, null);
@@ -760,11 +783,17 @@ public class agregarcarta_delacalleactivity extends AppCompatActivity {
                 popup.showAsDropDown(anchorView);
             }
         }, 100L);
-
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar popup de fotos");
+        }
 
     }
 
     private void displayPopupFotoPlato4(final View anchorView) {
+        try
+        {
         final PopupWindow popup = new PopupWindow(agregarcarta_delacalleactivity.this);
         LayoutInflater inflater = (LayoutInflater) agregarcarta_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.popupfotos, null);
@@ -813,12 +842,18 @@ public class agregarcarta_delacalleactivity extends AppCompatActivity {
             }
         }, 100L);
 
-
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar popup de fotos");
+        }
     }
 
 
 
     private void displayPopupFotoPlato5(final View anchorView) {
+        try
+        {
         final PopupWindow popup = new PopupWindow(agregarcarta_delacalleactivity.this);
         LayoutInflater inflater = (LayoutInflater) agregarcarta_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.popupfotos, null);
@@ -866,59 +901,66 @@ public class agregarcarta_delacalleactivity extends AppCompatActivity {
                 popup.showAsDropDown(anchorView);
             }
         }, 100L);
-
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar popup de fotos");
+        }
 
     }
 
     private void displayPopupFotoPlato6(final View anchorView) {
-        final PopupWindow popup = new PopupWindow(agregarcarta_delacalleactivity.this);
-        LayoutInflater inflater = (LayoutInflater) agregarcarta_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = inflater.inflate(R.layout.popupfotos, null);
-        popup.setContentView(layout);
+
+        try {
+            final PopupWindow popup = new PopupWindow(agregarcarta_delacalleactivity.this);
+            LayoutInflater inflater = (LayoutInflater) agregarcarta_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View layout = inflater.inflate(R.layout.popupfotos, null);
+            popup.setContentView(layout);
 
 
-        relativealbum = (RelativeLayout) layout.findViewById(R.id.relativelayoutAlbum);
-        relativefoto = (RelativeLayout) layout.findViewById(R.id.relativelayoutTomarFoto);
-        relativealbum.setClickable(true);
-        relativefoto.setClickable(true);
+            relativealbum = (RelativeLayout) layout.findViewById(R.id.relativelayoutAlbum);
+            relativefoto = (RelativeLayout) layout.findViewById(R.id.relativelayoutTomarFoto);
+            relativealbum.setClickable(true);
+            relativefoto.setClickable(true);
 
 
-        relativealbum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectpic6();
-                popup.dismiss();
-            }
-        });
+            relativealbum.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    selectpic6();
+                    popup.dismiss();
+                }
+            });
 
-        relativefoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                takephoto6();
-                popup.dismiss();
-            }
-        });
-
-
+            relativefoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    takephoto6();
+                    popup.dismiss();
+                }
+            });
 
 
+            // Set content width and height
+            popup.setHeight(400);
+            popup.setWidth(400);
+            // Closes the popup window when touch outside of it - when looses focus
+            popup.setOutsideTouchable(true);
+            popup.setFocusable(true);
+            // Show anchored to button
+            //   popup.setBackgroundDrawable(new BitmapDrawable());
+            new Handler().postDelayed(new Runnable() {
 
-        // Set content width and height
-        popup.setHeight(400);
-        popup.setWidth(400);
-        // Closes the popup window when touch outside of it - when looses focus
-        popup.setOutsideTouchable(true);
-        popup.setFocusable(true);
-        // Show anchored to button
-        //   popup.setBackgroundDrawable(new BitmapDrawable());
-        new Handler().postDelayed(new Runnable() {
-
-            public void run() {
-                popup.showAtLocation(anchorView, Gravity.TOP | Gravity.START | Gravity.CENTER_VERTICAL, 120, 300);
-                popup.showAsDropDown(anchorView);
-            }
-        }, 100L);
-
+                public void run() {
+                    popup.showAtLocation(anchorView, Gravity.TOP | Gravity.START | Gravity.CENTER_VERTICAL, 120, 300);
+                    popup.showAsDropDown(anchorView);
+                }
+            }, 100L);
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar popup de fotos");
+        }
 
     }
 

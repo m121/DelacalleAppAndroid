@@ -13,6 +13,7 @@ import android.app.Fragment;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -56,20 +57,7 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
 
 
 
-    Button btnagregar;
 
-    TextView titletxt;
-    TextView descriptiontxt;
-    TextView plato1txt;
-    TextView plato2txt;
-    TextView plato3txt;
-    ImageView picimageview1;
-    ImageView picimageview2;
-    ImageView picimageview3;
-    RatingBar ratingbarres;
-    ParseFile picfile1;
-    ParseFile picfile2;
-    ParseFile picfile3;
 
     String id;
     private float ratingR;
@@ -106,82 +94,88 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                // Show results  in listview with my own adapter ParseQueryAdapter
-                ParseQueryAdapter.QueryFactory<ParseObject> factory =
-                        new  ParseQueryAdapter.QueryFactory<ParseObject>(){
-                            public ParseQuery<ParseObject> create () {
-                                ParseQuery<ParseObject>  query = ParseQuery.getQuery("restaurante");
-                                query.orderByAscending("createAt");
-                                return query;
+                try {
+                    // Show results  in listview with my own adapter ParseQueryAdapter
+                    ParseQueryAdapter.QueryFactory<ParseObject> factory =
+                            new ParseQueryAdapter.QueryFactory<ParseObject>() {
+                                public ParseQuery<ParseObject> create() {
+                                    ParseQuery<ParseObject> query = ParseQuery.getQuery("restaurante");
+                                    query.orderByAscending("createAt");
+                                    return query;
+                                }
+                            };
+
+                    restaurantesQueryAdapter = new ParseQueryAdapter<ParseObject>(getActivity(), factory) {
+
+                        @Override
+                        public View getItemView(final ParseObject resta, View view, ViewGroup parent) {
+                            if (view == null) {
+                                view = View.inflate(getContext(), R.layout.plantilla_mostrarrestaurante_delacalle, null);
                             }
-                        };
+                            CardView cardview = (CardView) view.findViewById(R.id.cardView);
+                            cardview.setClickable(true);
+                            TextView titletxt = (TextView) view.findViewById(R.id.editTextnombremostrarrestaurante);
+                            TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
+                            TextView direcciontxt = (TextView) view.findViewById(R.id.textViewDireccionM);
+                            TextView telefonotxt = (TextView) view.findViewById(R.id.textViewTelefonoM);
+                            final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
+                            RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
+                            ParseFile picfile;
+                            titletxt.setTypeface(primerfontcandara);
+                            descriptiontxt.setTypeface(segundafontcaviar);
+                            direcciontxt.setTypeface(segundafontcaviar);
+                            telefonotxt.setTypeface(segundafontcaviar);
 
-                restaurantesQueryAdapter = new ParseQueryAdapter<ParseObject>(getActivity(),factory)
-                {
+                            cardview.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(final View v) {
+                                    resta.saveInBackground(new SaveCallback() {
+                                        @Override
+                                        public void done(ParseException e) {
+                                            id = resta.getObjectId().toString();
+                                            Intent intent = new Intent(getActivity(), detallerestaurante_delacalleactivity.class);
+                                            intent.putExtra("id", id);
+                                            getActivity().startActivity(intent);
+                                        }
+                                    });
 
-                    @Override
-                    public View getItemView(final ParseObject resta,View view, ViewGroup parent)
-                    {
-                        if(view == null)
-                        {
-                            view = View.inflate(getContext(),R.layout.plantilla_mostrarrestaurante_delacalle,null);
+                                }
+                            });
+                            cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
+                            titletxt.setText(resta.getString("nombre"));
+                            descriptiontxt.setText(resta.getString("descripcion"));
+                            direcciontxt.setText(resta.getString("direccion"));
+                            telefonotxt.setText(resta.getString("telefono"));
+                            picfile = resta.getParseFile("fotologo");
+                            picfile.getDataInBackground(new GetDataCallback() {
+                                @Override
+                                public void done(byte[] data, ParseException e) {
+                                    pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                    pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                                    picimageview.setImageBitmap(pic);
+                                }
+                            });
+                            ratingbarres.setRating(resta.getInt("rating"));
+
+
+                            return view;
                         }
-                        CardView cardview = (CardView) view.findViewById(R.id.cardView);
-                        cardview.setClickable(true);
-                        TextView titletxt = (TextView) view.findViewById(R.id.editTextnombremostrarrestaurante);
-                        TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
-                        TextView direcciontxt = (TextView) view.findViewById(R.id.textViewDireccionM);
-                        TextView telefonotxt = (TextView)   view.findViewById(R.id.textViewTelefonoM);
-                        final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
-                        RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
-                        ParseFile picfile;
-                        titletxt.setTypeface(primerfontcandara);
-                        descriptiontxt.setTypeface(segundafontcaviar);
-                        direcciontxt.setTypeface(segundafontcaviar);
-                        telefonotxt.setTypeface(segundafontcaviar);
+                    };
 
-                        cardview.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(final View v) {
-                                resta.saveInBackground(new SaveCallback() {
-                                    @Override
-                                    public void done(ParseException e) {
-                                        id = resta.getObjectId().toString();
-                                        Intent intent = new Intent(getActivity(),detallerestaurante_delacalleactivity.class);
-                                        intent.putExtra("id", id);
-                                        getActivity().startActivity(intent);
-                                    }
-                                });
+                    ListView restaListView = (ListView) view.findViewById(R.id.listViewrestaurantes);
+                    restaListView.setAdapter(restaurantesQueryAdapter);
 
-                            }
-                        });
-                        cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
-                        titletxt.setText(resta.getString("nombre"));
-                        descriptiontxt.setText(resta.getString("descripcion"));
-                        direcciontxt.setText(resta.getString("direccion"));
-                        telefonotxt.setText(resta.getString("telefono"));
-                        picfile = resta.getParseFile("fotologo");
-                        picfile.getDataInBackground(new GetDataCallback() {
-                            @Override
-                            public void done(byte[] data, ParseException e) {
-                                pic = BitmapFactory.decodeByteArray(data, 0, data.length);
-                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                                picimageview.setImageBitmap(pic);
-                            }
-                        });
-                        ratingbarres.setRating(resta.getInt("rating"));
+                    swipeRefreshLayout.setRefreshing(false);
 
+                }catch(Exception e)
+                {
+                    e.getStackTrace();
+                    Log.d("delacalle", "error en actualizar contenido");
+                }
 
-                        return view;
-                    }
-                };
+                }
 
-                ListView restaListView = (ListView) view.findViewById(R.id.listViewrestaurantes);
-                restaListView.setAdapter(restaurantesQueryAdapter);
-
-                swipeRefreshLayout.setRefreshing(false);
-            }
         });
 
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
@@ -266,7 +260,8 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
 
             }
         });
-
+try
+{
         // Show results  in listview with my own adapter ParseQueryAdapter
         ParseQueryAdapter.QueryFactory<ParseObject> factory =
                 new  ParseQueryAdapter.QueryFactory<ParseObject>(){
@@ -340,6 +335,12 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
 
         ListView restaListView = (ListView) view.findViewById(R.id.listViewrestaurantes);
         restaListView.setAdapter(restaurantesQueryAdapter);
+
+        }catch(Exception e)
+        {
+      e.getStackTrace();
+       Log.d("delacalle", "error en mostrar contenido");
+        }
 
 
         return view;

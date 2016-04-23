@@ -89,7 +89,7 @@
         android:layout_alignParentStart="true">
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="40dp"
             android:id="@+id/editTextnombreiniciarsesion"
             android:layout_marginTop="67dp"
             android:hint="Nombre usuario"
@@ -107,7 +107,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="40dp"
             android:inputType="textPassword"
             android:ems="10"
             android:hint="Contraseña"
@@ -126,7 +126,7 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="40dp"
             android:text="Entrar"
             android:id="@+id/btniniciarsesion"
             android:background="@color/buttoncolor"
@@ -135,11 +135,11 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="35dp"
             android:textColor="#FFFFFF"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="40dp"
             android:text="¿No tienes una cuenta? Regístrate"
             android:id="@+id/btnlinkregistrar"
             android:background="@null"
@@ -148,11 +148,11 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="35dp"
             android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="30dp"
             android:text="¿Te has olvidado de la contraseña?"
             android:id="@+id/btnlinkreseteardesdelogin"
             android:background="@null"
@@ -161,7 +161,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="35dp"
             android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
 
     </LinearLayout>
@@ -172,7 +172,8 @@
         android:src="@drawable/facebook"
         android:id="@+id/btnSignInFacebook"
         android:layout_above="@+id/linearLayout"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="58dp" />
 
     <!--<ImageView
         android:layout_width="80dp"

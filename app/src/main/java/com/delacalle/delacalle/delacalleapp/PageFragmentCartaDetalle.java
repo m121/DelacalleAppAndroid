@@ -289,7 +289,8 @@ public class PageFragmentCartaDetalle extends Fragment {
             }
         });
 
-
+try
+{
         ParseQuery<ParseObject>  cartaquery = ParseQuery.getQuery("carta");
         cartaquery.whereEqualTo("restauranteId", id);
         cartaquery.getFirstInBackground(new GetCallback<ParseObject>() {
@@ -558,6 +559,12 @@ public class PageFragmentCartaDetalle extends Fragment {
                 }
             }
         });
+
+}catch(Exception e)
+{
+    e.getStackTrace();
+    Log.d("delacalle", "error en mostrar carta detalle");
+}
         return view;
     }
 

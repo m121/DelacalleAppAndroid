@@ -51,6 +51,9 @@ ArrayList<String> carta;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        try
+        {
+
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             titulo = bundle.getString("titulo");
@@ -80,6 +83,12 @@ ArrayList<String> carta;
                 }
             }
         });
+
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar contenido busqueda carta");
+        }
     }
 
     @Override

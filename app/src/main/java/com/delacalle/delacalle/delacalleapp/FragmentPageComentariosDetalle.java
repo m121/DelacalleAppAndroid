@@ -119,9 +119,12 @@ public class FragmentPageComentariosDetalle extends Fragment {
             }
         });
 
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                try
+                {
                 ParseQueryAdapter.QueryFactory<ParseObject> factory =
                         new ParseQueryAdapter.QueryFactory<ParseObject>() {
                             public ParseQuery<ParseObject> create() {
@@ -139,13 +142,13 @@ public class FragmentPageComentariosDetalle extends Fragment {
                         if (view == null) {
                             view = View.inflate(getContext(), R.layout.plantilla_comentariosrestaurante, null);
                         }
-                 final ImageView fotoUsuarioComentario = (ImageView) view.findViewById(R.id.imageViewFotoUsuarioComentario);
-                 TextView       usuarioComentario = (TextView) view.findViewById(R.id.textViewNombreUsuario);
-                 TextView       comentarioComentario = (TextView) view.findViewById(R.id.textViewComentario);
+                        final ImageView fotoUsuarioComentario = (ImageView) view.findViewById(R.id.imageViewFotoUsuarioComentario);
+                        TextView usuarioComentario = (TextView) view.findViewById(R.id.textViewNombreUsuario);
+                        TextView comentarioComentario = (TextView) view.findViewById(R.id.textViewComentario);
                         usuarioComentario.setTypeface(primerfontcandara);
                         comentarioComentario.setTypeface(segundafontcaviar);
 
-                        nombreusuario  = comen.getString("username");
+                        nombreusuario = comen.getString("username");
 
 
                         usuarioComentario.setText(comen.getString("nombreusuario"));
@@ -161,7 +164,7 @@ public class FragmentPageComentariosDetalle extends Fragment {
                                         filefoto.getDataInBackground(new GetDataCallback() {
                                             @Override
                                             public void done(byte[] data, ParseException e) {
-                                     pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                                pic = BitmapFactory.decodeByteArray(data, 0, data.length);
                                                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                                                 pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                                                 fotoUsuarioComentario.setImageBitmap(pic);
@@ -188,6 +191,12 @@ public class FragmentPageComentariosDetalle extends Fragment {
 
                 swipeRefreshLayout.setRefreshing(false);
 
+
+                }catch(Exception e)
+                {
+                    e.getStackTrace();
+                    Log.d("delacalle", "error en mostrar contenido actualizado comentarios");
+                }
             }
         });
 
@@ -275,6 +284,8 @@ public class FragmentPageComentariosDetalle extends Fragment {
         });
 
 
+        try
+        {
         ParseQueryAdapter.QueryFactory<ParseObject> factory =
                 new ParseQueryAdapter.QueryFactory<ParseObject>() {
                     public ParseQuery<ParseObject> create() {
@@ -344,12 +355,23 @@ public class FragmentPageComentariosDetalle extends Fragment {
 
 
 
-
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar comentarios");
+        }
 
         return view;
+
+
     }
 
+
+
     protected void showInputDialogComentarios() {
+
+        try
+        {
 
         // get prompts.xml view
         LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
@@ -411,6 +433,14 @@ public class FragmentPageComentariosDetalle extends Fragment {
         // create an alert dialog
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
+
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en agregar comentarios");
+        }
     }
+
+
 
 }

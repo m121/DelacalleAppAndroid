@@ -122,7 +122,7 @@ public class PageFragmentInformacionDetalle extends Fragment {
         fabMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
             public void onMenuExpanded() {
-       //         frameLayout.getBackground().setAlpha(240);
+                //         frameLayout.getBackground().setAlpha(240);
                 frameLayout.setOnTouchListener(new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
@@ -134,7 +134,7 @@ public class PageFragmentInformacionDetalle extends Fragment {
 
             @Override
             public void onMenuCollapsed() {
-       //         frameLayout.getBackground().setAlpha(0);
+                //         frameLayout.getBackground().setAlpha(0);
                 frameLayout.setOnTouchListener(null);
             }
         });
@@ -190,7 +190,8 @@ public class PageFragmentInformacionDetalle extends Fragment {
             }
         });
 
-
+try
+{
         ParseQuery<ParseObject> querymostrareditar = ParseQuery.getQuery("restaurante");
         querymostrareditar.whereEqualTo("objectId", id);
         querymostrareditar.getFirstInBackground(new GetCallback<ParseObject>() {
@@ -205,6 +206,7 @@ public class PageFragmentInformacionDetalle extends Fragment {
                     direccionR.setText(object.getString("direccion"));
                     telefonoR.setText(object.getString("telefono"));
                     webR.setText(object.getString("web"));
+                    ratingbarR.setRating(object.getInt("rating"));
 
 
 
@@ -264,6 +266,12 @@ public class PageFragmentInformacionDetalle extends Fragment {
                 }
             }
         });
+
+}catch(Exception e)
+{
+    e.getStackTrace();
+    Log.d("delacalle", "error en detalle informacion restaurante");
+}
 
         return view;
     }

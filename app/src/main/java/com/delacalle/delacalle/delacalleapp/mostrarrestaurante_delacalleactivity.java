@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -72,6 +73,8 @@ public class mostrarrestaurante_delacalleactivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        try
+        {
         // Show results  in listview with my own adapter ParseQueryAdapter
         ParseQueryAdapter.QueryFactory<ParseObject> factory =
                 new  ParseQueryAdapter.QueryFactory<ParseObject>(){
@@ -137,6 +140,12 @@ public class mostrarrestaurante_delacalleactivity extends AppCompatActivity {
 
         ListView restaListView = (ListView) this.findViewById(R.id.listViewrestaurantes);
         restaListView.setAdapter(restaurantesQueryAdapter);
+
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar restaurante");
+        }
 
     }
 

@@ -3,6 +3,7 @@ package com.delacalle.delacalle.delacalleapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -21,6 +22,8 @@ public class splashscreen_delacalleactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen_delacalleactivity);
 
+        try
+        {
         ParseUser currentUser = ParseUser.getCurrentUser();
         // Keep log in
         if (currentUser != null) {
@@ -46,6 +49,11 @@ public class splashscreen_delacalleactivity extends AppCompatActivity {
             // Simulate a long loading process on application startup.
             Timer timer = new Timer();
             timer.schedule(task, SPLASH_SCREEN_DELAY);
+        }
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en splashscreen");
         }
 
     }

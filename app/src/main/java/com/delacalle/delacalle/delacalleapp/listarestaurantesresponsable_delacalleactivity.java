@@ -132,6 +132,8 @@ public class listarestaurantesresponsable_delacalleactivity extends AppCompatAct
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                try
+                {
 // Show results  in listview with my own adapter ParseQueryAdapter
                 ParseQueryAdapter.QueryFactory<ParseObject> factory =
                         new  ParseQueryAdapter.QueryFactory<ParseObject>(){
@@ -212,6 +214,12 @@ public class listarestaurantesresponsable_delacalleactivity extends AppCompatAct
                 ListView restaListView = (ListView) findViewById(R.id.listViewrestaurantes);
                 restaListView.setAdapter(misrestaurantesQueryAdapter);
 
+                }catch(Exception e)
+                {
+                    e.getStackTrace();
+                    Log.d("delacalle", "error en mostrar contenido actualizado lista responsable");
+                }
+
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
@@ -220,6 +228,9 @@ public class listarestaurantesresponsable_delacalleactivity extends AppCompatAct
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
+
+        try
+        {
 
         // Show results  in listview with my own adapter ParseQueryAdapter
         ParseQueryAdapter.QueryFactory<ParseObject> factory =
@@ -296,6 +307,12 @@ public class listarestaurantesresponsable_delacalleactivity extends AppCompatAct
 
         ListView restaListView = (ListView) this.findViewById(R.id.listViewrestaurantes);
         restaListView.setAdapter(misrestaurantesQueryAdapter);
+
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar contenido lista responsable");
+        }
     }
 
     @Override

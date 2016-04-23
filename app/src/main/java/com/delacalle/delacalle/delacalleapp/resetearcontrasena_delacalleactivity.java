@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -49,7 +50,6 @@ public class resetearcontrasena_delacalleactivity extends AppCompatActivity {
         Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(),"fonts/CaviarDreams.ttf");
 
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
-  //      final Animation animTranslate = AnimationUtils.loadAnimation(this, R.anim.anim_translate);
 
         edittextemail = (EditText) findViewById(R.id.edittextcorreoresetearcontrasena);
         buttonresetpass = (Button) findViewById(R.id.btnresetearcontrasena);
@@ -80,19 +80,25 @@ public class resetearcontrasena_delacalleactivity extends AppCompatActivity {
     // Reset Pass
     public void resetpass()
     {
-        ParseUser.requestPasswordResetInBackground(textemail, new RequestPasswordResetCallback() {
-            public void done(ParseException e) {
-                if (e == null) {
-                    // An email was successfully sent with reset instructions.
-                    showAlertDialog(resetearcontrasena_delacalleactivity.this, "Resetear contraseña", "Un email será enviado con instrucciones", false);
-                    Intent intent = new Intent(resetearcontrasena_delacalleactivity.this,perfilusuario_delacalleactivity.class);
-                    startActivity(intent);
-                } else {
-                    // Something went wrong. Look at the ParseException to see what's up.
-                    Toast.makeText(getApplicationContext(), "No existe el correo  " + textemail, Toast.LENGTH_SHORT).show();
+        try {
+            ParseUser.requestPasswordResetInBackground(textemail, new RequestPasswordResetCallback() {
+                public void done(ParseException e) {
+                    if (e == null) {
+                        // An email was successfully sent with reset instructions.
+                        showAlertDialog(resetearcontrasena_delacalleactivity.this, "Resetear contraseña", "Un email será enviado con instrucciones", false);
+                        Intent intent = new Intent(resetearcontrasena_delacalleactivity.this, perfilusuario_delacalleactivity.class);
+                        startActivity(intent);
+                    } else {
+                        // Something went wrong. Look at the ParseException to see what's up.
+                        Toast.makeText(getApplicationContext(), "No existe el correo  " + textemail, Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+        }catch (Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle","Error en resetear contrasena");
+        }
     }
 
     public void showAlertDialog(Context context, String title, String message, Boolean status) {

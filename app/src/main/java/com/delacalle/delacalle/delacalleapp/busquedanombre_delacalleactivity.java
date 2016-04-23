@@ -55,6 +55,8 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
         setContentView(R.layout.activity_busquedanombre_delacalleactivity);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
+
+
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             titulo = bundle.getString("titulo");
@@ -127,6 +129,8 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
             }
         });
 
+
+
         ParseQuery<ParseRole> roleuserusuario = ParseRole.getQuery();
         roleuserusuario.whereEqualTo("name", "usuario");
         roleuserusuario.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
@@ -161,6 +165,8 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                try
+                {
 // Show results  in listview with my own adapter ParseQueryAdapter
                 ParseQueryAdapter.QueryFactory<ParseObject> factory =
                         new  ParseQueryAdapter.QueryFactory<ParseObject>(){
@@ -241,6 +247,12 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
                 ListView restaListView = (ListView) findViewById(R.id.listViewrestaurantes);
                 restaListView.setAdapter(busquedaNombreQueryAdapter);
 
+                }catch(Exception e)
+                {
+                    e.getStackTrace();
+                    Log.d("delacalle", "error en mostrar contenido actualizado busqueda nombre");
+                }
+
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
@@ -250,6 +262,8 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
+        try
+        {
         // Show results  in listview with my own adapter ParseQueryAdapter
         ParseQueryAdapter.QueryFactory<ParseObject> factory =
                 new  ParseQueryAdapter.QueryFactory<ParseObject>(){
@@ -325,6 +339,12 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
 
         ListView restaListView = (ListView) this.findViewById(R.id.listViewrestaurantes);
         restaListView.setAdapter(busquedaNombreQueryAdapter);
+
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar contenido busqueda nombre");
+        }
     }
 
     @Override

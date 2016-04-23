@@ -61,7 +61,7 @@ public class registro_delacalleactivity extends AppCompatActivity {
         isInternetPresent = cd.isConnectingToInternet();
 
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
-   //     final Animation animTranslate = AnimationUtils.loadAnimation(this, R.anim.anim_translate);
+
 
         Typeface primerfontcandara = Typeface.createFromAsset(getAssets(),"fonts/CandaraBold.ttf");
         Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
@@ -84,8 +84,7 @@ public class registro_delacalleactivity extends AppCompatActivity {
         buttonSignUpEmail.setTypeface(primerfontcandara);
         buttonLinkTologinEmail.setTypeface(primerfontcandara);
 
-       // ParseUser currentUser = ParseUser.getCurrentUser();
-     //   currentUser.logOut();
+
 
         // Sign Up Button
         buttonSignUpEmail.setOnClickListener(new View.OnClickListener() {
@@ -218,58 +217,62 @@ public class registro_delacalleactivity extends AppCompatActivity {
     {
 
 
+try {
 
 
+    final ParseUser user = new ParseUser();
+    user.setUsername(userEmail);
+    user.setPassword(userPass);
+    user.setEmail(userEmail);
+    user.put("nombre", userName);
+    user.signUpInBackground(new SignUpCallback() {
+        @Override
+        public void done(ParseException e) {
+            if (e == null) {
 
-        final   ParseUser user = new ParseUser();
-        user.setUsername(userEmail);
-        user.setPassword(userPass);
-        user.setEmail(userEmail);
-        user.put("nombre",userName);
-        user.signUpInBackground(new SignUpCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e == null) {
-
-                    ParseQuery<ParseRole> roleq = ParseRole.getQuery();
-                    roleq.whereEqualTo("name", "usuario");
-                    roleq.getFirstInBackground(new GetCallback<ParseRole>() {
-                        @Override
-                        public void done(ParseRole rol, ParseException e) {
-                            if (e == null) {
-                                rol.getUsers().add(ParseUser.getCurrentUser());
-                                rol.saveInBackground();
-                                Log.d("delacalle", "Usuario agregado a Rol Usuario");
-                            } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-                                ParseACL roleACL = new ParseACL();
-                                roleACL.setPublicReadAccess(true);
-                                roleACL.setPublicWriteAccess(true);
-                                ParseRole role = new ParseRole("usuario", roleACL);
-                                role.getUsers().add(ParseUser.getCurrentUser());
-                                role.saveInBackground();
-                                Log.d("delacalle", "Rol usuario creado y usuario agregado");
-                            }
-
+                ParseQuery<ParseRole> roleq = ParseRole.getQuery();
+                roleq.whereEqualTo("name", "usuario");
+                roleq.getFirstInBackground(new GetCallback<ParseRole>() {
+                    @Override
+                    public void done(ParseRole rol, ParseException e) {
+                        if (e == null) {
+                            rol.getUsers().add(ParseUser.getCurrentUser());
+                            rol.saveInBackground();
+                            Log.d("delacalle", "Usuario agregado a Rol Usuario");
+                        } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                            ParseACL roleACL = new ParseACL();
+                            roleACL.setPublicReadAccess(true);
+                            roleACL.setPublicWriteAccess(true);
+                            ParseRole role = new ParseRole("usuario", roleACL);
+                            role.getUsers().add(ParseUser.getCurrentUser());
+                            role.saveInBackground();
+                            Log.d("delacalle", "Rol usuario creado y usuario agregado");
                         }
-                    });
+
+                    }
+                });
 
 
+                signUprMsg("registro exitoso, ¡bienvenido!");
+                Log.d("delacalle", "usuario registrado");
+                Toast.makeText(getApplicationContext(), userName + " - " + userEmail, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), menu_pestanas_delacalleactivity
+                        .class);
+                startActivity(intent);
 
-
-                    signUprMsg("registro exitoso, ¡bienvenido!");
-                    Log.d("delacalle", "usuario registrado");
-                    Toast.makeText(getApplicationContext(), userName + " - " + userEmail, Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), menu_pestanas_delacalleactivity
-                            .class);
-                    startActivity(intent);
-
-                }
-                else  {
-                    Log.e("Error", "" + e.getMessage());
-                    signUprMsg("Error de registro,intenta otra vez");
-                }
+            } else {
+                Log.e("Error", "" + e.getMessage());
+                signUprMsg("Error de registro,intenta otra vez");
             }
-        });
+        }
+    });
+
+}catch (Exception e)
+{
+    e.getStackTrace();
+    Log.d("delacalle","error en registrar usuario");
+}
+
     }
 
     private void clearErrors() {
@@ -284,27 +287,7 @@ public class registro_delacalleactivity extends AppCompatActivity {
     }
 
 
-    @SuppressWarnings("deprecation")
-    public void showAlertDialog(Context context, String title, String message, Boolean status) {
-        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
 
-        // Setting Dialog Title
-        alertDialog.setTitle(title);
-
-        // Setting Dialog Message
-        alertDialog.setMessage(message);
-
-
-
-        // Setting OK Button
-        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-
-        // Showing Alert Message
-        alertDialog.show();
-    }
 
     // Ocultar el teclado
     @Override

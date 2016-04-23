@@ -38,19 +38,20 @@
         android:textSize="20sp" />
 
 
-    <Button
+
+    <ImageButton
         android:id="@+id/btniramenuinicio"
-        android:layout_width="fill_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:background="@null"
+        android:background="#f27817"
         android:text="Ir a menú de inicio de sesión"
         android:textAllCaps="false"
+        android:src="@mipmap/ic_home"
         android:textColor="#000000"
         android:textSize="15sp"
+        android:layout_marginBottom="59dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="64dp" />
+        android:layout_centerHorizontal="true" />
 
 
 

@@ -107,6 +107,9 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_menu_pestanas_delacalleactivity, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
+
+        try
+        {
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -181,6 +184,12 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en buscar");
+        }
         return super.onCreateOptionsMenu(menu);
 
     }

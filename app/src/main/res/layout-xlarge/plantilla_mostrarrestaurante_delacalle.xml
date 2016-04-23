@@ -42,7 +42,7 @@
             android:maxLength="20"
             android:textColor="#000000"
             android:textColorHint="#000000"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Descripcion"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:id="@+id/editTextdescripcionmostrarrestaurante"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
@@ -84,7 +84,7 @@
                 android:layout_above="@+id/ratingBarmostrarrestaurante"
                 android:layout_toRightOf="@+id/imageViewfotounomostrarrestaurante"
                 android:layout_toEndOf="@+id/imageViewfotounomostrarrestaurante"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:paddingLeft="10dp"
                 android:textStyle="bold" />
 
@@ -96,7 +96,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>

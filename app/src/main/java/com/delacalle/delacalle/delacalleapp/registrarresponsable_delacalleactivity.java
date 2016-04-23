@@ -58,11 +58,19 @@ public class registrarresponsable_delacalleactivity extends AppCompatActivity {
         txtclave = (TextView) findViewById(R.id.editTextpassregistroResponsable);
         txtRclave = (TextView) findViewById(R.id.editTextrepassregistroResponsable);
         btnregistrarresponsable = (Button) findViewById(R.id.btnregistrarResponsable);
+        txtnombre.setTypeface(segundafontcaviar);
+        txtemail.setTypeface(segundafontcaviar);
+        txtclave.setTypeface(segundafontcaviar);
+        txtRclave.setTypeface(segundafontcaviar);
 
 
         btnregistrarresponsable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try
+                {
+
+
 
                 nombre = txtnombre.getText().toString();
                 email = txtemail.getText().toString();
@@ -117,8 +125,15 @@ public class registrarresponsable_delacalleactivity extends AppCompatActivity {
                 ParseUser.getCurrentUser().logOut();
                 Intent intent = new Intent(registrarresponsable_delacalleactivity.this,iniciosesion_delacalleactivity.class);
                 startActivity(intent);
+
+                }catch(Exception e)
+                {
+                    e.getStackTrace();
+                    Log.d("delacalle", "error en registrar responsable");
+                }
             }
         });
+
 
 
 

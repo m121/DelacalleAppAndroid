@@ -645,7 +645,8 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
     public void agregarRestaurante()
     {
 
-
+try
+{
 
         ParseACL acl = new ParseACL();
         acl.setPublicWriteAccess(true);
@@ -692,6 +693,11 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
       /*  Intent intent = new Intent(agregarrestaurante_delacalleactivity.this,agregarcarta_delacalleactivity.class);
         startActivity(intent);*/
 
+}catch(Exception e)
+{
+    e.getStackTrace();
+    Log.d("delacalle", "error en guardar restaurante");
+}
 
     }
 
@@ -736,6 +742,8 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
 
     private void displayPopupFotos1(final View anchorView) {
+        try
+        {
         final PopupWindow popup = new PopupWindow(agregarrestaurante_delacalleactivity.this);
         LayoutInflater inflater = (LayoutInflater) agregarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.popupfotos, null);
@@ -784,10 +792,16 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             }
         }, 100L);
 
-
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar popup de fotos");
+        }
     }
 
     private void displayPopupFotos2(final View anchorView) {
+        try
+        {
         final PopupWindow popup = new PopupWindow(agregarrestaurante_delacalleactivity.this);
         LayoutInflater inflater = (LayoutInflater) agregarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.popupfotos, null);
@@ -835,7 +849,11 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
                 popup.showAsDropDown(anchorView);
             }
         }, 100L);
-
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar popup de fotos");
+        }
 
     }
 
@@ -845,6 +863,8 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
 
 
     private void displayPopupPaleta(final View anchorView) {
+        try
+        {
         final PopupWindow popup = new PopupWindow(agregarrestaurante_delacalleactivity.this);
         LayoutInflater inflater = (LayoutInflater) agregarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.popuppaleta, null);
@@ -939,6 +959,11 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             }
         }, 100L);
 
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar popup paleta de colores");
+        }
 
     }
 

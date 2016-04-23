@@ -133,6 +133,8 @@ public class cartaDetalle_delacalleactivity extends AppCompatActivity {
             }
         });
 
+
+
         ParseQuery<ParseRole> roleuserusuario = ParseRole.getQuery();
         roleuserusuario.whereEqualTo("name", "usuario");
         roleuserusuario.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
@@ -162,7 +164,8 @@ public class cartaDetalle_delacalleactivity extends AppCompatActivity {
 
 
 
-
+try
+{
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -246,6 +249,12 @@ public class cartaDetalle_delacalleactivity extends AppCompatActivity {
                 }
             }
         });
+
+}catch(Exception e)
+{
+    e.getStackTrace();
+    Log.d("delacalle", "error en mostrar carta detalle");
+}
 
     }
 
