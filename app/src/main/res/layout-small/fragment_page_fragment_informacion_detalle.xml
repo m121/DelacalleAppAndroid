@@ -17,7 +17,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:text="Nombre Restaurante"
             android:id="@+id/textViewNombreRestauranteDetalle"
-            android:textSize="25sp"
+            android:textSize="15sp"
             android:layout_below="@+id/textViewtituloNombreRestauranteDetalle"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:text="Descripción"
             android:id="@+id/textViewTituloDescripcionDetalle"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_below="@+id/textViewNombreRestauranteDetalle"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -43,10 +43,10 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:text="Descripcion"
             android:id="@+id/textViewDescripcionDetalle"
-            android:textSize="25sp"
+            android:textSize="15sp"
             android:layout_below="@+id/textViewTituloDescripcionDetalle"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:text="Dirección"
             android:id="@+id/textViewTituloDireccionDetalle"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_below="@+id/textViewDescripcionDetalle"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:text="Dirección"
             android:id="@+id/textViewDireccionDetalle"
-            android:textSize="25sp"
+            android:textSize="15sp"
             android:layout_below="@+id/textViewTituloDireccionDetalle"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:text="Teléfono"
             android:id="@+id/textViewTituloTelefonoDetalle"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_below="@+id/textViewDireccionDetalle"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:text="Teléfono"
             android:id="@+id/textViewTelefonoDetalle"
-            android:textSize="25sp"
+            android:textSize="15sp"
             android:layout_below="@+id/textViewTituloTelefonoDetalle"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -98,7 +98,7 @@
             android:layout_height="wrap_content"
             android:text="Web"
             android:id="@+id/textViewTituloWebDetalle"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_below="@+id/textViewTelefonoDetalle"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:text="Web"
             android:id="@+id/textViewWebDetalle"
-            android:textSize="25sp"
+            android:textSize="15sp"
             android:layout_below="@+id/textViewTituloWebDetalle"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -119,7 +119,7 @@
             android:layout_height="wrap_content"
             android:text="Calificación"
             android:id="@+id/textViewTituloCalificacionDetalle"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_below="@+id/textViewWebDetalle"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -141,48 +141,48 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@null">
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|bottom"
-        android:layout_margin="16dp"
-        android:id="@+id/fabmenu"
-        fab:fab_size="normal"
-        android:src="@drawable/ic_agregar"
-        app:layout_anchor="@id/listViewrestaurantes"
-        app:layout_anchorGravity="bottom|right|end" >
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabeditar"
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="10dp"
-            android:src="@mipmap/ic_editar"
-            fab:fab_size="mini"
-            />
+            android:layout_gravity="right|bottom"
+            android:layout_margin="16dp"
+            android:id="@+id/fabmenu"
+            fab:fab_size="normal"
+            android:src="@drawable/ic_agregar"
+            app:layout_anchor="@id/listViewrestaurantes"
+            app:layout_anchorGravity="bottom|right|end" >
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabagregar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="10dp"
-            android:src="@mipmap/ic_restaurante"
-            fab:fab_size="mini"
-            />
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabeditar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="10dp"
+                android:src="@mipmap/ic_editar"
+                fab:fab_size="mini"
+                />
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabperfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="10dp"
-            android:src="@mipmap/ic_perfil"
-            fab:fab_size="mini"
-            />
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabagregar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="10dp"
+                android:src="@mipmap/ic_restaurante"
+                fab:fab_size="mini"
+                />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabperfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="10dp"
+                android:src="@mipmap/ic_perfil"
+                fab:fab_size="mini"
+                />
 
 
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
-        </FrameLayout>
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+    </FrameLayout>
 </FrameLayout>

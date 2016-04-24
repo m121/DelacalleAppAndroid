@@ -8,484 +8,484 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/relative1">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical" android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/linear1">
+                android:id="@+id/relative1">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textViewPlatoCarta1"
-                    android:text="Hamburguesa BBQ"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/linear11"
-                    android:orientation="horizontal">
-
-
-                    <ImageView
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
-                        android:layout_width="match_parent"
-                        android:layout_height="140dp"
-                        android:id="@+id/imageViewplato1"
-                        android:layout_alignBottom="@+id/textViewPrecioCarta1"
-                        android:layout_weight="0.3"
-                        />
-
-
+                    android:orientation="vertical"
+                    android:id="@+id/linear1">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textViewDescripcionCarta1"
-                        android:layout_below="@+id/textViewPlatoCarta1"
-                        android:layout_gravity="center_horizontal"
-                        android:text="Hamburguesa con tomate, doble queso, pepino"
-                        android:textSize="25sp"
-                        android:layout_weight="0.3"
-                        />
+                        android:id="@+id/textViewPlatoCarta1"
+                        android:text="Hamburguesa BBQ"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linear11"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:id="@+id/imageViewplato1"
+                            android:layout_alignBottom="@+id/textViewPrecioCarta1"
+                            android:layout_weight="0.3"
+                            />
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textViewDescripcionCarta1"
+                            android:layout_below="@+id/textViewPlatoCarta1"
+                            android:layout_gravity="center_horizontal"
+                            android:text="Hamburguesa con tomate, doble queso, pepino"
+                            android:textSize="15sp"
+                            android:layout_weight="0.3"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textViewPrecioCarta1"
+                            android:layout_below="@+id/textViewPlatoCarta1"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:text="$26000"
+                            android:textSize="20sp"
+                            android:layout_weight="0.3"
+                            android:layout_gravity="center_horizontal"
+
+                            android:gravity="center_vertical|center_horizontal" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical" android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/relative2"
+                android:layout_below="@+id/relative1"
+                android:layout_marginTop="93dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/linear2">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textViewPrecioCarta1"
-                        android:layout_below="@+id/textViewPlatoCarta1"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true"
-                        android:text="$26000"
-                        android:textSize="25sp"
-                        android:layout_weight="0.3"
-                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/textViewPlatoCarta2"
+                        android:text=""
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                        android:gravity="center_vertical|center_horizontal" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linear22"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:id="@+id/imageViewplato2"
+                            android:layout_alignBottom="@+id/textViewPrecioCarta2"
+                            android:layout_weight="0.3"
+                            />
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textViewDescripcionCarta2"
+                            android:layout_below="@+id/textViewPlatoCarta2"
+                            android:layout_gravity="center_horizontal"
+                            android:text=""
+                            android:textSize="15sp"
+                            android:layout_weight="0.3"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textViewPrecioCarta2"
+                            android:layout_below="@+id/textViewPlatoCarta2"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:text=""
+                            android:textSize="20sp"
+                            android:layout_weight="0.3"
+                            android:layout_gravity="center_horizontal"
+
+                            android:gravity="center_vertical|center_horizontal" />
+
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
 
 
-            </LinearLayout>
-
-    </RelativeLayout>
-
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/relative2"
-        android:layout_below="@+id/relative1"
-        android:layout_marginTop="93dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/linear2">
 
-            <TextView
-                android:layout_width="match_parent"
+
+            </RelativeLayout>
+
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical" android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textViewPlatoCarta2"
-                android:text=""
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/linear22"
-                android:orientation="horizontal">
+                android:id="@+id/relative3"
+                android:layout_below="@+id/relative2"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="93dp">
 
 
-                <ImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:id="@+id/imageViewplato2"
-                    android:layout_alignBottom="@+id/textViewPrecioCarta2"
-                    android:layout_weight="0.3"
-                    />
-
-
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textViewDescripcionCarta2"
-                    android:layout_below="@+id/textViewPlatoCarta2"
-                    android:layout_gravity="center_horizontal"
-                    android:text=""
-                    android:textSize="25sp"
-                    android:layout_weight="0.3"
-                    />
+                    android:orientation="vertical"
+                    android:id="@+id/linear3">
 
-                <TextView
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textViewPlatoCarta3"
+                        android:text=""
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linear33"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:id="@+id/imageViewplato3"
+                            android:layout_alignBottom="@+id/textViewPrecioCarta3"
+                            android:layout_weight="0.3"
+                            />
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textViewDescripcionCarta3"
+                            android:layout_below="@+id/textViewPlatoCarta3"
+                            android:layout_gravity="center_horizontal"
+                            android:text=""
+                            android:textSize="15sp"
+                            android:layout_weight="0.3"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textViewPrecioCarta3"
+                            android:layout_below="@+id/textViewPlatoCarta3"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:text=""
+                            android:textSize="20sp"
+                            android:layout_weight="0.3"
+                            android:layout_gravity="center_horizontal"
+
+                            android:gravity="center_vertical|center_horizontal" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+
+
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical" android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/relative4"
+                android:layout_below="@+id/relative3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="93dp">
+
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textViewPrecioCarta2"
-                    android:layout_below="@+id/textViewPlatoCarta2"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:text=""
-                    android:textSize="25sp"
-                    android:layout_weight="0.3"
-                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:id="@+id/linear4">
 
-                    android:gravity="center_vertical|center_horizontal" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textViewPlatoCarta4"
+                        android:text=""
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linear44"
+                        android:orientation="horizontal">
 
 
+                        <ImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:id="@+id/imageViewplato4"
+                            android:layout_alignBottom="@+id/textViewPrecioCarta4"
+                            android:layout_weight="0.3"
+                            />
 
 
-    </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textViewDescripcionCarta4"
+                            android:layout_below="@+id/textViewPlatoCarta4"
+                            android:layout_gravity="center_horizontal"
+                            android:text=""
+                            android:textSize="15sp"
+                            android:layout_weight="0.3"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textViewPrecioCarta4"
+                            android:layout_below="@+id/textViewPlatoCarta4"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:text=""
+                            android:textSize="20sp"
+                            android:layout_weight="0.3"
+                            android:layout_gravity="center_horizontal"
+
+                            android:gravity="center_vertical|center_horizontal" />
 
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/relative3"
-        android:layout_below="@+id/relative2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="93dp">
+                    </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/linear3">
+                </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
+
+
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical" android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textViewPlatoCarta3"
-                android:text=""
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/linear33"
-                android:orientation="horizontal">
+                android:id="@+id/relative5"
+                android:layout_below="@+id/relative4"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="93dp">
 
 
-                <ImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:id="@+id/imageViewplato3"
-                    android:layout_alignBottom="@+id/textViewPrecioCarta3"
-                    android:layout_weight="0.3"
-                    />
-
-
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textViewDescripcionCarta3"
-                    android:layout_below="@+id/textViewPlatoCarta3"
-                    android:layout_gravity="center_horizontal"
-                    android:text=""
-                    android:textSize="25sp"
-                    android:layout_weight="0.3"
-                    />
+                    android:orientation="vertical"
+                    android:id="@+id/linear5">
 
-                <TextView
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textViewPlatoCarta5"
+                        android:text=""
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linear55"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:id="@+id/imageViewplato5"
+                            android:layout_alignBottom="@+id/textViewPrecioCarta5"
+                            android:layout_weight="0.3"
+                            />
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textViewDescripcionCarta5"
+                            android:layout_below="@+id/textViewPlatoCarta5"
+                            android:layout_gravity="center_horizontal"
+                            android:text=""
+                            android:textSize="15sp"
+                            android:layout_weight="0.3"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textViewPrecioCarta5"
+                            android:layout_below="@+id/textViewPlatoCarta5"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:text=""
+                            android:textSize="20sp"
+                            android:layout_weight="0.3"
+                            android:layout_gravity="center_horizontal"
+
+                            android:gravity="center_vertical|center_horizontal" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical" android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/relative6"
+                android:layout_below="@+id/relative5"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="93dp">
+
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textViewPrecioCarta3"
-                    android:layout_below="@+id/textViewPlatoCarta3"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:text=""
-                    android:textSize="25sp"
-                    android:layout_weight="0.3"
-                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:id="@+id/linear6">
 
-                    android:gravity="center_vertical|center_horizontal" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textViewPlatoCarta6"
+                        android:text=""
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linear66"
+                        android:orientation="horizontal">
 
-            </LinearLayout>
 
+                        <ImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:id="@+id/imageViewplato6"
+                            android:layout_alignBottom="@+id/textViewPrecioCarta6"
+                            android:layout_weight="0.3"
+                            />
 
-        </LinearLayout>
 
 
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textViewDescripcionCarta6"
+                            android:layout_below="@+id/textViewPlatoCarta6"
+                            android:layout_gravity="center_horizontal"
+                            android:text=""
+                            android:textSize="15sp"
+                            android:layout_weight="0.3"
+                            />
 
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textViewPrecioCarta6"
+                            android:layout_below="@+id/textViewPlatoCarta6"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:text=""
+                            android:textSize="20sp"
+                            android:layout_weight="0.3"
+                            android:layout_gravity="center_horizontal"
 
+                            android:gravity="center_vertical|center_horizontal" />
 
 
-    </RelativeLayout>
+                    </LinearLayout>
 
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/relative4"
-    android:layout_below="@+id/relative3"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:layout_marginTop="93dp">
+                </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/linear4">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewPlatoCarta4"
-            android:text=""
-            android:textSize="25sp"
-            android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/linear44"
-            android:orientation="horizontal">
 
 
-            <ImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:id="@+id/imageViewplato4"
-                android:layout_alignBottom="@+id/textViewPrecioCarta4"
-                android:layout_weight="0.3"
-                />
+            </RelativeLayout>
 
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewDescripcionCarta4"
-                android:layout_below="@+id/textViewPlatoCarta4"
-                android:layout_gravity="center_horizontal"
-                android:text=""
-                android:textSize="25sp"
-                android:layout_weight="0.3"
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewPrecioCarta4"
-                android:layout_below="@+id/textViewPlatoCarta4"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:text=""
-                android:textSize="25sp"
-                android:layout_weight="0.3"
-                android:layout_gravity="center_horizontal"
-
-                android:gravity="center_vertical|center_horizontal" />
-
-
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-
-
-
-
-
-</RelativeLayout>
-
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/relative5"
-        android:layout_below="@+id/relative4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="93dp">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/linear5">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewPlatoCarta5"
-                android:text=""
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/linear55"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:id="@+id/imageViewplato5"
-                    android:layout_alignBottom="@+id/textViewPrecioCarta5"
-                    android:layout_weight="0.3"
-                    />
-
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textViewDescripcionCarta5"
-                    android:layout_below="@+id/textViewPlatoCarta5"
-                    android:layout_gravity="center_horizontal"
-                    android:text=""
-                    android:textSize="25sp"
-                    android:layout_weight="0.3"
-                    />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textViewPrecioCarta5"
-                    android:layout_below="@+id/textViewPlatoCarta5"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:text=""
-                    android:textSize="25sp"
-                    android:layout_weight="0.3"
-                    android:layout_gravity="center_horizontal"
-
-                    android:gravity="center_vertical|center_horizontal" />
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-
-
-
-
-
-    </RelativeLayout>
-
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/relative6"
-        android:layout_below="@+id/relative5"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="93dp">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/linear6">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewPlatoCarta6"
-                android:text=""
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/linear66"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:id="@+id/imageViewplato6"
-                    android:layout_alignBottom="@+id/textViewPrecioCarta6"
-                    android:layout_weight="0.3"
-                    />
-
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textViewDescripcionCarta6"
-                    android:layout_below="@+id/textViewPlatoCarta6"
-                    android:layout_gravity="center_horizontal"
-                    android:text=""
-                    android:textSize="25sp"
-                    android:layout_weight="0.3"
-                    />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textViewPrecioCarta6"
-                    android:layout_below="@+id/textViewPlatoCarta6"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:text=""
-                    android:textSize="25sp"
-                    android:layout_weight="0.3"
-                    android:layout_gravity="center_horizontal"
-
-                    android:gravity="center_vertical|center_horizontal" />
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-
-
-
-
-
-    </RelativeLayout>
-
-    </RelativeLayout>
+        </RelativeLayout>
     </ScrollView>
 
     <FrameLayout
