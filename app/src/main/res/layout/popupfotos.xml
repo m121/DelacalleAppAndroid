@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:background="#ffffff"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:background="@drawable/fondomenublanco768x1280"
+    android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        >
+
 <RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -19,64 +14,60 @@
     android:layout_alignParentRight="true"
     android:layout_alignParentEnd="true">
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@mipmap/ic_album"
+        android:id="@+id/imageViewAlbum"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="87dp"
-        android:layout_marginStart="87dp"
-        android:layout_marginTop="141dp"
-        android:id="@+id/imageViewAlbum" />
+        android:layout_marginTop="59dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Album"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:id="@+id/textViewAlbum"
-        android:layout_alignBottom="@+id/imageViewAlbum"
+        android:layout_marginLeft="53dp"
+        android:layout_marginStart="53dp"
+        android:layout_alignTop="@+id/imageViewAlbum"
         android:layout_toRightOf="@+id/imageViewAlbum"
-        android:layout_toEndOf="@+id/imageViewAlbum"
-        android:layout_marginLeft="13dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginBottom="31dp" />
+        android:layout_toEndOf="@+id/imageViewAlbum" />
 </RelativeLayout>
 
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/relativelayoutTomarFoto"
             android:layout_below="@+id/relativelayoutAlbum"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true">
 
+        </RelativeLayout>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/ic_takecamara"
+        android:id="@+id/imageViewTakeFoto"
+        android:layout_below="@+id/relativelayoutTomarFoto"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tomar foto"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:id="@+id/textViewTomarFoto"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="67dp"
-        android:layout_marginEnd="67dp" />
+        android:textIsSelectable="false"
+        android:layout_alignBottom="@+id/imageViewTakeFoto"
+        android:layout_toRightOf="@+id/imageViewTakeFoto"
+        android:layout_toEndOf="@+id/imageViewTakeFoto"
+        android:layout_marginLeft="52dp"
+        android:layout_marginStart="52dp" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@mipmap/ic_takecamara"
-        android:id="@+id/imageViewTakeFoto"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/textViewTomarFoto"
-        android:layout_toStartOf="@+id/textViewTomarFoto" />
-        </RelativeLayout>
-
-
-
-    </RelativeLayout>
 
 </RelativeLayout>

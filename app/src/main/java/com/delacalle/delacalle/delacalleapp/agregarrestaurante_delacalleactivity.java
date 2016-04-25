@@ -782,6 +782,7 @@ try
         // Closes the popup window when touch outside of it - when looses focus
         popup.setOutsideTouchable(true);
         popup.setFocusable(true);
+
         // Show anchored to button
         //   popup.setBackgroundDrawable(new BitmapDrawable());
         new Handler().postDelayed(new Runnable() {
@@ -835,8 +836,8 @@ try
 
 
         // Set content width and height
-        popup.setHeight(400);
-        popup.setWidth(400);
+            popup.setHeight(400);
+            popup.setWidth(400);
         // Closes the popup window when touch outside of it - when looses focus
         popup.setOutsideTouchable(true);
         popup.setFocusable(true);

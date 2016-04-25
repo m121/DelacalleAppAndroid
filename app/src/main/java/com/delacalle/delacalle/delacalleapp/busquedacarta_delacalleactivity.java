@@ -68,7 +68,7 @@ ArrayList<String> carta;
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setPageTransformer(true, new ZoomOutPageTransformer());
-        carta = new ArrayList<>();
+        carta = new ArrayList<String>();
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("carta");
         query.whereMatches("nombre", titulo);
         query.findInBackground(new FindCallback<ParseObject>() {

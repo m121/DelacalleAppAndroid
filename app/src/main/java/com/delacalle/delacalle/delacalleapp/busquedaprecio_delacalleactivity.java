@@ -95,7 +95,7 @@ public class busquedaprecio_delacalleactivity  extends AppCompatActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setPageTransformer(true, new ZoomOutPageTransformer());
-        precio = new ArrayList<>();
+        precio = new ArrayList<String>();
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("carta");
         query.whereLessThanOrEqualTo("precio", titulo);
         query.findInBackground(new FindCallback<ParseObject>() {

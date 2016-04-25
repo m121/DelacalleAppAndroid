@@ -17,6 +17,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +39,7 @@ public class registro_delacalleactivity extends AppCompatActivity {
     private TextView txtUserPass;
     private TextView txtUserRePass;
     private Button buttonSignUpEmail;
-    private Button buttonLinkTologinEmail;
+    private ImageButton buttonLinkTologinEmail;
     TextView textviewtitulo;
 
     private String userName;
@@ -74,7 +76,7 @@ public class registro_delacalleactivity extends AppCompatActivity {
         txtUserPass = (TextView) findViewById(R.id.editTextpassregistro);
         txtUserRePass = (TextView) findViewById(R.id.editTextrepassregistro);
         buttonSignUpEmail = (Button) findViewById(R.id.btnregistrarse);
-        buttonLinkTologinEmail = (Button) findViewById(R.id.buttonenlacealogin);
+        buttonLinkTologinEmail = (ImageButton) findViewById(R.id.buttonenlacealogin);
 
         txtUserName.setTypeface(segundafontcaviar);
         txtUserEmail.setTypeface(segundafontcaviar);
@@ -82,7 +84,7 @@ public class registro_delacalleactivity extends AppCompatActivity {
         txtUserRePass.setTypeface(segundafontcaviar);
         textviewtitulo.setTypeface(primerfontcandara);
         buttonSignUpEmail.setTypeface(primerfontcandara);
-        buttonLinkTologinEmail.setTypeface(primerfontcandara);
+     //   buttonLinkTologinEmail.setTypeface(primerfontcandara);
 
 
 

@@ -69,10 +69,9 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
         // Attach the view pager to the tab strip
         tabsStrip.setViewPager(viewPager);
 
-    final ArrayList<String>   precio = new ArrayList<String>();
+        final ArrayList<String> precio = new ArrayList<String>();
 
     }
-
 
 
     @Override
@@ -100,93 +99,89 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
     }
 
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_menu_pestanas_delacalleactivity, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
 
-        try
-        {
-        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(final String titulo) {
-                // perform query here
-                ParseQuery<ParseObject> querybuscar = ParseQuery.getQuery("restaurante");
-                querybuscar.whereEqualTo("nombre", titulo);
-                querybuscar.getFirstInBackground(new GetCallback<ParseObject>() {
-                    @Override
-                    public void done(ParseObject object, ParseException e) {
-                        if (e == null) {
-                            Intent intent = new Intent(menu_pestanas_delacalleactivity.this, busquedanombre_delacalleactivity.class);
-                            intent.putExtra("titulo", titulo);
-                            startActivity(intent);
-                            Log.d("delacalle", "nombre de restaurante encontrado");
-                            Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo has encontrado!", Toast.LENGTH_SHORT).show();
-                        } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-                            Log.d("delacalle", "nombre de restaurante no encontrado");
-                            Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
+        try {
+            final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(final String titulo) {
+                    // perform query here
+                    ParseQuery<ParseObject> querybuscar = ParseQuery.getQuery("restaurante");
+                    querybuscar.whereEqualTo("nombre", titulo);
+                    querybuscar.getFirstInBackground(new GetCallback<ParseObject>() {
+                        @Override
+                        public void done(ParseObject object, ParseException e) {
+                            if (e == null) {
+                                Intent intent = new Intent(menu_pestanas_delacalleactivity.this, busquedanombre_delacalleactivity.class);
+                                intent.putExtra("titulo", titulo);
+                                startActivity(intent);
+                                Log.d("delacalle", "nombre de restaurante encontrado");
+                                Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo has encontrado!", Toast.LENGTH_SHORT).show();
+                            } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                Log.d("delacalle", "nombre de restaurante no encontrado");
+                           //     Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
 
-                ParseQuery<ParseObject> queryprecio = new ParseQuery<ParseObject>("carta");
-                queryprecio.whereEqualTo("precio", titulo);
-                queryprecio.getFirstInBackground(new GetCallback<ParseObject>() {
-                    @Override
-                    public void done(ParseObject pre, ParseException e) {
-                        if (e == null) {
-                            Intent intent = new Intent(menu_pestanas_delacalleactivity.this, busquedaprecio_delacalleactivity.class);
-                            intent.putExtra("titulo", titulo);
-                            startActivity(intent);
-                            Log.d("delacalle", "precio de plato encontrado");
-                            Toast.makeText(menu_pestanas_delacalleactivity.this, "¡Lo has encontrado!,restaurantes con precios hasta " + titulo + " pesos", Toast.LENGTH_SHORT).show();
+                    ParseQuery<ParseObject> queryprecio = new ParseQuery<ParseObject>("carta");
+                    queryprecio.whereEqualTo("precio", titulo);
+                    queryprecio.getFirstInBackground(new GetCallback<ParseObject>() {
+                        @Override
+                        public void done(ParseObject pre, ParseException e) {
+                            if (e == null) {
+                                Intent intent = new Intent(menu_pestanas_delacalleactivity.this, busquedaprecio_delacalleactivity.class);
+                                intent.putExtra("titulo", titulo);
+                                startActivity(intent);
+                                Log.d("delacalle", "precio de plato encontrado");
+                          //      Toast.makeText(menu_pestanas_delacalleactivity.this, "¡Lo has encontrado!,restaurantes con precios hasta " + titulo + " pesos", Toast.LENGTH_SHORT).show();
 
 
-                        } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-                            Log.d("delacalle", "precio de plato no encontrado");
-                            Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
+                            } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                Log.d("delacalle", "precio de plato no encontrado");
+                          //      Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
+                            }
+
                         }
+                    });
 
-                    }
-                });
-
-                ParseQuery<ParseObject> querycartan = new ParseQuery<ParseObject>("carta");
-                querycartan.whereEqualTo("nombre", titulo);
-                querycartan.getFirstInBackground(new GetCallback<ParseObject>() {
-                    @Override
-                    public void done(ParseObject car, ParseException e) {
-                        if (e == null) {
-                            Intent intent = new Intent(menu_pestanas_delacalleactivity.this, busquedacarta_delacalleactivity.class);
-                            intent.putExtra("titulo", titulo);
-                            startActivity(intent);
-                            Log.d("delacalle", "nombre de plato encontrado");
-                            Toast.makeText(menu_pestanas_delacalleactivity.this, "¡Lo has encontrado!,cartas con platos de " + titulo, Toast.LENGTH_SHORT).show();
+                    ParseQuery<ParseObject> querycartan = new ParseQuery<ParseObject>("carta");
+                    querycartan.whereEqualTo("nombre", titulo);
+                    querycartan.getFirstInBackground(new GetCallback<ParseObject>() {
+                        @Override
+                        public void done(ParseObject car, ParseException e) {
+                            if (e == null) {
+                                Intent intent = new Intent(menu_pestanas_delacalleactivity.this, busquedacarta_delacalleactivity.class);
+                                intent.putExtra("titulo", titulo);
+                                startActivity(intent);
+                                Log.d("delacalle", "nombre de plato encontrado");
+                                Toast.makeText(menu_pestanas_delacalleactivity.this, "¡Lo has encontrado!,cartas con platos de " + titulo, Toast.LENGTH_SHORT).show();
 
 
-                        } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-                            Log.d("delacalle", "nombre de plato no encontrado");
-                            Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
+                            } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                Log.d("delacalle", "nombre de plato no encontrado");
+                         //       Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
+                            }
+
                         }
+                    });
+                    searchView.clearFocus();
 
-                    }
-                });
-                searchView.clearFocus();
+                    return true;
+                }
 
-                return true;
-            }
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    return false;
+                }
+            });
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-
-        }catch(Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
             Log.d("delacalle", "error en buscar");
         }
@@ -195,8 +190,7 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
     }
 
     @Override
-    protected  void onResume()
-    {
+    protected void onResume() {
         super.onResume();
 
 
@@ -205,9 +199,17 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
     // Ocultar el teclado
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager)getSystemService(Context.
-                INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        try {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.
+                    INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+
+        } catch (Exception e) {
+            e.getStackTrace();
+            Log.d("delacalle", "Error en ocultar teclado");
+
+        }
+
         return true;
     }
 }

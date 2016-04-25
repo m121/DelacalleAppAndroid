@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +20,7 @@ import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.parse.ParseException;
@@ -29,7 +31,7 @@ public class resetearcontrasenadesdelogin_delacalleactivity extends AppCompatAct
 
     private EditText edittextemail;
     private Button buttonresetpass;
-    private Button  buttonlinktomenulogin;
+    private ImageButton buttonlinktomenulogin;
 
 
 
@@ -50,11 +52,11 @@ public class resetearcontrasenadesdelogin_delacalleactivity extends AppCompatAct
 
         edittextemail = (EditText) findViewById(R.id.edittextcorreoresetearcontrasena);
         buttonresetpass = (Button) findViewById(R.id.btnresetearcontrasena);
-        buttonlinktomenulogin = (Button) findViewById(R.id.btniramenuinicio);
+        buttonlinktomenulogin = (ImageButton) findViewById(R.id.btniramenuinicio);
 
         edittextemail.setTypeface(segundafontcaviar);
         buttonresetpass.setTypeface(primerfontcandara);
-        buttonlinktomenulogin.setTypeface(primerfontcandara);
+      //  buttonlinktomenulogin.setTypeface(primerfontcandara);
 
 
         buttonresetpass.setOnClickListener(new View.OnClickListener() {
