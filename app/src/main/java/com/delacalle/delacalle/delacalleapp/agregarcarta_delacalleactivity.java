@@ -247,7 +247,19 @@ public class agregarcarta_delacalleactivity extends AppCompatActivity {
         btnguardarcarta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                errors();
+                ParseQuery<ParseRole> queryrol = ParseRole.getQuery();
+                queryrol.whereEqualTo("name", "responsable");
+                queryrol.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+                queryrol.getFirstInBackground(new GetCallback<ParseRole>() {
+                    @Override
+                    public void done(ParseRole rol, ParseException e) {
+                        if (e == null) {
+                            errors();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "No puedes guardar la carta si no eres un responsable", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
 

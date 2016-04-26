@@ -61,7 +61,8 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
     ImageView cartamenu;
     ParseFile filecarta;
 
-
+    boolean isInternetPresent = false;
+    ConnectionDetector cd;
 
     public static ScreenSlideCartaFragment create(int page,String cartadela)
     {
@@ -83,7 +84,9 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
         nuevocarta = getArguments().getString("nombre");
         this.setRetainInstance(true);
 
-
+        cd = new ConnectionDetector(getActivity().getApplicationContext());
+        // get Internet status
+        isInternetPresent = cd.isConnectingToInternet();
 
     }
 
@@ -165,36 +168,43 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
                 startActivity(intent);
             }
         });
-
-        ParseQuery<ParseRole> roleuserusuario = ParseRole.getQuery();
-        roleuserusuario.whereEqualTo("name", "usuario");
-        roleuserusuario.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
-        roleuserusuario.getFirstInBackground(new GetCallback<ParseRole>() {
-            @Override
-            public void done(ParseRole object, ParseException e) {
-                if (e == null) {
-                    fabeditar.setVisibility(View.INVISIBLE);
-                    fabrestaurante.setVisibility(View.INVISIBLE);
-                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-                    ParseQuery<ParseRole> roleuserresponsable = ParseRole.getQuery();
-                    roleuserresponsable.whereEqualTo("name", "responsable");
-                    roleuserresponsable.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
-                    roleuserresponsable.getFirstInBackground(new GetCallback<ParseRole>() {
-                        @Override
-                        public void done(ParseRole object, ParseException e) {
-                            if (e == null) {
-                                fabeditar.setVisibility(View.VISIBLE);
-                                fabrestaurante.setVisibility(View.VISIBLE);
-                            } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-                                Log.d("delacalle","eres administrador");
-
+        if (isInternetPresent) {
+            ParseQuery<ParseRole> roleuserusuario = ParseRole.getQuery();
+            roleuserusuario.whereEqualTo("name", "usuario");
+            roleuserusuario.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+            roleuserusuario.getFirstInBackground(new GetCallback<ParseRole>() {
+                @Override
+                public void done(ParseRole object, ParseException e) {
+                    if (e == null) {
+                        fabeditar.setVisibility(View.INVISIBLE);
+                        fabrestaurante.setVisibility(View.INVISIBLE);
+                    } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                        ParseQuery<ParseRole> roleuserresponsable = ParseRole.getQuery();
+                        roleuserresponsable.whereEqualTo("name", "responsable");
+                        roleuserresponsable.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+                        roleuserresponsable.getFirstInBackground(new GetCallback<ParseRole>() {
+                            @Override
+                            public void done(ParseRole object, ParseException e) {
+                                if (e == null) {
+                                    fabeditar.setVisibility(View.VISIBLE);
+                                    fabrestaurante.setVisibility(View.VISIBLE);
+                                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                    Log.d("delacalle", "El usuario no tiene rol");
+                                    fabeditar.setVisibility(View.INVISIBLE);
+                                    fabrestaurante.setVisibility(View.INVISIBLE);
+                                }
                             }
-                        }
-                    });
-                }
+                        });
+                    }
 
-            }
-        });
+                }
+            });
+        }
+        else
+        {
+            fabeditar.setVisibility(View.INVISIBLE);
+            fabrestaurante.setVisibility(View.INVISIBLE);
+        }
 
         final ParseQuery<ParseObject> query = ParseQuery.getQuery("carta");
         query.whereEqualTo("nombre", nuevocarta);

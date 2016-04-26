@@ -183,6 +183,12 @@ public class PageFragmentInformacionDetalle extends Fragment {
                                 fabeditar.setVisibility(View.VISIBLE);
                                 fabrestaurante.setVisibility(View.VISIBLE);
                             }
+                            else if (e.getCode() == ParseException.OBJECT_NOT_FOUND)
+                            {
+                                Log.d("delacalle","El usuario no tiene rol");
+                                fabeditar.setVisibility(View.INVISIBLE);
+                                fabrestaurante.setVisibility(View.INVISIBLE);
+                            }
                         }
                     });
                 }

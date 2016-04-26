@@ -48,6 +48,9 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
     String id;
 
     String titulo;
+    boolean isInternetPresent = false;
+    ConnectionDetector cd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +58,9 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
         setContentView(R.layout.activity_busquedanombre_delacalleactivity);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
-
+        cd = new ConnectionDetector(getApplicationContext());
+        // get Internet status
+        isInternetPresent = cd.isConnectingToInternet();
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -130,36 +135,43 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
         });
 
 
-
-        ParseQuery<ParseRole> roleuserusuario = ParseRole.getQuery();
-        roleuserusuario.whereEqualTo("name", "usuario");
-        roleuserusuario.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
-        roleuserusuario.getFirstInBackground(new GetCallback<ParseRole>() {
-            @Override
-            public void done(ParseRole object, ParseException e) {
-                if (e == null) {
-                    fabeditar.setVisibility(View.INVISIBLE);
-                    fabrestaurante.setVisibility(View.INVISIBLE);
-                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-                    ParseQuery<ParseRole> roleuserresponsable = ParseRole.getQuery();
-                    roleuserresponsable.whereEqualTo("name", "responsable");
-                    roleuserresponsable.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
-                    roleuserresponsable.getFirstInBackground(new GetCallback<ParseRole>() {
-                        @Override
-                        public void done(ParseRole object, ParseException e) {
-                            if (e == null) {
-                                fabeditar.setVisibility(View.VISIBLE);
-                                fabrestaurante.setVisibility(View.VISIBLE);
-                            } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-                                Log.d("delacalle", "eres administrador");
-
+        if (isInternetPresent) {
+            ParseQuery<ParseRole> roleuserusuario = ParseRole.getQuery();
+            roleuserusuario.whereEqualTo("name", "usuario");
+            roleuserusuario.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+            roleuserusuario.getFirstInBackground(new GetCallback<ParseRole>() {
+                @Override
+                public void done(ParseRole object, ParseException e) {
+                    if (e == null) {
+                        fabeditar.setVisibility(View.INVISIBLE);
+                        fabrestaurante.setVisibility(View.INVISIBLE);
+                    } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                        ParseQuery<ParseRole> roleuserresponsable = ParseRole.getQuery();
+                        roleuserresponsable.whereEqualTo("name", "responsable");
+                        roleuserresponsable.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+                        roleuserresponsable.getFirstInBackground(new GetCallback<ParseRole>() {
+                            @Override
+                            public void done(ParseRole object, ParseException e) {
+                                if (e == null) {
+                                    fabeditar.setVisibility(View.VISIBLE);
+                                    fabrestaurante.setVisibility(View.VISIBLE);
+                                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                    Log.d("delacalle", "El usuario no tiene rol");
+                                    fabeditar.setVisibility(View.INVISIBLE);
+                                    fabrestaurante.setVisibility(View.INVISIBLE);
+                                }
                             }
-                        }
-                    });
-                }
+                        });
+                    }
 
-            }
-        });
+                }
+            });
+        }
+        else
+        {
+            fabeditar.setVisibility(View.INVISIBLE);
+            fabrestaurante.setVisibility(View.INVISIBLE);
+        }
 
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

@@ -95,11 +95,14 @@ public class iniciosesion_delacalleactivity extends AppCompatActivity {
     private String userPass;
 
 
+
+
+
     AccessTokenTracker accessTokenTracker;
     AccessToken accessToken;
     CallbackManager callbackManager;
 
-    String email;
+  //  String email;
     String nombre;
 
     public static final String CLIENT_ID = "your client id";
@@ -114,6 +117,7 @@ public class iniciosesion_delacalleactivity extends AppCompatActivity {
     ConnectionDetector cd;
 
 
+
     Button buttoniniciarsesion;
 
     public static final List<String> mPermissions = new ArrayList<String>() {{
@@ -121,22 +125,38 @@ public class iniciosesion_delacalleactivity extends AppCompatActivity {
         add("email");
     }};
 
-
+String email;
+    String username;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(iniciosesion_delacalleactivity.this);
-        setContentView(R.layout.activity_iniciosesion_delacalleactivity);
+        try {
+            FacebookSdk.sdkInitialize(iniciosesion_delacalleactivity.this);
+            setContentView(R.layout.activity_iniciosesion_delacalleactivity);
 
-        cd = new ConnectionDetector(getApplicationContext());
-        // get Internet status
-        isInternetPresent = cd.isConnectingToInternet();
+            cd = new ConnectionDetector(getApplicationContext());
+            // get Internet status
+            isInternetPresent = cd.isConnectingToInternet();
 
 
+        }catch (java.lang.OutOfMemoryError o)
+        {
+            o.getStackTrace();
+            Log.d("delacalle", "Error out of memory");
+            Intent intent = new Intent(iniciosesion_delacalleactivity.this,iniciosesion_delacalleactivity.class);
+            startActivity(intent);
 
+        }
+        catch (java.lang.RuntimeException i)
+        {
+            i.getStackTrace();
+            Log.d("delacalle", "Error runtimeexception");
+            Intent intent = new Intent(iniciosesion_delacalleactivity.this,iniciosesion_delacalleactivity.class);
+            startActivity(intent);
+        }
 
 
 
@@ -175,11 +195,13 @@ e.printStackTrace();
         txtUserName = (TextView) findViewById(R.id.editTextnombreiniciarsesion);
         txtUserPass = (TextView) findViewById(R.id.editTextcontrasenainiciarsesion);
 
-        Typeface primerfontcandara = Typeface.createFromAsset(getAssets(),"fonts/CandaraBold.ttf");
-        Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(),"fonts/CaviarDreams.ttf");
-        txtUserName.setTypeface(segundafontcaviar);
-        txtUserPass.setTypeface(segundafontcaviar);
-        buttoniniciarsesion.setTypeface(primerfontcandara);
+        try {
+
+            Typeface primerfontcandara = Typeface.createFromAsset(getAssets(), "fonts/CandaraBold.ttf");
+            Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
+            txtUserName.setTypeface(segundafontcaviar);
+            txtUserPass.setTypeface(segundafontcaviar);
+            buttoniniciarsesion.setTypeface(primerfontcandara);
 
 
 
@@ -189,6 +211,14 @@ e.printStackTrace();
         btnLogInEmail.setTypeface(primerfontcandara);
         btnlinkregistrar.setTypeface(primerfontcandara);
         btnLinkToResetPass.setTypeface(primerfontcandara);
+
+        }catch (NullPointerException ae)
+        {
+            ae.getStackTrace();
+            Log.d("delacalle", "Error NullpointerException");
+            Intent intent = new Intent(iniciosesion_delacalleactivity.this,perfilusuario_delacalleactivity.class);
+            startActivity(intent);
+        }
               //     final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
         //     final Animation animTranslate = AnimationUtils.loadAnimation(this, R.anim.anim_translate);
         loginfacebook.setClickable(true);
@@ -244,16 +274,16 @@ try {
         public void onClick(View v) {
             v.startAnimation(animAlpha);
             if (isInternetPresent) {
+            //    ParseUser.logOut();
                 ParseFacebookUtils.logInWithReadPermissionsInBackground(iniciosesion_delacalleactivity.this, mPermissions, new LogInCallback() {
                     @Override
                     public void done(ParseUser user, ParseException err) {
-                        Toast.makeText(getApplicationContext(), "Iniciando sesión", Toast.LENGTH_SHORT).show();
+
                         if (user == null) {
-                            ParseUser.logOut();
+                   //         ParseUser.logOut();
                             //   Log.d("myapp",err.getLocalizedMessage());
                             Log.d("delacalle", "usuario es null");
                         } else if (user.isNew()) {
-
 
                             ParseQuery<ParseRole> roleq = ParseRole.getQuery();
                             roleq.whereEqualTo("name", "usuario");
@@ -265,6 +295,8 @@ try {
                                         rol.saveInBackground();
                                         Log.d("delacalle", "Usuario agregado a Rol Usuario");
                                     } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+
+
                                         ParseACL roleACL = new ParseACL();
                                         roleACL.setPublicReadAccess(true);
                                         roleACL.setPublicWriteAccess(true);
@@ -277,11 +309,13 @@ try {
                                 }
                             });
 
+                            Toast.makeText(getApplicationContext(), "¡Ya te has registrado con Facebook!,ahora puedes iniciar sesión", Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
-                            startActivity(intent);
+                         // Intent intent = new Intent(iniciosesion_delacalleactivity.this, iniciosesion_delacalleactivity.class);
+                          //  startActivity(intent);
 
                         } else {
+                            Toast.makeText(getApplicationContext(), "Iniciando sesión", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
                             startActivity(intent);
                             Toast.makeText(getApplicationContext(), "¡Bienvenido otra vez! " + user.getUsername(), Toast.LENGTH_SHORT).show();
@@ -365,7 +399,7 @@ try {
         super.onActivityResult(requestCode, resultCode, data);
 
         ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
-//        callbackManager.onActivityResult(requestCode, resultCode, data);
+
 
         GraphRequest.GraphJSONObjectCallback mCallback = new GraphRequest.GraphJSONObjectCallback() {
             @Override
@@ -373,27 +407,46 @@ try {
                 if (mResponse.getError() == null) {
                     try {
 
-                        final String email = mData.getString("email");
-                        final String username = mData.getString("name");
+                        final String       email = mData.getString("email");
+                   final String      username = mData.getString("name");
 
                         Log.d("delacalle", "Email es " + email);
                         Log.d("delacalle", "nombre es " + username);
+/*try {
+    ParseUser user = ParseUser.getCurrentUser();
+    user.put("email", email);
+    user.put("username", email);
+    user.put("nombre", username);
+    user.saveInBackground();
+}catch ( Exception e)
+{
+    e.getStackTrace();
+    Log.d("delacalle", "Error registrando email y username facebook");
+}*/
 
                         ParseQuery<ParseUser> userq = ParseUser.getQuery();
-                        userq.whereEqualTo("email", email);
+                        userq.whereEqualTo("objectId", ParseUser.getCurrentUser());
                         userq.getFirstInBackground(new GetCallback<ParseUser>() {
                             @Override
                             public void done(ParseUser us, ParseException e) {
                                 if (e == null) {
                                     Log.d("delacalle", "el usuario ya se encuentra registrado");
                                 } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-                                    ParseUser user = ParseUser.getCurrentUser();
-                                    user.put("email", email);
-                                    user.put("username", email);
-                                    user.put("nombre", username);
-                                    user.saveInBackground();
+                                    try {
+                                        ParseUser user = ParseUser.getCurrentUser();
+                                        user.put("email", email);
+                                        user.put("username", email);
+                                        user.put("nombre", username);
+                                        user.saveInBackground();
 
-                                    Log.d("delacalle", "El usuario se ha registrado con facebook");
+                                        Log.d("delacalle", "El usuario se ha registrado con facebook");
+
+                                    } catch (Exception ae) {
+                                        ae.getStackTrace();
+                                        Log.d("delacalle", "Error registrando email y username facebook");
+
+                                    }
+
                                 }
                             }
                         });
@@ -401,7 +454,9 @@ try {
 
                     } catch (JSONException e) {
                         //JSON Error, DEBUG
+                        e.getStackTrace();
                     }
+
 
 
                 } else {

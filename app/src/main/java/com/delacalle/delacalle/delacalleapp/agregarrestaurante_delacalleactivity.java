@@ -255,7 +255,21 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
-                errors();
+                ParseQuery<ParseRole> queryrol = ParseRole.getQuery();
+                queryrol.whereEqualTo("name", "responsable");
+                queryrol.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+                queryrol.getFirstInBackground(new GetCallback<ParseRole>() {
+                    @Override
+                    public void done(ParseRole rol, ParseException e) {
+                        if (e == null)
+                        {
+                            errors();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "No puedes guardar un restaurante si no eres un responsable", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
             }
         });
 

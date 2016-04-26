@@ -56,7 +56,8 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
 
 
 
-
+    boolean isInternetPresent = false;
+    ConnectionDetector cd;
 
 
     String id;
@@ -78,6 +79,10 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
+
+        cd = new ConnectionDetector(getActivity().getApplicationContext());
+        // get Internet status
+        isInternetPresent = cd.isConnectingToInternet();
     }
 
     // Inflate the fragment layout we defined above for this fragment
@@ -233,33 +238,43 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
                 startActivity(intent);
             }
         });
-
-        ParseQuery<ParseRole> roleuserusuario = ParseRole.getQuery();
-        roleuserusuario.whereEqualTo("name", "usuario");
-        roleuserusuario.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
-        roleuserusuario.getFirstInBackground(new GetCallback<ParseRole>() {
-            @Override
-            public void done(ParseRole object, ParseException e) {
-                if (e == null) {
-                    fabeditar.setVisibility(View.INVISIBLE);
-                    fabrestaurante.setVisibility(View.INVISIBLE);
-                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-                    ParseQuery<ParseRole> roleuserresponsable = ParseRole.getQuery();
-                    roleuserresponsable.whereEqualTo("name", "responsable");
-                    roleuserresponsable.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
-                    roleuserresponsable.getFirstInBackground(new GetCallback<ParseRole>() {
-                        @Override
-                        public void done(ParseRole object, ParseException e) {
-                            if (e == null) {
-                                fabeditar.setVisibility(View.VISIBLE);
-                                fabrestaurante.setVisibility(View.VISIBLE);
+        if (isInternetPresent) {
+            ParseQuery<ParseRole> roleuserusuario = ParseRole.getQuery();
+            roleuserusuario.whereEqualTo("name", "usuario");
+            roleuserusuario.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+            roleuserusuario.getFirstInBackground(new GetCallback<ParseRole>() {
+                @Override
+                public void done(ParseRole object, ParseException e) {
+                    if (e == null) {
+                        fabeditar.setVisibility(View.INVISIBLE);
+                        fabrestaurante.setVisibility(View.INVISIBLE);
+                    } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                        ParseQuery<ParseRole> roleuserresponsable = ParseRole.getQuery();
+                        roleuserresponsable.whereEqualTo("name", "responsable");
+                        roleuserresponsable.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+                        roleuserresponsable.getFirstInBackground(new GetCallback<ParseRole>() {
+                            @Override
+                            public void done(ParseRole object, ParseException e) {
+                                if (e == null) {
+                                    fabeditar.setVisibility(View.VISIBLE);
+                                    fabrestaurante.setVisibility(View.VISIBLE);
+                                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                    Log.d("delacalle", "El usuario no tiene rol");
+                                    fabeditar.setVisibility(View.INVISIBLE);
+                                    fabrestaurante.setVisibility(View.INVISIBLE);
+                                }
                             }
-                        }
-                    });
-                }
+                        });
+                    }
 
-            }
-        });
+                }
+            });
+        }
+        else
+        {
+            fabeditar.setVisibility(View.INVISIBLE);
+            fabrestaurante.setVisibility(View.INVISIBLE);
+        }
 try
 {
         // Show results  in listview with my own adapter ParseQueryAdapter
@@ -303,7 +318,7 @@ try
                             @Override
                             public void done(ParseException e) {
                                 id = resta.getObjectId().toString();
-                                Intent intent = new Intent(getActivity(),detallerestaurante_delacalleactivity.class);
+                                Intent intent = new Intent(getActivity(), detallerestaurante_delacalleactivity.class);
                                 intent.putExtra("id", id);
                                 getActivity().startActivity(intent);
                             }
@@ -316,18 +331,34 @@ try
                 descriptiontxt.setText(resta.getString("descripcion"));
                 direcciontxt.setText(resta.getString("direccion"));
                 telefonotxt.setText(resta.getString("telefono"));
-                picfile = resta.getParseFile("fotologo");
-                picfile.getDataInBackground(new GetDataCallback() {
-                    @Override
-                    public void done(byte[] data, ParseException e) {
-                        pic = BitmapFactory.decodeByteArray(data, 0, data.length);
-                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                        pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                        picimageview.setImageBitmap(pic);
+                try {
+                    picfile = resta.getParseFile("fotologo");
+                    if(picfile != null) {
+                        picfile.getDataInBackground(new GetDataCallback() {
+                            @Override
+                            public void done(byte[] data, ParseException e) {
+                                pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                                picimageview.setImageBitmap(pic);
+                            }
+                        });
                     }
-                });
-                ratingbarres.setRating(resta.getInt("rating"));
-
+                    ratingbarres.setRating(resta.getInt("rating"));
+                }catch (OutOfMemoryError ae)
+                {
+                    ae.getStackTrace();
+                    Log.d("delacalle", "Error de out of memory");
+                    Intent intent = new Intent(getActivity(),perfilusuario_delacalleactivity.class);
+                    startActivity(intent);
+                }
+                catch (java.lang.NullPointerException oe)
+                {
+                    oe.getStackTrace();
+                    Log.d("delacalle","Error de Nullpointerexception");
+                    Intent intent = new Intent(getActivity(),perfilusuario_delacalleactivity.class);
+                    startActivity(intent);
+                }
 
                 return view;
             }

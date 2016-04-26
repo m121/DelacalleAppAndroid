@@ -1,7 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:background="@drawable/fondomenublanco768x1280"
     tools:context="com.delacalle.delacalle.delacalleapp.registrarresponsable_delacalleactivity">
@@ -80,10 +79,9 @@
             android:id="@+id/btnregistrarResponsable"
             android:background="#f27817"
             android:textColor="#FFFFFF"
+            android:textSize="20sp"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="240dp"
-            android:textSize="20sp" />
+            android:layout_centerHorizontal="true" />
 
 
 

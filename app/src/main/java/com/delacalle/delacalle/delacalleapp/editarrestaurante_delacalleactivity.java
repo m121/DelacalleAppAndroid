@@ -226,63 +226,77 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
         btneliminarrestaurante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try
-                {
-                ParseQuery<ParseObject> queryeliminar = ParseQuery.getQuery("restaurante");
-                queryeliminar.whereEqualTo("objectId", id);
-                queryeliminar.getFirstInBackground(new GetCallback<ParseObject>() {
+                ParseQuery<ParseRole> queryrol = ParseRole.getQuery();
+                queryrol.whereEqualTo("name", "responsable");
+                queryrol.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+                queryrol.getFirstInBackground(new GetCallback<ParseRole>() {
                     @Override
-                    public void done(ParseObject eliminar, ParseException e) {
+                    public void done(ParseRole rol, ParseException e) {
                         if (e == null) {
-                            eliminar.deleteInBackground(new DeleteCallback() {
-                                @Override
-                                public void done(ParseException e) {
-                                    if (e == null) {
-                                        Toast.makeText(getApplicationContext(), "Restaurante eliminado", Toast.LENGTH_SHORT).show();
-                                        Log.d("delacalle", "Restaurante eliminado");
-                                    } else {
-                                        Log.d("delacalle", "No se puede eliminar el restaurante");
-                                    }
-                                }
-                            });
+                            try
+                            {
+                                ParseQuery<ParseObject> queryeliminar = ParseQuery.getQuery("restaurante");
+                                queryeliminar.whereEqualTo("objectId", id);
+                                queryeliminar.getFirstInBackground(new GetCallback<ParseObject>() {
+                                    @Override
+                                    public void done(ParseObject eliminar, ParseException e) {
+                                        if (e == null) {
+                                            eliminar.deleteInBackground(new DeleteCallback() {
+                                                @Override
+                                                public void done(ParseException e) {
+                                                    if (e == null) {
+                                                        Toast.makeText(getApplicationContext(), "Restaurante eliminado", Toast.LENGTH_SHORT).show();
+                                                        Log.d("delacalle", "Restaurante eliminado");
+                                                    } else {
+                                                        Log.d("delacalle", "No se puede eliminar el restaurante");
+                                                    }
+                                                }
+                                            });
 
-                            ParseQuery<ParseObject> cartaeliminarquery = ParseQuery.getQuery("carta");
-                            cartaeliminarquery.whereEqualTo("restauranteId", id);
-                            final List<ParseObject> cartalist;
+                                            ParseQuery<ParseObject> cartaeliminarquery = ParseQuery.getQuery("carta");
+                                            cartaeliminarquery.whereEqualTo("restauranteId", id);
+                                            final List<ParseObject> cartalist;
 
-                            try {
-                                cartalist = cartaeliminarquery.find();
+                                            try {
+                                                cartalist = cartaeliminarquery.find();
 
-                                for (final ParseObject cartas : cartalist) {
-                                    cartas.deleteInBackground(new DeleteCallback() {
-                                        @Override
-                                        public void done(ParseException e) {
-                                            if (e == null) {
-                                                Log.d("delacalle", "Carta eliminada");
-                                            } else {
-                                                Log.d("delacalle", "Carta no eliminada");
+                                                for (final ParseObject cartas : cartalist) {
+                                                    cartas.deleteInBackground(new DeleteCallback() {
+                                                        @Override
+                                                        public void done(ParseException e) {
+                                                            if (e == null) {
+                                                                Log.d("delacalle", "Carta eliminada");
+                                                            } else {
+                                                                Log.d("delacalle", "Carta no eliminada");
+                                                            }
+                                                        }
+                                                    });
+                                                }
+                                            } catch (ParseException ae) {
+                                                Log.d("delacalle", "Error" + ae);
                                             }
+                                            Intent intent = new Intent(editarrestaurante_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
+                                            startActivity(intent);
+                                        } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                            Log.d("delacalle", "Restaurante no encontrado, no se puede eliminar");
                                         }
-                                    });
-                                }
-                            } catch (ParseException ae) {
-                                Log.d("delacalle", "Error" + ae);
+
+
+                                    }
+                                });
+
+                            }catch(Exception oe)
+                            {
+                                oe.getStackTrace();
+                                Log.d("delacalle", "error en eliminar restaurante");
                             }
-                            Intent intent = new Intent(editarrestaurante_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
-                            startActivity(intent);
-                        } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-                            Log.d("delacalle", "Restaurante no encontrado, no se puede eliminar");
+                        } else {
+
+                            Toast.makeText(getApplicationContext(), "No puedes  eliminar un restaurante si no eres un responsable", Toast.LENGTH_SHORT).show();
                         }
-
-
                     }
                 });
 
-                }catch(Exception e)
-                {
-                    e.getStackTrace();
-                    Log.d("delacalle", "error en eliminar restaurante");
-                }
             }
 
         });
@@ -357,39 +371,52 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             v.startAnimation(animAlpha);
-                            final String nombre = nombreRestauranteA.getText().toString();
-                            final String descripcion = descripcionRestauranteA.getText().toString();
-                            final String direccion = direccionRestauranteA.getText().toString();
-                            final String telefono = telefonoRestauranteA.getText().toString();
-                            final String web = webRestauranteA.getText().toString();
-
-
-
-                            object.put("nombre", nombre);
-                            object.put("descripcion", descripcion);
-                            object.put("direccion",direccion);
-                            object.put("telefono",telefono);
-                            object.put("web",web);
-                            object.put("fotologo",picfile1);
-                            object.put("fotogrande",picfile2);
-                            object.put("color",color);
-                            object.saveInBackground(new SaveCallback() {
+                            ParseQuery<ParseRole> queryrol = ParseRole.getQuery();
+                            queryrol.whereEqualTo("name", "responsable");
+                            queryrol.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+                            queryrol.getFirstInBackground(new GetCallback<ParseRole>() {
                                 @Override
-                                public void done(ParseException e) {
-                                    if(e== null) {
-                                        id = object.getObjectId().toString();
-                                        Intent intent = new Intent(editarrestaurante_delacalleactivity.this, editarcartarestaurante_delacalleactivity.class);
-                                        intent.putExtra("id", id);
-                                        editarrestaurante_delacalleactivity.this.startActivity(intent);
-                                        Toast.makeText(getApplicationContext(), "Actualizado", Toast.LENGTH_SHORT).show();
-                                        Log.d("delacalle", "Restaurante Actualizado");
-                                    }
-                                    else
-                                    {
-                                        Log.d("delacalle", "Error al actualizar restaurante");
+                                public void done(ParseRole rol, ParseException e) {
+                                    if (e == null) {
+                                        final String nombre = nombreRestauranteA.getText().toString();
+                                        final String descripcion = descripcionRestauranteA.getText().toString();
+                                        final String direccion = direccionRestauranteA.getText().toString();
+                                        final String telefono = telefonoRestauranteA.getText().toString();
+                                        final String web = webRestauranteA.getText().toString();
+
+
+
+                                        object.put("nombre", nombre);
+                                        object.put("descripcion", descripcion);
+                                        object.put("direccion",direccion);
+                                        object.put("telefono",telefono);
+                                        object.put("web",web);
+                                        object.put("fotologo",picfile1);
+                                        object.put("fotogrande",picfile2);
+                                        object.put("color",color);
+                                        object.saveInBackground(new SaveCallback() {
+                                            @Override
+                                            public void done(ParseException e) {
+                                                if(e== null) {
+                                                    id = object.getObjectId().toString();
+                                                    Intent intent = new Intent(editarrestaurante_delacalleactivity.this, editarcartarestaurante_delacalleactivity.class);
+                                                    intent.putExtra("id", id);
+                                                    editarrestaurante_delacalleactivity.this.startActivity(intent);
+                                                    Toast.makeText(getApplicationContext(), "Actualizado", Toast.LENGTH_SHORT).show();
+                                                    Log.d("delacalle", "Restaurante Actualizado");
+                                                }
+                                                else
+                                                {
+                                                    Log.d("delacalle", "Error al actualizar restaurante");
+                                                }
+                                            }
+                                        });
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "No puedes editar el restaurante si no eres un responsable", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
+
 
 
 

@@ -111,7 +111,7 @@ public class mostrarrestaurante_delacalleactivity extends AppCompatActivity {
                             @Override
                             public void done(ParseException e) {
                                 id = resta.getObjectId().toString();
-                                displayPopupdetalleResta(v);
+                         //       displayPopupdetalleResta(v);
                             }
                         });
 
@@ -198,7 +198,7 @@ public class mostrarrestaurante_delacalleactivity extends AppCompatActivity {
     }
 
 
-    private void displayPopupdetalleResta(final View anchorView) {
+  /*  private void displayPopupdetalleResta(final View anchorView) {
         final PopupWindow popup = new PopupWindow(mostrarrestaurante_delacalleactivity.this);
         View layout = getLayoutInflater().inflate(R.layout.popupdetallerestaurante, null);
         popup.setContentView(layout);
@@ -322,5 +322,5 @@ ratingbarres.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListene
 
 
 
-    }
+    }*/
 }

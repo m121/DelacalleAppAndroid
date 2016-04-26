@@ -71,7 +71,8 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
     RelativeLayout relativefoto;
 
 
-
+    boolean isInternetPresent = false;
+    ConnectionDetector cd;
 
    /* Button btncerrarsesion;
     Button btncambiarcontrasena;*/
@@ -80,6 +81,10 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfilusuario_delacalleactivity);
+
+        cd = new ConnectionDetector(getApplicationContext());
+        // get Internet status
+        isInternetPresent = cd.isConnectingToInternet();
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -183,32 +188,51 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
         {
             Log.d("delacalle","error " + e);
         }
-        ParseQuery<ParseRole> roleuserusuario = ParseRole.getQuery();
-        roleuserusuario.whereEqualTo("name", "usuario");
-        roleuserusuario.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
-        roleuserusuario.getFirstInBackground(new GetCallback<ParseRole>() {
-            @Override
-            public void done(ParseRole object, ParseException e) {
-                if (e == null) {
-                    fabeditar.setVisibility(View.INVISIBLE);
-                    fabrestaurante.setVisibility(View.INVISIBLE);
-                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
-                    ParseQuery<ParseRole> roleuserresponsable = ParseRole.getQuery();
-                    roleuserresponsable.whereEqualTo("name", "responsable");
-                    roleuserresponsable.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
-                    roleuserresponsable.getFirstInBackground(new GetCallback<ParseRole>() {
-                        @Override
-                        public void done(ParseRole object, ParseException e) {
-                            if (e == null) {
-                                fabeditar.setVisibility(View.VISIBLE);
-                                fabrestaurante.setVisibility(View.VISIBLE);
-                            }
-                        }
-                    });
-                }
+        try {
 
+if(isInternetPresent) {
+    ParseQuery<ParseRole> roleuserusuario = ParseRole.getQuery();
+    roleuserusuario.whereEqualTo("name", "usuario");
+    roleuserusuario.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+    roleuserusuario.getFirstInBackground(new GetCallback<ParseRole>() {
+        @Override
+        public void done(ParseRole object, ParseException e) {
+            if (e == null) {
+                fabeditar.setVisibility(View.INVISIBLE);
+                fabrestaurante.setVisibility(View.INVISIBLE);
+            } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                ParseQuery<ParseRole> roleuserresponsable = ParseRole.getQuery();
+                roleuserresponsable.whereEqualTo("name", "responsable");
+                roleuserresponsable.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+                roleuserresponsable.getFirstInBackground(new GetCallback<ParseRole>() {
+                    @Override
+                    public void done(ParseRole object, ParseException e) {
+                        if (e == null) {
+                            fabeditar.setVisibility(View.VISIBLE);
+                            fabrestaurante.setVisibility(View.VISIBLE);
+                        } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                            Log.d("delacalle", "El usuario no tiene rol");
+                            fabeditar.setVisibility(View.INVISIBLE);
+                            fabrestaurante.setVisibility(View.INVISIBLE);
+                        }
+                    }
+                });
             }
-        });
+
+        }
+    });
+}
+            else
+{
+    fabeditar.setVisibility(View.INVISIBLE);
+    fabrestaurante.setVisibility(View.INVISIBLE);
+}
+
+        }catch (java.lang.NullPointerException e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle","Error mostrando boton plus");
+        }
 
 try {
     username.setText(ParseUser.getCurrentUser().getString("nombre"));

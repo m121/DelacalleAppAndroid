@@ -34,6 +34,8 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseRole;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.ByteArrayOutputStream;
@@ -405,7 +407,20 @@ try {
         btneditarrcarta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActualizarCarta();
+                ParseQuery<ParseRole> queryrol = ParseRole.getQuery();
+                queryrol.whereEqualTo("name", "responsable");
+                queryrol.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+                queryrol.getFirstInBackground(new GetCallback<ParseRole>() {
+                    @Override
+                    public void done(ParseRole rol, ParseException e) {
+                        if (e == null) {
+                            ActualizarCarta();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "No puedes editar una carta si no eres un responsable", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
             }
         });
 
