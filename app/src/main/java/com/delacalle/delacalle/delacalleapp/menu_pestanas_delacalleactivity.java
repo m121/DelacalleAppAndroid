@@ -112,7 +112,7 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                 public boolean onQueryTextSubmit(final String titulo) {
                     // perform query here
                     ParseQuery<ParseObject> querybuscar = ParseQuery.getQuery("restaurante");
-                    querybuscar.whereEqualTo("nombre", titulo);
+                    querybuscar.whereContains("nombre", titulo);
                     querybuscar.getFirstInBackground(new GetCallback<ParseObject>() {
                         @Override
                         public void done(ParseObject object, ParseException e) {

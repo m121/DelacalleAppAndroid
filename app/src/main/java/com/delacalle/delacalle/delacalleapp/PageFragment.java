@@ -122,8 +122,6 @@ public class PageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
       final  View view = inflater.inflate(R.layout.fragment_page, container, false);
-      //  TextView tvTitle = (TextView) view.findViewById(R.id.tvTitle);
-    //    tvTitle.setText("Fragment #" + mPage);
 
         final Typeface primerfontcandara = Typeface.createFromAsset(getActivity().getAssets(),"fonts/CandaraBold.ttf");
         final Typeface segundafontcaviar = Typeface.createFromAsset(getActivity().getAssets(), "fonts/CaviarDreams.ttf");

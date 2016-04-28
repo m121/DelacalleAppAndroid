@@ -531,6 +531,7 @@ try
                     nombrePlato6.setText(carta.getString("nombre").toUpperCase());
                     descripcionPlato6.setText(carta.getString("descripcion"));
                     precioPlato6.setText("$"+carta.getString("precio"));
+
                     fotofileplato6 = carta.getParseFile("fotoplato");
                     fotofileplato6.getDataInBackground(new GetDataCallback() {
                         @Override
