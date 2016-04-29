@@ -59,6 +59,12 @@
     </string>
     <string name="title_activity_busquedacarta_delacalleactivity">Búsqueda por nombre plato
     </string>
+    <string name="title_activity_busquedadescripcion_delacalleactivity">
+       Búsqueda por descripción
+    </string>
+    <string name="title_activity_busquedadireccion_delacalleactivity">
+        Búsqueda por dirección
+    </string>
 
 
 

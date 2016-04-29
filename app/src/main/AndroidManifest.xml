@@ -205,17 +205,25 @@
         <activity
             android:name=".busquedanombre_delacalleactivity"
             android:label="@string/title_activity_busquedanombre_delacalleactivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".busquedaprecio_delacalleactivity"
             android:label="@string/title_activity_busquedaprecio_delacalleactivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".busquedacarta_delacalleactivity"
             android:label="@string/title_activity_busquedacarta_delacalleactivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".busquedadescripcion_delacalleactivity"
+            android:label="@string/title_activity_busquedadescripcion_delacalleactivity" >
+        </activity>
+        <activity
+            android:name=".busquedadireccion_delacalleactivity"
+            android:label="@string/title_activity_busquedadireccion_delacalleactivity" >
         </activity>
     </application>
 

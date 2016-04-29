@@ -48,6 +48,8 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
 
     ArrayList<String> precio;
 
+    ArrayList<String> descripcion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +72,8 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
         tabsStrip.setViewPager(viewPager);
 
         final ArrayList<String> precio = new ArrayList<String>();
+
+        descripcion = new ArrayList<String>();
 
     }
 
@@ -139,16 +143,54 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                                 intent.putExtra("titulo", titulo);
                                 startActivity(intent);
                                 Log.d("delacalle", "precio de plato encontrado");
-                          //      Toast.makeText(menu_pestanas_delacalleactivity.this, "¡Lo has encontrado!,restaurantes con precios hasta " + titulo + " pesos", Toast.LENGTH_SHORT).show();
+                                //      Toast.makeText(menu_pestanas_delacalleactivity.this, "¡Lo has encontrado!,restaurantes con precios hasta " + titulo + " pesos", Toast.LENGTH_SHORT).show();
 
 
                             } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
                                 Log.d("delacalle", "precio de plato no encontrado");
-                          //      Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
+                                //      Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
                             }
 
                         }
                     });
+
+                    ParseQuery<ParseObject> querydescrip = ParseQuery.getQuery("restaurante");
+                    querydescrip.whereContains("descripcion", titulo);
+                    querydescrip.getFirstInBackground(new GetCallback<ParseObject>() {
+                        @Override
+                        public void done(ParseObject object, ParseException e) {
+                            if (e == null) {
+                                Intent intent = new Intent(menu_pestanas_delacalleactivity.this, busquedadescripcion_delacalleactivity.class);
+                                intent.putExtra("titulo", titulo);
+                                startActivity(intent);
+                                Log.d("delacalle", "descripcion encontrado");
+                                Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo has encontrado!", Toast.LENGTH_SHORT).show();
+                            } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                Log.d("delacalle", "descripcion no encontrado");
+                                //     Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+                    ParseQuery<ParseObject> querydir = ParseQuery.getQuery("restaurante");
+                    querydir.whereContains("direccion", titulo);
+                    querydir.getFirstInBackground(new GetCallback<ParseObject>() {
+                        @Override
+                        public void done(ParseObject object, ParseException e) {
+                            if (e == null) {
+                                Intent intent = new Intent(menu_pestanas_delacalleactivity.this, busquedadireccion_delacalleactivity.class);
+                                intent.putExtra("titulo", titulo);
+                                startActivity(intent);
+                                Log.d("delacalle", "direccion encontrada");
+                                Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo has encontrado!", Toast.LENGTH_SHORT).show();
+                            } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                Log.d("delacalle", "direccion no encontrada");
+                                //     Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+
 
                     ParseQuery<ParseObject> querycartan = new ParseQuery<ParseObject>("carta");
                     querycartan.whereEqualTo("nombre", titulo);

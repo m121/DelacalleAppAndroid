@@ -89,6 +89,7 @@
         android:textSize="20sp"
         android:singleLine="true"
         android:lines="1"
+        android:digits="abcdefghijklmnopqrstuvwxyz1234567890#- "
         android:paddingLeft="5dp"
         android:layout_below="@+id/editTextDescripcionRestauranteA"
         android:layout_alignParentLeft="true"
