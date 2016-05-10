@@ -83,7 +83,9 @@ public class detallerestaurante_delacalleactivity extends AppCompatActivity {
                         public void done(byte[] data, ParseException e) {
                             if(e==null)
                             {
-                                pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                final BitmapFactory.Options options = new BitmapFactory.Options();
+                                options.inSampleSize = 2;
+                                Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                                 pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                                 fotogranderestaurante.setImageBitmap(pic);

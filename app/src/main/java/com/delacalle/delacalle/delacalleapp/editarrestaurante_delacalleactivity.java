@@ -328,7 +328,9 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
                     picfile1.getDataInBackground(new GetDataCallback() {
                         @Override
                         public void done(byte[] data, ParseException e) {
-                            pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            final BitmapFactory.Options options = new BitmapFactory.Options();
+                            options.inSampleSize = 2;
+                            Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                             ByteArrayOutputStream stream = new ByteArrayOutputStream();
                             pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                             fotologoRestauranteA.setImageBitmap(pic);
@@ -339,7 +341,9 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
                     picfile2.getDataInBackground(new GetDataCallback() {
                         @Override
                         public void done(byte[] data, ParseException e) {
-                            pic2 = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            final BitmapFactory.Options options = new BitmapFactory.Options();
+                            options.inSampleSize = 4;
+                            Bitmap  pic2 = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                             ByteArrayOutputStream stream = new ByteArrayOutputStream();
                             pic2.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                             fotograndeRestauranteA.setImageBitmap(pic2);

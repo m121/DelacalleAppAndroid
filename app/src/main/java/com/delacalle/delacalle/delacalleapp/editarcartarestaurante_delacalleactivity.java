@@ -248,7 +248,9 @@ try {
                 fotocartafile1.getDataInBackground(new GetDataCallback() {
                     @Override
                     public void done(byte[] data, ParseException e) {
-                        Bitmap pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                        final BitmapFactory.Options options = new BitmapFactory.Options();
+                        options.inSampleSize = 2;
+                        Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                         fotocartaplato1.setImageBitmap(pic);
@@ -275,7 +277,9 @@ try {
                 fotocartafile2.getDataInBackground(new GetDataCallback() {
                     @Override
                     public void done(byte[] data, ParseException e) {
-                        Bitmap pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                        final BitmapFactory.Options options = new BitmapFactory.Options();
+                        options.inSampleSize = 2;
+                        Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                         fotocartaplato2.setImageBitmap(pic);
@@ -302,7 +306,9 @@ try {
                 fotocartafile3.getDataInBackground(new GetDataCallback() {
                     @Override
                     public void done(byte[] data, ParseException e) {
-                        Bitmap pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                        final BitmapFactory.Options options = new BitmapFactory.Options();
+                        options.inSampleSize = 2;
+                        Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                         fotocartaplato3.setImageBitmap(pic);
@@ -329,7 +335,9 @@ try {
                 fotocartafile4.getDataInBackground(new GetDataCallback() {
                     @Override
                     public void done(byte[] data, ParseException e) {
-                        Bitmap pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                        final BitmapFactory.Options options = new BitmapFactory.Options();
+                        options.inSampleSize = 2;
+                        Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                         fotocartaplato4.setImageBitmap(pic);
@@ -356,7 +364,9 @@ try {
                 fotocartafile5.getDataInBackground(new GetDataCallback() {
                     @Override
                     public void done(byte[] data, ParseException e) {
-                        Bitmap pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                        final BitmapFactory.Options options = new BitmapFactory.Options();
+                        options.inSampleSize = 2;
+                        Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                         fotocartaplato5.setImageBitmap(pic);
@@ -383,7 +393,9 @@ try {
                 fotocartafile6.getDataInBackground(new GetDataCallback() {
                     @Override
                     public void done(byte[] data, ParseException e) {
-                        Bitmap pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                        final BitmapFactory.Options options = new BitmapFactory.Options();
+                        options.inSampleSize = 2;
+                        Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                         fotocartaplato6.setImageBitmap(pic);

@@ -240,7 +240,9 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
                     public void done(byte[] data, ParseException e) {
                         if(e== null)
                         {
-                            pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            final BitmapFactory.Options options = new BitmapFactory.Options();
+                            options.inSampleSize = 4;
+                            Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                             ByteArrayOutputStream stream = new ByteArrayOutputStream();
                             pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                             fotorestauranteCartaDetalle.setImageBitmap(pic);

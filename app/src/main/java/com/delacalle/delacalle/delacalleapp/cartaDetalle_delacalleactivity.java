@@ -51,6 +51,7 @@ public class cartaDetalle_delacalleactivity extends AppCompatActivity {
     private Toolbar mToolbar;
 
     String id;
+    String idresta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -196,19 +197,22 @@ try
 
 
         ParseQuery<ParseObject> queryplato = ParseQuery.getQuery("carta");
-        queryplato.whereEqualTo("restauranteId",id);
+        queryplato.whereEqualTo("objectId",id);
         queryplato.getFirstInBackground(new GetCallback<ParseObject>() {
             @Override
             public void done(ParseObject carta, ParseException e) {
                 if(e== null)
                 {
+
                     filefotocarta = carta.getParseFile("fotoplato");
                     filefotocarta.getDataInBackground(new GetDataCallback() {
                         @Override
                         public void done(byte[] data, ParseException e) {
                             if(e== null)
                             {
-                                pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                final BitmapFactory.Options options = new BitmapFactory.Options();
+                                options.inSampleSize = 2;
+                                Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                                 pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                                 fotorestauranteCartaDetalle.setImageBitmap(pic);
@@ -220,12 +224,13 @@ try
                         }
                     });
 
+
                     nombreplatoCartaDetalle.setText(carta.getString("nombre").toUpperCase());
                     descripcionplatoCartaDetalle.setText(carta.getString("descripcion"));
                     precioplatoCartaDetalle.setText("$"+carta.getString("precio"));
-
+                    idresta = carta.getString("restauranteId");
                     ParseQuery<ParseObject> queryrestaurante = ParseQuery.getQuery("restaurante");
-                    queryrestaurante.whereEqualTo("objectId", id);
+                    queryrestaurante.whereEqualTo("objectId", idresta);
                     queryrestaurante.getFirstInBackground(new GetCallback<ParseObject>() {
                         @Override
                         public void done(ParseObject restaurante, ParseException e) {
@@ -235,7 +240,9 @@ try
                                 filefotologo.getDataInBackground(new GetDataCallback() {
                                     @Override
                                     public void done(byte[] data, ParseException e) {
-                                        pic2 = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                        final BitmapFactory.Options options = new BitmapFactory.Options();
+                                        options.inSampleSize = 8;
+                                        Bitmap  pic2 = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                                         pic2.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                                         fotologoCartaDetalle.setImageBitmap(pic2);
@@ -292,4 +299,6 @@ try
         // or call onBackPressed()
         return true;
     }
+
+
 }

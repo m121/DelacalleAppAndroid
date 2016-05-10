@@ -179,7 +179,9 @@ public class listarestaurantesresponsable_delacalleactivity extends AppCompatAct
                         picfile.getDataInBackground(new GetDataCallback() {
                             @Override
                             public void done(byte[] data, ParseException e) {
-                                pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                final BitmapFactory.Options options = new BitmapFactory.Options();
+                                options.inSampleSize = 2;
+                                Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                                 pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                                 picimageview.setImageBitmap(pic);
@@ -275,7 +277,9 @@ public class listarestaurantesresponsable_delacalleactivity extends AppCompatAct
                 picfile.getDataInBackground(new GetDataCallback() {
                     @Override
                     public void done(byte[] data, ParseException e) {
-                        pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                        final BitmapFactory.Options options = new BitmapFactory.Options();
+                        options.inSampleSize = 2;
+                        Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                         picimageview.setImageBitmap(pic);

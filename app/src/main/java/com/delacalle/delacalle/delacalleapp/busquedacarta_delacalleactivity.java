@@ -70,7 +70,7 @@ ArrayList<String> carta;
         mPager.setPageTransformer(true, new ZoomOutPageTransformer());
         carta = new ArrayList<String>();
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("carta");
-        query.whereMatches("nombre", titulo);
+        query.whereContains("nombre", titulo);
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {

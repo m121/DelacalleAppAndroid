@@ -310,10 +310,13 @@ try
                     fotofileplato1.getDataInBackground(new GetDataCallback() {
                         @Override
                         public void done(byte[] data, ParseException e) {
-                    Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            final BitmapFactory.Options options = new BitmapFactory.Options();
+                            options.inSampleSize = 4;
+                    Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                             ByteArrayOutputStream stream = new ByteArrayOutputStream();
                             pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                             fotoPlato1.setImageBitmap(pic);
+
                         }
                     });
                     relativelayoutPlato1.setOnClickListener(new View.OnClickListener() {
@@ -325,7 +328,7 @@ try
                                     if (e == null) {
 
                                         Intent intent = new Intent(getActivity(), cartaDetalle_delacalleactivity.class);
-                                        intent.putExtra("id", id);
+                                        intent.putExtra("id", carta.getObjectId());
                                         getActivity().startActivity(intent);
                                     } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
                                         Log.d("delacalle", "no se puede guardar la carta");
@@ -355,7 +358,9 @@ try
                     fotofileplato2.getDataInBackground(new GetDataCallback() {
                         @Override
                         public void done(byte[] data, ParseException e) {
-                            Bitmap pic2 = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            final BitmapFactory.Options options = new BitmapFactory.Options();
+                            options.inSampleSize = 4;
+                            Bitmap  pic2 = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                             ByteArrayOutputStream stream = new ByteArrayOutputStream();
                             pic2.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                             fotoPlato2.setImageBitmap(pic2);
@@ -370,7 +375,7 @@ try
                                     if (e == null) {
 
                                         Intent intent = new Intent(getActivity(), cartaDetalle_delacalleactivity.class);
-                                        intent.putExtra("id", id);
+                                        intent.putExtra("id", carta.getObjectId());
                                         getActivity().startActivity(intent);
                                     } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
                                         Log.d("delacalle", "no se puede guardar la carta");
@@ -400,7 +405,9 @@ try
                     fotofileplato3.getDataInBackground(new GetDataCallback() {
                         @Override
                         public void done(byte[] data, ParseException e) {
-                            Bitmap pic3 = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            final BitmapFactory.Options options = new BitmapFactory.Options();
+                            options.inSampleSize = 4;
+                            Bitmap  pic3 = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                             ByteArrayOutputStream stream = new ByteArrayOutputStream();
                             pic3.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                             fotoPlato3.setImageBitmap(pic3);
@@ -415,7 +422,7 @@ try
                                     if (e == null) {
 
                                         Intent intent = new Intent(getActivity(), cartaDetalle_delacalleactivity.class);
-                                        intent.putExtra("id", id);
+                                        intent.putExtra("id", carta.getObjectId());
                                         getActivity().startActivity(intent);
                                     } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
                                         Log.d("delacalle", "no se puede guardar la carta");
@@ -445,7 +452,9 @@ try
                     fotofileplato4.getDataInBackground(new GetDataCallback() {
                         @Override
                         public void done(byte[] data, ParseException e) {
-                            Bitmap pic4 = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            final BitmapFactory.Options options = new BitmapFactory.Options();
+                            options.inSampleSize = 4;
+                            Bitmap  pic4 = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                             ByteArrayOutputStream stream = new ByteArrayOutputStream();
                             pic4.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                             fotoPlato4.setImageBitmap(pic4);
@@ -460,7 +469,7 @@ try
                                     if (e == null) {
 
                                         Intent intent = new Intent(getActivity(), cartaDetalle_delacalleactivity.class);
-                                        intent.putExtra("id", id);
+                                        intent.putExtra("id", carta.getObjectId());
                                         getActivity().startActivity(intent);
                                     } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
                                         Log.d("delacalle", "no se puede guardar la carta");
@@ -490,7 +499,9 @@ try
                     fotofileplato5.getDataInBackground(new GetDataCallback() {
                         @Override
                         public void done(byte[] data, ParseException e) {
-                            Bitmap pic5 = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            final BitmapFactory.Options options = new BitmapFactory.Options();
+                            options.inSampleSize = 4;
+                            Bitmap  pic5 = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                             ByteArrayOutputStream stream = new ByteArrayOutputStream();
                             pic5.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                             fotoPlato5.setImageBitmap(pic5);
@@ -505,7 +516,7 @@ try
                                     if (e == null) {
 
                                         Intent intent = new Intent(getActivity(), cartaDetalle_delacalleactivity.class);
-                                        intent.putExtra("id", id);
+                                        intent.putExtra("id", carta.getObjectId());
                                         getActivity().startActivity(intent);
                                     } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
                                         Log.d("delacalle", "no se puede guardar la carta");
@@ -536,7 +547,9 @@ try
                     fotofileplato6.getDataInBackground(new GetDataCallback() {
                         @Override
                         public void done(byte[] data, ParseException e) {
-                            Bitmap pic6 = BitmapFactory.decodeByteArray(data, 0, data.length);
+                            final BitmapFactory.Options options = new BitmapFactory.Options();
+                            options.inSampleSize = 4;
+                            Bitmap  pic6 = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                             ByteArrayOutputStream stream = new ByteArrayOutputStream();
                             pic6.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                             fotoPlato6.setImageBitmap(pic6);
@@ -551,7 +564,7 @@ try
                                     if (e == null) {
 
                                         Intent intent = new Intent(getActivity(), cartaDetalle_delacalleactivity.class);
-                                        intent.putExtra("id", id);
+                                        intent.putExtra("id", carta.getObjectId());
                                         getActivity().startActivity(intent);
                                     } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
                                         Log.d("delacalle", "no se puede guardar la carta");
