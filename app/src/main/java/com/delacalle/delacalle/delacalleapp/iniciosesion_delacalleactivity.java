@@ -202,7 +202,7 @@ e.printStackTrace();
             txtUserName.setTypeface(segundafontcaviar);
             txtUserPass.setTypeface(segundafontcaviar);
             buttoniniciarsesion.setTypeface(primerfontcandara);
-
+            loginfacebook.setClickable(true);
 
 
 
@@ -216,57 +216,62 @@ e.printStackTrace();
         {
             ae.getStackTrace();
             Log.d("delacalle", "Error NullpointerException");
-            Intent intent = new Intent(iniciosesion_delacalleactivity.this,perfilusuario_delacalleactivity.class);
-            startActivity(intent);
+         //   Intent intent = new Intent(iniciosesion_delacalleactivity.this,perfilusuario_delacalleactivity.class);
+         //   startActivity(intent);
         }
               //     final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.anim_alpha);
         //     final Animation animTranslate = AnimationUtils.loadAnimation(this, R.anim.anim_translate);
-        loginfacebook.setClickable(true);
+
   //      logininstagram.setClickable(true);
 
 
+try {
+    btnLogInEmail.setOnClickListener(new View.OnClickListener() {
 
-        btnLogInEmail.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                v.startAnimation(animAlpha);
-                if (isInternetPresent) {
-                    logInEmailErrors(v);
-                } else {
-                    Log.d("delacalle", "No hay internet");
-                    Toast.makeText(getApplicationContext(), "No puedes  usar la app sin Internet ", Toast.LENGTH_SHORT).show();
-
-                }
+        @Override
+        public void onClick(View v) {
+            v.startAnimation(animAlpha);
+            if (isInternetPresent) {
+                logInEmailErrors(v);
+            } else {
+                Log.d("delacalle", "No hay internet");
+                Toast.makeText(getApplicationContext(), "No puedes  usar la app sin Internet ", Toast.LENGTH_SHORT).show();
 
             }
-        });
 
-        btnlinkregistrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.startAnimation(animAlpha);
-                Intent intent = new Intent(iniciosesion_delacalleactivity.this, registro_delacalleactivity.class);
-                startActivity(intent);
+        }
+    });
+
+    btnlinkregistrar.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            v.startAnimation(animAlpha);
+            Intent intent = new Intent(iniciosesion_delacalleactivity.this, registro_delacalleactivity.class);
+            startActivity(intent);
+        }
+    });
+
+
+    buttoniniciarsesion.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            v.startAnimation(animAlpha);
+            if (isInternetPresent) {
+                logInEmailErrors(v);
+            } else {
+                Log.d("delacalle", "No hay internet");
+                Toast.makeText(getApplicationContext(), "No puedes  usar la app sin Internet ", Toast.LENGTH_SHORT).show();
+
             }
-        });
 
 
-        buttoniniciarsesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.startAnimation(animAlpha);
-                if (isInternetPresent) {
-                    logInEmailErrors(v);
-                } else {
-                    Log.d("delacalle", "No hay internet");
-                    Toast.makeText(getApplicationContext(), "No puedes  usar la app sin Internet ", Toast.LENGTH_SHORT).show();
-
-                }
-
-
-            }
-        });
+        }
+    });
+}catch (NullPointerException ae)
+{
+    ae.getStackTrace();
+    Log.d("delacalle", "Error NullpointerException");
+}
 
 try {
     loginfacebook.setOnClickListener(new View.OnClickListener() {
@@ -372,15 +377,22 @@ try {
 
 
 //**
-        btnLinkToResetPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.startAnimation(animAlpha);
-                Intent intent = new Intent(iniciosesion_delacalleactivity.this,resetearcontrasenadesdelogin_delacalleactivity.class);
-                startActivity(intent);
-            }
-        });
+        try {
 
+
+            btnLinkToResetPass.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    v.startAnimation(animAlpha);
+                    Intent intent = new Intent(iniciosesion_delacalleactivity.this, resetearcontrasenadesdelogin_delacalleactivity.class);
+                    startActivity(intent);
+                }
+            });
+        }catch (NullPointerException ae)
+        {
+            ae.getStackTrace();
+            Log.d("delacalle", "Error NullpointerException");
+        }
 
     }
 
@@ -568,14 +580,26 @@ try {
 
     }
 
-    // Ocultar el teclado
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager)getSystemService(Context.
+
+
+
+        // Ocultar el teclado
+        @Override
+        public boolean onTouchEvent (MotionEvent event){
+            try
+            {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.
                 INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }catch(NullPointerException ae)
+            {
+                ae.getStackTrace();
+                Log.d("delacalle", "Error NullpointerException");
+            }
         return true;
+
     }
+
 
     // iniciar sesion por correo
         private void logInEmail (String lowercase, String userpass)
