@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="@null"
+    android:background="@drawable/fondomenublanco768x1280"
     android:layout_height="match_parent">
 
     <ScrollView
@@ -46,7 +46,7 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpagerdetalle"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="300dp"
         android:background="@null"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
