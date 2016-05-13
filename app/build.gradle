@@ -21,11 +21,11 @@ android {
     buildToolsVersion "23.0.0"
     defaultConfig {
         applicationId "com.delacalle.delacalle.delacalleapp"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 23
-        versionName '3'
+        versionName '4'
         multiDexEnabled true
-        versionCode 3
+        versionCode 4
     }
     buildTypes {
         release {

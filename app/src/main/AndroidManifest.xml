@@ -30,11 +30,12 @@
     </compatible-screens>
 
     <supports-screens
-        android:anyDensity="true"
+        android:anyDensity="false"
         android:largeScreens="true"
         android:normalScreens="true"
-        android:smallScreens="true"
-        android:xlargeScreens="true" />
+        android:smallScreens="false"
+        android:xlargeScreens="false"
+        />
 
     <application
         android:name=".StarterApplication"
