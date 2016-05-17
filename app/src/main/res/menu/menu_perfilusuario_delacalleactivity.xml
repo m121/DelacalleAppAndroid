@@ -9,21 +9,21 @@
         android:orderInCategory="5"
         android:title="Cambiar contraseña"
         android:icon="@drawable/ic_cambioclave"
-        app:showAsAction="ifRoom|collapseActionView"
+        app:showAsAction="always"
          />
 
     <item android:id="@+id/action_editar"
         android:orderInCategory="5"
         android:title="Editar perfil"
         android:icon="@drawable/ic_guardar"
-        app:showAsAction="ifRoom|collapseActionView"
+        app:showAsAction="always"
         />
 
     <item android:id="@+id/action_cerrar"
         android:orderInCategory="5"
         android:title="Cerrar sesión"
         android:icon="@drawable/ic_cerrarsesion"
-        app:showAsAction="ifRoom|collapseActionView"
+        app:showAsAction="always"
         />
 
 

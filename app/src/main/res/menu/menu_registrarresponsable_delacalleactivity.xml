@@ -6,11 +6,11 @@
         android:orderInCategory="5"
         android:title="Cerrar sesión"
         android:icon="@drawable/ic_cerrarsesion"
-        app:showAsAction="ifRoom|collapseActionView"
+        app:showAsAction="always"
         />
 
     <item android:id="@+id/action_menu"
         android:orderInCategory="4"
         android:title="Menú"
-        app:showAsAction="ifRoom|collapseActionView"/>
+        app:showAsAction="always"/>
 </menu>

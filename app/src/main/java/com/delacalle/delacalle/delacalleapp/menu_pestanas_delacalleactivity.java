@@ -79,6 +79,29 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
 
 
     @Override
+    public void onStart() {
+        super.onStart();
+
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -231,12 +254,6 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-
-    }
 
     // Ocultar el teclado
     @Override
@@ -254,4 +271,6 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
 
         return true;
     }
+
+
 }

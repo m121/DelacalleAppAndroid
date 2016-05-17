@@ -227,6 +227,7 @@ try {
     user.setPassword(userPass);
     user.setEmail(userEmail);
     user.put("nombre", userName);
+
     user.signUpInBackground(new SignUpCallback() {
         @Override
         public void done(ParseException e) {

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/fondomenublanco768x1280"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnColor1"
+        android:background="#b56497"
+        android:layout_marginLeft="46dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="57dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnColor2"
+        android:background="#169c79"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_above="@+id/btnColor3"
+        android:layout_toRightOf="@+id/btnColor1"
+        android:layout_toEndOf="@+id/btnColor1" />
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnColor3"
+        android:background="#f05543"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/btnColor1"
+        android:layout_toLeftOf="@+id/btnColor2"
+        android:layout_toStartOf="@+id/btnColor2" />
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnColor4"
+        android:background="#da4f70"
+        android:layout_alignTop="@+id/btnColor3"
+        android:layout_alignLeft="@+id/btnColor2"
+        android:layout_alignStart="@+id/btnColor2" />
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnColor5"
+        android:background="#41b7ab"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/btnColor3"
+        android:layout_toLeftOf="@+id/btnColor2"
+        android:layout_toStartOf="@+id/btnColor2" />
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnColor6"
+        android:background="#f0bf59"
+        android:layout_alignTop="@+id/btnColor5"
+        android:layout_alignLeft="@+id/btnColor4"
+        android:layout_alignStart="@+id/btnColor4" />
+</RelativeLayout>
