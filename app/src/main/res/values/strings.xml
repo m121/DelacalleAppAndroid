@@ -1,70 +1,107 @@
 <resources>
     <string name="app_name">De La Calle</string>
+
     <string name="title_activity_home_delacalleactivity">home_delacalleactivity</string>
 
     <string name="hello_world">Hello world!</string>
+
     <string name="action_settings">Settings</string>
+
     <string name="title_activity_iniciosesion_delacalleactivity">iniciosesion_delacalleactivity
     </string>
+
     <string name="title_activity_registro_delacalleactivity">registro_delacalleactivity</string>
+
     <string name="title_activity_menu_delacalleactivity">Menu</string>
+
     <string name="title_activity_splashscreen_delacalleactivity">splashscreen_delacalleactivity
     </string>
+
+   <!-- Crear restaurante-->
     <string name="title_activity_agregarrestaurante_delacalleactivity">
         Crear restaurante
     </string>
+    <string name="crearrestauranteDescripcion">Descripción y descuento</string>
+
+
     <string name="title_activity_mostrarrestaurante_delacalleactivity">
         Mostrar restaurante
     </string>
+
     <string name="facebook_app_id">807123432744026</string>
 
     <string name="title_activity_resetearcontrasena_delacalleactivity">
         Resetear contraseña
     </string>
+
     <string name="title_activity_registrarresponsable_delacalleactivity">
         Registrar responsable
     </string>
+
     <string name="title_activity_listarestaurantesresponsable_delacalleactivity">
         Mis restaurantes
     </string>
+
     <string name="title_activity_menu_pestanas_delacalleactivity">
     </string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="title_activity_perfilusuario_delacalleactivity">
     </string>
+
     <string name="title_activity_carta_delacalleactivity">Carta Detalle</string>
+
+   <!-- Editar restaurante-->
     <string name="title_activity_editarrestaurante_delacalleactivity">
         Editar Restaurante
     </string>
+    <string name="editarrestauranteDescripcion">Descripción y descuento</string>
+
     <string name="title_activity_detallerestaurante_delacalleactivity">
         Restaurante
     </string>
+
     <string name="title_activity_carta_detalle_delacalleactivity">Plato
     </string>
+
     <string name="title_activity_agregarcarta_delacalleactivity"> Agregar Carta
     </string>
+
     <string name="title_activity_editarcartarestaurante_delacalleactivity">
        Editar carta
     </string>
+
     <string name="title_activity_resetearcontrasenadesdelogin_delacalleactivity">
        Cambiar contraseña
     </string>
+
     <string name="title_activity_busquedanombre_delacalleactivity">
         Búsqueda por nombre
     </string>
+
     <string name="title_activity_busquedaprecio_delacalleactivity">
        Búsqueda por precio
     </string>
+
     <string name="title_activity_busquedacarta_delacalleactivity">Búsqueda por nombre plato
     </string>
+
     <string name="title_activity_busquedadescripcion_delacalleactivity">
        Búsqueda por descripción
     </string>
+
     <string name="title_activity_busquedadireccion_delacalleactivity">
         Búsqueda por dirección
     </string>
+
+
+
+    <!--Detalle restaurante - Informacion restaurante-->
+
+    <string name="detallerestauranteinformacionRating">Califica el restaurante</string>
+    <string name="detallerestauranteinformacionDescripcion">Descripción y descuento</string>
 
 
 

@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 buildscript {
     repositories {
         mavenCentral()
@@ -61,4 +62,6 @@ dependencies {
     compile 'com.android.support:support-v4:23.0.0'
     compile 'de.hdodenhof:circleimageview:2.0.0'
     compile 'com.github.sayyam:instagramapi:0.0.4'
+
 }
+

@@ -40,11 +40,14 @@
         android:xlargeScreens="true"
         />
 
+    <!-- android:largeHeap="true"          usar esto usa toda la memoria para la app pero no se recomienda porque podria cerrar otras apps-->
+
     <application
         android:name=".StarterApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_logo"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:theme="@style/MyMaterialTheme" >
         <activity
             android:name=".home_delacalleactivity"

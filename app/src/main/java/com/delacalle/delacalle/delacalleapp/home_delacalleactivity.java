@@ -11,7 +11,7 @@ import android.widget.Button;
 
 public class home_delacalleactivity extends AppCompatActivity {
 
-
+/*
     Button buttonentrarainiciarsesion;
     Button buttonentrararegistro;
 
@@ -66,5 +66,5 @@ public class home_delacalleactivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

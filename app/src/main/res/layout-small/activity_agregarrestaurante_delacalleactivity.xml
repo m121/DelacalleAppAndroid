@@ -71,7 +71,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Descripción"
+        android:hint="@string/crearrestauranteDescripcion"
         android:id="@+id/editTextDescripcionRestauranteA"
         android:textSize="15sp"
         android:lines="2"
@@ -103,7 +103,8 @@
         android:paddingLeft="5dp"
         android:id="@+id/editTextTelefonoRestauranteA"
         android:textSize="15sp"
-        android:layout_above="@+id/editTextWebRestauranteA"
+        android:layout_alignTop="@+id/frame_layout"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -116,9 +117,9 @@
         android:inputType="textUri"
         android:id="@+id/editTextWebRestauranteA"
         android:textSize="15sp"
-        android:layout_above="@+id/btnGuardarRestaurante"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="21dp" />
+        android:layout_below="@+id/editTextTelefonoRestauranteA"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="200dp"

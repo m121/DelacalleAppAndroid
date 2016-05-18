@@ -195,6 +195,8 @@ e.printStackTrace();
         txtUserName = (TextView) findViewById(R.id.editTextnombreiniciarsesion);
         txtUserPass = (TextView) findViewById(R.id.editTextcontrasenainiciarsesion);
 
+
+
         try {
 
             Typeface primerfontcandara = Typeface.createFromAsset(getAssets(), "fonts/CandaraBold.ttf");

@@ -7,7 +7,7 @@
         android:title="buscar"
         android:orderInCategory="100"
         android:icon="@drawable/ic_buscar"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_settings"

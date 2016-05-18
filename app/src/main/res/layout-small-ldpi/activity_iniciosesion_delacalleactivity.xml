@@ -33,7 +33,7 @@
         android:layout_alignParentStart="true">
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="20dp"
             android:id="@+id/editTextnombreiniciarsesion"
             android:layout_marginTop="67dp"
             android:hint="Correo"
@@ -46,11 +46,11 @@
             android:textColorHint="#ffffff"
             android:layout_below="@+id/imageButtonGmail"
             android:layout_centerHorizontal="true"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="20dp"
             android:inputType="textPassword"
             android:ems="10"
             android:hint="Contraseña"
@@ -64,11 +64,11 @@
             android:layout_below="@+id/editTextnombreiniciarsesion"
             android:layout_alignLeft="@+id/editTextnombreiniciarsesion"
             android:layout_alignStart="@+id/editTextnombreiniciarsesion"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="20dp"
             android:text="Entrar"
             android:id="@+id/btniniciarsesion"
             android:background="@color/buttoncolor"
@@ -77,11 +77,11 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="35dp"
             android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="20dp"
             android:text="¿No tienes una cuenta? Regístrate"
             android:id="@+id/btnlinkregistrar"
             android:background="@null"
@@ -94,7 +94,7 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="20dp"
             android:text="¿Te has olvidado de la contraseña?"
             android:id="@+id/btnlinkreseteardesdelogin"
             android:background="@null"
@@ -109,7 +109,7 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="80dp"
+        android:layout_width="50dp"
         android:layout_height="80dp"
         android:src="@drawable/facebook"
         android:id="@+id/btnSignInFacebook"
@@ -118,8 +118,8 @@
         android:layout_marginBottom="63dp" />
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/imageViewLogo"
         android:background="@drawable/logo"
         android:layout_below="@+id/relativeLayout2"

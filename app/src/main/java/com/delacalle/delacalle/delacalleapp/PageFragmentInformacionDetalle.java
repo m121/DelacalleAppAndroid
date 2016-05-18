@@ -212,14 +212,16 @@ try
                     direccionR.setText(object.getString("direccion"));
                     telefonoR.setText(object.getString("telefono"));
                     webR.setText(object.getString("web"));
-                    ratingbarR.setRating(object.getInt("rating"));
+              //      ratingbarR.setRating(object.getInt("rating"));  // es mejor quitarlo porque creo que si esta en 5 no se puede volver a calificar en 5
 
 
-
+// se saca el rating anterior por ejem 5 y se le suma el rating del usuario actual por ejm 5 y luego se divide por la cantidad de votos actuales
                     ratingbarR.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
                         @Override
                         public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                            rating = (rating + ratingR) / votos;
+                            rating = ratingBar.getRating();
+                            rating = (rating + ratingR) / (votos+1);
+                            Log.d("delacalle","rating es " + rating);
                             final float rate = rating;
 
                             final ParseQuery<ParseObject> usuarioRvotarq = ParseQuery.getQuery("restaurante");
