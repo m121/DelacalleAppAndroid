@@ -2,12 +2,14 @@ package com.delacalle.delacalle.delacalleapp;
 
 import android.app.Application;
 
+import com.crashlytics.android.Crashlytics;
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseRole;
 import com.parse.ParseUser;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by pc on 31/01/2016.
@@ -17,6 +19,7 @@ public class StarterApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
 
 
 

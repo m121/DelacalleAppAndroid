@@ -250,6 +250,9 @@
             android:name=".busquedadireccion_delacalleactivity"
             android:label="@string/title_activity_busquedadireccion_delacalleactivity" >
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="cc416f7c977e65311203dace98a691feae97fd34" />
     </application>
 
 </manifest>

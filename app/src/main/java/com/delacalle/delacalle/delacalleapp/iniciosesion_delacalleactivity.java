@@ -510,7 +510,10 @@ try {
                 e.getStackTrace();
                Log.d("delacalle","error en onactivityresult");
             }
-    }
+
+
+
+        }
 
 
 

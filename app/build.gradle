@@ -1,15 +1,23 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 
 
 buildscript {
     repositories {
         mavenCentral()
         maven { url 'https://maven.parse.com/repo' }
+        maven { url 'https://maven.fabric.io/public' }
 
     }
 
     dependencies {
         classpath 'com.parse.tools:gradle:1.+'
+        classpath 'io.fabric.tools:gradle:1.+'
 
 
     }
@@ -24,9 +32,9 @@ android {
         applicationId "com.delacalle.delacalle.delacalleapp"
         minSdkVersion 15
         targetSdkVersion 23
-        versionName '5'
-        multiDexEnabled true
-        versionCode 5
+        versionName '5.5'
+        multiDexEnabled false
+        versionCode 55
     }
     buildTypes {
         release {
@@ -43,7 +51,7 @@ ext {
 }
 
 dependencies {
-    //   compile fileTree(dir: 'libs', include: ['*.jar'])
+  //     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.parse.bolts:bolts-android:1.2.1'
     compile 'com.parse:parse-android:1.10.3'
     compile 'com.android.support:appcompat-v7:23.2.1'
@@ -62,6 +70,9 @@ dependencies {
     compile 'com.android.support:support-v4:23.0.0'
     compile 'de.hdodenhof:circleimageview:2.0.0'
     compile 'com.github.sayyam:instagramapi:0.0.4'
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
+        transitive = true;
+    }
 
 }
 
