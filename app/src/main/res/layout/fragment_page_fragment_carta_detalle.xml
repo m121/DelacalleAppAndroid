@@ -57,7 +57,7 @@
                         android:layout_below="@+id/textViewPlatoCarta1"
                         android:layout_gravity="center_horizontal"
                         android:text="Hamburguesa con tomate, doble queso, pepino"
-                        android:textSize="15sp"
+                        android:textSize="10sp"
                         android:layout_weight="0.3"
                         />
 
@@ -132,7 +132,7 @@
                     android:layout_below="@+id/textViewPlatoCarta2"
                     android:layout_gravity="center_horizontal"
                     android:text=""
-                    android:textSize="15sp"
+                    android:textSize="10sp"
                     android:layout_weight="0.3"
                     />
 
@@ -213,7 +213,7 @@
                     android:layout_below="@+id/textViewPlatoCarta3"
                     android:layout_gravity="center_horizontal"
                     android:text=""
-                    android:textSize="15sp"
+                    android:textSize="10sp"
                     android:layout_weight="0.3"
                     />
 
@@ -294,7 +294,7 @@
                 android:layout_below="@+id/textViewPlatoCarta4"
                 android:layout_gravity="center_horizontal"
                 android:text=""
-                android:textSize="15sp"
+                android:textSize="10sp"
                 android:layout_weight="0.3"
                 />
 
@@ -374,7 +374,7 @@
                     android:layout_below="@+id/textViewPlatoCarta5"
                     android:layout_gravity="center_horizontal"
                     android:text=""
-                    android:textSize="15sp"
+                    android:textSize="10sp"
                     android:layout_weight="0.3"
                     />
 
@@ -454,7 +454,7 @@
                     android:layout_below="@+id/textViewPlatoCarta6"
                     android:layout_gravity="center_horizontal"
                     android:text=""
-                    android:textSize="15sp"
+                    android:textSize="10sp"
                     android:layout_weight="0.3"
                     />
 

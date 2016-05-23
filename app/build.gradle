@@ -1,8 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 
+
 repositories {
     maven { url 'https://maven.fabric.io/public' }
+    maven { url 'http://sdk.uxcam.com/android/' }
 }
 
 
@@ -12,6 +14,7 @@ buildscript {
         mavenCentral()
         maven { url 'https://maven.parse.com/repo' }
         maven { url 'https://maven.fabric.io/public' }
+
 
     }
 
@@ -32,9 +35,9 @@ android {
         applicationId "com.delacalle.delacalle.delacalleapp"
         minSdkVersion 15
         targetSdkVersion 23
-        versionName '5.5'
+        versionName '5.7'
         multiDexEnabled false
-        versionCode 55
+        versionCode 57
     }
     buildTypes {
         release {
@@ -70,9 +73,12 @@ dependencies {
     compile 'com.android.support:support-v4:23.0.0'
     compile 'de.hdodenhof:circleimageview:2.0.0'
     compile 'com.github.sayyam:instagramapi:0.0.4'
+    compile 'com.uxcam:uxcam:2.3.4@aar'
     compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
         transitive = true;
     }
+
+
 
 }
 

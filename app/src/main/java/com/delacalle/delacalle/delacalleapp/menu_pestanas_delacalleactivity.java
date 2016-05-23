@@ -39,6 +39,7 @@ import com.parse.ParseUser;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import com.uxcam.UXCam;
 
 public class menu_pestanas_delacalleactivity extends AppCompatActivity {
 
@@ -54,7 +55,7 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_pestanas_delacalleactivity);
-
+        UXCam.startWithKey("081340b7b1a4968");   //ux cam analytics
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
 

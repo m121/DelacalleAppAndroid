@@ -16,7 +16,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="370dp"
+                android:layout_height="340dp"
                 android:id="@+id/imageViewFotoGrandeDetalleRestaurante"
                 android:background="#000000"
                 android:layout_alignParentTop="true"
@@ -26,7 +26,7 @@
                 android:id="@+id/tabsdetalle"
                 app:pstsShouldExpand="true"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="50dp"
                 android:textSize="14sp"
                 android:textColor="#ffffff"
                 android:background="#000000"
@@ -44,7 +44,7 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpagerdetalle"
         android:layout_width="match_parent"
-        android:layout_height="530dp"
+        android:layout_height="550dp"
         android:background="@drawable/fondomenublanco768x1280"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"

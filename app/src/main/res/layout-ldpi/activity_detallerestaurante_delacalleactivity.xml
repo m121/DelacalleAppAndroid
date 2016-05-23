@@ -26,15 +26,16 @@
                 android:id="@+id/tabsdetalle"
                 app:pstsShouldExpand="true"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="50dp"
                 android:textSize="14sp"
                 android:textColor="#ffffff"
                 android:background="#000000"
                 app:pstsIndicatorColor="@color/colorAccent"
                 app:pstsTabPaddingLeftRight="14dp"
-                android:layout_marginBottom="110dp"
+                android:layout_marginBottom="57dp"
                 android:layout_alignParentBottom="true"
-                >
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
             </com.astuetz.PagerSlidingTabStrip>
 
 
@@ -44,7 +45,7 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpagerdetalle"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="240dp"
         android:background="@drawable/fondomenublanco768x1280"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"

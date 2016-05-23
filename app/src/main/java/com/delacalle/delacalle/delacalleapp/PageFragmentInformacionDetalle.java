@@ -48,6 +48,7 @@ public class PageFragmentInformacionDetalle extends Fragment {
 
     String id;
     private float ratingR;
+    double sumarate;
     int votos;
 
     private int mPage;
@@ -205,7 +206,7 @@ try
             public void done(final ParseObject object, ParseException e) {
                 if (e == null) {
 
-                    ratingR = object.getInt("rating");
+                    ratingR = object.getInt("sumavotos");
                     votos = object.getInt("votos");
                     nombreR.setText(object.getString("nombre"));
                     descripcionR.setText(object.getString("descripcion"));
@@ -215,11 +216,12 @@ try
               //      ratingbarR.setRating(object.getInt("rating"));  // es mejor quitarlo porque creo que si esta en 5 no se puede volver a calificar en 5
 
 
-// se saca el rating anterior por ejem 5 y se le suma el rating del usuario actual por ejm 5 y luego se divide por la cantidad de votos actuales
+// se saca el num de estrellas anterior por ejem 5 y se le suma el rating del usuario actual por ejm 5 y luego se divide por la cantidad de votos actuales
                     ratingbarR.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
                         @Override
                         public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                             rating = ratingBar.getRating();
+                            sumarate = rating + ratingR;
                             rating = (rating + ratingR) / (votos+1);
                             Log.d("delacalle","rating es " + rating);
                             final float rate = rating;
@@ -246,6 +248,7 @@ try
 
                                                     object.increment("votos", 1);
                                                     object.put("rating", rate);
+                                                    object.put("sumavotos",sumarate);
                                                     object.saveEventually();
                                                     Toast.makeText(getActivity(), "Gracias por votar", Toast.LENGTH_SHORT).show();
 
