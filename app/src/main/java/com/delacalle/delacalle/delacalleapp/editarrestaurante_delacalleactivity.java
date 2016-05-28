@@ -1,5 +1,6 @@
 package com.delacalle.delacalle.delacalleapp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -241,6 +242,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
                                     @Override
                                     public void done(ParseObject eliminar, ParseException e) {
                                         if (e == null) {
+                                            ProgressDialog.show(editarrestaurante_delacalleactivity.this, "Eliminando", "Espera mientras elimina el restaurante",true,true);
                                             eliminar.deleteInBackground(new DeleteCallback() {
                                                 @Override
                                                 public void done(ParseException e) {
@@ -398,6 +400,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
                                         object.put("fotologo",picfile1);
                                         object.put("fotogrande",picfile2);
                                         object.put("color",color);
+                                        ProgressDialog.show(editarrestaurante_delacalleactivity.this, "Guardando", "Espera mientras actualiza el restaurante",true,true);
                                         object.saveInBackground(new SaveCallback() {
                                             @Override
                                             public void done(ParseException e) {

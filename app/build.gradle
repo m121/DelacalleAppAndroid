@@ -4,7 +4,7 @@ apply plugin: 'io.fabric'
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
-    maven { url 'http://sdk.uxcam.com/android/' }
+    //   maven { url 'http://sdk.uxcam.com/android/' }
 }
 
 
@@ -19,7 +19,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.parse.tools:gradle:1.+'
+        //    classpath 'com.parse.tools:gradle:1.+'
         classpath 'io.fabric.tools:gradle:1.+'
 
 
@@ -30,10 +30,10 @@ buildscript {
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.0"
+    buildToolsVersion "23.0.3"
     defaultConfig {
         applicationId "com.delacalle.delacalle.delacalleapp"
-        minSdkVersion 15
+        minSdkVersion 14
         targetSdkVersion 23
         versionName '5.7'
         multiDexEnabled false
@@ -54,31 +54,34 @@ ext {
 }
 
 dependencies {
-  //     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.parse.bolts:bolts-android:1.2.1'
-    compile 'com.parse:parse-android:1.10.3'
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    //     compile fileTree(dir: 'libs', include: ['*.jar'])
     // compile files('libs/Parse-1.12.0.jar')
     //    compile 'com.parse:parse-android:1.12.0'
     compile project(':ParseUI-Widget')
     //  compile fileTree(dir: 'libs', include: 'Parse-*.jar')
-    compile 'com.facebook.android:facebook-android-sdk:4.1.2'
     // compile files('libs/ParseFacebookUtilsV4-1.10.4.jar')
     compile files('libs/ParseTwitterUtils-1.10.5.jar')
-    compile 'com.parse:parsefacebookutils-v4-android:1.10.4@aar'
-    compile 'com.android.support:cardview-v7:23.1.1'
-    compile 'com.android.support:design:23.2.0'
-    compile 'com.getbase:floatingactionbutton:1.10.1'
-    compile 'com.android.support:support-v4:23.0.0'
-    compile 'de.hdodenhof:circleimageview:2.0.0'
-    compile 'com.github.sayyam:instagramapi:0.0.4'
-    compile 'com.uxcam:uxcam:2.3.4@aar'
+    //    compile 'com.github.sayyam:instagramapi:0.0.4'
+    //  compile 'com.uxcam:uxcam:2.3.4@aar'
     compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
         transitive = true;
     }
 
 
 
+    compile 'com.parse.bolts:bolts-android:1.2.1'
+    compile 'com.parse:parse-android:1.10.3'
+    compile 'com.android.support:appcompat-v7:24.0.0-beta1'
+    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    compile 'com.facebook.android:facebook-android-sdk:4.1.2'
+    compile 'com.parse:parsefacebookutils-v4-android:1.10.4@aar'
+    compile 'com.android.support:cardview-v7:24.0.0-beta1'
+    compile 'com.android.support:design:24.0.0-beta1'
+    compile 'com.getbase:floatingactionbutton:1.10.1'
+    compile 'com.android.support:support-v4:24.0.0-beta1'
+    compile 'de.hdodenhof:circleimageview:2.0.0'
+    compile 'com.github.paolorotolo:appintro:3.4.0'
+    compile 'com.google.android.gms:play-services-analytics:9.0.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha1'
 }
 

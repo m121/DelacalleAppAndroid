@@ -75,7 +75,7 @@
         android:id="@+id/editTextDescripcionRestauranteA"
         android:textSize="15sp"
         android:lines="2"
-        android:digits="abcdefghijklmnopqrstuvwxyz1234567890 "
+        android:digits="abcdefghijklmnopqrstuvwxyz1234567890:-_$., "
         android:paddingLeft="5dp"
         android:layout_above="@+id/editTextDireccionRestauranteA"
         android:layout_alignParentStart="true" />

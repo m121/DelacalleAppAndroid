@@ -1,5 +1,6 @@
 package com.delacalle.delacalle.delacalleapp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -293,7 +294,7 @@ try {
         {
 
 try {
-
+    ProgressDialog.show(perfilusuario_delacalleactivity.this, "Guardando", "Espera mientras se actualiza tu información",true,true);
     ParseQuery<ParseUser> userquery = ParseUser.getQuery();
     userquery.whereEqualTo("objectId", ParseUser.getCurrentUser().getObjectId());
     userquery.getFirstInBackground(new GetCallback<ParseUser>() {

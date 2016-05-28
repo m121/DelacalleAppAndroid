@@ -7,6 +7,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.parse.ParseUser;
 
 import java.util.Timer;
@@ -21,6 +24,8 @@ public class splashscreen_delacalleactivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen_delacalleactivity);
+
+
 
         try
         {
@@ -37,7 +42,7 @@ public class splashscreen_delacalleactivity extends AppCompatActivity {
 
                     // Start the next activity
                     Intent mainIntent = new Intent().setClass(
-                            splashscreen_delacalleactivity.this, iniciosesion_delacalleactivity.class);
+                            splashscreen_delacalleactivity.this, intro_delacalleactivity.class);
                     startActivity(mainIntent);
 
                     // Close the activity so the user won't able to go back this
@@ -79,4 +84,6 @@ public class splashscreen_delacalleactivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

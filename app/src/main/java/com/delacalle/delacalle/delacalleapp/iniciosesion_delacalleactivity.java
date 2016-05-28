@@ -2,6 +2,7 @@ package com.delacalle.delacalle.delacalleapp;
 
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -41,11 +42,6 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.instagram.instagramapi.activities.InstagramAuthActivity;
-import com.instagram.instagramapi.engine.InstagramEngine;
-import com.instagram.instagramapi.engine.InstagramKitConstants;
-import com.instagram.instagramapi.objects.IGSession;
-import com.instagram.instagramapi.utils.InstagramKitLoginScope;
 import com.parse.GetCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseACL;
@@ -276,10 +272,12 @@ try {
 }
 
 try {
+
     loginfacebook.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             v.startAnimation(animAlpha);
+
             if (isInternetPresent) {
             //    ParseUser.logOut();
                 ParseFacebookUtils.logInWithReadPermissionsInBackground(iniciosesion_delacalleactivity.this, mPermissions, new LogInCallback() {
@@ -291,7 +289,6 @@ try {
                             //   Log.d("myapp",err.getLocalizedMessage());
                             Log.d("delacalle", "usuario es null");
                         } else if (user.isNew()) {
-
                             ParseQuery<ParseRole> roleq = ParseRole.getQuery();
                             roleq.whereEqualTo("name", "usuario");
                             roleq.getFirstInBackground(new GetCallback<ParseRole>() {
@@ -316,12 +313,13 @@ try {
                                 }
                             });
 
-                            Toast.makeText(getApplicationContext(), "¡Ya te has registrado con Facebook!,ahora puedes iniciar sesión", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "¡Ya te has registrado con Facebook!,ahora puedes iniciar sesión", Toast.LENGTH_LONG).show();
 
                          // Intent intent = new Intent(iniciosesion_delacalleactivity.this, iniciosesion_delacalleactivity.class);
                           //  startActivity(intent);
 
                         } else {
+                            ProgressDialog.show(iniciosesion_delacalleactivity.this, "Accediendo", "Espera mientras se inicia sesión");
                             Toast.makeText(getApplicationContext(), "Iniciando sesión", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
                             startActivity(intent);
@@ -578,7 +576,8 @@ try {
         else
         {
             logInEmail(userName.toLowerCase(Locale.getDefault()), userPass);
-            Toast.makeText(getApplicationContext(), "Iniciando sesión", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "Iniciando sesión", Toast.LENGTH_SHORT).show();
+            ProgressDialog.show(this, "Accediendo", "Espera mientras se inicia sesión");
 
         }
 
@@ -609,6 +608,7 @@ try {
     // iniciar sesion por correo
         private void logInEmail (String lowercase, String userpass)
         {
+
             try
             {
             ParseUser.logInInBackground(lowercase, userpass, new LogInCallback() {

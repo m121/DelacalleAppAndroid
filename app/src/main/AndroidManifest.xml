@@ -11,37 +11,57 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
 
-
-
-
     <compatible-screens>
+
         <!-- all small size screens -->
-        <screen android:screenSize="small" android:screenDensity="ldpi" />
-        <screen android:screenSize="small" android:screenDensity="mdpi" />
-        <screen android:screenSize="small" android:screenDensity="hdpi" />
+        <screen
+            android:screenDensity="ldpi"
+            android:screenSize="small" />
+        <screen
+            android:screenDensity="mdpi"
+            android:screenSize="small" />
+        <screen
+            android:screenDensity="hdpi"
+            android:screenSize="small" />
         <!-- all normal size screens -->
-        <screen android:screenSize="normal" android:screenDensity="mdpi" />
-        <screen android:screenSize="normal" android:screenDensity="hdpi" />
-        <screen android:screenSize="normal" android:screenDensity="xhdpi" />
+        <screen
+            android:screenDensity="mdpi"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="hdpi"
+            android:screenSize="normal" />
+        <screen
+            android:screenDensity="xhdpi"
+            android:screenSize="normal" />
         <!-- all large size screens -->
-        <screen android:screenSize="large" android:screenDensity="mdpi" />
-        <screen android:screenSize="large" android:screenDensity="hdpi" />
-        <screen android:screenSize="large" android:screenDensity="xhdpi" />
+        <screen
+            android:screenDensity="mdpi"
+            android:screenSize="large" />
+        <screen
+            android:screenDensity="hdpi"
+            android:screenSize="large" />
+        <screen
+            android:screenDensity="xhdpi"
+            android:screenSize="large" />
         <!-- all xlarge size screens -->
-        <screen android:screenSize="xlarge" android:screenDensity="mdpi" />
-        <screen android:screenSize="xlarge" android:screenDensity="hdpi" />
-        <screen android:screenSize="xlarge" android:screenDensity="xhdpi" />
+        <screen
+            android:screenDensity="mdpi"
+            android:screenSize="xlarge" />
+        <screen
+            android:screenDensity="hdpi"
+            android:screenSize="xlarge" />
+        <screen
+            android:screenDensity="xhdpi"
+            android:screenSize="xlarge" />
     </compatible-screens>
 
     <supports-screens
         android:largeScreens="true"
         android:normalScreens="true"
         android:smallScreens="true"
-        android:xlargeScreens="true"
-        />
+        android:xlargeScreens="true" />
 
-    <!-- android:largeHeap="true"          usar esto usa toda la memoria para la app pero no se recomienda porque podria cerrar otras apps-->
-
+    <!-- android:largeHeap="true"          usar esto usa toda la memoria para la app pero no se recomienda porque podria cerrar otras apps -->
     <application
         android:name=".StarterApplication"
         android:allowBackup="true"
@@ -250,9 +270,19 @@
             android:name=".busquedadireccion_delacalleactivity"
             android:label="@string/title_activity_busquedadireccion_delacalleactivity" >
         </activity>
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="cc416f7c977e65311203dace98a691feae97fd34" />
+
+        <activity
+            android:name=".intro_delacalleactivity"
+            android:label="@string/title_activity_intro_delacalleactivity" >
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

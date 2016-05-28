@@ -1,5 +1,6 @@
 package com.delacalle.delacalle.delacalleapp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -514,6 +515,7 @@ try {
             carta1.put("precio", precioplato1C);
             carta1.put("fotoplato", fotocartafile1);
             carta1.put("restauranteId", id);
+            ProgressDialog.show(this, "Guardando", "Espera mientras actualiza la carta",true,true);
             carta1.saveInBackground();
 
             if (TextUtils.isEmpty(nombreplato2C)) {

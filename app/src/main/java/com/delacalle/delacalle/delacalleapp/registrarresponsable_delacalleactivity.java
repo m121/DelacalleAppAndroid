@@ -1,5 +1,6 @@
 package com.delacalle.delacalle.delacalleapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -81,7 +82,7 @@ public class registrarresponsable_delacalleactivity extends AppCompatActivity {
                 user.setEmail(email);
                 user.setPassword(clave);
                 user.put("nombre", nombre);
-
+                    ProgressDialog.show(registrarresponsable_delacalleactivity.this, "Guardando", "Espera mientras guarda la información");
                 user.signUpInBackground(new SignUpCallback() {
 
                     @Override

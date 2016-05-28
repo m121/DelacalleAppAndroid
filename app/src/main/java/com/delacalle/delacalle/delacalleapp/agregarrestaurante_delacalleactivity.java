@@ -1,5 +1,6 @@
 package com.delacalle.delacalle.delacalleapp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -120,6 +121,8 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregarrestaurante_delacalleactivity);
+
+
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -680,6 +683,8 @@ try
         restauranteA.increment("votos", 1);
         restauranteA.put("color", color);
         restauranteA.setACL(acl);
+        ProgressDialog.show(this, "Guardando", "Espera mientras guarda el restaurante",true,true);
+
         restauranteA.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {

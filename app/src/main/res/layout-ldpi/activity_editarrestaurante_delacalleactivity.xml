@@ -57,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:hint="@string/editarrestauranteDescripcion"
-        android:digits="abcdefghijklmnopqrstuvwxyz1234567890 "
+        android:digits="abcdefghijklmnopqrstuvwxyz1234567890:-_$., "
         android:id="@+id/editTextDescripcionRestauranteA"
         android:textSize="20sp"
         android:lines="2"

@@ -33,10 +33,10 @@
         android:layout_alignParentStart="true">
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="70dp"
             android:id="@+id/editTextnombreiniciarsesion"
             android:layout_marginTop="67dp"
-            android:hint="Correo"
+            android:hint="@string/iniciosesioncorreo"
             android:singleLine="true"
             android:lines="1"
             android:inputType="textEmailAddress"
@@ -51,10 +51,10 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="70dp"
             android:inputType="textPassword"
             android:ems="10"
-            android:hint="Contraseña"
+            android:hint="@string/iniciosesioncontrasena"
             android:textColor="#ffffff"
             android:singleLine="true"
             android:lines="1"
@@ -70,7 +70,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="Entrar"
+            android:text="@string/iniciosesionbtnentrar"
             android:id="@+id/btniniciarsesion"
             android:background="@color/buttoncolor"
             android:layout_margin="4dp"
@@ -82,8 +82,8 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="¿No tienes una cuenta? Regístrate"
+            android:layout_height="70dp"
+            android:text="@string/iniciosesionbtnregistrar"
             android:id="@+id/btnlinkregistrar"
             android:background="@null"
             android:layout_margin="4dp"
@@ -96,7 +96,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:text="¿Te has olvidado de la contraseña?"
+            android:text="@string/iniciosesionbtnolvidarcontrasena"
             android:id="@+id/btnlinkreseteardesdelogin"
             android:background="@null"
             android:layout_margin="4dp"

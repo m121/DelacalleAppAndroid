@@ -77,14 +77,6 @@ public class PageFragmentCartaDetalle extends Fragment {
     private RelativeLayout relativelayoutPlato6;
 
 
-   // Bitmap pic;
-    Bitmap pic2;
-    Bitmap pic3;
-    Bitmap pic4;
-    Bitmap pic5;
-    Bitmap pic6;
-
-
     ParseFile fotofileplato1;
     ParseFile fotofileplato2;
     ParseFile fotofileplato3;

@@ -7,10 +7,23 @@
 
     <string name="action_settings">Settings</string>
 
+    <!-- Iniciar sesion -->
     <string name="title_activity_iniciosesion_delacalleactivity">iniciosesion_delacalleactivity
     </string>
+    <string name="iniciosesioncorreo">Correo</string>
+    <string name="iniciosesioncontrasena">Contraseña</string>
+    <string name="iniciosesionbtnentrar">Entrar</string>
+    <string name="iniciosesionbtnregistrar">¿No tienes una cuenta? Regístrate</string>
+    <string name="iniciosesionbtnolvidarcontrasena">¿Te has olvidado de la contraseña?</string>
 
+    <!-- registro -->
     <string name="title_activity_registro_delacalleactivity">registro_delacalleactivity</string>
+    <string name="registrotitulo">Registro usuario</string>
+    <string name="registronombre">Nombre usuario</string>
+    <string name="registrocorreo">Email</string>
+    <string name="registrocontrasena">Clave</string>
+    <string name="registrorecontrasena">Repetir clave</string>
+    <string name="registrobtnregistro">Registro</string>
 
     <string name="title_activity_menu_delacalleactivity">Menu</string>
 
@@ -21,7 +34,23 @@
     <string name="title_activity_agregarrestaurante_delacalleactivity">
         Crear restaurante
     </string>
+    <string name="crearrestaurantefotologo">Foto logo</string>
+    <string name="crearrestaurantefotogrande">Foto grande del restaurante</string>
+    <string name="crearrestaurantenombre">Nombre Restaurante</string>
     <string name="crearrestauranteDescripcion">Descripción y descuento</string>
+    <string name="crearrestaurantedireccion">Dirección</string>
+    <string name="crearrestaurantetelefono">Teléfono</string>
+    <string name="crearrestauranteweb">Sitio web/Red social</string>
+    <string name="crearrestaurantebtnguardaryseguir">Guardar y seguir</string>
+
+    <!--Crear carta -->
+<string name="title_activity_agregarcarta_delacalleactivity"> Agregar Carta
+    </string>
+    <string name="crearcartanombre">Nombre</string>
+    <string name="crearcartadescripcion">Descripción</string>
+    <string name="crearcartaprecio">Precio</string>
+    <string name="crearcartabtnterminar">Guardar y terminar</string>
+
 
 
     <string name="title_activity_mostrarrestaurante_delacalleactivity">
@@ -30,13 +59,17 @@
 
     <string name="facebook_app_id">807123432744026</string>
 
-    <string name="title_activity_resetearcontrasena_delacalleactivity">
-        Resetear contraseña
-    </string>
 
+
+    <!--Registrar responsable-->
     <string name="title_activity_registrarresponsable_delacalleactivity">
         Registrar responsable
     </string>
+    <string name="registrarresponsablenombre">Nombre</string>
+    <string name="registrarresponsablecorreo">Correo</string>
+    <string name="registrarresponsablecontrasena">Clave</string>
+    <string name="registrarresponsablerecontrasena">Repetir Clave</string>
+    <string name="registrarresponsablebtnregistrarresponsable">Registrar Responsable</string>
 
     <string name="title_activity_listarestaurantesresponsable_delacalleactivity">
         Mis restaurantes
@@ -48,15 +81,36 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--Perfil usuario-->
     <string name="title_activity_perfilusuario_delacalleactivity">
     </string>
+    <string name="perfilusername">User name</string>
+    <string name="perfiltituloedad">Edad</string>
+    <string name="perfiledad">Edad</string>
+    <string name="perfiltitulocorreo">Correo</string>
+    <string name="perfilcorreo">Correo</string>
+    <string name="perfiltitulociudad">Ciudad</string>
+    <string name="perfilciudad">Ciudad</string>
 
+    <!--Carta detalle-->
     <string name="title_activity_carta_delacalleactivity">Carta Detalle</string>
+    <string name="cartadetallenombrerestaurante">Nombre Restaurante</string>
+    <string name="cartadetallenombreplato">Nombre Plato</string>
+    <string name="cartadetalledescripcionplato">Descripción Plato</string>
+    <string name="cartadetalleprecio">0</string>
 
    <!-- Editar restaurante-->
     <string name="title_activity_editarrestaurante_delacalleactivity">
         Editar Restaurante
     </string>
+    <string name="editarrestaurantefotologo">Foto logo</string>
+    <string name="editarrestaurantefotogrande">Foto grande del restaurante</string>
+    <string name="editarrestaurantenombre">Nombre Restaurante</string>
+    <string name="editarrestaurantedireccion">Dirección</string>
+    <string name="editarrestaurantetelefono">Teléfono</string>
+    <string name="editarrestauranteweb">Sitio web/Red social</string>
+    <string name="editarrestaurantebtnactualizaryseguir">Actualizar y seguir</string>
+    <string name="editarrestaurantebtneliminarrestaurante">Eliminar Restaurante</string>
     <string name="editarrestauranteDescripcion">Descripción y descuento</string>
 
     <string name="title_activity_detallerestaurante_delacalleactivity">
@@ -66,16 +120,26 @@
     <string name="title_activity_carta_detalle_delacalleactivity">Plato
     </string>
 
-    <string name="title_activity_agregarcarta_delacalleactivity"> Agregar Carta
-    </string>
 
+<!--Editar carta restaurante-->
     <string name="title_activity_editarcartarestaurante_delacalleactivity">
        Editar carta
     </string>
+    <string name="editarcartanombre">Nombre</string>
+    <string name="editarcartadescripcion">Descripción</string>
+    <string name="editarcartaprecio">Precio</string>
+    <string name="editarcartabtnactualizarcarta">Actualizar y terminar</string>
 
+    <!--Resetear contrasena-->
     <string name="title_activity_resetearcontrasenadesdelogin_delacalleactivity">
        Cambiar contraseña
     </string>
+     <string name="title_activity_resetearcontrasena_delacalleactivity">
+        Resetear contraseña
+    </string>
+    <string name="resetearcontrasenacorreo">Escriba su correo</string>
+    <string name="resetearcontrasenabtnresetear">Resetear contraseña</string>
+
 
     <string name="title_activity_busquedanombre_delacalleactivity">
         Búsqueda por nombre
@@ -102,7 +166,40 @@
 
     <string name="detallerestauranteinformacionRating">Califica el restaurante</string>
     <string name="detallerestauranteinformacionDescripcion">Descripción y descuento</string>
+    <string name="title_activity_intro_delacalleactivity">intro_delacalleactivity</string>
 
 
+    <!--Comentarios fragment-->
+    <string name="comentariofragmentbtn">Comentar</string>
+
+    <!--Fragment informacion restaurante-->
+    <string name="fragmentinformaciontitulonombre">Nombre restaurante</string>
+    <string name="fragmentinformacionnombre">Nombre restaurante</string>
+    <string name="fragmentinformaciontitulodescripcion">Descripción y descuento</string>
+    <string name="fragmentinformaciondescripcion">Descripción y descuento</string>
+    <string name="fragmentinformaciontitulodireccion">Dirección</string>
+    <string name="fragmentinformaciondireccion">Dirección</string>
+    <string name="fragmentinformaciontitulotelefono">Teléfono</string>
+    <string name="fragmentinformaciontelefono">Teléfono</string>
+    <string name="fragmentinformaciontituloweb">Web o red social</string>
+    <string name="fragmentinformacionweb">Web o red social</string>
+    <string name="fragmentinformacioncalifica">Califica el restaurante</string>
+
+
+    <!--plantilla comentarios-->
+    <string name="plantillacomentariosusuario">Usuario</string>
+    <string name="plantillacomentarioscomentario">Comentario</string>
+
+
+    <!--popup fotos-->
+    <string name="popupfotosalbum">Album</string>
+    <string name="popupfotostomarfoto">Tomar foto</string>
+
+
+    <!--plantilla mostrar restaurante-->
+    <string name="plantillamostrarrestanombre">Nombre Restaurante</string>
+    <string name="plantillamostrarrestatelefono">Teléfono</string>
+    <string name="plantillamostrarrestaDescripcion">Descripción</string>
+    <string name="plantillamostrarrestadireccion">Dirección</string>
 
 </resources>

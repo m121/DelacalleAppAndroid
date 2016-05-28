@@ -1,6 +1,7 @@
 package com.delacalle.delacalle.delacalleapp;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -393,7 +394,6 @@ public class FragmentPageComentariosDetalle extends Fragment {
                 .setPositiveButton("Enviar comentario", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int ids) {
                         final      String   comen = comentario.getText().toString();
-
                         ParseQuery<ParseObject> querycomentariopropio = ParseQuery.getQuery("comentarios");
                         querycomentariopropio.whereEqualTo("userid", ParseUser.getCurrentUser());
                         querycomentariopropio.whereEqualTo("restauranteid", id);
@@ -421,7 +421,7 @@ public class FragmentPageComentariosDetalle extends Fragment {
                                     objcomentario.put("numcom", 1);
                                     objcomentario.saveInBackground();
 
-                                    Toast.makeText(getActivity(), "Enviado", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), "Enviado, Actualiza la página para visualizar", Toast.LENGTH_SHORT).show();
 
                                 }
                             }

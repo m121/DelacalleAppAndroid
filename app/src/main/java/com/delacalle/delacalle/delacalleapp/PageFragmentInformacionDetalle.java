@@ -1,6 +1,7 @@
 package com.delacalle.delacalle.delacalleapp;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -200,8 +201,8 @@ public class PageFragmentInformacionDetalle extends Fragment {
 try
 {
         ParseQuery<ParseObject> querymostrareditar = ParseQuery.getQuery("restaurante");
-        querymostrareditar.whereEqualTo("objectId", id);
-        querymostrareditar.getFirstInBackground(new GetCallback<ParseObject>() {
+      //  querymostrareditar.whereEqualTo("objectId", id);
+        querymostrareditar.getInBackground(id,new GetCallback<ParseObject>() {
             @Override
             public void done(final ParseObject object, ParseException e) {
                 if (e == null) {
@@ -225,7 +226,6 @@ try
                             rating = (rating + ratingR) / (votos+1);
                             Log.d("delacalle","rating es " + rating);
                             final float rate = rating;
-
                             final ParseQuery<ParseObject> usuarioRvotarq = ParseQuery.getQuery("restaurante");
                             usuarioRvotarq.whereEqualTo("objectId", id);
                             usuarioRvotarq.whereEqualTo("usuarioid", ParseUser.getCurrentUser());

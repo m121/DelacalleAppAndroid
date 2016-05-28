@@ -1,6 +1,7 @@
 package com.delacalle.delacalle.delacalleapp;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -208,7 +209,7 @@ public class registro_delacalleactivity extends AppCompatActivity {
         {
            /* TextUtils.concat(userName);*/
             Toast.makeText(getApplicationContext(), "Tu nombre de usuario es " + userName, Toast.LENGTH_SHORT).show();
-            Toast.makeText(getApplicationContext(), "Guardando ", Toast.LENGTH_SHORT).show();
+        //    Toast.makeText(getApplicationContext(), "Guardando ", Toast.LENGTH_SHORT).show();
             signUp(userName.toLowerCase(Locale.getDefault()), userEmail, userPass);
         }
 
@@ -227,7 +228,7 @@ try {
     user.setPassword(userPass);
     user.setEmail(userEmail);
     user.put("nombre", userName);
-
+    ProgressDialog.show(this, "Guardando", "Espera mientras se crea el nuevo usuario");
     user.signUpInBackground(new SignUpCallback() {
         @Override
         public void done(ParseException e) {

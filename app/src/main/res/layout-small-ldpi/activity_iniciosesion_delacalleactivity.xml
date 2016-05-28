@@ -33,10 +33,10 @@
         android:layout_alignParentStart="true">
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="30dp"
             android:id="@+id/editTextnombreiniciarsesion"
             android:layout_marginTop="67dp"
-            android:hint="Correo"
+            android:hint="@string/iniciosesioncorreo"
             android:singleLine="true"
             android:lines="1"
             android:background="@null"
@@ -46,14 +46,14 @@
             android:textColorHint="#ffffff"
             android:layout_below="@+id/imageButtonGmail"
             android:layout_centerHorizontal="true"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="30dp"
             android:inputType="textPassword"
             android:ems="10"
-            android:hint="Contraseña"
+            android:hint="@string/iniciosesioncontrasena"
             android:textColor="#ffffff"
             android:singleLine="true"
             android:lines="1"
@@ -64,12 +64,12 @@
             android:layout_below="@+id/editTextnombreiniciarsesion"
             android:layout_alignLeft="@+id/editTextnombreiniciarsesion"
             android:layout_alignStart="@+id/editTextnombreiniciarsesion"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:text="Entrar"
+            android:layout_height="30dp"
+            android:text="@string/iniciosesionbtnentrar"
             android:id="@+id/btniniciarsesion"
             android:background="@color/buttoncolor"
             android:layout_margin="4dp"
@@ -77,12 +77,12 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="35dp"
             android:textColor="#FFFFFF"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:text="¿No tienes una cuenta? Regístrate"
+            android:layout_height="30dp"
+            android:text="@string/iniciosesionbtnregistrar"
             android:id="@+id/btnlinkregistrar"
             android:background="@null"
             android:layout_margin="4dp"
@@ -94,8 +94,8 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:text="¿Te has olvidado de la contraseña?"
+            android:layout_height="30dp"
+            android:text="@string/iniciosesionbtnolvidarcontrasena"
             android:id="@+id/btnlinkreseteardesdelogin"
             android:background="@null"
             android:layout_margin="4dp"
@@ -109,7 +109,7 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="50dp"
+        android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@drawable/facebook"
         android:id="@+id/btnSignInFacebook"
@@ -118,8 +118,8 @@
         android:layout_marginBottom="63dp" />
 
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:id="@+id/imageViewLogo"
         android:background="@drawable/logo"
         android:layout_below="@+id/relativeLayout2"

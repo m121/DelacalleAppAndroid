@@ -28,7 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textViewPlatoCarta1"
-                    android:text="Hamburguesa BBQ"
+                    android:text=""
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -56,8 +56,8 @@
                         android:id="@+id/textViewDescripcionCarta1"
                         android:layout_below="@+id/textViewPlatoCarta1"
                         android:layout_gravity="center_horizontal"
-                        android:text="Hamburguesa con tomate, doble queso, pepino"
-                        android:textSize="10sp"
+                        android:text=""
+                        android:textSize="13sp"
                         android:layout_weight="0.3"
                         />
 
@@ -68,8 +68,8 @@
                         android:layout_below="@+id/textViewPlatoCarta1"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        android:text="$26000"
-                        android:textSize="20sp"
+                        android:text=""
+                        android:textSize="15sp"
                         android:layout_weight="0.3"
                         android:layout_gravity="center_horizontal"
 
@@ -132,7 +132,7 @@
                     android:layout_below="@+id/textViewPlatoCarta2"
                     android:layout_gravity="center_horizontal"
                     android:text=""
-                    android:textSize="10sp"
+                    android:textSize="13sp"
                     android:layout_weight="0.3"
                     />
 
@@ -144,7 +144,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:text=""
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:layout_weight="0.3"
                     android:layout_gravity="center_horizontal"
 
@@ -213,7 +213,7 @@
                     android:layout_below="@+id/textViewPlatoCarta3"
                     android:layout_gravity="center_horizontal"
                     android:text=""
-                    android:textSize="10sp"
+                    android:textSize="13sp"
                     android:layout_weight="0.3"
                     />
 
@@ -225,7 +225,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:text=""
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:layout_weight="0.3"
                     android:layout_gravity="center_horizontal"
 
@@ -294,7 +294,7 @@
                 android:layout_below="@+id/textViewPlatoCarta4"
                 android:layout_gravity="center_horizontal"
                 android:text=""
-                android:textSize="10sp"
+                android:textSize="13sp"
                 android:layout_weight="0.3"
                 />
 
@@ -306,7 +306,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:text=""
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:layout_weight="0.3"
                 android:layout_gravity="center_horizontal"
 
@@ -374,7 +374,7 @@
                     android:layout_below="@+id/textViewPlatoCarta5"
                     android:layout_gravity="center_horizontal"
                     android:text=""
-                    android:textSize="10sp"
+                    android:textSize="13sp"
                     android:layout_weight="0.3"
                     />
 
@@ -386,7 +386,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:text=""
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:layout_weight="0.3"
                     android:layout_gravity="center_horizontal"
 
@@ -454,7 +454,7 @@
                     android:layout_below="@+id/textViewPlatoCarta6"
                     android:layout_gravity="center_horizontal"
                     android:text=""
-                    android:textSize="10sp"
+                    android:textSize="13sp"
                     android:layout_weight="0.3"
                     />
 
@@ -466,7 +466,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:text=""
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:layout_weight="0.3"
                     android:layout_gravity="center_horizontal"
 
