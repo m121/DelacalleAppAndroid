@@ -24,7 +24,7 @@
         android:layout_height="48dp"
         android:background="#f05543"
         app:pstsIndicatorColor="#0099cc"
-        app:pstsTabPaddingLeftRight="150dip"
+        app:pstsTabPaddingLeftRight="40dip"
         android:layout_below="@+id/toolbar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

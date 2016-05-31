@@ -34,7 +34,7 @@ public class intro_delacalleactivity extends AppIntro2 {
 
         // Add your slide's fragments here.
         // AppIntro will automatically generate the dots indicator and buttons.
-        addSlide(AppIntroFragment.newInstance("Tutorial", "¿Cómo usar la membrecia del club de la calle?", R.drawable.tuto, Color.rgb(26,26,26)));
+        addSlide(AppIntroFragment.newInstance("Tutorial", "¿Cómo usar la membrecia del club de la calle?", R.drawable.tuto,  R.drawable.fondomenublanco768x1280));
         addSlide(AppIntroFragment.newInstance("Paso 1", "Adquieres la tarjeta del club, por $5.000 pesos", R.drawable.paso1, Color.rgb(26,26,26)));
         addSlide(AppIntroFragment.newInstance("Paso 2", "Busca las ofertas en la app o en nuestra web delacalle.co", R.drawable.paso2, Color.rgb(26,26,26)));
         addSlide(AppIntroFragment.newInstance("Paso 3", "Vas a un establecimiento, presentas la tarjeta y recibe el descuento ", R.drawable.paso3, Color.rgb(26,26,26)));

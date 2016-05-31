@@ -268,7 +268,9 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
                             filefotologo.getDataInBackground(new GetDataCallback() {
                                 @Override
                                 public void done(byte[] data, ParseException e) {
-                                    pic2 = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                    final BitmapFactory.Options options = new BitmapFactory.Options();
+                                    options.inSampleSize = 2;
+                                    pic2 = BitmapFactory.decodeByteArray(data, 0, data.length,options);
                                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                                     pic2.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                                     fotologoCartaDetalle.setImageBitmap(pic2);

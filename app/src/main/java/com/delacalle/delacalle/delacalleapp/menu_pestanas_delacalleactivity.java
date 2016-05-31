@@ -1,5 +1,6 @@
 package com.delacalle.delacalle.delacalleapp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -58,8 +59,13 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
      //   UXCam.startWithKey("081340b7b1a4968");   //ux cam analytics
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        /*AnalyticsApplication application = (AnalyticsApplication) getApplication();
-        mTracker = application.getDefaultTracker();*/
+        /*StarterApplication application = (StarterApplication) getApplication();
+         = application.getDefaultTracker();
+
+        mTracker.send(new HitBuilders.EventBuilder()
+                .setCategory("Action")
+                .setAction("Share")
+                .build());*/
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setLogo(R.mipmap.ic_logo);
@@ -143,10 +149,12 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                     // perform query here
                     ParseQuery<ParseObject> querybuscar = ParseQuery.getQuery("restaurante");
                     querybuscar.whereContains("nombre", titulo);
+
                     querybuscar.getFirstInBackground(new GetCallback<ParseObject>() {
                         @Override
                         public void done(ParseObject object, ParseException e) {
                             if (e == null) {
+                                ProgressDialog.show(menu_pestanas_delacalleactivity.this, "Buscando", "Espera mientras busca " + titulo,true,true);
                                 Intent intent = new Intent(menu_pestanas_delacalleactivity.this, busquedanombre_delacalleactivity.class);
                                 intent.putExtra("titulo", titulo);
                                 startActivity(intent);
@@ -165,6 +173,7 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                         @Override
                         public void done(ParseObject pre, ParseException e) {
                             if (e == null) {
+                                ProgressDialog.show(menu_pestanas_delacalleactivity.this, "Buscando", "Espera mientras busca precios hasta " + titulo,true,true);
                                 Intent intent = new Intent(menu_pestanas_delacalleactivity.this, busquedaprecio_delacalleactivity.class);
                                 intent.putExtra("titulo", titulo);
                                 startActivity(intent);
@@ -174,7 +183,7 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
 
                             } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
                                 Log.d("delacalle", "precio de plato no encontrado");
-                                //      Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
+                            //         Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
                             }
 
                         }
@@ -186,6 +195,7 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                         @Override
                         public void done(ParseObject object, ParseException e) {
                             if (e == null) {
+                                ProgressDialog.show(menu_pestanas_delacalleactivity.this, "Buscando", "Espera mientras busca " + titulo,true,true);
                                 Intent intent = new Intent(menu_pestanas_delacalleactivity.this, busquedadescripcion_delacalleactivity.class);
                                 intent.putExtra("titulo", titulo);
                                 startActivity(intent);
@@ -204,6 +214,7 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                         @Override
                         public void done(ParseObject object, ParseException e) {
                             if (e == null) {
+                                ProgressDialog.show(menu_pestanas_delacalleactivity.this, "Buscando", "Espera mientras busca " + titulo,true,true);
                                 Intent intent = new Intent(menu_pestanas_delacalleactivity.this, busquedadireccion_delacalleactivity.class);
                                 intent.putExtra("titulo", titulo);
                                 startActivity(intent);
@@ -224,6 +235,7 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                         @Override
                         public void done(ParseObject car, ParseException e) {
                             if (e == null) {
+                                ProgressDialog.show(menu_pestanas_delacalleactivity.this, "Buscando", "Espera mientras busca " + titulo,true,true);
                                 Intent intent = new Intent(menu_pestanas_delacalleactivity.this, busquedacarta_delacalleactivity.class);
                                 intent.putExtra("titulo", titulo);
                                 startActivity(intent);
@@ -234,6 +246,7 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                             } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
                                 Log.d("delacalle", "nombre de plato no encontrado");
                          //       Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
+
                             }
 
                         }
@@ -241,6 +254,7 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                     searchView.clearFocus();
 
                     return true;
+
                 }
 
                 @Override
@@ -253,6 +267,7 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
             e.getStackTrace();
             Log.d("delacalle", "error en buscar");
         }
+
         return super.onCreateOptionsMenu(menu);
 
     }
