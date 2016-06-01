@@ -3,8 +3,11 @@ package com.delacalle.delacalle.delacalleapp;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +28,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
+import com.github.amlcurran.showcaseview.targets.Target;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
@@ -66,6 +73,29 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                 .setCategory("Action")
                 .setAction("Share")
                 .build());*/
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if (!prefs.getBoolean("firstTime", false)) {
+            // <---- run your one time code here
+            Target viewtarget = new ViewTarget(R.id.tabs,this);
+
+            new ShowcaseView.Builder(this)
+                    .setTarget(viewtarget)
+                    .setContentTitle("Pestañas")
+                    .setContentText("Puedes hacer swipe y deslizarte por la pestaña de restaurantes mejor puntuados y la lista de todos los restaurantes")
+                    .hideOnTouchOutside()
+                    .build();
+
+            // mark first time has runned.
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("firstTime", true);
+            editor.commit();
+        }
+
+
+
+       /* .setTarget(viewtarget2)
+                .setContentTitle("buscador")
+                .setContentText("Puedes buscar por dirección, precio, descripción, plato o nombre de restaurante")*/
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setLogo(R.mipmap.ic_logo);
@@ -83,6 +113,8 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
         final ArrayList<String> precio = new ArrayList<String>();
 
         descripcion = new ArrayList<String>();
+
+
 
     }
 

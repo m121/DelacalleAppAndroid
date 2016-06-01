@@ -115,6 +115,7 @@ public class PageFragment extends Fragment {
         isInternetPresent = cd.isConnectingToInternet();
 
 
+
     }
 
     // Inflate the fragment layout we defined above for this fragment
