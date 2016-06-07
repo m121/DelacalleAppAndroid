@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout3">
+
+   <!-- <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        android:textSize="20sp"
+        android:id="@+id/textViewtitulonombrecomentario"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="47dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="60dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="usuario"
+        android:textSize="20sp"
+        android:id="@+id/textViewusuariocomentario"
+        android:layout_alignBottom="@+id/textViewtitulonombrecomentario"
+        android:layout_centerHorizontal="true" />-->
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:hint="comentario"
+        android:textSize="15sp"
+        android:id="@+id/editTextcomentario"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+    <!--<Button
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="Enviar comentario"
+        android:id="@+id/btnenviarcomentario"
+        android:background="@color/buttoncolor"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/relativeLayout3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp" />-->
+
+</RelativeLayout>

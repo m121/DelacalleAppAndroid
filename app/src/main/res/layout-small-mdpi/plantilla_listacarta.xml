@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayoutPlato1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre Plato"
+        android:id="@+id/textViewPlatoCarta1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="280dp"
+        android:layout_height="100dp"
+        android:text="Descripción plato"
+        android:id="@+id/textViewDescripcionCarta1"
+        android:layout_below="@+id/textViewPlatoCarta1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="25sp" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="$2500"
+        android:id="@+id/textViewPrecioCarta1"
+        android:layout_below="@+id/textViewPlatoCarta1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/textViewDescripcionCarta1"
+        android:layout_toEndOf="@+id/textViewDescripcionCarta1"
+        android:textSize="25sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayoutPlato1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayoutPlato2">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre Plato"
+            android:id="@+id/textViewPlatoCarta2"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="280dp"
+            android:layout_height="100dp"
+            android:text="Descripción plato"
+            android:id="@+id/textViewDescripcionCarta2"
+            android:layout_below="@+id/textViewPlatoCarta2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="$2500"
+            android:id="@+id/textViewPrecioCarta2"
+            android:layout_below="@+id/textViewPlatoCarta2"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/textViewDescripcionCarta2"
+            android:layout_toEndOf="@+id/textViewDescripcionCarta2"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayoutPlato2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayoutPlato3">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre Plato"
+            android:id="@+id/textViewPlatoCarta3"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="280dp"
+            android:layout_height="100dp"
+            android:text="Descripción plato"
+            android:id="@+id/textViewDescripcionCarta3"
+            android:layout_below="@+id/textViewPlatoCarta3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="$2500"
+            android:id="@+id/textViewPrecioCarta3"
+            android:layout_below="@+id/textViewPlatoCarta3"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/textViewDescripcionCarta3"
+            android:layout_toEndOf="@+id/textViewDescripcionCarta3"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayoutPlato3"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/relativeLayoutPlato4"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre Plato"
+            android:id="@+id/textViewPlatoCarta4"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="280dp"
+            android:layout_height="100dp"
+            android:text="Descripción plato"
+            android:id="@+id/textViewDescripcionCarta4"
+            android:layout_below="@+id/textViewPlatoCarta4"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="$2500"
+            android:id="@+id/textViewPrecioCarta4"
+            android:layout_below="@+id/textViewPlatoCarta4"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/textViewDescripcionCarta4"
+            android:layout_toEndOf="@+id/textViewDescripcionCarta4"
+            android:textSize="25sp" />
+
+
+
+    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayoutPlato6"
+            android:layout_below="@+id/relativeLayoutPlato5"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre Plato"
+                android:id="@+id/textViewPlatoCarta5"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="25sp" />
+
+            <TextView
+                android:layout_width="280dp"
+                android:layout_height="100dp"
+                android:text="Descripción plato"
+                android:id="@+id/textViewDescripcionCarta5"
+                android:layout_below="@+id/textViewPlatoCarta5"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="25sp" />
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:text="$2500"
+                android:id="@+id/textViewPrecioCarta5"
+                android:layout_below="@+id/textViewPlatoCarta5"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@+id/textViewDescripcionCarta5"
+                android:layout_toEndOf="@+id/textViewDescripcionCarta5"
+                android:textSize="25sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayoutPlato5"
+            android:layout_below="@+id/relativeLayoutPlato4"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre Plato"
+                android:id="@+id/textViewPlatoCarta6"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="25sp" />
+
+            <TextView
+                android:layout_width="280dp"
+                android:layout_height="100dp"
+                android:text="Descripción plato"
+                android:id="@+id/textViewDescripcionCarta6"
+                android:layout_below="@+id/textViewPlatoCarta6"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="25sp" />
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:text="$2500"
+                android:id="@+id/textViewPrecioCarta6"
+                android:layout_below="@+id/textViewPlatoCarta6"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@+id/textViewDescripcionCarta6"
+                android:layout_toEndOf="@+id/textViewDescripcionCarta6"
+                android:textSize="25sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

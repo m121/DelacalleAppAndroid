@@ -319,7 +319,7 @@ try {
                           //  startActivity(intent);
 
                         } else {
-                            ProgressDialog.show(iniciosesion_delacalleactivity.this, "Accediendo", "Espera mientras se inicia sesión");
+                            ProgressDialog.show(iniciosesion_delacalleactivity.this, "Accediendo", "Espera mientras se inicia sesión",true,true);
                             Toast.makeText(getApplicationContext(), "Iniciando sesión", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(iniciosesion_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
                             startActivity(intent);
@@ -577,7 +577,7 @@ try {
         {
             logInEmail(userName.toLowerCase(Locale.getDefault()), userPass);
             //Toast.makeText(getApplicationContext(), "Iniciando sesión", Toast.LENGTH_SHORT).show();
-            ProgressDialog.show(this, "Accediendo", "Espera mientras se inicia sesión");
+            ProgressDialog.show(this, "Accediendo", "Espera mientras se inicia sesión",true,true);
 
         }
 

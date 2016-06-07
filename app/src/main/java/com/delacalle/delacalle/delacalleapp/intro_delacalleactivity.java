@@ -34,10 +34,14 @@ public class intro_delacalleactivity extends AppIntro2 {
 
         // Add your slide's fragments here.
         // AppIntro will automatically generate the dots indicator and buttons.
-        addSlide(AppIntroFragment.newInstance("Tutorial", "¿Cómo usar la membrecia del club de la calle?", R.drawable.tuto,  R.drawable.fondomenublanco768x1280));
-        addSlide(AppIntroFragment.newInstance("Paso 1", "Adquieres la tarjeta del club, por $5.000 pesos", R.drawable.paso1, Color.rgb(26,26,26)));
-        addSlide(AppIntroFragment.newInstance("Paso 2", "Busca las ofertas en la app o en nuestra web delacalle.co", R.drawable.paso2, Color.rgb(26,26,26)));
-        addSlide(AppIntroFragment.newInstance("Paso 3", "Vas a un establecimiento, presentas la tarjeta y recibe el descuento ", R.drawable.paso3, Color.rgb(26,26,26)));
+        addSlide(AppIntroFragment.newInstance("Tutorial", "Te explicamos como usar el club de la calle", R.drawable.tuto,  Color.rgb(26,26,26)));
+        addSlide(AppIntroFragment.newInstance("Contacto", "Contactános por correo, por Whatsapp, por Facebook o por delacalle.co", R.drawable.tuto1, Color.rgb(26,26,26)));
+        addSlide(AppIntroFragment.newInstance("¿Cuanto cuesta?", "Pagas solamente $5.000 pesos por un mes", R.drawable.tuto3, Color.rgb(26,26,26)));
+        addSlide(AppIntroFragment.newInstance("¿Que beneficios obtienes?", "¡Todo el mes recibes descuentos de nuestros establecimientos aliados! ", R.drawable.tuto4, Color.rgb(26,26,26)));
+        addSlide(AppIntroFragment.newInstance("", "", R.drawable.tuto5, Color.rgb(26,26,26)));
+        addSlide(AppIntroFragment.newInstance("¿Como es la membresía?", "La membresía es una tarjeta con el logo del club De La Calle ", R.drawable.tuto6, Color.rgb(26,26,26)));
+        addSlide(AppIntroFragment.newInstance("¿Como buscas ofertas?", "Puedes buscar las ofertas usando nuestra app o visitando la web delacalle.co ", R.drawable.tuto7, Color.rgb(26,26,26)));
+        addSlide(AppIntroFragment.newInstance("Presentar membresía", "Ve a un establecimiento, presentas la membresía delacalle y obtendrás tu descuento.¡Hazlo ya! ", R.drawable.tuto8, Color.rgb(26,26,26)));
   //      addSlide(AppIntroFragment.newInstance(title, description, image, background_colour));
       //  addSlide(third_fragment);
      //   addSlide(fourth_fragment);

@@ -82,7 +82,7 @@ public class registrarresponsable_delacalleactivity extends AppCompatActivity {
                 user.setEmail(email);
                 user.setPassword(clave);
                 user.put("nombre", nombre);
-                    ProgressDialog.show(registrarresponsable_delacalleactivity.this, "Guardando", "Espera mientras guarda la información");
+                    ProgressDialog.show(registrarresponsable_delacalleactivity.this, "Guardando", "Espera mientras guarda la información",true,true);
                 user.signUpInBackground(new SignUpCallback() {
 
                     @Override

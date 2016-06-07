@@ -228,7 +228,7 @@ try {
     user.setPassword(userPass);
     user.setEmail(userEmail);
     user.put("nombre", userName);
-    ProgressDialog.show(this, "Guardando", "Espera mientras se crea el nuevo usuario");
+    ProgressDialog.show(this, "Guardando", "Espera mientras se crea el nuevo usuario",true,true);
     user.signUpInBackground(new SignUpCallback() {
         @Override
         public void done(ParseException e) {

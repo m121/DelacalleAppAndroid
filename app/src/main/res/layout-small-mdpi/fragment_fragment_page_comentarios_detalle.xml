@@ -1,0 +1,99 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondomenublanco768x1280"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.delacalle.delacalle.delacalleapp.FragmentPageComentariosDetalle">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/activity_main_swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="600dp">
+
+
+            <FrameLayout
+                android:id="@+id/frame_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff">
+
+
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="422dp"
+                    android:background="@drawable/fondomenublanco768x1280"
+                    android:id="@+id/listViewComentariosrestaurante"
+                    />
+
+
+            </FrameLayout>
+
+    </ScrollView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_margin="16dp"
+        android:id="@+id/fabmenu"
+        fab:fab_size="normal"
+        android:src="@drawable/ic_agregar"
+        app:layout_anchor="@id/listViewrestaurantes"
+        app:layout_anchorGravity="bottom|right|end" >
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabeditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="10dp"
+            android:src="@mipmap/ic_editar"
+            fab:fab_size="mini"
+            />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabagregar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="10dp"
+            android:src="@mipmap/ic_restaurante"
+            fab:fab_size="mini"
+            />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabperfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="10dp"
+            android:src="@mipmap/ic_perfil"
+            fab:fab_size="mini"
+            />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+    <Button
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:text="Comentar"
+        android:id="@+id/btnGuardarComentario"
+        android:textColor="#ffffff"
+        android:background="@color/buttoncolor"
+        android:layout_marginBottom="46dp"
+        android:textSize="20sp"
+        android:layout_gravity="left|bottom" />
+
+
+</FrameLayout>
