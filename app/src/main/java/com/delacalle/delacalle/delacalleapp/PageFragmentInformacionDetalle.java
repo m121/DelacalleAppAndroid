@@ -19,6 +19,9 @@ import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -258,6 +261,14 @@ try
                                                     votosusuario.put("voto", 1);
                                                     votosusuario.saveInBackground();
 
+                                                    GoogleAnalytics analytics = GoogleAnalytics.getInstance(getActivity());
+                                                    Tracker trackervotos = analytics.newTracker("UA-77841203-3");
+                                                    trackervotos.send(new HitBuilders.EventBuilder()
+                                                            .setCategory("Calificaciones")
+                                                            .setAction("votado")
+                                                            .setLabel(object.getString("nombre"))
+                                                            .setValue(1)
+                                                            .build());
 
                                                 }
                                             }

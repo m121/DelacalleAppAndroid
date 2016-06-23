@@ -45,6 +45,8 @@ public class registrarresponsable_delacalleactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrarresponsable_delacalleactivity);
 
+
+
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
         final Typeface primerfontcandara = Typeface.createFromAsset(getAssets(), "fonts/CandaraBold.ttf");

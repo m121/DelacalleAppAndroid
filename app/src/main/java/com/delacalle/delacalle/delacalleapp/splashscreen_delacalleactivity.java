@@ -25,7 +25,8 @@ public class splashscreen_delacalleactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen_delacalleactivity);
 
-
+        AnalyticsTrackers.initialize(this);
+        AnalyticsTrackers.getInstance().get(AnalyticsTrackers.Target.APP);
 
         try
         {
@@ -42,7 +43,7 @@ public class splashscreen_delacalleactivity extends AppCompatActivity {
 
                     // Start the next activity
                     Intent mainIntent = new Intent().setClass(
-                            splashscreen_delacalleactivity.this, intro_delacalleactivity.class);
+                            splashscreen_delacalleactivity.this, iniciosesion_delacalleactivity.class);
                     startActivity(mainIntent);
 
                     // Close the activity so the user won't able to go back this

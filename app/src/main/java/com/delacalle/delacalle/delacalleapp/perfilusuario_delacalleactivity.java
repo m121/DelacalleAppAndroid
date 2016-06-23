@@ -31,6 +31,9 @@ import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
@@ -263,6 +266,22 @@ try {
     Toast.makeText(getApplicationContext(), "No se puede mostrar la informacion del usuario", Toast.LENGTH_SHORT).show();
 
 }
+
+        //Google analytics reportando la actividad
+    //    GoogleAnalytics.getInstance(this).newTracker("Perfil usuario");
+      //  AnalyticsTrackers.getInstance().get(AnalyticsTrackers.Target.valueOf("Perfil usuario"));
+       // AnalyticsTrackers.initialize(this);
+
+        GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+        Tracker tracker = analytics.newTracker("UA-77841203-3");
+        tracker.setScreenName("perfilusuario");
+        tracker.enableAutoActivityTracking(true);
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+
+
+
+
     }
 
     @Override
@@ -321,6 +340,25 @@ try {
         }
     });
 
+    GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+    Tracker trackeredad = analytics.newTracker("UA-77841203-3");
+    Tracker trackerciudad = analytics.newTracker("UA-77841203-3");
+    trackeredad.send(new HitBuilders.EventBuilder()
+            .setCategory("datosusuario")
+            .setAction("guardar datos usuarios")
+            .setLabel(edad.getText().toString())
+            .setValue(1)
+            .build());
+
+
+    trackerciudad.send(new HitBuilders.EventBuilder()
+            .setCategory("datosusuario")
+            .setAction("guardar datos usuarios")
+            .setLabel(ciudad.getText().toString())
+            .setValue(1)
+            .build());
+
+
             }catch (Exception e)
              {
                  Log.d("delacalle","error, no se puede guardar sin datos ");
@@ -333,6 +371,8 @@ try {
         if(id == R.id.action_cerrar)
         {
             try {
+                // detener google analytics
+                GoogleAnalytics.getInstance(this).reportActivityStop(this);
                 ParseUser.logOut();
                 Log.d("delacalle", "usuario cierra sesion");
                 Toast.makeText(getApplicationContext(), "Cerrando sesión", Toast.LENGTH_SHORT).show();

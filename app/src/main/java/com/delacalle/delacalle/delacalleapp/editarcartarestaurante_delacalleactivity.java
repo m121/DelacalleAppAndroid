@@ -28,6 +28,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseACL;
@@ -40,6 +44,7 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.ByteArrayOutputStream;
+import java.util.List;
 
 public class editarcartarestaurante_delacalleactivity extends AppCompatActivity {
 
@@ -150,6 +155,11 @@ public class editarcartarestaurante_delacalleactivity extends AppCompatActivity 
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
+        GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+        Tracker tracker = analytics.newTracker("UA-77841203-3");
+        tracker.setScreenName("editarcartarestaurante");
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
+
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -244,7 +254,7 @@ try {
             if (e == null) {
                 nombreplato1.setText(carta.getString("nombre"));
                 descripcionplato1.setText(carta.getString("descripcion"));
-                precioplato1.setText("$" + carta.getString("precio"));
+                precioplato1.setText(carta.getString("precio"));
                 fotocartafile1 = carta.getParseFile("fotoplato");
                 fotocartafile1.getDataInBackground(new GetDataCallback() {
                     @Override
@@ -273,7 +283,7 @@ try {
             if (e == null) {
                 nombreplato2.setText(carta.getString("nombre"));
                 descripcionplato2.setText(carta.getString("descripcion"));
-                precioplato2.setText("$" + carta.getString("precio"));
+                precioplato2.setText(carta.getString("precio"));
                 fotocartafile2 = carta.getParseFile("fotoplato");
                 fotocartafile2.getDataInBackground(new GetDataCallback() {
                     @Override
@@ -302,7 +312,7 @@ try {
             if (e == null) {
                 nombreplato3.setText(carta.getString("nombre"));
                 descripcionplato3.setText(carta.getString("descripcion"));
-                precioplato3.setText("$" + carta.getString("precio"));
+                precioplato3.setText(carta.getString("precio"));
                 fotocartafile3 = carta.getParseFile("fotoplato");
                 fotocartafile3.getDataInBackground(new GetDataCallback() {
                     @Override
@@ -331,7 +341,7 @@ try {
             if (e == null) {
                 nombreplato4.setText(carta.getString("nombre"));
                 descripcionplato4.setText(carta.getString("descripcion"));
-                precioplato4.setText("$" + carta.getString("precio"));
+                precioplato4.setText(carta.getString("precio"));
                 fotocartafile4 = carta.getParseFile("fotoplato");
                 fotocartafile4.getDataInBackground(new GetDataCallback() {
                     @Override
@@ -360,7 +370,7 @@ try {
             if (e == null) {
                 nombreplato5.setText(carta.getString("nombre"));
                 descripcionplato5.setText(carta.getString("descripcion"));
-                precioplato5.setText("$" + carta.getString("precio"));
+                precioplato5.setText(carta.getString("precio"));
                 fotocartafile5 = carta.getParseFile("fotoplato");
                 fotocartafile5.getDataInBackground(new GetDataCallback() {
                     @Override
@@ -389,7 +399,7 @@ try {
             if (e == null) {
                 nombreplato6.setText(carta.getString("nombre"));
                 descripcionplato6.setText(carta.getString("descripcion"));
-                precioplato6.setText("$" + carta.getString("precio"));
+                precioplato6.setText(carta.getString("precio"));
                 fotocartafile6 = carta.getParseFile("fotoplato");
                 fotocartafile6.getDataInBackground(new GetDataCallback() {
                     @Override
@@ -427,7 +437,8 @@ try {
                     @Override
                     public void done(ParseRole rol, ParseException e) {
                         if (e == null) {
-                            ActualizarCarta();
+                          //  ActualizarCarta();
+                            errors();
                         } else {
                             Toast.makeText(getApplicationContext(), "No puedes editar una carta si no eres un responsable", Toast.LENGTH_SHORT).show();
                         }
@@ -508,71 +519,199 @@ try {
             descripcionplato6C = descripcionplato6.getText().toString();
             precioplato6C = precioplato6.getText().toString();
 
+            ParseQuery<ParseObject> carta1q = ParseQuery.getQuery("carta");
+            carta1q.whereEqualTo("restauranteId",id);
+            carta1q.getFirstInBackground(new GetCallback<ParseObject>() {
+                @Override
+                public void done(ParseObject carta1, ParseException e) {
+                    if(e== null)
+                    {
+                        carta1.put("nombre", nombreplato1C);
+                        carta1.put("descripcion", descripcionplato1C);
+                        carta1.put("precio", precioplato1C);
+                        carta1.put("fotoplato", fotocartafile1);
+                        carta1.put("restauranteId", id);
+//                        ProgressDialog.show(getApplication(), "Guardando", "Espera mientras actualiza la carta",true,true);
+                        carta1.saveInBackground();
+                        Log.d("delacalle","Plato actualizado");
+                    }
+                    else
+                    {
+                        Log.d("delacalle","Plato no actualizado");
+                    }
+                }
+            });
+          //  ParseObject carta1 = new ParseObject("carta");
 
-            ParseObject carta1 = new ParseObject("carta");
-            carta1.put("nombre", nombreplato1C);
-            carta1.put("descripcion", descripcionplato1C);
-            carta1.put("precio", precioplato1C);
-            carta1.put("fotoplato", fotocartafile1);
-            carta1.put("restauranteId", id);
-            ProgressDialog.show(this, "Guardando", "Espera mientras actualiza la carta",true,true);
-            carta1.saveInBackground();
 
             if (TextUtils.isEmpty(nombreplato2C)) {
                 Log.d("delacalle", "nombre plato vacio");
             } else {
-                ParseObject carta2 = new ParseObject("carta");
-                carta2.put("nombre", nombreplato2C);
-                carta2.put("descripcion", descripcionplato2C);
-                carta2.put("precio", precioplato2C);
-                carta2.put("fotoplato", fotocartafile2);
-                carta2.put("restauranteId", id);
-                carta2.saveInBackground();
+                ParseQuery<ParseObject> carta2q = ParseQuery.getQuery("carta");
+                carta2q.whereEqualTo("restauranteId",id);
+                carta2q.setSkip(1);
+                carta2q.getFirstInBackground(new GetCallback<ParseObject>() {
+                    @Override
+                    public void done(ParseObject carta2, ParseException e) {
+                        if(e==null)
+                        {
+                            carta2.put("nombre", nombreplato2C);
+                            carta2.put("descripcion", descripcionplato2C);
+                            carta2.put("precio", precioplato2C);
+                            carta2.put("fotoplato", fotocartafile2);
+                            carta2.put("restauranteId", id);
+                            carta2.saveInBackground();
+                        }
+                        else
+                            if(e.getCode()== ParseException.OBJECT_NOT_FOUND)
+                            {
+                                ParseObject carta2c = new ParseObject("carta");
+                                carta2c.put("nombre", nombreplato2C);
+                                carta2c.put("descripcion", descripcionplato2C);
+                                carta2c.put("precio", precioplato2C);
+                                carta2c.put("fotoplato", fotocartafile2);
+                                carta2c.put("restauranteId", id);
+                                carta2c.saveInBackground();
+                            }
+                    }
+                });
+
             }
 
             if (TextUtils.isEmpty(nombreplato3C)) {
                 Log.d("delacalle", "nombre plato vacio");
             } else {
-                ParseObject carta3 = new ParseObject("carta");
-                carta3.put("nombre", nombreplato3C);
-                carta3.put("descripcion", descripcionplato3C);
-                carta3.put("precio", precioplato3C);
-                carta3.put("fotoplato", fotocartafile3);
-                carta3.put("restauranteId", id);
-                carta3.saveInBackground();
+                ParseQuery<ParseObject> carta3q = ParseQuery.getQuery("carta");
+                carta3q.whereEqualTo("restauranteId",id);
+                carta3q.setSkip(2);
+                carta3q.getFirstInBackground(new GetCallback<ParseObject>() {
+                    @Override
+                    public void done(ParseObject carta3, ParseException e) {
+                        if(e==null)
+                        {
+                            carta3.put("nombre", nombreplato3C);
+                            carta3.put("descripcion", descripcionplato3C);
+                            carta3.put("precio", precioplato3C);
+                            carta3.put("fotoplato", fotocartafile3);
+                            carta3.put("restauranteId", id);
+                            carta3.saveInBackground();
+                        }
+                        else
+                            if(e.getCode() == ParseException.OBJECT_NOT_FOUND)
+                            {
+                                ParseObject carta3c = new ParseObject("carta");
+                                carta3c.put("nombre", nombreplato3C);
+                                carta3c.put("descripcion", descripcionplato3C);
+                                carta3c.put("precio", precioplato3C);
+                                carta3c.put("fotoplato", fotocartafile3);
+                                carta3c.put("restauranteId", id);
+                                carta3c.saveInBackground();
+                            }
+                    }
+                });
+
+
             }
             if (TextUtils.isEmpty(nombreplato4C)) {
                 Log.d("delacalle", "nombre plato vacio");
             } else {
-                ParseObject carta4 = new ParseObject("carta");
-                carta4.put("nombre", nombreplato4C);
-                carta4.put("descripcion", descripcionplato4C);
-                carta4.put("precio", precioplato4C);
-                carta4.put("fotoplato", fotocartafile4);
-                carta4.put("restauranteId", id);
-                carta4.saveInBackground();
+                ParseQuery<ParseObject> carta4q = ParseQuery.getQuery("carta");
+                carta4q.whereEqualTo("restauranteId",id);
+                carta4q.setSkip(3);
+                carta4q.getFirstInBackground(new GetCallback<ParseObject>() {
+                    @Override
+                    public void done(ParseObject carta4, ParseException e) {
+                        if(e==null)
+                        {
+                            carta4.put("nombre", nombreplato4C);
+                            carta4.put("descripcion", descripcionplato4C);
+                            carta4.put("precio", precioplato4C);
+                            carta4.put("fotoplato", fotocartafile4);
+                            carta4.put("restauranteId", id);
+                            carta4.saveInBackground();
+
+                        }
+                        else if(e.getCode() == ParseException.OBJECT_NOT_FOUND)
+                        {
+                            ParseObject carta4c = new ParseObject("carta");
+                            carta4c.put("nombre", nombreplato4C);
+                            carta4c.put("descripcion", descripcionplato4C);
+                            carta4c.put("precio", precioplato4C);
+                            carta4c.put("fotoplato", fotocartafile4);
+                            carta4c.put("restauranteId", id);
+                            carta4c.saveInBackground();
+                        }
+
+
+                    }
+                });
+
+
             }
             if (TextUtils.isEmpty(nombreplato5C)) {
                 Log.d("delacalle", "nombre plato vacio");
             } else {
-                ParseObject carta5 = new ParseObject("carta");
-                carta5.put("nombre", nombreplato5C);
-                carta5.put("descripcion", descripcionplato5C);
-                carta5.put("precio", precioplato5C);
-                carta5.put("fotoplato", fotocartafile5);
-                carta5.put("restauranteId", id);
-                carta5.saveInBackground();
+                ParseQuery<ParseObject> carta5q = ParseQuery.getQuery("carta");
+                carta5q.whereEqualTo("restauranteId",id);
+                carta5q.setSkip(4);
+                carta5q.getFirstInBackground(new GetCallback<ParseObject>() {
+                    @Override
+                    public void done(ParseObject carta5, ParseException e) {
+                        if(e == null)
+                        {
+                            carta5.put("nombre", nombreplato5C);
+                            carta5.put("descripcion", descripcionplato5C);
+                            carta5.put("precio", precioplato5C);
+                            carta5.put("fotoplato", fotocartafile5);
+                            carta5.put("restauranteId", id);
+                            carta5.saveInBackground();
+                        }
+                        else if(e.getCode() == ParseException.OBJECT_NOT_FOUND)
+                        {
+                            ParseObject carta5c = new ParseObject("carta");
+                            carta5c.put("nombre", nombreplato5C);
+                            carta5c.put("descripcion", descripcionplato5C);
+                            carta5c.put("precio", precioplato5C);
+                            carta5c.put("fotoplato", fotocartafile5);
+                            carta5c.put("restauranteId", id);
+                            carta5c.saveInBackground();
+                        }
+                    }
+                });
+
             }
             if (TextUtils.isEmpty(nombreplato6C)) {
                 Log.d("delacalle", "nombre plato vacio");
             } else {
-                ParseObject carta6 = new ParseObject("carta");
-                carta6.put("nombre", nombreplato6C);
-                carta6.put("descripcion", descripcionplato6C);
-                carta6.put("precio", precioplato6C);
-                carta6.put("fotoplato", fotocartafile6);
-                carta6.put("restauranteId", id);
-                carta6.saveInBackground();
+                ParseQuery<ParseObject> carta6q = ParseQuery.getQuery("carta");
+                carta6q.whereEqualTo("restauranteId",id);
+                carta6q.setSkip(5);
+                carta6q.getFirstInBackground(new GetCallback<ParseObject>() {
+                    @Override
+                    public void done(ParseObject carta6, ParseException e) {
+                        if(e==null)
+                        {
+                            carta6.put("nombre", nombreplato6C);
+                            carta6.put("descripcion", descripcionplato6C);
+                            carta6.put("precio", precioplato6C);
+                            carta6.put("fotoplato", fotocartafile6);
+                            carta6.put("restauranteId", id);
+                            carta6.saveInBackground();
+                        }
+                        else if(e.getCode() == ParseException.OBJECT_NOT_FOUND)
+                        {
+                            ParseObject carta6c = new ParseObject("carta");
+                            carta6c.put("nombre", nombreplato6C);
+                            carta6c.put("descripcion", descripcionplato6C);
+                            carta6c.put("precio", precioplato6C);
+                            carta6c.put("fotoplato", fotocartafile6);
+                            carta6c.put("restauranteId", id);
+                            carta6c.saveInBackground();
+                        }
+                    }
+                });
+
+
             }
 
 
@@ -1474,4 +1613,60 @@ try {
         imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         return true;
     }
+
+    public void errors()
+    {
+        boolean cancel = false;
+
+        if((fotocartafile2 == null) && (nombreplato2 != null))
+        {
+            Toast.makeText(getApplicationContext(), "Es necesario guardar una foto del segundo plato", Toast.LENGTH_SHORT).show();
+             cancel = true;
+            focusView = nombreplato2;
+        }
+
+        if((fotocartafile3 == null) && (nombreplato3 != null))
+        {
+            Toast.makeText(getApplicationContext(), "Es necesario guardar una foto del tercero plato", Toast.LENGTH_SHORT).show();
+            cancel = true;
+            focusView = nombreplato3;
+        }
+
+        if((fotocartafile4 == null) && (nombreplato4 != null))
+        {
+            Toast.makeText(getApplicationContext(), "Es necesario guardar una foto del cuarto plato", Toast.LENGTH_SHORT).show();
+            cancel = true;
+            focusView = nombreplato4;
+        }
+
+        if((fotocartafile5 == null) && (nombreplato5 != null))
+        {
+            Toast.makeText(getApplicationContext(), "Es necesario guardar una foto del quinto plato", Toast.LENGTH_SHORT).show();
+            cancel = true;
+            focusView = nombreplato5;
+        }
+
+        if((fotocartafile6 == null) && (nombreplato6 != null))
+        {
+            Toast.makeText(getApplicationContext(), "Es necesario guardar una foto del sexto plato", Toast.LENGTH_SHORT).show();
+            cancel = true;
+            focusView = nombreplato6;
+        }
+
+
+        if(cancel)
+        {
+            focusView.requestFocus();
+        }
+        else
+        {
+            ActualizarCarta();
+        }
+
+    }
+
+
 }
+
+
+

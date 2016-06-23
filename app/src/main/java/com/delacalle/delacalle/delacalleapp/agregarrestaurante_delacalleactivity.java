@@ -38,6 +38,9 @@ import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseACL;
@@ -122,7 +125,10 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregarrestaurante_delacalleactivity);
 
-
+        GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+        Tracker tracker = analytics.newTracker("UA-77841203-3");
+        tracker.setScreenName("agregarrestaurante");
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -680,7 +686,7 @@ try
         restauranteA.put("fotologo", filefoto1);
         restauranteA.put("fotogrande", filefoto2);
         restauranteA.put("usuarioid", ParseUser.getCurrentUser());
-        restauranteA.increment("votos", 1);
+        restauranteA.increment("votos", 0);
         restauranteA.put("color", color);
         restauranteA.setACL(acl);
         ProgressDialog.show(this, "Guardando", "Espera mientras guarda el restaurante",true,true);

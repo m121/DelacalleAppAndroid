@@ -105,7 +105,7 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
                             new ParseQueryAdapter.QueryFactory<ParseObject>() {
                                 public ParseQuery<ParseObject> create() {
                                     ParseQuery<ParseObject> query = ParseQuery.getQuery("restaurante");
-                                    query.orderByAscending("createAt");
+                                    query.orderByDescending("createAt");
                                     return query;
                                 }
                             };
@@ -284,7 +284,7 @@ try
                 new  ParseQueryAdapter.QueryFactory<ParseObject>(){
                     public ParseQuery<ParseObject> create () {
                         ParseQuery<ParseObject>  query = ParseQuery.getQuery("restaurante");
-                        query.orderByAscending("createAt");
+                        query.orderByDescending("createAt");
                         return query;
                     }
                 };

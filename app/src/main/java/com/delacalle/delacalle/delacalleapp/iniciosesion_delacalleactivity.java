@@ -42,6 +42,9 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.parse.GetCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseACL;
@@ -129,6 +132,12 @@ String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+        Tracker tracker = analytics.newTracker("UA-77841203-3");
+        tracker.setScreenName("iniciarsesion");
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
+
         try {
             FacebookSdk.sdkInitialize(iniciosesion_delacalleactivity.this);
             setContentView(R.layout.activity_iniciosesion_delacalleactivity);

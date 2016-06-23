@@ -13,6 +13,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -44,6 +47,12 @@ ArrayList<String> carta;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busquedacarta_delacalleactivity);
+
+        GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+        Tracker tracker = analytics.newTracker("UA-77841203-3");
+        tracker.setScreenName("busquedacarta");
+        tracker.enableAutoActivityTracking(true);
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 

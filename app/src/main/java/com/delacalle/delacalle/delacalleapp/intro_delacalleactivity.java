@@ -22,7 +22,7 @@ public class intro_delacalleactivity extends AppIntro2 {
         // Please DO NOT override onCreate. Use init.
         @Override
         public void init (Bundle savedInstanceState){
-try {
+/*try {
     SharedPreferences pref = getSharedPreferences("ActivityPREF", Context.MODE_PRIVATE);
     if (pref.getBoolean("activity_executed", false)) {
         Intent intent = new Intent(this, iniciosesion_delacalleactivity.class);
@@ -71,7 +71,7 @@ try {
     Log.d("delacalle","Error en el intro");
     Intent intent = new Intent(intro_delacalleactivity.this,iniciosesion_delacalleactivity.class);
     startActivity(intent);
-}
+}*/
     }
 
    /* @Override

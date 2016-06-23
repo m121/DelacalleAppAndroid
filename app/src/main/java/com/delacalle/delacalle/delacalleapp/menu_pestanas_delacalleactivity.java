@@ -32,6 +32,8 @@ import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
 import com.github.amlcurran.showcaseview.targets.Target;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.Tracker;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
@@ -73,6 +75,9 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                 .setCategory("Action")
                 .setAction("Share")
                 .build());*/
+
+
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if (!prefs.getBoolean("firstTime", false)) {
             // <---- run your one time code here
@@ -140,6 +145,7 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
+
     }
 
     @Override

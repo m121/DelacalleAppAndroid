@@ -29,6 +29,9 @@ import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
@@ -422,7 +425,14 @@ public class FragmentPageComentariosDetalle extends Fragment {
                                     objcomentario.saveInBackground();
 
                                     Toast.makeText(getActivity(), "Enviado, Actualiza la página para visualizar", Toast.LENGTH_SHORT).show();
-
+                                    GoogleAnalytics analytics = GoogleAnalytics.getInstance(getActivity());
+                                    Tracker trackervotos = analytics.newTracker("UA-77841203-3");
+                                    trackervotos.send(new HitBuilders.EventBuilder()
+                                            .setCategory("Comentarios")
+                                            .setAction("comentado")
+                                            .setLabel(objcomentario.getString("restauranteid"))
+                                            .setValue(1)
+                                            .build());
                                 }
                             }
                         });

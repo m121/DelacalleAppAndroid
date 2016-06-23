@@ -24,6 +24,9 @@ import android.widget.TextView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
@@ -57,6 +60,11 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busquedanombre_delacalleactivity);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+        Tracker tracker = analytics.newTracker("UA-77841203-3");
+        tracker.setScreenName("busquedanombre");
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
 
         cd = new ConnectionDetector(getApplicationContext());
         // get Internet status

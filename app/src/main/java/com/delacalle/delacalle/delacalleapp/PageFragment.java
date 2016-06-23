@@ -60,35 +60,16 @@ public class PageFragment extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
     private ParseQueryAdapter<ParseObject> restaurantesQueryAdapter;
     Bitmap pic;
-    Bitmap pic2;
-    Bitmap pic3;
 
-
-    TextView nombrecarta;
-    TextView titletxt;
-    TextView descriptiontxt;
-
-    TextView plato1txt;
-    TextView plato2txt;
-    TextView plato3txt;
-    ImageView picimageview1;
-    ImageView picimageview2;
-    ImageView picimageview3;
-    ImageView imageviewcomentario;
-    RatingBar ratingbarres;
-    ParseFile picfile1;
-    ParseFile picfile2;
-    ParseFile picfile3;
 
 
     String id;
-    private float ratingR;
-    int votos;
+
 
 
     //comentarios
     TextView usuario;
-    TextView comentario;
+
 
     boolean isInternetPresent = false;
     ConnectionDetector cd;
@@ -142,6 +123,7 @@ public class PageFragment extends Fragment {
                                 public ParseQuery<ParseObject> create() {
                                     ParseQuery<ParseObject> query = ParseQuery.getQuery("restaurante");
                                     query.whereGreaterThan("rating", 4);
+                                    query.setLimit(5);
                                     return query;
                                 }
                             };
@@ -323,6 +305,7 @@ public class PageFragment extends Fragment {
                         public ParseQuery<ParseObject> create() {
                             ParseQuery<ParseObject> query = ParseQuery.getQuery("restaurante");
                             query.whereGreaterThan("rating", 4);
+                            query.setLimit(5);
                             return query;
                         }
                     };
