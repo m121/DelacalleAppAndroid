@@ -35,7 +35,7 @@
         Crear restaurante
     </string>
     <string name="crearrestaurantefotologo">Foto logo</string>
-    <string name="crearrestaurantefotogrande">Foto grande del restaurante</string>
+    <string name="crearrestaurantefotogrande">Foto grande del restaurante(578x345px)</string>
     <string name="crearrestaurantenombre">Nombre Restaurante</string>
     <string name="crearrestauranteDescripcion">Descripción y descuento</string>
     <string name="crearrestaurantedireccion">Dirección</string>
@@ -104,7 +104,7 @@
         Editar Restaurante
     </string>
     <string name="editarrestaurantefotologo">Foto logo</string>
-    <string name="editarrestaurantefotogrande">Foto grande del restaurante</string>
+    <string name="editarrestaurantefotogrande">Foto grande del restaurante(578x345px)</string>
     <string name="editarrestaurantenombre">Nombre Restaurante</string>
     <string name="editarrestaurantedireccion">Dirección</string>
     <string name="editarrestaurantetelefono">Teléfono</string>

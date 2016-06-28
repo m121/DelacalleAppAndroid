@@ -23,7 +23,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Usuario"
+        android:text="@string/plantillacomentariosusuario"
         android:id="@+id/textViewNombreUsuario"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/imageViewFotoUsuarioComentario"
@@ -33,7 +33,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:text="Comentario"
+        android:text="@string/plantillacomentarioscomentario"
         android:id="@+id/textViewComentario"
         android:layout_below="@+id/textViewNombreUsuario"
         android:layout_toRightOf="@+id/imageViewFotoUsuarioComentario"

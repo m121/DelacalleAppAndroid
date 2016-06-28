@@ -105,7 +105,7 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
                             new ParseQueryAdapter.QueryFactory<ParseObject>() {
                                 public ParseQuery<ParseObject> create() {
                                     ParseQuery<ParseObject> query = ParseQuery.getQuery("restaurante");
-                                    query.orderByDescending("createAt");
+                                    query.orderByDescending("createdAt");
                                     return query;
                                 }
                             };
@@ -169,6 +169,8 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
                             return view;
                         }
                     };
+
+           //         restaurantesQueryAdapter.setPaginationEnabled(false);
 
                     ListView restaListView = (ListView) view.findViewById(R.id.listViewrestaurantes);
                     restaListView.setAdapter(restaurantesQueryAdapter);
@@ -284,7 +286,7 @@ try
                 new  ParseQueryAdapter.QueryFactory<ParseObject>(){
                     public ParseQuery<ParseObject> create () {
                         ParseQuery<ParseObject>  query = ParseQuery.getQuery("restaurante");
-                        query.orderByDescending("createAt");
+                        query.orderByDescending("createdAt");
                         return query;
                     }
                 };

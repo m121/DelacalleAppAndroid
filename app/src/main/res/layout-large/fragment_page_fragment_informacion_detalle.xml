@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre Restaurante"
+            android:text="@string/fragmentinformaciontitulonombre"
             android:id="@+id/textViewtituloNombreRestauranteDetalle"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre Restaurante"
+            android:text="@string/fragmentinformacionnombre"
             android:id="@+id/textViewNombreRestauranteDetalle"
             android:textSize="25sp"
             android:layout_below="@+id/textViewtituloNombreRestauranteDetalle"
@@ -33,7 +33,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/detallerestauranteinformacionDescripcion"
+            android:text="@string/fragmentinformaciontitulodescripcion"
             android:id="@+id/textViewTituloDescripcionDetalle"
             android:textSize="25sp"
             android:layout_below="@+id/textViewNombreRestauranteDetalle"
@@ -44,7 +44,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:text="Descripcion"
+            android:text="@string/fragmentinformaciondescripcion"
             android:id="@+id/textViewDescripcionDetalle"
             android:textSize="25sp"
             android:layout_below="@+id/textViewTituloDescripcionDetalle"
@@ -54,7 +54,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dirección"
+            android:text="@string/fragmentinformaciontitulodireccion"
             android:id="@+id/textViewTituloDireccionDetalle"
             android:textSize="25sp"
             android:layout_below="@+id/textViewDescripcionDetalle"
@@ -65,7 +65,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dirección"
+            android:text="@string/fragmentinformaciondireccion"
             android:id="@+id/textViewDireccionDetalle"
             android:textSize="25sp"
             android:layout_below="@+id/textViewTituloDireccionDetalle"
@@ -75,7 +75,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Teléfono"
+            android:text="@string/fragmentinformaciontitulotelefono"
             android:id="@+id/textViewTituloTelefonoDetalle"
             android:textSize="25sp"
             android:layout_below="@+id/textViewDireccionDetalle"
@@ -86,7 +86,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Teléfono"
+            android:text="@string/fragmentinformaciontelefono"
             android:id="@+id/textViewTelefonoDetalle"
             android:textSize="25sp"
             android:layout_below="@+id/textViewTituloTelefonoDetalle"
@@ -96,7 +96,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Web"
+            android:text="@string/fragmentinformaciontituloweb"
             android:id="@+id/textViewTituloWebDetalle"
             android:textSize="25sp"
             android:layout_below="@+id/textViewTelefonoDetalle"
@@ -107,7 +107,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Web"
+            android:text="@string/fragmentinformacionweb"
             android:id="@+id/textViewWebDetalle"
             android:textSize="25sp"
             android:layout_below="@+id/textViewTituloWebDetalle"
@@ -140,49 +140,5 @@
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@null">
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|bottom"
-        android:layout_margin="16dp"
-        android:id="@+id/fabmenu"
-        fab:fab_size="normal"
-        android:src="@drawable/ic_agregar"
-        app:layout_anchor="@id/listViewrestaurantes"
-        app:layout_anchorGravity="bottom|right|end" >
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabeditar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="10dp"
-            android:src="@mipmap/ic_editar"
-            fab:fab_size="mini"
-            />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabagregar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="10dp"
-            android:src="@mipmap/ic_restaurante"
-            fab:fab_size="mini"
-            />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabperfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="10dp"
-            android:src="@mipmap/ic_perfil"
-            fab:fab_size="mini"
-            />
-
-
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
-        </FrameLayout>
+        android:background="@null"></FrameLayout>
 </FrameLayout>

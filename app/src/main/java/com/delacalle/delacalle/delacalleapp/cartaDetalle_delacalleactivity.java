@@ -91,7 +91,7 @@ public class cartaDetalle_delacalleactivity extends AppCompatActivity {
         milayoutrestaurantelink.setClickable(true);
 
 
-        final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
+      /*  final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
     //    frameLayout.getBackground().setAlpha(0);
         final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.fabmenu);
         final FloatingActionButton fabeditar = (FloatingActionButton) findViewById(R.id.fabeditar);
@@ -175,7 +175,7 @@ public class cartaDetalle_delacalleactivity extends AppCompatActivity {
                 }
 
             }
-        });
+        });*/
 
 
 

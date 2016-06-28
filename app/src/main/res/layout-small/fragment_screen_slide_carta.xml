@@ -122,7 +122,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="$2500"
             android:id="@+id/textViewPrecioPlatoRestauranteDetalleCarta"
             android:textSize="35sp"
             android:layout_below="@+id/textViewDescripcionPlatoResturanteDetalleCarta"

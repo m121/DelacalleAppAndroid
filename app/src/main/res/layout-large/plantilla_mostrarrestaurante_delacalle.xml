@@ -38,7 +38,7 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:id="@+id/editTextnombremostrarrestaurante"
-            android:hint="Nombre Restaurante"
+            android:hint="@string/plantillamostrarrestanombre"
             android:maxLength="20"
             android:textColor="#000000"
             android:textColorHint="#000000"
@@ -66,7 +66,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Descripcion"
+                android:text="@string/plantillamostrarrestaDescripcion"
                 android:textSize="20sp"
                 android:inputType="textCapCharacters"
                 android:id="@+id/editTextdescripcionmostrarrestaurante"
@@ -80,7 +80,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Teléfono"
+                android:text="@string/plantillamostrarrestatelefono"
                 android:id="@+id/textViewTelefonoM"
                 android:layout_above="@+id/ratingBarmostrarrestaurante"
                 android:layout_toRightOf="@+id/imageViewfotounomostrarrestaurante"
@@ -92,7 +92,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Direccion"
+                android:text="@string/plantillamostrarrestadireccion"
                 android:id="@+id/textViewDireccionM"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"

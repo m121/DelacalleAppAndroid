@@ -386,6 +386,7 @@ public class PageFragment extends Fragment {
                     return view;
                 }
             };
+            restaurantesQueryAdapter.setPaginationEnabled(false);
 
             ListView restaListView = (ListView) view.findViewById(R.id.listViewrestaurantes);
             restaListView.setAdapter(restaurantesQueryAdapter);

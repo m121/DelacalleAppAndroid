@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nombre Restaurante"
+        android:text="@string/cartadetallenombrerestaurante"
         android:id="@+id/textViewNombreRestauranteDetalleCarta"
         android:textSize="20sp"
         android:layout_alignParentRight="true"
@@ -50,7 +50,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nombre plato"
+        android:text="@string/cartadetallenombreplato"
         android:id="@+id/textViewNombrePlatoRestauranteDetalleCarta"
         android:layout_below="@+id/imageViewFotoRestauranteDetalleCarta"
         android:layout_centerHorizontal="true"
@@ -59,7 +59,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:text="Descripcion plato"
+        android:text="@string/cartadetalledescripcionplato"
         android:id="@+id/textViewDescripcionPlatoResturanteDetalleCarta"
         android:layout_below="@+id/textViewNombrePlatoRestauranteDetalleCarta"
         android:layout_alignLeft="@+id/imageViewFotoRestauranteDetalleCarta"
@@ -69,7 +69,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:text="$2500"
+        android:text="@string/cartadetalleprecio"
         android:id="@+id/textViewPrecioPlatoRestauranteDetalleCarta"
         android:textSize="25sp"
         android:layout_below="@+id/textViewDescripcionPlatoResturanteDetalleCarta"
@@ -84,50 +84,6 @@
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@null">
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|bottom"
-        android:id="@+id/fabmenu"
-        fab:fab_size="normal"
-        android:src="@drawable/ic_agregar"
-        app:layout_anchorGravity="bottom|right|end"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/textViewNombrePlatoRestauranteDetalleCarta"
-        android:layout_toEndOf="@+id/textViewNombrePlatoRestauranteDetalleCarta">
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabeditar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="10dp"
-            android:src="@mipmap/ic_editar"
-            fab:fab_size="mini"
-            />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabagregar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="10dp"
-            android:src="@mipmap/ic_restaurante"
-            fab:fab_size="mini"
-            />
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabperfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="10dp"
-            android:src="@mipmap/ic_perfil"
-            fab:fab_size="mini"
-            />
-
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
-    </FrameLayout>
+        android:background="@null"></FrameLayout>
 
 </RelativeLayout>

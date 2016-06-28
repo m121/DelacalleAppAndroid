@@ -29,7 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User name"
+            android:text="@string/perfilusername"
             android:textAllCaps="true"
             android:id="@+id/textViewUsernameUsuario"
             android:textSize="30dp"
@@ -55,7 +55,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Edad"
+            android:text="@string/perfiltituloedad"
             android:id="@+id/textViewTituloEdadUsuario"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -65,7 +65,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Edad"
+            android:text="@string/perfiledad"
             android:lines="1"
             android:singleLine="true"
             android:inputType="number"
@@ -78,7 +78,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Correo"
+            android:text="@string/perfiltitulocorreo"
             android:id="@+id/textViewTituloCorreoUsuario"
             android:textSize="20sp"
             android:layout_below="@+id/textViewEdadUsuario"
@@ -89,7 +89,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Correo"
+            android:text="@string/perfilcorreo"
             android:id="@+id/textViewCorreoUsuario"
             android:layout_below="@+id/textViewTituloCorreoUsuario"
             android:layout_alignParentLeft="true"
@@ -99,7 +99,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ciudad"
+            android:text="@string/perfiltitulociudad"
             android:id="@+id/textViewTituloCiudadUsuario"
             android:layout_below="@+id/textViewCorreoUsuario"
             android:layout_alignParentLeft="true"
@@ -110,7 +110,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ciudad"
+            android:text="@string/perfilciudad"
             android:lines="1"
             android:singleLine="true"
             android:id="@+id/textViewCiudadUsuario"

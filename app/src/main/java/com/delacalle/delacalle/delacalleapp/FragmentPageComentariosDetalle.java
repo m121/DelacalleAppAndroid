@@ -211,7 +211,7 @@ public class FragmentPageComentariosDetalle extends Fragment {
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
-        final FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout);
+   /*     final FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout);
   //      frameLayout.getBackground().setAlpha(0);
         final FloatingActionsMenu fabMenu = (FloatingActionsMenu) view.findViewById(R.id.fabmenu);
         final FloatingActionButton fabeditar = (FloatingActionButton) view.findViewById(R.id.fabeditar);
@@ -294,7 +294,7 @@ public class FragmentPageComentariosDetalle extends Fragment {
 
             }
         });
-
+*/
 
         try
         {

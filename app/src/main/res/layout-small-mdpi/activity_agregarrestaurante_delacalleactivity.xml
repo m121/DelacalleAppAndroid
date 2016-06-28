@@ -59,7 +59,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:hint="Nombre Restaurante"
+        android:hint="@string/crearrestaurantenombre"
         android:id="@+id/editTextNombreRestauranteA"
         android:textSize="15sp"
         android:singleLine="true"
@@ -83,7 +83,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:hint="Dirección"
+        android:hint="@string/crearrestaurantedireccion"
         android:id="@+id/editTextDireccionRestauranteA"
         android:textSize="15sp"
         android:singleLine="true"
@@ -96,7 +96,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:hint="Teléfono"
+        android:hint="@string/crearrestaurantetelefono"
         android:inputType="phone"
         android:singleLine="true"
         android:lines="1"
@@ -110,7 +110,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:hint="Sitio web/Red social"
+        android:hint="@string/crearrestauranteweb"
         android:singleLine="true"
         android:lines="1"
         android:paddingLeft="5dp"
@@ -124,7 +124,7 @@
     <Button
         android:layout_width="200dp"
         android:layout_height="30dp"
-        android:text="Guardar y seguir"
+        android:text="@string/crearrestaurantebtnguardaryseguir"
         android:id="@+id/btnGuardarRestaurante"
         android:textColor="#ffffff"
         android:background="@color/buttoncolor"
@@ -145,7 +145,7 @@
     <TextView
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="Foto grande del restaurante"
+        android:text="@string/crearrestaurantefotogrande"
         android:id="@+id/textViewTituloFotoGrande"
         android:layout_below="@+id/toolbar"
         android:layout_alignLeft="@+id/imageViewfotoRestauranteA"
@@ -157,7 +157,7 @@
     <TextView
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="Foto logo"
+        android:text="@string/crearrestaurantefotologo"
         android:id="@+id/textViewTituloFotoLogo"
         android:textStyle="bold"
         android:layout_below="@+id/toolbar"
