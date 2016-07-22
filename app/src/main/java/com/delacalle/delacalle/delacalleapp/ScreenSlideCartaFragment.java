@@ -235,24 +235,23 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
 
 
                 filefotocarta = cartas.getParseFile("fotoplato");
-                filefotocarta.getDataInBackground(new GetDataCallback() {
-                    @Override
-                    public void done(byte[] data, ParseException e) {
-                        if(e== null)
-                        {
-                            final BitmapFactory.Options options = new BitmapFactory.Options();
-                            options.inSampleSize = 4;
-                            Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
-                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                            pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                            fotorestauranteCartaDetalle.setImageBitmap(pic);
-                        }
-                        else if(e.getCode() == ParseException.OBJECT_NOT_FOUND)
-                        {
-                            Log.d("delacalle", "No se puede cargar la foto");
-                        }
+                    if(filefotocarta != null) {
+                        filefotocarta.getDataInBackground(new GetDataCallback() {
+                            @Override
+                            public void done(byte[] data, ParseException e) {
+                                if (e == null) {
+                                    final BitmapFactory.Options options = new BitmapFactory.Options();
+                                    options.inSampleSize = 4;
+                                    Bitmap pic = BitmapFactory.decodeByteArray(data, 0, data.length, options);
+                                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                    pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                                    fotorestauranteCartaDetalle.setImageBitmap(pic);
+                                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                    Log.d("delacalle", "No se puede cargar la foto");
+                                }
+                            }
+                        });
                     }
-                });
 
                 nombreplatoCartaDetalle.setText(cartas.getString("nombre").toUpperCase());
                 descripcionplatoCartaDetalle.setText(cartas.getString("descripcion"));

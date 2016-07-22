@@ -89,9 +89,9 @@ public class PageFragmentTwo extends android.support.v4.app.Fragment {
     // Set the associated text for the title
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-     final   View view = inflater.inflate(R.layout.fragment_page_two, container, false);
+     final   View view = inflater.inflate(R.layout.categoriasplantilla, container, false);
 
-        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
+       /* final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
 
         final Typeface primerfontcandara = Typeface.createFromAsset(getActivity().getAssets(), "fonts/CandaraBold.ttf");
         final Typeface segundafontcaviar = Typeface.createFromAsset(getActivity().getAssets(), "fonts/CaviarDreams.ttf");
@@ -379,7 +379,7 @@ try
        Log.d("delacalle", "error en mostrar contenido");
         }
 
-
+*/
         return view;
     }
 

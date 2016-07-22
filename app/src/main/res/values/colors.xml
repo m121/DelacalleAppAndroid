@@ -8,4 +8,20 @@
     <color name="edittextback">#a5714a</color>
     <color name="navigationBarColor">#370c03</color>
     <color name="colorAccent">#41b7ab</color>
+
+
+    <!--categorias-->
+
+    <color name="colorCategoriaInternacional">#f1bf58</color>
+    <color name="colorCategoriaMariscos">#38b9ab</color>
+    <color name="colorCategoriaTipica">#1b9e78</color>
+    <color name="colorCategoriaGourmet">#b564a8</color>
+    <color name="colorCategoriaRapida">#f05544</color>
+    <color name="colorCategoriaAlmuerzo">#db4f71</color>
+    <color name="colorCategoriaJugos">#edb0d0</color>
+    <color name="colorCategoriaVegetariano">#437645</color>
+    <color name="colorCategoriaDomicilio">#a57148 </color>
+    <color name="colorCategoriaCarnes">#db3227</color>
+    <color name="colorCategoriaHelados">#f2ea0d</color>
+    <color name="colorCategoriaPromociones">#ee7a22</color>
 </resources>

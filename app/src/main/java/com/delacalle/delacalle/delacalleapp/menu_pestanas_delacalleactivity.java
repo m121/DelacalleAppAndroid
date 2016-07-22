@@ -57,6 +57,8 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
     Bitmap pic;
     private ParseQueryAdapter<ParseObject> restaurantesQueryAdapter;
 
+
+
     ArrayList<String> precio;
 
     ArrayList<String> descripcion;
@@ -184,6 +186,7 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(final String titulo) {
+
                     // perform query here
                     ParseQuery<ParseObject> querybuscar = ParseQuery.getQuery("restaurante");
                     querybuscar.whereContains("nombre", titulo);
@@ -268,7 +271,7 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
 
 
                     ParseQuery<ParseObject> querycartan = new ParseQuery<ParseObject>("carta");
-                    querycartan.whereEqualTo("nombre", titulo);
+                    querycartan.whereStartsWith("nombre", titulo);
                     querycartan.getFirstInBackground(new GetCallback<ParseObject>() {
                         @Override
                         public void done(ParseObject car, ParseException e) {

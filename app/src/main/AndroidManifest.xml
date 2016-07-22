@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.delacalle.delacalle.delacalleapp" >
+    package="com.delacalle.delacalle.delacalleapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -68,12 +68,11 @@
         android:icon="@mipmap/ic_logo"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:theme="@style/MyMaterialTheme" >
+        android:theme="@style/MyMaterialTheme">
         <activity
             android:name=".home_delacalleactivity"
             android:label="@string/title_activity_home_delacalleactivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -92,7 +91,7 @@
         <activity
             android:name=".iniciosesion_delacalleactivity"
             android:label="@string/title_activity_iniciosesion_delacalleactivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
 
             <!--
             <intent-filter>
@@ -106,7 +105,7 @@
         <activity
             android:name=".registro_delacalleactivity"
             android:label="@string/title_activity_registro_delacalleactivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
 
             <!--
             <intent-filter>
@@ -119,22 +118,21 @@
         <activity
             android:name=".splashscreen_delacalleactivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
-            <intent-filter>
+            android:screenOrientation="portrait">
+           <!-- <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".agregarrestaurante_delacalleactivity"
             android:label="@string/title_activity_agregarrestaurante_delacalleactivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".mostrarrestaurante_delacalleactivity"
             android:label="@string/title_activity_mostrarrestaurante_delacalleactivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
 
             <!--
          <intent-filter>
@@ -148,8 +146,7 @@
         <activity
             android:name=".resetearcontrasena_delacalleactivity"
             android:label="@string/title_activity_resetearcontrasena_delacalleactivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <!--
         <activity android:name=".SearchActivity">
             <intent-filter>
@@ -162,12 +159,11 @@
         <activity
             android:name=".registrarresponsable_delacalleactivity"
             android:label="@string/title_activity_registrarresponsable_delacalleactivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".listarestaurantesresponsable_delacalleactivity"
             android:label="@string/title_activity_listarestaurantesresponsable_delacalleactivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
 
             <!--
             <intent-filter>
@@ -180,7 +176,7 @@
         <activity
             android:name=".menu_pestanas_delacalleactivity"
             android:label="@string/title_activity_menu_pestanas_delacalleactivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
 
             <!--
           <intent-filter>
@@ -194,12 +190,11 @@
         <activity
             android:name=".perfilusuario_delacalleactivity"
             android:label="Perfil"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".carta_delacalleactivity"
             android:label="@string/title_activity_carta_delacalleactivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
 
             <!--
            <intent-filter>
@@ -212,33 +207,27 @@
         <activity
             android:name=".editarrestaurante_delacalleactivity"
             android:label="@string/title_activity_editarrestaurante_delacalleactivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".detallerestaurante_delacalleactivity"
             android:label="@string/title_activity_detallerestaurante_delacalleactivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".cartaDetalle_delacalleactivity"
             android:label="@string/title_activity_carta_detalle_delacalleactivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".agregarcarta_delacalleactivity"
             android:label="@string/title_activity_agregarcarta_delacalleactivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".editarcartarestaurante_delacalleactivity"
             android:label="@string/title_activity_editarcartarestaurante_delacalleactivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".resetearcontrasenadesdelogin_delacalleactivity"
             android:label="@string/title_activity_resetearcontrasenadesdelogin_delacalleactivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
 
         <meta-data
             android:name="com.instagram.instagramapi.InstagramAppClientId"
@@ -250,26 +239,21 @@
         <activity
             android:name=".busquedanombre_delacalleactivity"
             android:label="@string/title_activity_busquedanombre_delacalleactivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".busquedaprecio_delacalleactivity"
             android:label="@string/title_activity_busquedaprecio_delacalleactivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".busquedacarta_delacalleactivity"
             android:label="@string/title_activity_busquedacarta_delacalleactivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".busquedadescripcion_delacalleactivity"
-            android:label="@string/title_activity_busquedadescripcion_delacalleactivity" >
-        </activity>
+            android:label="@string/title_activity_busquedadescripcion_delacalleactivity"></activity>
         <activity
             android:name=".busquedadireccion_delacalleactivity"
-            android:label="@string/title_activity_busquedadireccion_delacalleactivity" >
-        </activity>
+            android:label="@string/title_activity_busquedadireccion_delacalleactivity"></activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -277,12 +261,19 @@
 
         <activity
             android:name=".intro_delacalleactivity"
-            android:label="@string/title_activity_intro_delacalleactivity" >
-        </activity>
+            android:label="@string/title_activity_intro_delacalleactivity"></activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".mostrarcategorias_delacalleactivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -30,7 +30,7 @@
     <string name="title_activity_splashscreen_delacalleactivity">splashscreen_delacalleactivity
     </string>
 
-   <!-- Crear restaurante-->
+    <!-- Crear restaurante-->
     <string name="title_activity_agregarrestaurante_delacalleactivity">
         Crear restaurante
     </string>
@@ -60,7 +60,6 @@
     <string name="facebook_app_id">807123432744026</string>
 
 
-
     <!--Registrar responsable-->
     <string name="title_activity_registrarresponsable_delacalleactivity">
         Registrar responsable
@@ -78,7 +77,7 @@
     <string name="title_activity_menu_pestanas_delacalleactivity">
     </string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--Perfil usuario-->
@@ -99,7 +98,7 @@
     <string name="cartadetalledescripcionplato">Descripción Plato</string>
     <string name="cartadetalleprecio">0</string>
 
-   <!-- Editar restaurante-->
+    <!-- Editar restaurante-->
     <string name="title_activity_editarrestaurante_delacalleactivity">
         Editar Restaurante
     </string>
@@ -121,7 +120,7 @@
     </string>
 
 
-<!--Editar carta restaurante-->
+    <!--Editar carta restaurante-->
     <string name="title_activity_editarcartarestaurante_delacalleactivity">
        Editar carta
     </string>
@@ -159,7 +158,6 @@
     <string name="title_activity_busquedadireccion_delacalleactivity">
         Búsqueda por dirección
     </string>
-
 
 
     <!--Detalle restaurante - Informacion restaurante-->
@@ -201,5 +199,20 @@
     <string name="plantillamostrarrestatelefono">Teléfono</string>
     <string name="plantillamostrarrestaDescripcion">Descripción</string>
     <string name="plantillamostrarrestadireccion">Dirección</string>
+
+
+    <!--categorias-->
+    <string name="categoriainternacional">INTERNACIONAL</string>
+    <string name="categoriatipico">TÍPICA</string>
+    <string name="categoriagourmet">GOURMET</string>
+    <string name="categoriamariscos">MARISCOS</string>
+    <string name="categoriarapida">RÁPIDA</string>
+    <string name="categoriaalmuerzo">ALMUERZO</string>
+    <string name="categoriajugos">JUGOS Y BEBIDAS</string>
+    <string name="categoriavegetariano">VEGETARIANO</string>
+    <string name="categoriadomicilio">A DOMICILIO</string>
+    <string name="categoriacarnes">CARNES</string>
+    <string name="categoriahelado">HELADO</string>
+    <string name="categoriapromo">PROMOCIONES</string>
 
 </resources>

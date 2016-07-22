@@ -10,11 +10,12 @@ import com.astuetz.PagerSlidingTabStrip;
 /**
  * Created by pc on 18/11/2015.
  */
-public class MyFragmentPagerAdapter extends FragmentPagerAdapter implements PagerSlidingTabStrip.IconTabProvider {
+//poner para poner los iconos. implements PagerSlidingTabStrip.IconTabProvider
+public class MyFragmentPagerAdapter extends FragmentPagerAdapter{
 
     final int PAGE_COUNT = 2;
     private int tabIcons[] = {R.mipmap.ic_caliente, R.drawable.ic_lista};
-    private String tabTitles[] = new String[] { "Tab1", "Tab2" };
+    private String tabTitles[] = new String[] { "Top 5", "Categorias" };
 
     public MyFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -37,12 +38,18 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter implements Page
                 return null;
         }
     }
-
+// Para poner los titulos
     @Override
+    public CharSequence getPageTitle(int position) {
+        // Generate title based on item position
+        return tabTitles[position];
+    }
+    // Para poner los iconos
+   /* @Override
     public int getPageIconResId(int position) {
         // Generate title based on item position
         return tabIcons[position];
-    }
+    }*/
 
 
 
