@@ -5,6 +5,13 @@
    <!-- <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />-->
 
+    <item android:id="@+id/action_eliminarc"
+        android:orderInCategory="5"
+        android:title="Eliminar cuenta"
+        android:icon="@drawable/ic_borrarr"
+        app:showAsAction="always"
+        />
+
     <item android:id="@+id/action_cambiar"
         android:orderInCategory="5"
         android:title="Cambiar contraseña"

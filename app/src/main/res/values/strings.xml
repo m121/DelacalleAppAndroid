@@ -42,6 +42,7 @@
     <string name="crearrestaurantetelefono">Teléfono</string>
     <string name="crearrestauranteweb">Sitio web/Red social</string>
     <string name="crearrestaurantebtnguardaryseguir">Guardar y seguir</string>
+    <string name="crearrestaurantecategoria">Seleccionar categoria</string>
 
     <!--Crear carta -->
 <string name="title_activity_agregarcarta_delacalleactivity"> Agregar Carta
@@ -214,5 +215,23 @@
     <string name="categoriacarnes">CARNES</string>
     <string name="categoriahelado">HELADO</string>
     <string name="categoriapromo">PROMOCIONES</string>
+
+
+   <!-- categorias agregar restaurante-->
+    <string-array name="categoriasCrear">
+        <item>SELECCIONA CATEGORIA</item>
+        <item>INTERNACIONAL</item>
+        <item>TÍPICA</item>
+        <item>GOURMET</item>
+        <item>MARISCOS</item>
+        <item>RÁPIDA</item>
+        <item>ALMUERZO</item>
+        <item>JUGOS Y BEBIDAS</item>
+        <item>VEGETARIANO</item>
+        <item>A DOMICILIO</item>
+        <item>CARNES</item>
+        <item>HELADO</item>
+        <item>PROMOCIONES</item>
+    </string-array>
 
 </resources>

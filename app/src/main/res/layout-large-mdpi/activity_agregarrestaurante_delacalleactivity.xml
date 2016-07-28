@@ -9,11 +9,33 @@
     android:orientation="vertical">
 
 
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnercategoria"
+        android:layout_below="@+id/crearrestauranteseleccionarcategoria"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+     android:id="@+id/toolbar"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:minHeight="?attr/actionBarSize"
+     android:background="?attr/colorPrimaryDark"
+     app:titleTextColor="@android:color/white"
+
+     />
+
+ <View
+     android:id="@+id/toolbar_shadow"
+     android:layout_width="match_parent"
+     android:layout_height="5dp"
+     android:background="@drawable/sombratoolbar"
+     android:layout_below="@id/toolbar"
+     />
 
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
 
    <!-- <ImageView
         android:layout_width="100dp"
@@ -142,7 +164,7 @@
         android:layout_height="50dp"
         android:id="@+id/imageViewbtnPaletaRestaurante"
         android:background="@drawable/botonpaleta"
-        android:layout_below="@+id/editTextWebRestauranteA"
+        android:layout_below="@+id/spinnercategoria"
         android:layout_alignLeft="@+id/btnGuardarRestaurante"
         android:layout_alignStart="@+id/btnGuardarRestaurante" />
 
@@ -168,11 +190,21 @@
         android:layout_alignEnd="@+id/imageViewfotoLogoA"
         android:textStyle="bold" />
 
-    <FrameLayout
-        android:id="@+id/frame_layout"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@null">
+        android:layout_height="50dp"
+        android:id="@+id/crearrestauranteseleccionarcategoria"
+        android:layout_below="@+id/editTextWebRestauranteA"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:hint="@string/crearrestaurantecategoria"
+        android:textSize="25sp" />
+
+      <FrameLayout
+    android:id="@+id/frame_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@null">
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -216,6 +248,9 @@
             />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
-    </FrameLayout>
+
+</FrameLayout>
+
+
 
 </RelativeLayout>

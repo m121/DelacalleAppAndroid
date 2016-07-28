@@ -2,13 +2,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.delacalle.delacalle.delacalleapp.agregarrestaurante_delacalleactivity">
-   <!-- <item
-        android:id="@+id/action_search"
-        android:title="buscar"
-        android:orderInCategory="100"
-        android:icon="@drawable/ic_buscar"
-        app:showAsAction="ifRoom" />
--->
+   <item
+       android:id="@+id/action_color"
+       android:title="Cambiar color"
+       android:orderInCategory="100"
+       android:icon="@drawable/ic_color"
+       app:showAsAction="ifRoom" />
+
+   <item
+       android:id="@+id/action_guardar"
+       android:title="Guardar restaurante"
+       android:orderInCategory="100"
+       android:icon="@drawable/ic_guardar"
+       app:showAsAction="ifRoom" />
 <!--
     <item
         android:id="@+id/action_settings"

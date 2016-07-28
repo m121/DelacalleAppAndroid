@@ -1,5 +1,7 @@
 <resources>
 
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>-->
     <style name="MyMaterialTheme" parent="MyMaterialTheme.Base">
 
     </style>
@@ -11,6 +13,10 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+
+
+
 
     <style name="SearchViewTheme" >
         <item name="colorControlActivated">#00007f</item>

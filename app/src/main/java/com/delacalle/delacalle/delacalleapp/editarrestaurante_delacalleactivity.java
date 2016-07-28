@@ -23,12 +23,15 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,7 +54,7 @@ import com.parse.SaveCallback;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
-public class editarrestaurante_delacalleactivity extends AppCompatActivity {
+public class editarrestaurante_delacalleactivity extends AppCompatActivity  implements AdapterView.OnItemSelectedListener  {
 
     private Toolbar mToolbar;
     Bitmap pic;
@@ -66,6 +69,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
     private TextView  direccionRestauranteA;
     private TextView  telefonoRestauranteA;
     private TextView  webRestauranteA;
+    private Spinner spinnercategoria;
 
 
 
@@ -74,6 +78,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
     ParseFile picfile2;
     ParseFile picfile3;
     String id;
+    private String categoriaR;
 
     Button btneditar;
     private Button btneliminarrestaurante;
@@ -88,6 +93,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
     private RelativeLayout relativepaleta;
     String color;
     ImageView btnactualizarpaleta;
+
 
 
     // Popup fotos
@@ -134,6 +140,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
         btneditar  = (Button) findViewById(R.id.btnActualizarRestaurante);
         btnactualizarpaleta = (ImageView) findViewById(R.id.imageViewbtnPaletaRestaurante);
         relativepaleta = (RelativeLayout) findViewById(R.id.relativelayoutPaletacambiar);
+        spinnercategoria = (Spinner) findViewById(R.id.spinnercategoria);
         fotologoRestauranteA.setClickable(true);
         fotograndeRestauranteA.setClickable(true);
         nombreRestauranteA.setTypeface(segundafontcaviar);
@@ -143,6 +150,13 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
         webRestauranteA.setTypeface(segundafontcaviar);
         btneliminarrestaurante.setTypeface(primerfontcandara);
         btneditar.setTypeface(primerfontcandara);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.categoriasCrear, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        spinnercategoria.setAdapter(adapter);
+        spinnercategoria.setOnItemSelectedListener(this);
 
 
         galleryIntent = new Intent(Intent.ACTION_PICK,
@@ -334,6 +348,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
                     direccionRestauranteA.setText(object.getString("direccion"));
                     telefonoRestauranteA.setText(object.getString("telefono"));
                     webRestauranteA.setText(object.getString("web"));
+
                     picfile1 = object.getParseFile("fotologo");
                     picfile1.getDataInBackground(new GetDataCallback() {
                         @Override
@@ -408,6 +423,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
                                         object.put("fotologo",picfile1);
                                         object.put("fotogrande",picfile2);
                                         object.put("color",color);
+                                        object.put("categoria",categoriaR);
                                         ProgressDialog.show(editarrestaurante_delacalleactivity.this, "Guardando", "Espera mientras actualiza el restaurante",true,true);
                                         object.saveInBackground(new SaveCallback() {
                                             @Override
@@ -959,4 +975,19 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity {
         return true;
     }
 
+
+    public void onItemSelected(AdapterView<?> parent, View view,
+                               int pos, long id) {
+        // An item was selected. You can retrieve the selected item using
+        // parent.getItemAtPosition(pos)
+
+        categoriaR = spinnercategoria.getItemAtPosition(pos).toString();
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
+        View focusView = spinnercategoria;
+        focusView.requestFocus();
+        Toast.makeText(getApplicationContext(), "Selecciona una categoria por favor ", Toast.LENGTH_SHORT).show();
+    }
 }

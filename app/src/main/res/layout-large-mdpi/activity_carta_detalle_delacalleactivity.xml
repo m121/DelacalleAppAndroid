@@ -57,15 +57,21 @@
         android:layout_centerHorizontal="true"
         android:textSize="50sp" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewNombrePlatoRestauranteDetalleCarta"
+        android:layout_alignLeft="@+id/imageViewFotoRestauranteDetalleCarta"
+        android:layout_alignStart="@+id/imageViewFotoRestauranteDetalleCarta"
+        android:id="@+id/scrollviewdescripcion"
+        >
     <TextView
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:text="@string/cartadetalledescripcionplato"
         android:id="@+id/textViewDescripcionPlatoResturanteDetalleCarta"
-        android:layout_below="@+id/textViewNombrePlatoRestauranteDetalleCarta"
-        android:layout_alignLeft="@+id/imageViewFotoRestauranteDetalleCarta"
-        android:layout_alignStart="@+id/imageViewFotoRestauranteDetalleCarta"
         android:textSize="25sp" />
+    </ScrollView>
 
     <TextView
         android:layout_width="wrap_content"
@@ -73,13 +79,27 @@
         android:text="@string/cartadetalleprecio"
         android:id="@+id/textViewPrecioPlatoRestauranteDetalleCarta"
         android:textSize="35sp"
-        android:layout_below="@+id/textViewDescripcionPlatoResturanteDetalleCarta"
+        android:layout_below="@+id/scrollviewdescripcion"
         android:layout_alignRight="@+id/textViewNombrePlatoRestauranteDetalleCarta"
         android:layout_alignEnd="@+id/textViewNombrePlatoRestauranteDetalleCarta" />
 
-    <include
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimaryDark"
+        app:titleTextColor="@android:color/white"
+
+        />
+
+    <View
+        android:id="@+id/toolbar_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@id/toolbar"
+        android:background="@drawable/sombratoolbar"
+        />
 
     <FrameLayout
         android:id="@+id/frame_layout"

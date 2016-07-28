@@ -45,9 +45,8 @@ public class mostrarcategorias_delacalleactivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Gourmet");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 //    titulo = (ArrayList<String>) getIntent().getSerializableExtra("titulo");
         Bundle bundle = getIntent().getExtras();
@@ -61,6 +60,8 @@ public class mostrarcategorias_delacalleactivity extends AppCompatActivity {
             Log.d("delacalle", "Error al pasar el titulo " + titulo);
         }
 
+        getSupportActionBar().setTitle(titulo);
+
         final Typeface primerfontcandara = Typeface.createFromAsset(getAssets(), "fonts/CandaraBold.ttf");
         final Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
 
@@ -71,7 +72,7 @@ public class mostrarcategorias_delacalleactivity extends AppCompatActivity {
                     new  ParseQueryAdapter.QueryFactory<ParseObject>(){
                         public ParseQuery<ParseObject> create () {
                             ParseQuery<ParseObject>  query = ParseQuery.getQuery("restaurante");
-                            query.orderByAscending("createdAt");
+                            query.whereEqualTo("categoria",titulo);
                             return query;
                         }
                     };

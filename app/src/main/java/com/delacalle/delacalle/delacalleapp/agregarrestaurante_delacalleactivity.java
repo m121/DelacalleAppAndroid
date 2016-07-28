@@ -27,12 +27,15 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,7 +57,7 @@ import com.parse.SaveCallback;
 
 import java.io.ByteArrayOutputStream;
 
-public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
+public class agregarrestaurante_delacalleactivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Toolbar mToolbar;
 
@@ -67,6 +70,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
     private TextView  direccionRestauranteA;
     private TextView  telefonoRestauranteA;
     private TextView  webRestauranteA;
+    private Spinner  spinnercategoria;
 
     private Button btnGuardarRestaurante;
     private ImageView btnSeleccionarPaletaRestaurante;
@@ -83,6 +87,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
     private String direccionR;
     private String telefonoR;
     private String webR;
+    private String categoriaR;
 
 
     private Button btnpaleta;
@@ -157,6 +162,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
          direccionRestauranteA = (TextView) findViewById(R.id.editTextDireccionRestauranteA);
          telefonoRestauranteA = (TextView) findViewById(R.id.editTextTelefonoRestauranteA);
          webRestauranteA = (TextView) findViewById(R.id.editTextWebRestauranteA);
+        spinnercategoria = (Spinner) findViewById(R.id.spinnercategoria);
         nombreRestauranteA.setTypeface(segundafontcaviar);
         descripcionRestauranteA.setTypeface(segundafontcaviar);
         direccionRestauranteA.setTypeface(segundafontcaviar);
@@ -169,6 +175,13 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity {
         fotologoRestauranteA.setClickable(true);
         fotograndeRestauranteA.setClickable(true);
         btnSeleccionarPaletaRestaurante.setClickable(true);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.categoriasCrear, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        spinnercategoria.setAdapter(adapter);
+        spinnercategoria.setOnItemSelectedListener(this);
 
         final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
   //      frameLayout.getBackground().setAlpha(0);
@@ -688,6 +701,7 @@ try
         restauranteA.put("usuarioid", ParseUser.getCurrentUser());
         restauranteA.increment("votos", 0);
         restauranteA.put("color", color);
+        restauranteA.put("categoria",categoriaR);
         restauranteA.setACL(acl);
         ProgressDialog.show(this, "Guardando", "Espera mientras guarda el restaurante",true,true);
 
@@ -1002,5 +1016,18 @@ try
         return true;
     }
 
+    public void onItemSelected(AdapterView<?> parent, View view,
+                               int pos, long id) {
+        // An item was selected. You can retrieve the selected item using
+        // parent.getItemAtPosition(pos)
 
+        categoriaR = spinnercategoria.getItemAtPosition(pos).toString();
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
+        View focusView = spinnercategoria;
+        focusView.requestFocus();
+        Toast.makeText(getApplicationContext(), "Selecciona una categoria por favor ", Toast.LENGTH_SHORT).show();
+    }
 }

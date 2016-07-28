@@ -8,13 +8,41 @@
     xmlns:fab="http://schemas.android.com/tools"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/editarrestauranteseleccionarcategoria"
+        android:layout_below="@+id/editTextWebRestauranteA"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:hint="@string/crearrestaurantecategoria"
+        android:textSize="25sp" />
 
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnercategoria"
+        android:layout_below="@+id/editarrestauranteseleccionarcategoria"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-
-    <include
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimaryDark"
+        app:titleTextColor="@android:color/white"
 
+        />
+
+    <View
+        android:id="@+id/toolbar_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@id/toolbar"
+        android:background="@drawable/sombratoolbar"
+        />
 
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -141,8 +169,11 @@
         android:layout_height="50dp"
         android:id="@+id/imageViewbtnPaletaRestaurante"
         android:background="@drawable/botonpaleta"
-        android:layout_below="@+id/editTextWebRestauranteA"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="133dp"
+        android:layout_marginStart="133dp" />
 
     <TextView
         android:layout_width="100dp"

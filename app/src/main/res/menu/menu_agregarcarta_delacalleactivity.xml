@@ -4,4 +4,11 @@
     tools:context="com.delacalle.delacalle.delacalleapp.agregarcarta_delacalleactivity">
     <!--<item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />-->
+
+    <item
+        android:id="@+id/action_actualizar"
+        android:title="Guardar y terminar"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_guardar"
+        app:showAsAction="ifRoom" />
 </menu>
