@@ -1,449 +1,472 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@drawable/fondomenublanco768x1280"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:orientation="vertical">
+
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <!--Internacional-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/internacionalrelative"
-        >
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@mipmap/ic_internacionalc"
-            android:layout_gravity="top"
-            android:id="@+id/internacionalimageView"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/categoriainternacional"
-            android:textColor="@color/colorCategoriaInternacional"
-            android:id="@+id/textViewCInternacional"
-            android:textSize="26sp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
-    </RelativeLayout>
+            android:orientation="vertical">
 
-      <!--  tipico-->
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/tipicorelative"
-        android:layout_below="@+id/internacionalrelative"
-        >
-    <ImageView
-    android:layout_width="150dp"
-    android:layout_height="150dp"
-    android:src="@mipmap/ic_tipicoc"
-        android:layout_gravity="top"
-        android:id="@+id/imageView"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/categoriatipico"
-            android:textColor="@color/colorCategoriaTipica"
-            android:id="@+id/textViewCTipico"
-            android:textSize="26sp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
-
-        <View
-            android:layout_width="500dp"
-            android:layout_height="1dp"
-            android:background="#a8a8a8"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-
-        <!--Gourmet-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/gourmetlrelative"
-        android:layout_below="@+id/tipicorelative"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-          <ImageView
-       android:layout_width="150dp"
-       android:layout_height="150dp"
-       android:src="@mipmap/ic_gourmetc"
-       android:layout_gravity="center_vertical"
-       android:id="@+id/imageView5"
-              android:layout_alignParentBottom="true"
-              android:layout_alignParentLeft="true"
-              android:layout_alignParentStart="true" />
-
-   <TextView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="@string/categoriagourmet"
-       android:textColor="@color/colorCategoriaGourmet"
-       android:id="@+id/textViewCGourmet"
-       android:textSize="26sp"
-       android:layout_alignBottom="@+id/imageView5"
-       android:layout_centerHorizontal="true" />
-
-        <View
-            android:layout_width="500dp"
-            android:layout_height="1dp"
-            android:background="#a8a8a8"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
-
-    </RelativeLayout>
-
-        <!--Mariscos-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/mariscosrelative"
-        android:layout_below="@+id/gourmetlrelative"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-         <ImageView
-       android:layout_width="150dp"
-       android:layout_height="150dp"
-       android:src="@mipmap/ic_mariscosc"
-       android:layout_gravity="center_vertical"
-       android:id="@+id/imageView2"
-             android:layout_alignParentBottom="true"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="true" />
-
-        <View
-            android:layout_width="500dp"
-            android:layout_height="1dp"
-            android:background="#a8a8a8"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
-
-   <TextView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="@string/categoriamariscos"
-       android:textColor="@color/colorCategoriaMariscos"
-       android:id="@+id/textViewCMariscos"
-       android:textSize="26sp"
-       android:layout_alignParentBottom="true"
-       android:layout_centerHorizontal="true" />
-
-    </RelativeLayout>
-
-        <!--Rapida-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/rapidarelative"
-        android:layout_below="@+id/mariscosrelative"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-          <ImageView
-       android:layout_width="150dp"
-       android:layout_height="150dp"
-       android:src="@mipmap/ic_rapidac"
-       android:id="@+id/imageView4"
-              android:layout_alignParentBottom="true"
-              android:layout_alignParentLeft="true"
-              android:layout_alignParentStart="true" />
-
-   <TextView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="@string/categoriarapida"
-       android:textColor="@color/colorCategoriaRapida"
-       android:id="@+id/textViewCRapida"
-       android:textSize="26sp"
-       android:layout_alignParentBottom="true"
-       android:layout_centerHorizontal="true" />
-
-        <View
-            android:layout_width="500dp"
-            android:layout_height="1dp"
-            android:background="#a8a8a8"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
-
-    </RelativeLayout>
-
-       <!-- Almuerzo-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/almuerzorelative"
-        android:layout_below="@+id/rapidarelative"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-          <ImageView
-       android:layout_width="150dp"
-       android:layout_height="150dp"
-       android:src="@mipmap/ic_almuerzoc"
-       android:id="@+id/imageView3"
-              android:layout_alignBottom="@+id/textViewCPopular"
-              android:layout_alignParentLeft="true"
-              android:layout_alignParentStart="true" />
-
-   <TextView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="@string/categoriaalmuerzo"
-       android:textColor="@color/colorCategoriaAlmuerzo"
-       android:id="@+id/textViewCPopular"
-       android:textSize="26sp"
-       android:layout_alignParentBottom="true"
-       android:layout_centerHorizontal="true" />
-
-        <View
-            android:layout_width="500dp"
-            android:layout_height="1dp"
-            android:background="#a8a8a8"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
-
-    </RelativeLayout>
-
-       <!-- Jugos-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/jugosrelative"
-        android:layout_below="@+id/almuerzorelative"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@mipmap/ic_jugosc"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/categoriajugos"
-            android:textColor="@color/colorCategoriaJugos"
-            android:id="@+id/textViewCJugos"
-            android:textSize="26sp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
-
-        <View
-            android:layout_width="500dp"
-            android:layout_height="1dp"
-            android:background="#a8a8a8"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
-
-    </RelativeLayout>
-
-       <!-- vegetariano-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:id="@+id/vegetarianorelative"
-            android:layout_below="@+id/jugosrelative"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@mipmap/ic_vegetarianoc"
-                android:layout_alignBottom="@+id/textViewCVegetariano"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <!--Internacional-->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/categoriavegetariano"
-                android:textColor="@color/colorCategoriaVegetariano"
-                android:id="@+id/textViewCVegetariano"
-                android:textSize="26sp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true" />
+                android:id="@+id/internacionalrelative"
+                >
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@mipmap/ic_internacionalc"
+                    android:layout_gravity="left"
+                    android:id="@+id/internacionalimageView"
+
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/categoriainternacional"
+                    android:textColor="@color/colorCategoriaInternacional"
+                    android:id="@+id/textViewCInternacional"
+                    android:textSize="26sp"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
 
             <View
                 android:layout_width="500dp"
                 android:layout_height="1dp"
                 android:background="#a8a8a8"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_gravity="center"/>
 
-        </RelativeLayout>
+            <!--  tipico-->
 
-    <!--    A domicilio-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:id="@+id/domiciliorelative"
-            android:layout_below="@+id/vegetarianorelative"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@mipmap/ic_domicilioc"
-                android:layout_alignBottom="@+id/textViewCDomicilio"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/categoriadomicilio"
-                android:textColor="@color/colorCategoriaDomicilio"
-                android:id="@+id/textViewCDomicilio"
-                android:textSize="26sp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true" />
+                android:id="@+id/tipicorelative"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@mipmap/ic_tipicoc"
+                    android:id="@+id/imageView"
+                     />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/categoriatipico"
+                    android:textColor="@color/colorCategoriaTipica"
+                    android:id="@+id/textViewCTipico"
+                    android:textSize="26sp"
+                    android:layout_gravity="center"
+                     />
+
+
+            </LinearLayout>
 
             <View
                 android:layout_width="500dp"
                 android:layout_height="1dp"
                 android:background="#a8a8a8"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_gravity="center"
 
-        </RelativeLayout>
+                />
 
-        <!--carnes-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:id="@+id/carnesrelative"
-            android:layout_below="@+id/domiciliorelative"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@mipmap/ic_carnesc"
-                android:layout_alignBottom="@+id/textViewCCarnes"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <!--Gourmet-->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/categoriacarnes"
-                android:textColor="@color/colorCategoriaCarnes"
-                android:id="@+id/textViewCCarnes"
-                android:textSize="26sp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true" />
+                android:id="@+id/gourmetlrelative"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@mipmap/ic_gourmetc"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/imageView5"
+
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/categoriagourmet"
+                    android:textColor="@color/colorCategoriaGourmet"
+                    android:id="@+id/textViewCGourmet"
+                    android:textSize="26sp"
+                    android:layout_gravity="center"
+                    />
+
+
+
+            </LinearLayout>
 
             <View
                 android:layout_width="500dp"
                 android:layout_height="1dp"
                 android:background="#a8a8a8"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_gravity="center"
+                />
 
-        </RelativeLayout>
-
-       <!-- helados-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:id="@+id/heladorelative"
-            android:layout_below="@+id/carnesrelative"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@mipmap/ic_heladosc"
-                android:layout_alignBottom="@+id/textViewCHelados"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <!--Mariscos-->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/categoriahelado"
-                android:textColor="@color/colorCategoriaHelados"
-                android:id="@+id/textViewCHelados"
-                android:textSize="26sp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true" />
+                android:id="@+id/mariscosrelative"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@mipmap/ic_mariscosc"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/imageView2"
+                    />
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/categoriamariscos"
+                    android:textColor="@color/colorCategoriaMariscos"
+                    android:id="@+id/textViewCMariscos"
+                    android:textSize="26sp"
+                    android:layout_gravity="center"
+                     />
+
+            </LinearLayout>
 
             <View
                 android:layout_width="500dp"
                 android:layout_height="1dp"
                 android:background="#a8a8a8"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_gravity="center"
+                />
 
-        </RelativeLayout>
-
-       <!-- Promociones-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:id="@+id/promosrelative"
-            android:layout_below="@+id/heladorelative"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@mipmap/ic_promoc"
-                android:layout_alignBottom="@+id/textViewCPromos"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <!--Rapida-->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/categoriapromo"
-                android:textColor="@color/colorCategoriaPromociones"
-                android:id="@+id/textViewCPromos"
-                android:textSize="26sp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true" />
+                android:id="@+id/rapidarelative"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@mipmap/ic_rapidac"
+                    android:id="@+id/imageView4"
+                     />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/categoriarapida"
+                    android:textColor="@color/colorCategoriaRapida"
+                    android:id="@+id/textViewCRapida"
+                    android:layout_gravity="center"
+                    android:textSize="26sp"
+                    />
+
+
+
+            </LinearLayout>
 
             <View
                 android:layout_width="500dp"
                 android:layout_height="1dp"
                 android:background="#a8a8a8"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_gravity="center"
+                />
 
-        </RelativeLayout>
+            <!-- Almuerzo-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/almuerzorelative"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@mipmap/ic_almuerzoc"
+                    android:id="@+id/imageView3"
+                     />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/categoriaalmuerzo"
+                    android:textColor="@color/colorCategoriaAlmuerzo"
+                    android:id="@+id/textViewCPopular"
+                    android:layout_gravity="center"
+                    android:textSize="26sp"
+                     />
 
 
-    </RelativeLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="500dp"
+                android:layout_height="1dp"
+                android:background="#a8a8a8"
+                android:layout_gravity="center"
+                />
+
+            <!-- Jugos-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/jugosrelative"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@mipmap/ic_jugosc"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/categoriajugos"
+                    android:textColor="@color/colorCategoriaJugos"
+                    android:id="@+id/textViewCJugos"
+                    android:layout_gravity="center"
+                    android:textSize="26sp"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="500dp"
+                android:layout_height="1dp"
+                android:background="#a8a8a8"
+                android:layout_gravity="center"
+                />
+
+            <!-- vegetariano-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/vegetarianorelative"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@mipmap/ic_vegetarianoc"
+                     />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/categoriavegetariano"
+                    android:textColor="@color/colorCategoriaVegetariano"
+                    android:id="@+id/textViewCVegetariano"
+                    android:textSize="26sp"
+                    android:layout_gravity="center" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="500dp"
+                android:layout_height="1dp"
+                android:background="#a8a8a8"
+                android:layout_gravity="center"
+                />
+
+            <!--    A domicilio-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/domiciliorelative"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@mipmap/ic_domicilioc"
+                     />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/categoriadomicilio"
+                    android:textColor="@color/colorCategoriaDomicilio"
+                    android:id="@+id/textViewCDomicilio"
+                    android:textSize="26sp"
+                    android:layout_gravity="center"
+                     />
+
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="500dp"
+                android:layout_height="1dp"
+                android:background="#a8a8a8"
+                android:layout_gravity="center"
+                />
+
+            <!--carnes-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/carnesrelative"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@mipmap/ic_carnesc"
+                     />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/categoriacarnes"
+                    android:textColor="@color/colorCategoriaCarnes"
+                    android:id="@+id/textViewCCarnes"
+                    android:textSize="26sp"
+                    android:layout_gravity="center"
+                     />
+
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="500dp"
+                android:layout_height="1dp"
+                android:background="#a8a8a8"
+                android:layout_gravity="center"
+                />
+
+            <!-- helados-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/heladorelative"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@mipmap/ic_heladosc"
+                     />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/categoriahelado"
+                    android:textColor="@color/colorCategoriaHelados"
+                    android:id="@+id/textViewCHelados"
+                    android:layout_gravity="center"
+                    android:textSize="26sp"
+                    />
+
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="500dp"
+                android:layout_height="1dp"
+                android:background="#a8a8a8"
+                android:layout_gravity="center"
+                />
+
+            <!-- Promociones-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/promosrelative"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@mipmap/ic_promoc"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/categoriapromo"
+                    android:textColor="@color/colorCategoriaPromociones"
+                    android:id="@+id/textViewCPromos"
+                    android:textSize="26sp"
+                   android:layout_gravity="center" />
+
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="500dp"
+                android:layout_height="1dp"
+                android:background="#a8a8a8"
+                android:layout_gravity="center"
+                />
+
+            <!-- Promociones-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/eventosrelative"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@mipmap/ic_eventosc"
+                     />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/categoriaevento"
+                    android:textColor="@color/colorCategoriaEventos"
+                    android:id="@+id/textViewCEventos"
+                    android:textSize="26sp"
+                   android:layout_gravity="center" />
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
 
     </ScrollView>
 
-</RelativeLayout>
+
+</LinearLayout>

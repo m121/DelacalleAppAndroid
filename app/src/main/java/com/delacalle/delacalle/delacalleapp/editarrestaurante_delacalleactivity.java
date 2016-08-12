@@ -2,6 +2,7 @@ package com.delacalle.delacalle.delacalleapp;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,6 +11,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -28,6 +30,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
@@ -66,10 +69,16 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
     private ImageView fotograndeRestauranteA;
     private TextView  nombreRestauranteA;
     private TextView  descripcionRestauranteA;
+    private TextView  promocionRestauranteA;
     private TextView  direccionRestauranteA;
     private TextView  telefonoRestauranteA;
     private TextView  webRestauranteA;
+    private TextView  horarioatencion;
     private Spinner spinnercategoria;
+    private Spinner spinnercategoriados;
+    private Spinner spinnerdomicilio;
+    private Spinner spinnereventos;
+
 
 
 
@@ -79,6 +88,11 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
     ParseFile picfile3;
     String id;
     private String categoriaR;
+    private String domicilioR;
+    private String categoria2R;
+    private String eventosR;
+    private String promocionR;
+    private String abiertoR;
 
     Button btneditar;
     private Button btneliminarrestaurante;
@@ -90,7 +104,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
     private Button buttonColor4;
     private Button buttonColor5;
     private Button buttonColor6;
-    private RelativeLayout relativepaleta;
+    private LinearLayout relativepaleta;
     String color;
     ImageView btnactualizarpaleta;
 
@@ -105,6 +119,8 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
     public static final int IMAGEREQUESTCODE2 = 45536;
     public static final int IMAGEREQUESTCODE3 = 45537;
     Intent galleryIntent;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,23 +149,30 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
          fotograndeRestauranteA = (ImageView) findViewById(R.id.imageViewfotoRestauranteA);
         nombreRestauranteA = (TextView) findViewById(R.id.editTextNombreRestauranteA);
         descripcionRestauranteA = (TextView) findViewById(R.id.editTextDescripcionRestauranteA);
+        promocionRestauranteA = (TextView) findViewById(R.id.editTextPromocionRestauranteA);
         direccionRestauranteA = (TextView) findViewById(R.id.editTextDireccionRestauranteA);
         telefonoRestauranteA = (TextView) findViewById(R.id.editTextTelefonoRestauranteA);
         webRestauranteA = (TextView) findViewById(R.id.editTextWebRestauranteA);
-        btneliminarrestaurante = (Button) findViewById(R.id.btnEliminarRestaurante);
-        btneditar  = (Button) findViewById(R.id.btnActualizarRestaurante);
-        btnactualizarpaleta = (ImageView) findViewById(R.id.imageViewbtnPaletaRestaurante);
-        relativepaleta = (RelativeLayout) findViewById(R.id.relativelayoutPaletacambiar);
+        horarioatencion = (TextView) findViewById(R.id.editTextAbiertoRestauranteA);
+   //     btneliminarrestaurante = (Button) findViewById(R.id.btnEliminarRestaurante);
+   //     btneditar  = (Button) findViewById(R.id.btnActualizarRestaurante);
+   //     btnactualizarpaleta = (ImageView) findViewById(R.id.imageViewbtnPaletaRestaurante);
+        relativepaleta = (LinearLayout) findViewById(R.id.relativelayoutPaletacambiar);
         spinnercategoria = (Spinner) findViewById(R.id.spinnercategoria);
+        spinnercategoriados = (Spinner) findViewById(R.id.spinnercategoria2);
+        spinnereventos = (Spinner) findViewById(R.id.spinnereventos);
+        spinnerdomicilio = (Spinner) findViewById(R.id.spinnerdomicilio);
         fotologoRestauranteA.setClickable(true);
         fotograndeRestauranteA.setClickable(true);
         nombreRestauranteA.setTypeface(segundafontcaviar);
         descripcionRestauranteA.setTypeface(segundafontcaviar);
+        promocionRestauranteA.setTypeface(segundafontcaviar);
         direccionRestauranteA.setTypeface(segundafontcaviar);
         telefonoRestauranteA.setTypeface(segundafontcaviar);
         webRestauranteA.setTypeface(segundafontcaviar);
-        btneliminarrestaurante.setTypeface(primerfontcandara);
-        btneditar.setTypeface(primerfontcandara);
+        horarioatencion.setTypeface(segundafontcaviar);
+  //      btneliminarrestaurante.setTypeface(primerfontcandara);
+   //     btneditar.setTypeface(primerfontcandara);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.categoriasCrear, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
@@ -158,12 +181,35 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
         spinnercategoria.setAdapter(adapter);
         spinnercategoria.setOnItemSelectedListener(this);
 
+        ArrayAdapter<CharSequence> adapterdomicilio = ArrayAdapter.createFromResource(this,
+                R.array.domiciliosCrear, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerdomicilio.setAdapter(adapterdomicilio);
+        spinnerdomicilio.setOnItemSelectedListener(this);
+
+        ArrayAdapter<CharSequence> adaptercategoria2 = ArrayAdapter.createFromResource(this,
+                R.array.categoriasCrear, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+       spinnercategoriados.setAdapter(adaptercategoria2);
+        spinnercategoriados.setOnItemSelectedListener(this);
+
+
+        ArrayAdapter<CharSequence> adaptereventos = ArrayAdapter.createFromResource(this,
+                R.array.eventosCrear, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnereventos.setAdapter(adaptereventos);
+        spinnereventos.setOnItemSelectedListener(this);
+
 
         galleryIntent = new Intent(Intent.ACTION_PICK,
                 MediaStore.Images.Media.INTERNAL_CONTENT_URI);
 
 
-        final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
+   /*     final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
         //      frameLayout.getBackground().setAlpha(0);
         final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.fabmenu);
         final FloatingActionButton fabeditar = (FloatingActionButton) findViewById(R.id.fabeditar);
@@ -239,14 +285,14 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
                 }
 
             }
-        });
+        });*/
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
              id = bundle.getString("id");
 
         }
-        btneliminarrestaurante.setOnClickListener(new View.OnClickListener() {
+    /*    btneliminarrestaurante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ParseQuery<ParseRole> queryrol = ParseRole.getQuery();
@@ -323,15 +369,15 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
 
             }
 
-        });
+        });*/
 
 
-        btnactualizarpaleta.setOnClickListener(new View.OnClickListener() {
+       /* btnactualizarpaleta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 displayPopupPaleta(v);
             }
-        });
+        });*/
 
         try
         {
@@ -345,9 +391,11 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
                     color = object.getString("color");
                     nombreRestauranteA.setText(object.getString("nombre"));
                     descripcionRestauranteA.setText(object.getString("descripcion"));
+                    promocionRestauranteA.setText(object.getString("promo"));
                     direccionRestauranteA.setText(object.getString("direccion"));
                     telefonoRestauranteA.setText(object.getString("telefono"));
                     webRestauranteA.setText(object.getString("web"));
+                    horarioatencion.setText(object.getString("horario"));
 
                     picfile1 = object.getParseFile("fotologo");
                     picfile1.getDataInBackground(new GetDataCallback() {
@@ -395,65 +443,60 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
 
 
 
+//                    btneditar.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+                 //           v.startAnimation(animAlpha);
+                //    if(editar == true) {
+              /*          ParseQuery<ParseRole> queryrol = ParseRole.getQuery();
+                        queryrol.whereEqualTo("name", "responsable");
+                        queryrol.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+                        queryrol.getFirstInBackground(new GetCallback<ParseRole>() {
+                            @Override
+                            public void done(ParseRole rol, ParseException e) {
+                                if (e == null) {
+                                    final String nombre = nombreRestauranteA.getText().toString();
+                                    final String descripcion = descripcionRestauranteA.getText().toString();
+                                    final String direccion = direccionRestauranteA.getText().toString();
+                                    final String telefono = telefonoRestauranteA.getText().toString();
+                                    final String web = webRestauranteA.getText().toString();
 
-                    btneditar.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            v.startAnimation(animAlpha);
-                            ParseQuery<ParseRole> queryrol = ParseRole.getQuery();
-                            queryrol.whereEqualTo("name", "responsable");
-                            queryrol.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
-                            queryrol.getFirstInBackground(new GetCallback<ParseRole>() {
-                                @Override
-                                public void done(ParseRole rol, ParseException e) {
-                                    if (e == null) {
-                                        final String nombre = nombreRestauranteA.getText().toString();
-                                        final String descripcion = descripcionRestauranteA.getText().toString();
-                                        final String direccion = direccionRestauranteA.getText().toString();
-                                        final String telefono = telefonoRestauranteA.getText().toString();
-                                        final String web = webRestauranteA.getText().toString();
 
-
-
-                                        object.put("nombre", nombre);
-                                        object.put("descripcion", descripcion);
-                                        object.put("direccion",direccion);
-                                        object.put("telefono",telefono);
-                                        object.put("web",web);
-                                        object.put("fotologo",picfile1);
-                                        object.put("fotogrande",picfile2);
-                                        object.put("color",color);
-                                        object.put("categoria",categoriaR);
-                                        ProgressDialog.show(editarrestaurante_delacalleactivity.this, "Guardando", "Espera mientras actualiza el restaurante",true,true);
-                                        object.saveInBackground(new SaveCallback() {
-                                            @Override
-                                            public void done(ParseException e) {
-                                                if(e== null) {
-                                                    id = object.getObjectId().toString();
-                                                    Intent intent = new Intent(editarrestaurante_delacalleactivity.this, editarcartarestaurante_delacalleactivity.class);
-                                                    intent.putExtra("id", id);
-                                                    editarrestaurante_delacalleactivity.this.startActivity(intent);
-                                                    Toast.makeText(getApplicationContext(), "Actualizado", Toast.LENGTH_SHORT).show();
-                                                    Log.d("delacalle", "Restaurante Actualizado");
-                                                }
-                                                else
-                                                {
-                                                    Log.d("delacalle", "Error al actualizar restaurante");
-                                                }
+                                    object.put("nombre", nombre);
+                                    object.put("descripcion", descripcion);
+                                    object.put("direccion", direccion);
+                                    object.put("telefono", telefono);
+                                    object.put("web", web);
+                                    object.put("fotologo", picfile1);
+                                    object.put("fotogrande", picfile2);
+                                    object.put("color", color);
+                                    object.put("categoria", categoriaR);
+                                    ProgressDialog.show(editarrestaurante_delacalleactivity.this, "Guardando", "Espera mientras actualiza el restaurante", true, true);
+                                    object.saveInBackground(new SaveCallback() {
+                                        @Override
+                                        public void done(ParseException e) {
+                                            if (e == null) {
+                                                id = object.getObjectId().toString();
+                                                Intent intent = new Intent(editarrestaurante_delacalleactivity.this, editarcartarestaurante_delacalleactivity.class);
+                                                intent.putExtra("id", id);
+                                                editarrestaurante_delacalleactivity.this.startActivity(intent);
+                                                Toast.makeText(getApplicationContext(), "Actualizado", Toast.LENGTH_SHORT).show();
+                                                Log.d("delacalle", "Restaurante Actualizado");
+                                            } else {
+                                                Log.d("delacalle", "Error al actualizar restaurante");
                                             }
-                                        });
-                                    } else {
-                                        Toast.makeText(getApplicationContext(), "No puedes editar el restaurante si no eres un responsable", Toast.LENGTH_SHORT).show();
-                                    }
+                                        }
+                                    });
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "No puedes editar el restaurante si no eres un responsable", Toast.LENGTH_SHORT).show();
                                 }
-                            });
+                            }
+                        });*/
 
 
-
-
-                        }
-                    });
-
+                        //        }
+                        //      });
+         //           }
                 } else {
                     Toast.makeText(getApplicationContext(), "Error en mostrar", Toast.LENGTH_SHORT).show();
                 }
@@ -494,6 +537,35 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+
+        if (id == R.id.action_actualizar)
+        {
+            editarrestaurante();
+        }
+
+        if(id == R.id.action_color)
+        {
+            displayPopupPaleta();
+        }
+
+        if(id == R.id.action_borrar)
+        {
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Eliminar restaurante")
+                    .setMessage("¿Estas seguro que deseas eliminar el restaurante?")
+                    .setPositiveButton("Si", new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            eliminarrestaurante();
+                        }
+
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -869,7 +941,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
 
 
 
-    private void displayPopupPaleta(final View anchorView) {
+    private void displayPopupPaleta() {
         try {
             final PopupWindow popup = new PopupWindow(editarrestaurante_delacalleactivity.this);
             LayoutInflater inflater = (LayoutInflater) editarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -940,15 +1012,16 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
             // Closes the popup window when touch outside of it - when looses focus
             popup.setOutsideTouchable(true);
             popup.setFocusable(true);
+            popup.showAtLocation(layout, Gravity.TOP | Gravity.START | Gravity.CENTER_VERTICAL, 120, 300);
+            popup.showAsDropDown(layout);
             // Show anchored to button
             //   popup.setBackgroundDrawable(new BitmapDrawable());
-            new Handler().postDelayed(new Runnable() {
+            /*new Handler().postDelayed(new Runnable() {
 
                 public void run() {
-                    popup.showAtLocation(anchorView, Gravity.TOP | Gravity.START | Gravity.CENTER_VERTICAL, 120, 300);
-                    popup.showAsDropDown(anchorView);
+
                 }
-            }, 100L);
+            }, 100L);*/
 
         }catch(Exception e)
         {
@@ -980,8 +1053,26 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
                                int pos, long id) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
+        Spinner spiner = (Spinner) parent;
+        if(spiner.getId() == R.id.spinnercategoria)
+        {
+            categoriaR = spinnercategoria.getItemAtPosition(pos).toString();
+        }
 
-        categoriaR = spinnercategoria.getItemAtPosition(pos).toString();
+        if(spiner.getId() == R.id.spinnerdomicilio)
+        {
+            domicilioR = spinnerdomicilio.getItemAtPosition(pos).toString();
+        }
+
+        if(spiner.getId() == R.id.spinnercategoria2)
+        {
+            categoria2R = spinnercategoriados.getItemAtPosition(pos).toString();
+        }
+
+        if (spiner.getId() == R.id.spinnereventos)
+        {
+            eventosR = spinnereventos.getItemAtPosition(pos).toString();
+        }
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
@@ -989,5 +1080,151 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
         View focusView = spinnercategoria;
         focusView.requestFocus();
         Toast.makeText(getApplicationContext(), "Selecciona una categoria por favor ", Toast.LENGTH_SHORT).show();
+    }
+
+    public void eliminarrestaurante()
+    {
+        ParseQuery<ParseRole> queryrol = ParseRole.getQuery();
+        queryrol.whereEqualTo("name", "responsable");
+        queryrol.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+        queryrol.getFirstInBackground(new GetCallback<ParseRole>() {
+            @Override
+            public void done(ParseRole rol, ParseException e) {
+                if (e == null) {
+                    try
+                    {
+                        ParseQuery<ParseObject> queryeliminar = ParseQuery.getQuery("restaurante");
+                        queryeliminar.whereEqualTo("objectId", id);
+                        queryeliminar.getFirstInBackground(new GetCallback<ParseObject>() {
+                            @Override
+                            public void done(ParseObject eliminar, ParseException e) {
+                                if (e == null) {
+                                    ProgressDialog.show(editarrestaurante_delacalleactivity.this, "Eliminando", "Espera mientras elimina el restaurante",true,true);
+                                    eliminar.deleteInBackground(new DeleteCallback() {
+                                        @Override
+                                        public void done(ParseException e) {
+                                            if (e == null) {
+                                                Toast.makeText(getApplicationContext(), "Restaurante eliminado", Toast.LENGTH_SHORT).show();
+                                                Log.d("delacalle", "Restaurante eliminado");
+                                            } else {
+                                                Log.d("delacalle", "No se puede eliminar el restaurante");
+                                            }
+                                        }
+                                    });
+
+                                    ParseQuery<ParseObject> cartaeliminarquery = ParseQuery.getQuery("carta");
+                                    cartaeliminarquery.whereEqualTo("restauranteId", id);
+                                    final List<ParseObject> cartalist;
+
+                                    try {
+                                        cartalist = cartaeliminarquery.find();
+
+                                        for (final ParseObject cartas : cartalist) {
+                                            cartas.deleteInBackground(new DeleteCallback() {
+                                                @Override
+                                                public void done(ParseException e) {
+                                                    if (e == null) {
+                                                        Log.d("delacalle", "Carta eliminada");
+                                                    } else {
+                                                        Log.d("delacalle", "Carta no eliminada");
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    } catch (ParseException ae) {
+                                        Log.d("delacalle", "Error" + ae);
+                                    }
+                                    Intent intent = new Intent(editarrestaurante_delacalleactivity.this, menu_pestanas_delacalleactivity.class);
+                                    startActivity(intent);
+                                } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                    Log.d("delacalle", "Restaurante no encontrado, no se puede eliminar");
+                                }
+
+
+                            }
+                        });
+
+                    }catch(Exception oe)
+                    {
+                        oe.getStackTrace();
+                        Log.d("delacalle", "error en eliminar restaurante");
+                    }
+                } else {
+
+                    Toast.makeText(getApplicationContext(), "No puedes  eliminar un restaurante si no eres un responsable", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+    }
+
+    public void editarrestaurante()
+    {
+        ParseQuery<ParseObject> editarrestaurante = ParseQuery.getQuery("restaurante");
+        editarrestaurante.whereEqualTo("objectId", id);
+        editarrestaurante.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(final ParseObject object, ParseException e) {
+                if(e == null)
+                {
+                    ParseQuery<ParseRole> queryrol = ParseRole.getQuery();
+                    queryrol.whereEqualTo("name", "responsable");
+                    queryrol.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+                    queryrol.getFirstInBackground(new GetCallback<ParseRole>() {
+                        @Override
+                        public void done(ParseRole rol, ParseException e) {
+                            if (e == null) {
+                                final String nombre = nombreRestauranteA.getText().toString();
+                                final String descripcion = descripcionRestauranteA.getText().toString();
+                                final String direccion = direccionRestauranteA.getText().toString();
+                                final String telefono = telefonoRestauranteA.getText().toString();
+                                final String web = webRestauranteA.getText().toString();
+                                final String promocion = promocionRestauranteA.getText().toString();
+                                final String horario = horarioatencion.getText().toString();
+
+
+                                object.put("nombre", nombre);
+                                object.put("descripcion", descripcion);
+                                object.put("promo",promocion);
+                                object.put("direccion", direccion);
+                                object.put("telefono", telefono);
+                                object.put("web", web);
+                                object.put("horario",horario);
+                                object.put("fotologo", picfile1);
+                                object.put("fotogrande", picfile2);
+                                object.put("color", color);
+                                object.put("categoria", categoriaR + "," + categoria2R);
+                                object.put("domicilio",domicilioR);
+                                object.put("eventos",eventosR);
+                                ProgressDialog.show(editarrestaurante_delacalleactivity.this, "Guardando", "Espera mientras actualiza el restaurante", true, true);
+                                object.saveInBackground(new SaveCallback() {
+                                    @Override
+                                    public void done(ParseException e) {
+                                        if (e == null) {
+                                            id = object.getObjectId().toString();
+                                            Intent intent = new Intent(editarrestaurante_delacalleactivity.this, editarcartarestaurante_delacalleactivity.class);
+                                            intent.putExtra("id", id);
+                                            editarrestaurante_delacalleactivity.this.startActivity(intent);
+                                            Toast.makeText(getApplicationContext(), "Actualizado", Toast.LENGTH_SHORT).show();
+                                            Log.d("delacalle", "Restaurante Actualizado");
+                                        } else {
+                                            Log.d("delacalle", "Error al actualizar restaurante");
+                                        }
+                                    }
+                                });
+                            } else {
+                                Toast.makeText(getApplicationContext(), "No puedes editar el restaurante si no eres un responsable", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "No puedes editar el restaurante si no eres un responsable", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 }

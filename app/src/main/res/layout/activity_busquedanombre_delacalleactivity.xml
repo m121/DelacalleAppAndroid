@@ -46,22 +46,23 @@
             android:background="@drawable/sombratoolbar" />
     </LinearLayout>
 
-    <FrameLayout
+   <!-- <FrameLayout
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@null">
+
         <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/fabmenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/editTextNombreRestauranteA"
             android:layout_gravity="right|bottom"
-            android:id="@+id/fabmenu"
-            fab:fab_size="normal"
             android:src="@drawable/ic_agregar"
             app:layout_anchorGravity="bottom|right|end"
-            android:layout_below="@+id/editTextNombreRestauranteA"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true">
+            fab:fab_size="normal">
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabeditar"
@@ -70,8 +71,7 @@
                 android:layout_gravity="bottom|end"
                 android:layout_margin="10dp"
                 android:src="@mipmap/ic_editar"
-                fab:fab_size="mini"
-                />
+                fab:fab_size="mini" />
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabagregar"
@@ -80,8 +80,7 @@
                 android:layout_gravity="bottom|end"
                 android:layout_margin="10dp"
                 android:src="@mipmap/ic_restaurante"
-                fab:fab_size="mini"
-                />
+                fab:fab_size="mini" />
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabperfil"
@@ -90,10 +89,9 @@
                 android:layout_gravity="bottom|end"
                 android:layout_margin="10dp"
                 android:src="@mipmap/ic_perfil"
-                fab:fab_size="mini"
-                />
+                fab:fab_size="mini" />
 
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
-    </FrameLayout>
+    </FrameLayout>-->
 
 </RelativeLayout>

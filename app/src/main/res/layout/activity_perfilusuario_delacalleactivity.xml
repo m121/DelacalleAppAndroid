@@ -120,7 +120,7 @@
             android:layout_alignParentStart="true"
             android:textSize="20sp" />
 
-        <FrameLayout
+     <!--   <FrameLayout
             android:id="@+id/frame_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
                 fab:fab_size="mini"
                 />
 
-        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>-->
     </RelativeLayout>
 
 

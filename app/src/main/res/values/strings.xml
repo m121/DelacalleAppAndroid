@@ -37,11 +37,13 @@
     <string name="crearrestaurantefotologo">Foto logo</string>
     <string name="crearrestaurantefotogrande">Foto grande del restaurante(578x345px)</string>
     <string name="crearrestaurantenombre">Nombre Restaurante</string>
-    <string name="crearrestauranteDescripcion">Descripción y descuento</string>
+    <string name="crearrestauranteDescripcion">Descripción</string>
     <string name="crearrestaurantedireccion">Dirección</string>
     <string name="crearrestaurantetelefono">Teléfono</string>
     <string name="crearrestauranteweb">Sitio web/Red social</string>
     <string name="crearrestaurantebtnguardaryseguir">Guardar y seguir</string>
+    <string name="crearrestaurantedescuento">Promoción</string>
+    <string name="crearrestauranteabierto">Horario de atención</string>
     <string name="crearrestaurantecategoria">Seleccionar categoria</string>
 
     <!--Crear carta -->
@@ -111,7 +113,9 @@
     <string name="editarrestauranteweb">Sitio web/Red social</string>
     <string name="editarrestaurantebtnactualizaryseguir">Actualizar y seguir</string>
     <string name="editarrestaurantebtneliminarrestaurante">Eliminar Restaurante</string>
-    <string name="editarrestauranteDescripcion">Descripción y descuento</string>
+    <string name="editarrestauranteDescripcion">Descripción</string>
+    <string name="editarrestaurantepromocion">Promoción</string>
+    <string name="editarrestauranteabierto">Horario de atención</string>
 
     <string name="title_activity_detallerestaurante_delacalleactivity">
         Restaurante
@@ -164,7 +168,7 @@
     <!--Detalle restaurante - Informacion restaurante-->
 
     <string name="detallerestauranteinformacionRating">Califica el restaurante</string>
-    <string name="detallerestauranteinformacionDescripcion">Descripción y descuento</string>
+    <string name="detallerestauranteinformacionDescripcion">Descripción</string>
     <string name="title_activity_intro_delacalleactivity">intro_delacalleactivity</string>
 
 
@@ -174,14 +178,18 @@
     <!--Fragment informacion restaurante-->
     <string name="fragmentinformaciontitulonombre">Nombre restaurante</string>
     <string name="fragmentinformacionnombre">Nombre restaurante</string>
-    <string name="fragmentinformaciontitulodescripcion">Descripción y descuento</string>
-    <string name="fragmentinformaciondescripcion">Descripción y descuento</string>
+    <string name="fragmentinformaciontitulodescripcion">Descripción</string>
+    <string name="fragmentinformaciondescripcion">Descripción</string>
     <string name="fragmentinformaciontitulodireccion">Dirección</string>
     <string name="fragmentinformaciondireccion">Dirección</string>
     <string name="fragmentinformaciontitulotelefono">Teléfono</string>
     <string name="fragmentinformaciontelefono">Teléfono</string>
     <string name="fragmentinformaciontituloweb">Web o red social</string>
     <string name="fragmentinformacionweb">Web o red social</string>
+    <string name="fragmentinformacionabierto">Horario de atención</string>
+    <string name="fragmentinformacionpromo">Promoción</string>
+    <string name="fragmentinformaciondomicilio">Domicilio</string>
+    <string name="fragmentinformacioneventos">Eventos</string>
     <string name="fragmentinformacioncalifica">Califica el restaurante</string>
 
 
@@ -213,25 +221,41 @@
     <string name="categoriavegetariano">VEGETARIANO</string>
     <string name="categoriadomicilio">A DOMICILIO</string>
     <string name="categoriacarnes">CARNES</string>
-    <string name="categoriahelado">HELADO</string>
+    <string name="categoriahelado">HELADO Y POSTRES</string>
     <string name="categoriapromo">PROMOCIONES</string>
+    <string name="categoriaevento">EVENTOS</string>
 
 
-   <!-- categorias agregar restaurante-->
+    <!-- categorias agregar restaurante-->
     <string-array name="categoriasCrear">
         <item>SELECCIONA CATEGORIA</item>
         <item>INTERNACIONAL</item>
-        <item>TÍPICA</item>
+        <item>TIPICA</item>
         <item>GOURMET</item>
         <item>MARISCOS</item>
-        <item>RÁPIDA</item>
+        <item>RAPIDA</item>
         <item>ALMUERZO</item>
         <item>JUGOS Y BEBIDAS</item>
         <item>VEGETARIANO</item>
         <item>A DOMICILIO</item>
         <item>CARNES</item>
-        <item>HELADO</item>
-        <item>PROMOCIONES</item>
+        <item>HELADO Y POSTRES</item>
+    </string-array>
+
+
+    <!-- domicilio-->
+    <string-array name="domiciliosCrear">
+        <item>¿TIENE DOMICILIO?</item>
+        <item>SI</item>
+        <item>NO</item>
+    </string-array>
+
+
+    <!--eventos -->
+    <string-array name="eventosCrear">
+        <item>¿HACEN EVENTOS?</item>
+        <item>SI</item>
+        <item>NO</item>
     </string-array>
 
 </resources>

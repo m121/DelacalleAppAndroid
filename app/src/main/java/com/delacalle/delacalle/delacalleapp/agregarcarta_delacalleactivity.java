@@ -230,8 +230,8 @@ public class agregarcarta_delacalleactivity extends AppCompatActivity {
         precioplato6.setTypeface(segundafontcaviar);
 
 
-        btnguardarcarta = (Button) findViewById(R.id.btnGuardarCarta);
-        btnguardarcarta.setTypeface(primerfontcandara);
+      //  btnguardarcarta = (Button) findViewById(R.id.btnGuardarCarta);
+      //  btnguardarcarta.setTypeface(primerfontcandara);
 
         bitmaperror2 = BitmapFactory.decodeResource(getResources(), R.drawable.agregar_foto);
         bitmaperror3 = BitmapFactory.decodeResource(getResources(), R.drawable.agregar_foto);
@@ -253,7 +253,7 @@ public class agregarcarta_delacalleactivity extends AppCompatActivity {
 
 
 
-        btnguardarcarta.setOnClickListener(new View.OnClickListener() {
+      /*  btnguardarcarta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ParseQuery<ParseRole> queryrol = ParseRole.getQuery();
@@ -270,7 +270,7 @@ public class agregarcarta_delacalleactivity extends AppCompatActivity {
                     }
                 });
             }
-        });
+        });*/
 
         fotocartaplato1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -635,6 +635,24 @@ try
         if (id == R.id.action_settings) {
             return true;
         }*/
+
+        if(id == R.id.action_guardar)
+        {
+            ParseQuery<ParseRole> queryrol = ParseRole.getQuery();
+            queryrol.whereEqualTo("name", "responsable");
+            queryrol.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+            queryrol.getFirstInBackground(new GetCallback<ParseRole>() {
+                @Override
+                public void done(ParseRole rol, ParseException e) {
+                    if (e == null) {
+                        errors();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "No puedes guardar la carta si no eres un responsable", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+        }
 
         return super.onOptionsItemSelected(item);
     }

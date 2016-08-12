@@ -42,13 +42,23 @@ public class PageFragmentInformacionDetalle extends Fragment {
     private TextView direccionR;
     private TextView telefonoR;
     private TextView webR;
+    private TextView horarioR;
+    private TextView promoR;
+    private TextView domicilioR;
+    private TextView eventosR;
     private RatingBar ratingbarR;
+
 
     private TextView nombreT;
     private TextView descripcionT;
     private TextView direccionT;
     private TextView telefonoT;
     private TextView webT;
+    private TextView horarioT;
+    private TextView promoT;
+    private TextView domicilioT;
+    private TextView eventosT;
+
 
     String id;
     private float ratingR;
@@ -94,12 +104,20 @@ public class PageFragmentInformacionDetalle extends Fragment {
         direccionT = (TextView) view.findViewById(R.id.textViewTituloDireccionDetalle);
         telefonoT = (TextView) view.findViewById(R.id.textViewTituloTelefonoDetalle);
         webT = (TextView) view.findViewById(R.id.textViewTituloWebDetalle);
+        horarioT = (TextView) view.findViewById(R.id.textViewTituloHorarioDetalle);
+        promoT = (TextView) view.findViewById(R.id.textViewTituloPromocionDetalle);
+        domicilioT = (TextView) view.findViewById(R.id.textViewTituloDomicilioDetalle);
+        eventosT = (TextView) view.findViewById(R.id.textViewTituloEventosDetalle);
 
         nombreR = (TextView) view.findViewById(R.id.textViewNombreRestauranteDetalle);
         descripcionR = (TextView) view.findViewById(R.id.textViewDescripcionDetalle);
         direccionR = (TextView) view.findViewById(R.id.textViewDireccionDetalle);
         telefonoR = (TextView) view.findViewById(R.id.textViewTelefonoDetalle);
         webR = (TextView) view.findViewById(R.id.textViewWebDetalle);
+        horarioR = (TextView) view.findViewById(R.id.textViewHorarioDetalle);
+        promoR = (TextView) view.findViewById(R.id.textViewPromocionDetalle);
+        domicilioR = (TextView) view.findViewById(R.id.textViewDomicilioDetalle);
+        eventosR = (TextView) view.findViewById(R.id.textViewEventosDetalle);
         ratingbarR = (RatingBar) view.findViewById(R.id.ratingBarCalificacionDetalle);
         ratingbarR.setClickable(true);
         nombreT.setTypeface(primerfontcandara);
@@ -107,11 +125,21 @@ public class PageFragmentInformacionDetalle extends Fragment {
         direccionT.setTypeface(primerfontcandara);
         telefonoT.setTypeface(primerfontcandara);
         webT.setTypeface(primerfontcandara);
+        horarioT.setTypeface(primerfontcandara);
+        promoT.setTypeface(primerfontcandara);
+        domicilioT.setTypeface(primerfontcandara);
+        eventosT.setTypeface(primerfontcandara);
         nombreR.setTypeface(segundafontcaviar);
         descripcionR.setTypeface(segundafontcaviar);
         direccionR.setTypeface(segundafontcaviar);
         telefonoR.setTypeface(segundafontcaviar);
         webR.setTypeface(segundafontcaviar);
+        horarioR.setTypeface(segundafontcaviar);
+        promoR.setTypeface(segundafontcaviar);
+        domicilioR.setTypeface(segundafontcaviar);
+        eventosR.setTypeface(segundafontcaviar);
+
+
 
 
 
@@ -217,6 +245,10 @@ try
                     direccionR.setText(object.getString("direccion"));
                     telefonoR.setText(object.getString("telefono"));
                     webR.setText(object.getString("web"));
+                    horarioR.setText(object.getString("horario"));
+                    promoR.setText(object.getString("promo"));
+                    domicilioR.setText(object.getString("domicilio"));
+                    eventosR.setText(object.getString("eventos"));
               //      ratingbarR.setRating(object.getInt("rating"));  // es mejor quitarlo porque creo que si esta en 5 no se puede volver a calificar en 5
 
 

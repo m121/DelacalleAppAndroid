@@ -23,6 +23,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RatingBar;
@@ -93,18 +94,19 @@ String titulo;
      final   View view = inflater.inflate(R.layout.categoriasplantilla, container, false);
 
 
-        RelativeLayout relativeInternacional = (RelativeLayout) view.findViewById(R.id.internacionalrelative);
-        RelativeLayout relativetipica = (RelativeLayout) view.findViewById(R.id.tipicorelative);
-        RelativeLayout relativegourmet = (RelativeLayout) view.findViewById(R.id.gourmetlrelative);
-        RelativeLayout relativemariscos = (RelativeLayout) view.findViewById(R.id.mariscosrelative);
-        RelativeLayout relativerapida = (RelativeLayout) view.findViewById(R.id.rapidarelative);
-        RelativeLayout relativealmuerzo = (RelativeLayout) view.findViewById(R.id.almuerzorelative);
-        RelativeLayout relativejugos = (RelativeLayout) view.findViewById(R.id.jugosrelative);
-        RelativeLayout relativevegetariano = (RelativeLayout) view.findViewById(R.id.vegetarianorelative);
-        RelativeLayout relativedomicilio = (RelativeLayout) view.findViewById(R.id.domiciliorelative);
-        RelativeLayout relativecarnes = (RelativeLayout) view.findViewById(R.id.carnesrelative);
-        RelativeLayout relativehelado = (RelativeLayout) view.findViewById(R.id.heladorelative);
-        RelativeLayout relativepromo = (RelativeLayout) view.findViewById(R.id.promosrelative);
+        LinearLayout relativeInternacional = (LinearLayout) view.findViewById(R.id.internacionalrelative);
+        LinearLayout relativetipica = (LinearLayout) view.findViewById(R.id.tipicorelative);
+        LinearLayout relativegourmet = (LinearLayout) view.findViewById(R.id.gourmetlrelative);
+        LinearLayout relativemariscos = (LinearLayout) view.findViewById(R.id.mariscosrelative);
+        LinearLayout relativerapida = (LinearLayout) view.findViewById(R.id.rapidarelative);
+        LinearLayout relativealmuerzo = (LinearLayout) view.findViewById(R.id.almuerzorelative);
+        LinearLayout relativejugos = (LinearLayout) view.findViewById(R.id.jugosrelative);
+        LinearLayout relativevegetariano = (LinearLayout) view.findViewById(R.id.vegetarianorelative);
+        LinearLayout relativedomicilio = (LinearLayout) view.findViewById(R.id.domiciliorelative);
+        LinearLayout relativecarnes = (LinearLayout) view.findViewById(R.id.carnesrelative);
+        LinearLayout relativehelado = (LinearLayout) view.findViewById(R.id.heladorelative);
+        LinearLayout relativepromo = (LinearLayout) view.findViewById(R.id.promosrelative);
+        LinearLayout relativeeventos = (LinearLayout) view.findViewById(R.id.eventosrelative);
         relativeInternacional.setClickable(true);
         relativetipica.setClickable(true);
         relativegourmet.setClickable(true);
@@ -117,6 +119,7 @@ String titulo;
         relativecarnes.setClickable(true);
         relativehelado.setClickable(true);
         relativepromo.setClickable(true);
+        relativeeventos.setClickable(true);
 
    //     INTERNACIONAL
         relativeInternacional.setOnClickListener(new View.OnClickListener() {
@@ -202,9 +205,7 @@ String titulo;
         relativedomicilio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                titulo = "DOMICILIO";
-                Intent intent = new Intent(getActivity(), mostrarcategorias_delacalleactivity.class);
-                intent.putExtra("titulo", titulo);
+                Intent intent = new Intent(getActivity(), domicilio_delacalleactivity.class);
                 startActivity(intent);
             }
         });
@@ -235,6 +236,15 @@ String titulo;
                 titulo = "PROMOCIONES";
                 Intent intent = new Intent(getActivity(), mostrarcategorias_delacalleactivity.class);
                 intent.putExtra("titulo", titulo);
+                startActivity(intent);
+            }
+        });
+
+        //  EVENTOS
+        relativeeventos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), eventos_delacalleactivity.class);
                 startActivity(intent);
             }
         });

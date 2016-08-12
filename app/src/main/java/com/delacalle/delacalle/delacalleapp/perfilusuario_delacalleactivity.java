@@ -2,6 +2,7 @@ package com.delacalle.delacalle.delacalleapp;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,6 +11,7 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -34,6 +36,7 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.parse.DeleteCallback;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
@@ -136,7 +139,7 @@ public class perfilusuario_delacalleactivity extends AppCompatActivity {
        /* btncerrarsesion = (Button) findViewById(R.id.btncerrarsesion);
         btncambiarcontrasena = (Button) findViewById(R.id.btncambiarcontrasena);*/
 
-        final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
+      /*  final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
       //  frameLayout.getBackground().setAlpha(0);
         final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.fabmenu);
         final FloatingActionButton fabeditar = (FloatingActionButton) findViewById(R.id.fabeditar);
@@ -236,7 +239,7 @@ if(isInternetPresent) {
         {
             e.getStackTrace();
             Log.d("delacalle","Error mostrando boton plus");
-        }
+        }*/
 
 try {
     username.setText(ParseUser.getCurrentUser().getString("nombre"));
@@ -302,6 +305,24 @@ try {
         if (id == R.id.action_settings) {
             return true;
         }*/
+
+        if(id == R.id.action_eliminarc)
+        {
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Eliminar perfil")
+                    .setMessage("¿Estas seguro que deseas eliminar el perfil?")
+                    .setPositiveButton("Si", new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                           eliminarperfil();
+                        }
+
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+        }
 
         if(id == R.id.action_cambiar)
         {
@@ -548,5 +569,42 @@ try {
                 INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         return true;
+    }
+
+    public void eliminarperfil()
+    {
+        ParseQuery<ParseUser> usereliminar = ParseUser.getQuery();
+        usereliminar.whereEqualTo("objectId",ParseUser.getCurrentUser().getObjectId());
+        usereliminar.getFirstInBackground(new GetCallback<ParseUser>() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                if(e== null)
+                {
+                    ProgressDialog.show(perfilusuario_delacalleactivity.this, "Eliminando", "Espera mientras elimina el perfil",true,true);
+                    user.deleteInBackground(new DeleteCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if(e== null)
+                            {
+                                Toast.makeText(getApplicationContext(), "Perfil eliminado, te vamos a extrañar", Toast.LENGTH_SHORT).show();
+                                Log.d("delacalle", "perfil eliminado");
+                                Intent intent = new Intent(perfilusuario_delacalleactivity.this,iniciosesion_delacalleactivity.class);
+                                startActivity(intent);
+                            }
+                            else
+                            {
+                                Log.d("delacalle", "no se puede eliminar el perfil");
+                            }
+                        }
+                    });
+                }
+                else
+                {
+                    Toast.makeText(perfilusuario_delacalleactivity.this,"No se ha podido eliminar el perfil",Toast.LENGTH_LONG).show();
+                    Log.d("Delacalle", "No se puede eliminar perfil");
+                }
+            }
+        });
+
     }
 }

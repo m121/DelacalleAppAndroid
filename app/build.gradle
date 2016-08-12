@@ -38,9 +38,9 @@ android {
         applicationId "com.delacalle.delacalle.delacalleapp"
         minSdkVersion 14
         targetSdkVersion 23
-        versionName '6.0'
+        versionName '6.5'
         multiDexEnabled false
-        versionCode 60
+        versionCode 65
     }
     buildTypes {
         release {

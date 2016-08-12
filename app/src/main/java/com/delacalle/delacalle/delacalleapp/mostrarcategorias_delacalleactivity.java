@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -37,6 +38,8 @@ public class mostrarcategorias_delacalleactivity extends AppCompatActivity {
     String titulo;
     String id;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +50,8 @@ public class mostrarcategorias_delacalleactivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
          getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
 
 //    titulo = (ArrayList<String>) getIntent().getSerializableExtra("titulo");
         Bundle bundle = getIntent().getExtras();
@@ -62,6 +67,39 @@ public class mostrarcategorias_delacalleactivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle(titulo);
 
+
+
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                categorias();
+                swipeRefreshLayout.setRefreshing(false);
+
+            }
+        });
+
+
+        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
+
+        categorias();
+
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        // or call onBackPressed()
+        return true;
+    }
+
+
+    public void categorias()
+    {
         final Typeface primerfontcandara = Typeface.createFromAsset(getAssets(), "fonts/CandaraBold.ttf");
         final Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
 
@@ -72,7 +110,7 @@ public class mostrarcategorias_delacalleactivity extends AppCompatActivity {
                     new  ParseQueryAdapter.QueryFactory<ParseObject>(){
                         public ParseQuery<ParseObject> create () {
                             ParseQuery<ParseObject>  query = ParseQuery.getQuery("restaurante");
-                            query.whereEqualTo("categoria",titulo);
+                            query.whereMatches("categoria",titulo);
                             return query;
                         }
                     };
@@ -148,15 +186,7 @@ public class mostrarcategorias_delacalleactivity extends AppCompatActivity {
         }catch(Exception e)
         {
             e.getStackTrace();
-            Log.d("delacalle", "error en mostrar contenido busqueda descripcion "+e);
+            Log.d("delacalle", "error en mostrar contenido mostrar categorias "+e);
         }
-
-    }
-
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        // or call onBackPressed()
-        return true;
     }
 }

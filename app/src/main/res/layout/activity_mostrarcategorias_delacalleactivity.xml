@@ -7,6 +7,11 @@
     android:background="@drawable/fondomenublanco768x1280"
     tools:context="com.delacalle.delacalle.delacalleapp.mostrarcategorias_delacalleactivity">
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/activity_main_swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout2">
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,6 +19,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/linearLayout2" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"

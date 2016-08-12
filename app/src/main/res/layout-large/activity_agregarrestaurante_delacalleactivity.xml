@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,8 +8,6 @@
     android:id="@+id/relativelayoutPaletacambiar"
     xmlns:fab="http://schemas.android.com/tools"
     android:orientation="vertical">
-
-
 
     <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar"
@@ -24,210 +23,163 @@
         android:id="@+id/toolbar_shadow"
         android:layout_width="match_parent"
         android:layout_height="7dp"
-        android:layout_below="@+id/toolbar"
         android:background="@drawable/sombratoolbar" />
 
-   <!-- <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/imageViewfotoLogoA"
-        android:layout_marginTop="29dp"
-        android:background="#000000"
-        android:layout_below="@+id/toolbar"
-        android:layout_toLeftOf="@+id/imageViewfotoRestauranteA"
-        android:layout_toStartOf="@+id/imageViewfotoRestauranteA"
-        android:layout_marginRight="38dp"
-        android:layout_marginEnd="38dp" />-->
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/imageViewfotoLogoA"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/agregar_foto"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        app:civ_border_width="2dp"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginTop="29dp"
-        android:layout_toLeftOf="@+id/imageViewfotoRestauranteA"
-        android:layout_toStartOf="@+id/imageViewfotoRestauranteA"
-        android:layout_marginRight="38dp"
-        android:layout_marginEnd="38dp"
-        app:civ_border_color="#FF000000"/>
-
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:id="@+id/imageViewfotoRestauranteA"
-        android:background="@drawable/agregar_foto"
-        android:layout_alignTop="@+id/imageViewfotoLogoA"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="73dp"
-        android:layout_marginEnd="73dp" />
-
-    <EditText
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="@string/crearrestaurantenombre"
-        android:id="@+id/editTextNombreRestauranteA"
-        android:textSize="25sp"
-        android:singleLine="true"
-        android:lines="1"
-        android:paddingLeft="5dp"
-        android:layout_below="@+id/imageViewfotoRestauranteA"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="33dp" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:hint="@string/crearrestauranteDescripcion"
-        android:id="@+id/editTextDescripcionRestauranteA"
-        android:textSize="25sp"
-        android:lines="2"
-        android:digits="abcdefghijklmnopqrstuvwxyz1234567890:-_$., "
-        android:paddingLeft="5dp"
-        android:layout_below="@+id/editTextNombreRestauranteA"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="@string/crearrestaurantedireccion"
-        android:digits="abcdefghijklmnopqrstuvwxyz1234567890#- "
-        android:id="@+id/editTextDireccionRestauranteA"
-        android:textSize="25sp"
-        android:singleLine="true"
-        android:lines="1"
-        android:paddingLeft="5dp"
-        android:layout_below="@+id/editTextDescripcionRestauranteA"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="@string/crearrestaurantetelefono"
-        android:inputType="phone"
-        android:singleLine="true"
-        android:lines="1"
-        android:paddingLeft="5dp"
-        android:id="@+id/editTextTelefonoRestauranteA"
-        android:textSize="25sp"
-        android:layout_below="@+id/editTextDireccionRestauranteA"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="@string/crearrestauranteweb"
-        android:singleLine="true"
-        android:lines="1"
-        android:inputType="textUri"
-        android:id="@+id/editTextWebRestauranteA"
-        android:textSize="25sp"
-        android:paddingLeft="5dp"
-        android:layout_below="@+id/editTextTelefonoRestauranteA"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:text="@string/crearrestaurantebtnguardaryseguir"
-        android:id="@+id/btnGuardarRestaurante"
-        android:textColor="#ffffff"
-        android:paddingLeft="5dp"
-        android:background="@color/buttoncolor"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="46dp"
-        android:textSize="20sp" />
-
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:id="@+id/imageViewbtnPaletaRestaurante"
-        android:background="@drawable/botonpaleta"
-        android:layout_below="@+id/editTextWebRestauranteA"
-        android:layout_alignLeft="@+id/btnGuardarRestaurante"
-        android:layout_alignStart="@+id/btnGuardarRestaurante" />
-
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="@string/crearrestaurantefotogrande"
-        android:id="@+id/textViewTituloFotoGrande"
-        android:layout_below="@+id/toolbar"
-        android:layout_alignLeft="@+id/imageViewfotoRestauranteA"
-        android:layout_alignStart="@+id/imageViewfotoRestauranteA"
-        android:layout_alignRight="@+id/imageViewfotoRestauranteA"
-        android:layout_alignEnd="@+id/imageViewfotoRestauranteA"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="@string/crearrestaurantefotologo"
-        android:id="@+id/textViewTituloFotoLogo"
-        android:layout_below="@+id/toolbar"
-        android:layout_alignRight="@+id/imageViewfotoLogoA"
-        android:layout_alignEnd="@+id/imageViewfotoLogoA"
-        android:textStyle="bold" />
-
-    <FrameLayout
-        android:id="@+id/frame_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@null">
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|bottom"
-        android:id="@+id/fabmenu"
-        fab:fab_size="normal"
-        android:src="@drawable/ic_agregar"
-        app:layout_anchorGravity="bottom|right|end"
-        android:layout_below="@+id/editTextNombreRestauranteA"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true">
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabeditar"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="10dp"
-            android:src="@mipmap/ic_editar"
-            fab:fab_size="mini"
-            />
+            android:orientation="vertical">
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabagregar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="10dp"
-            android:src="@mipmap/ic_restaurante"
-            fab:fab_size="mini"
-            />
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabperfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="10dp"
-            android:src="@mipmap/ic_perfil"
-            fab:fab_size="mini"
-            />
+            <TextView
+                android:layout_width="349dp"
+                android:layout_height="wrap_content"
+                android:text="@string/crearrestaurantefotologo"
+                android:id="@+id/textViewTituloFotoLogo"
+                android:textStyle="bold"
+                android:layout_gravity="left"
+                android:textSize="25sp" />
 
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
-    </FrameLayout>
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/imageViewfotoLogoA"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/agregar_foto"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FF000000"
+                android:layout_marginLeft="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp" />
 
-</RelativeLayout>
+
+            <TextView
+                android:layout_width="500dp"
+                android:layout_height="wrap_content"
+                android:text="@string/crearrestaurantefotogrande"
+                android:id="@+id/textViewTituloFotoGrande"
+                android:textStyle="bold"
+
+                android:textSize="25sp" />
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:id="@+id/imageViewfotoRestauranteA"
+                android:background="@drawable/agregar_foto"
+                android:layout_marginRight="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_gravity="center" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/crearrestaurantenombre"
+                android:id="@+id/editTextNombreRestauranteA"
+                android:textSize="25sp"
+                android:singleLine="true"
+                android:lines="1"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="@string/crearrestauranteDescripcion"
+                android:id="@+id/editTextDescripcionRestauranteA"
+                android:textSize="25sp"
+                android:lines="2"
+                android:digits="abcdefghijklmnopqrstuvwxyz1234567890:-_$., "
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="@string/crearrestaurantedescuento"
+                android:id="@+id/editTextPromocionRestauranteA"
+                android:textSize="25sp"
+                android:lines="2"
+                android:digits="abcdefghijklmnopqrstuvwxyz1234567890:-_$.,% "
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/crearrestaurantedireccion"
+                android:id="@+id/editTextDireccionRestauranteA"
+                android:textSize="25sp"
+                android:singleLine="true"
+                android:lines="1"
+                android:digits="abcdefghijklmnopqrstuvwxyz1234567890#- "
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/crearrestaurantetelefono"
+                android:inputType="phone"
+                android:singleLine="true"
+                android:lines="1"
+                android:id="@+id/editTextTelefonoRestauranteA"
+                android:textSize="25sp"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/crearrestauranteweb"
+                android:singleLine="true"
+                android:lines="1"
+                android:inputType="textUri"
+                android:id="@+id/editTextWebRestauranteA"
+                android:textSize="25sp"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/crearrestauranteabierto"
+                android:singleLine="true"
+                android:lines="1"
+                android:inputType="textUri"
+                android:id="@+id/editTextAbiertoRestauranteA"
+                android:textSize="25sp"
+                />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnercategoria"
+                />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnercategoria2"
+                />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerdomicilio"
+                />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnereventos"
+                />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

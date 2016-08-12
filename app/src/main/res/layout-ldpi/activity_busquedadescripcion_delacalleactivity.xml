@@ -46,7 +46,7 @@
             android:layout_below="@+id/toolbar"
             android:background="@drawable/sombratoolbar" />
     </LinearLayout>
-
+<!--
     <FrameLayout
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
@@ -95,6 +95,6 @@
                 />
 
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
-    </FrameLayout>
+    </FrameLayout>-->
 
 </RelativeLayout>

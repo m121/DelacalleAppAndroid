@@ -6,7 +6,7 @@
         android:orderInCategory="100" app:showAsAction="never" />-->
 
     <item
-        android:id="@+id/action_actualizar"
+        android:id="@+id/action_guardar"
         android:title="Guardar y terminar"
         android:orderInCategory="100"
         android:icon="@drawable/ic_guardar"

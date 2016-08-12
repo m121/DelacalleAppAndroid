@@ -227,8 +227,8 @@ public class editarcartarestaurante_delacalleactivity extends AppCompatActivity 
         descripcionplato6.setTypeface(segundafontcaviar);
         precioplato6.setTypeface(segundafontcaviar);
 
-        btneditarrcarta = (Button) findViewById(R.id.btnActualizarCarta);
-        btneditarrcarta.setTypeface(primerfontcandara);
+    //    btneditarrcarta = (Button) findViewById(R.id.btnActualizarCarta);
+    //    btneditarrcarta.setTypeface(primerfontcandara);
 
         bitmaperror2 = BitmapFactory.decodeResource(getResources(), R.drawable.agregar_foto);
         bitmaperror3 = BitmapFactory.decodeResource(getResources(), R.drawable.agregar_foto);
@@ -427,7 +427,7 @@ try {
                 MediaStore.Images.Media.INTERNAL_CONTENT_URI);
 
 
-        btneditarrcarta.setOnClickListener(new View.OnClickListener() {
+   /*     btneditarrcarta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ParseQuery<ParseRole> queryrol = ParseRole.getQuery();
@@ -446,7 +446,7 @@ try {
                 });
 
             }
-        });
+        });*/
 
         fotocartaplato1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -747,6 +747,24 @@ try {
             return true;
         }
 */
+
+        if(id == R.id.action_actualizar)
+        {
+            ParseQuery<ParseRole> queryrol = ParseRole.getQuery();
+            queryrol.whereEqualTo("name", "responsable");
+            queryrol.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+            queryrol.getFirstInBackground(new GetCallback<ParseRole>() {
+                @Override
+                public void done(ParseRole rol, ParseException e) {
+                    if (e == null) {
+                          ActualizarCarta();
+                      //  errors();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "No puedes editar una carta si no eres un responsable", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
         return super.onOptionsItemSelected(item);
     }
 

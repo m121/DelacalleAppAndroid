@@ -331,7 +331,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
 
-            <Button
+         <!--   <Button
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:text="@string/crearcartabtnterminar"
@@ -342,7 +342,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="46dp"
-                android:textSize="20sp" />
+                android:textSize="20sp" />-->
         </RelativeLayout>
     </RelativeLayout>
     </ScrollView>

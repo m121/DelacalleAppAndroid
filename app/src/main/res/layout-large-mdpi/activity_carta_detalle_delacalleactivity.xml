@@ -64,10 +64,10 @@
         android:layout_alignLeft="@+id/imageViewFotoRestauranteDetalleCarta"
         android:layout_alignStart="@+id/imageViewFotoRestauranteDetalleCarta"
         android:id="@+id/scrollviewdescripcion"
-        >
+        android:layout_alignBottom="@+id/frame_layout">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:text="@string/cartadetalledescripcionplato"
         android:id="@+id/textViewDescripcionPlatoResturanteDetalleCarta"
         android:textSize="25sp" />

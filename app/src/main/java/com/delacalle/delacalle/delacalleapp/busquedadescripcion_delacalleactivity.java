@@ -84,8 +84,7 @@ public class busquedadescripcion_delacalleactivity extends AppCompatActivity {
             Log.d("delacalle", "Error al pasar el titulo " + titulo);
         }
 
-        final Typeface primerfontcandara = Typeface.createFromAsset(getAssets(), "fonts/CandaraBold.ttf");
-        final Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
+
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -93,7 +92,7 @@ public class busquedadescripcion_delacalleactivity extends AppCompatActivity {
 
         final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
 
-        final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
+      /*  final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
         //  frameLayout.getBackground().setAlpha(0);
         final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.fabmenu);
         final FloatingActionButton fabeditar = (FloatingActionButton) findViewById(R.id.fabeditar);
@@ -183,95 +182,13 @@ public class busquedadescripcion_delacalleactivity extends AppCompatActivity {
         {
             fabeditar.setVisibility(View.INVISIBLE);
             fabrestaurante.setVisibility(View.INVISIBLE);
-        }
+        }*/
 
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                try {
-// Show results  in listview with my own adapter ParseQueryAdapter
-                    ParseQueryAdapter.QueryFactory<ParseObject> factory =
-                            new ParseQueryAdapter.QueryFactory<ParseObject>() {
-                                public ParseQuery<ParseObject> create() {
-                                    ParseQuery<ParseObject> query = ParseQuery.getQuery("restaurante");
-                                    query.whereContains("descripcion", titulo);
-                                    return query;
-                                }
-                            };
-
-                    busquedaDescripcionQueryAdapter = new ParseQueryAdapter<ParseObject>(getApplication(), factory) {
-
-                        @Override
-                        public View getItemView(final ParseObject resta, View view, ViewGroup parent) {
-                            if (view == null) {
-                                view = View.inflate(getContext(), R.layout.plantilla_mostrarrestaurante_delacalle, null);
-                            }
-                            CardView cardview = (CardView) view.findViewById(R.id.cardView);
-                            cardview.setClickable(true);
-                            TextView titletxt = (TextView) view.findViewById(R.id.editTextnombremostrarrestaurante);
-                            TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
-                            TextView telefonotxt = (TextView) view.findViewById(R.id.textViewTelefonoM);
-                            TextView direcciontxt = (TextView) view.findViewById(R.id.textViewDireccionM);
-                            final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
-                            RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
-                            ParseFile picfile;
-                            titletxt.setTypeface(primerfontcandara);
-                            descriptiontxt.setTypeface(segundafontcaviar);
-                            telefonotxt.setTypeface(segundafontcaviar);
-                            direcciontxt.setTypeface(segundafontcaviar);
-
-
-                            telefonotxt.setText(resta.getString("telefono"));
-                            direcciontxt.setText(resta.getString("direccion"));
-                            cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
-                            titletxt.setText(resta.getString("nombre"));
-                            descriptiontxt.setText(resta.getString("descripcion"));
-                            //        menutxt.setText(resta.getString("menu"));
-                            picfile = resta.getParseFile("fotologo");
-                            picfile.getDataInBackground(new GetDataCallback() {
-                                @Override
-                                public void done(byte[] data, ParseException e) {
-                                    final BitmapFactory.Options options = new BitmapFactory.Options();
-                                    options.inSampleSize = 2;
-                                    Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
-                                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                    pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                                    picimageview.setImageBitmap(pic);
-                                }
-                            });
-                            ratingbarres.setRating(resta.getInt("rating"));
-
-                            cardview.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(final View v) {
-                                    resta.saveInBackground(new SaveCallback() {
-                                        @Override
-                                        public void done(ParseException e) {
-                                            id = resta.getObjectId().toString();
-                                            //    displayPopupdetalleMiResta(v);
-
-                                            Intent intent = new Intent(busquedadescripcion_delacalleactivity.this, detallerestaurante_delacalleactivity.class);
-                                            intent.putExtra("id", id);
-                                            busquedadescripcion_delacalleactivity.this.startActivity(intent);
-                                        }
-                                    });
-
-                                }
-                            });
-
-
-                            return view;
-                        }
-                    };
-
-                    ListView restaListView = (ListView) findViewById(R.id.listViewrestaurantes);
-                    restaListView.setAdapter(busquedaDescripcionQueryAdapter);
-
-                } catch (Exception e) {
-                    e.getStackTrace();
-                    Log.d("delacalle", "error en mostrar contenido actualizado busqueda descripcion");
-                }
+                informaciondescripcion();
 
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -283,6 +200,42 @@ public class busquedadescripcion_delacalleactivity extends AppCompatActivity {
                 android.R.color.holo_red_light);
 
 
+        informaciondescripcion();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_busquedadescripcion_delacalleactivity, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        // or call onBackPressed()
+        return true;
+    }
+
+    public void informaciondescripcion()
+    {
+        final Typeface primerfontcandara = Typeface.createFromAsset(getAssets(), "fonts/CandaraBold.ttf");
+        final Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
         try
         {
             // Show results  in listview with my own adapter ParseQueryAdapter
@@ -301,6 +254,7 @@ public class busquedadescripcion_delacalleactivity extends AppCompatActivity {
                 @Override
                 public View getItemView(final ParseObject resta,View view, ViewGroup parent)
                 {
+
                     if(view == null)
                     {
                         view = View.inflate(getContext(),R.layout.plantilla_mostrarrestaurante_delacalle,null);
@@ -368,34 +322,5 @@ public class busquedadescripcion_delacalleactivity extends AppCompatActivity {
             e.getStackTrace();
             Log.d("delacalle", "error en mostrar contenido busqueda descripcion "+e);
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_busquedadescripcion_delacalleactivity, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        // or call onBackPressed()
-        return true;
     }
 }

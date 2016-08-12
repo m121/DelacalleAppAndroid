@@ -116,7 +116,7 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
         precioplatoCartaDetalle.setTypeface(primerfontcandara);
         milayoutrestaurantelink.setClickable(true);
 
-        final FrameLayout frameLayout = (FrameLayout) rootView.findViewById(R.id.frame_layout);
+    /*    final FrameLayout frameLayout = (FrameLayout) rootView.findViewById(R.id.frame_layout);
         //  frameLayout.getBackground().setAlpha(0);
         final FloatingActionsMenu fabMenu = (FloatingActionsMenu) rootView.findViewById(R.id.fabmenu);
         final FloatingActionButton fabeditar = (FloatingActionButton) rootView.findViewById(R.id.fabeditar);
@@ -204,7 +204,7 @@ public class ScreenSlideCartaFragment extends android.support.v4.app.Fragment {
         {
             fabeditar.setVisibility(View.INVISIBLE);
             fabrestaurante.setVisibility(View.INVISIBLE);
-        }
+        }*/
 
         final ParseQuery<ParseObject> query = ParseQuery.getQuery("carta");
         query.whereEqualTo("nombre", nuevocarta);

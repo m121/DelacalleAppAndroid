@@ -32,6 +32,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
@@ -70,7 +71,12 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity impl
     private TextView  direccionRestauranteA;
     private TextView  telefonoRestauranteA;
     private TextView  webRestauranteA;
+    private TextView  promocionRestauranteA;
+    private TextView  horarioRestauranteA;
     private Spinner  spinnercategoria;
+    private Spinner spinnercategoria2;
+    private Spinner spinnerdomicilio;
+    private Spinner spinnereventos;
 
     private Button btnGuardarRestaurante;
     private ImageView btnSeleccionarPaletaRestaurante;
@@ -88,7 +94,11 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity impl
     private String telefonoR;
     private String webR;
     private String categoriaR;
-
+    private String categoria2R;
+    private String domicilioR;
+    private String eventoR;
+    private String promocionR;
+    private String horarioR;
 
     private Button btnpaleta;
     Bitmap bitmaperror2;
@@ -107,7 +117,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity impl
     private Button buttonColor4;
     private Button buttonColor5;
     private Button buttonColor6;
-    private RelativeLayout relativepaleta;
+    private LinearLayout relativepaleta;
     String color;
 
 
@@ -153,7 +163,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity impl
         bitmaperror2 = BitmapFactory.decodeResource(getResources(), R.drawable.agregar_foto);
         bitmaperror3 = BitmapFactory.decodeResource(getResources(), R.drawable.agregar_foto);
 
-            relativepaleta = (RelativeLayout) findViewById(R.id.relativelayoutPaletacambiar);
+            relativepaleta = (LinearLayout) findViewById(R.id.relativelayoutPaletacambiar);
 
          fotologoRestauranteA = (ImageView) findViewById(R.id.imageViewfotoLogoA);
          fotograndeRestauranteA = (ImageView) findViewById(R.id.imageViewfotoRestauranteA);
@@ -162,28 +172,59 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity impl
          direccionRestauranteA = (TextView) findViewById(R.id.editTextDireccionRestauranteA);
          telefonoRestauranteA = (TextView) findViewById(R.id.editTextTelefonoRestauranteA);
          webRestauranteA = (TextView) findViewById(R.id.editTextWebRestauranteA);
+        promocionRestauranteA = (TextView) findViewById(R.id.editTextPromocionRestauranteA);
+        horarioRestauranteA = (TextView) findViewById(R.id.editTextAbiertoRestauranteA);
         spinnercategoria = (Spinner) findViewById(R.id.spinnercategoria);
+        spinnercategoria2 = (Spinner) findViewById(R.id.spinnercategoria2);
+        spinnerdomicilio = (Spinner) findViewById(R.id.spinnerdomicilio);
+        spinnereventos = (Spinner) findViewById(R.id.spinnereventos);
+
         nombreRestauranteA.setTypeface(segundafontcaviar);
         descripcionRestauranteA.setTypeface(segundafontcaviar);
+        promocionRestauranteA.setTypeface(segundafontcaviar);
         direccionRestauranteA.setTypeface(segundafontcaviar);
         telefonoRestauranteA.setTypeface(segundafontcaviar);
         webRestauranteA.setTypeface(segundafontcaviar);
+        horarioRestauranteA.setTypeface(segundafontcaviar);
 
-        btnGuardarRestaurante = (Button) findViewById(R.id.btnGuardarRestaurante);
-        btnGuardarRestaurante.setTypeface(primerfontcandara);
-        btnSeleccionarPaletaRestaurante = (ImageView) findViewById(R.id.imageViewbtnPaletaRestaurante);
+    //    btnGuardarRestaurante = (Button) findViewById(R.id.btnGuardarRestaurante);
+     //   btnGuardarRestaurante.setTypeface(primerfontcandara);
+     //   btnSeleccionarPaletaRestaurante = (ImageView) findViewById(R.id.imageViewbtnPaletaRestaurante);
         fotologoRestauranteA.setClickable(true);
         fotograndeRestauranteA.setClickable(true);
-        btnSeleccionarPaletaRestaurante.setClickable(true);
+  //      btnSeleccionarPaletaRestaurante.setClickable(true);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.categoriasCrear, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
+
         spinnercategoria.setAdapter(adapter);
         spinnercategoria.setOnItemSelectedListener(this);
 
-        final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
+        ArrayAdapter<CharSequence> adapterdomicilio = ArrayAdapter.createFromResource(this,
+                R.array.domiciliosCrear, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerdomicilio.setAdapter(adapterdomicilio);
+        spinnerdomicilio.setOnItemSelectedListener(this);
+
+        ArrayAdapter<CharSequence> adaptercategoria2 = ArrayAdapter.createFromResource(this,
+                R.array.categoriasCrear, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnercategoria2.setAdapter(adaptercategoria2);
+        spinnercategoria2.setOnItemSelectedListener(this);
+
+
+        ArrayAdapter<CharSequence> adaptereventos = ArrayAdapter.createFromResource(this,
+                R.array.eventosCrear, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnereventos.setAdapter(adaptereventos);
+        spinnereventos.setOnItemSelectedListener(this);
+
+
+
+     /*   final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
   //      frameLayout.getBackground().setAlpha(0);
         final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.fabmenu);
         final FloatingActionButton fabeditar = (FloatingActionButton) findViewById(R.id.fabeditar);
@@ -259,21 +300,21 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity impl
                 }
 
             }
-        });
+        });*/
 
 
 
 
-        btnSeleccionarPaletaRestaurante.setOnClickListener(new View.OnClickListener() {
+       /* btnSeleccionarPaletaRestaurante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayPopupPaleta(v);
+                displayPopupPaleta();
             }
-        });
+        });*/
 
 
 
-        btnGuardarRestaurante.setOnClickListener(new View.OnClickListener() {
+      /*  btnGuardarRestaurante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.startAnimation(animAlpha);
@@ -293,7 +334,7 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity impl
                 });
 
             }
-        });
+        });*/
 
 
         fotologoRestauranteA.setOnClickListener(new View.OnClickListener() {
@@ -584,6 +625,8 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity impl
         direccionR = direccionRestauranteA.getText().toString();
         telefonoR = telefonoRestauranteA.getText().toString();
         webR = webRestauranteA.getText().toString();
+        promocionR = promocionRestauranteA.getText().toString();
+        horarioR = horarioRestauranteA.getText().toString();
 
         if(TextUtils.isEmpty(nombreR))
         {
@@ -612,6 +655,21 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity impl
             focusView = telefonoRestauranteA;
             cancel = true;
         }
+
+        if(TextUtils.isEmpty(promocionR))
+        {
+            promocionRestauranteA.setError("Es necesario escribir la promoción de la membresia del club");
+            focusView = promocionRestauranteA;
+            cancel = true;
+        }
+
+        if(TextUtils.isEmpty(horarioR))
+        {
+            horarioRestauranteA.setError("Es necesario escribir el horario de atención del restaurante");
+            focusView = horarioRestauranteA;
+            cancel = true;
+        }
+
 
        /* if(TextUtils.isEmpty(webR))
         {
@@ -675,6 +733,8 @@ public class agregarrestaurante_delacalleactivity extends AppCompatActivity impl
         direccionRestauranteA.setError(null);
         telefonoRestauranteA.setError(null);
         webRestauranteA.setError(null);
+        promocionRestauranteA.setError(null);
+        horarioRestauranteA.setError(null);
 
     }
 
@@ -692,6 +752,7 @@ try
         final ParseObject  restauranteA = new ParseObject("restaurante");
         restauranteA.put("nombre",nombreR);
         restauranteA.put("descripcion",descripcionR);
+        restauranteA.put("promo",promocionR);
         restauranteA.put("direccion",direccionR);
         restauranteA.put("telefono",telefonoR);
         restauranteA.put("web", webR);
@@ -701,7 +762,10 @@ try
         restauranteA.put("usuarioid", ParseUser.getCurrentUser());
         restauranteA.increment("votos", 0);
         restauranteA.put("color", color);
-        restauranteA.put("categoria",categoriaR);
+        restauranteA.put("categoria",categoriaR + "," + categoria2R);
+        restauranteA.put("domicilio",domicilioR);
+        restauranteA.put("eventos",eventoR);
+        restauranteA.put("horario",horarioR);
         restauranteA.setACL(acl);
         ProgressDialog.show(this, "Guardando", "Espera mientras guarda el restaurante",true,true);
 
@@ -766,6 +830,29 @@ try
             startActivity(intent);
         }
 
+        if(id == R.id.action_guardar)
+        {
+            ParseQuery<ParseRole> queryrol = ParseRole.getQuery();
+            queryrol.whereEqualTo("name", "responsable");
+            queryrol.whereEqualTo("users", ParseUser.getCurrentUser().getObjectId());
+            queryrol.getFirstInBackground(new GetCallback<ParseRole>() {
+                @Override
+                public void done(ParseRole rol, ParseException e) {
+                    if (e == null)
+                    {
+                        errors();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "No puedes guardar un restaurante si no eres un responsable", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+
+        if(id == R.id.action_color)
+        {
+            displayPopupPaleta();
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -776,6 +863,7 @@ try
         // or call onBackPressed()
         return true;
     }
+
 
 
 
@@ -902,12 +990,12 @@ try
 
 
 
-    private void displayPopupPaleta(final View anchorView) {
+    private void displayPopupPaleta() {
         try
         {
         final PopupWindow popup = new PopupWindow(agregarrestaurante_delacalleactivity.this);
         LayoutInflater inflater = (LayoutInflater) agregarrestaurante_delacalleactivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = inflater.inflate(R.layout.popuppaleta, null);
+   final     View layout = inflater.inflate(R.layout.popuppaleta, null);
         popup.setContentView(layout);
 
 
@@ -989,15 +1077,17 @@ try
         // Closes the popup window when touch outside of it - when looses focus
         popup.setOutsideTouchable(true);
         popup.setFocusable(true);
+            popup.showAtLocation(layout, Gravity.TOP | Gravity.START | Gravity.CENTER_VERTICAL, 120, 300);
+            popup.showAsDropDown(layout);
         // Show anchored to button
         //   popup.setBackgroundDrawable(new BitmapDrawable());
-        new Handler().postDelayed(new Runnable() {
+      /*  new Handler().postDelayed(new Runnable() {
 
             public void run() {
-                popup.showAtLocation(anchorView, Gravity.TOP | Gravity.START | Gravity.CENTER_VERTICAL, 120, 300);
-                popup.showAsDropDown(anchorView);
+
+
             }
-        }, 100L);
+        }, 100L);*/
 
         }catch(Exception e)
         {
@@ -1020,8 +1110,28 @@ try
                                int pos, long id) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
+            Spinner spiner = (Spinner) parent;
 
-        categoriaR = spinnercategoria.getItemAtPosition(pos).toString();
+        if(spiner.getId() == R.id.spinnercategoria)
+        {
+            categoriaR = spinnercategoria.getItemAtPosition(pos).toString();
+        }
+
+        if(spiner.getId() == R.id.spinnerdomicilio)
+        {
+            domicilioR = spinnerdomicilio.getItemAtPosition(pos).toString();
+        }
+
+        if(spiner.getId() == R.id.spinnercategoria2)
+        {
+            categoria2R = spinnercategoria2.getItemAtPosition(pos).toString();
+        }
+
+        if(spiner.getId() == R.id.spinnereventos)
+        {
+            eventoR = spinnereventos.getItemAtPosition(pos).toString();
+        }
+
     }
 
     public void onNothingSelected(AdapterView<?> parent) {

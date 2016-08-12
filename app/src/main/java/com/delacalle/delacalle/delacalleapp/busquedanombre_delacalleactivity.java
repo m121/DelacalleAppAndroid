@@ -80,8 +80,7 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
             Log.d("delacalle", "Error al pasar el titulo " + titulo);
         }
 
-        final Typeface primerfontcandara = Typeface.createFromAsset(getAssets(), "fonts/CandaraBold.ttf");
-        final Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
+
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -89,7 +88,7 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
 
         final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
 
-        final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
+     /*   final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);
         //  frameLayout.getBackground().setAlpha(0);
         final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.fabmenu);
         final FloatingActionButton fabeditar = (FloatingActionButton) findViewById(R.id.fabeditar);
@@ -179,103 +178,17 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
         {
             fabeditar.setVisibility(View.INVISIBLE);
             fabrestaurante.setVisibility(View.INVISIBLE);
-        }
+        }*/
 
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                try
-                {
-// Show results  in listview with my own adapter ParseQueryAdapter
-                ParseQueryAdapter.QueryFactory<ParseObject> factory =
-                        new  ParseQueryAdapter.QueryFactory<ParseObject>(){
-                            public ParseQuery<ParseObject> create () {
-                                ParseQuery<ParseObject>  query = ParseQuery.getQuery("restaurante");
-                                query.whereEqualTo("nombre", titulo);
-                                return query;
-                            }
-                        };
-
-                busquedaNombreQueryAdapter = new ParseQueryAdapter<ParseObject>(getApplication(),factory)
-                {
-
-                    @Override
-                    public View getItemView(final ParseObject resta,View view, ViewGroup parent)
-                    {
-                        if(view == null)
-                        {
-                            view = View.inflate(getContext(),R.layout.plantilla_mostrarrestaurante_delacalle,null);
-                        }
-                        CardView cardview = (CardView) view.findViewById(R.id.cardView);
-                        cardview.setClickable(true);
-                        TextView titletxt = (TextView) view.findViewById(R.id.editTextnombremostrarrestaurante);
-                        TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
-                        TextView telefonotxt = (TextView) view.findViewById(R.id.textViewTelefonoM);
-                        TextView direcciontxt = (TextView) view.findViewById(R.id.textViewDireccionM);
-                        final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
-                        RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
-                        ParseFile picfile;
-                        titletxt.setTypeface(primerfontcandara);
-                        descriptiontxt.setTypeface(segundafontcaviar);
-                        telefonotxt.setTypeface(segundafontcaviar);
-                        direcciontxt.setTypeface(segundafontcaviar);
-
-
-                        telefonotxt.setText(resta.getString("telefono"));
-                        direcciontxt.setText(resta.getString("direccion"));
-                        cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
-                        titletxt.setText(resta.getString("nombre"));
-                        descriptiontxt.setText(resta.getString("descripcion"));
-                        //        menutxt.setText(resta.getString("menu"));
-                        picfile = resta.getParseFile("fotologo");
-                        picfile.getDataInBackground(new GetDataCallback() {
-                            @Override
-                            public void done(byte[] data, ParseException e) {
-                                final BitmapFactory.Options options = new BitmapFactory.Options();
-                                options.inSampleSize = 2;
-                                Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
-                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                                picimageview.setImageBitmap(pic);
-                            }
-                        });
-                        ratingbarres.setRating(resta.getInt("rating"));
-
-                        cardview.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(final View v) {
-                                resta.saveInBackground(new SaveCallback() {
-                                    @Override
-                                    public void done(ParseException e) {
-                                        id = resta.getObjectId().toString();
-                                        //    displayPopupdetalleMiResta(v);
-
-                                        Intent intent = new Intent(busquedanombre_delacalleactivity.this,detallerestaurante_delacalleactivity.class);
-                                        intent.putExtra("id", id);
-                                        busquedanombre_delacalleactivity.this.startActivity(intent);
-                                    }
-                                });
-
-                            }
-                        });
-
-
-
-                        return view;
-                    }
-                };
-
-                ListView restaListView = (ListView) findViewById(R.id.listViewrestaurantes);
-                restaListView.setAdapter(busquedaNombreQueryAdapter);
-
-                }catch(Exception e)
-                {
-                    e.getStackTrace();
-                    Log.d("delacalle", "error en mostrar contenido actualizado busqueda nombre");
-                }
-
+             busquedanombre();
                 swipeRefreshLayout.setRefreshing(false);
+
+
+
             }
         });
 
@@ -284,91 +197,7 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
-        try
-        {
-        // Show results  in listview with my own adapter ParseQueryAdapter
-        ParseQueryAdapter.QueryFactory<ParseObject> factory =
-                new  ParseQueryAdapter.QueryFactory<ParseObject>(){
-                    public ParseQuery<ParseObject> create () {
-                        ParseQuery<ParseObject>  query = ParseQuery.getQuery("restaurante");
-                        query.whereEqualTo("nombre", titulo);
-                        return query;
-                    }
-                };
-
-        busquedaNombreQueryAdapter = new ParseQueryAdapter<ParseObject>(this,factory)
-        {
-
-            @Override
-            public View getItemView(final ParseObject resta,View view, ViewGroup parent)
-            {
-                if(view == null)
-                {
-                    view = View.inflate(getContext(),R.layout.plantilla_mostrarrestaurante_delacalle,null);
-                }
-                CardView cardview = (CardView) view.findViewById(R.id.cardView);
-                cardview.setClickable(true);
-                TextView titletxt = (TextView) view.findViewById(R.id.editTextnombremostrarrestaurante);
-                TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
-                TextView telefonotxt = (TextView) view.findViewById(R.id.textViewTelefonoM);
-                TextView direcciontxt = (TextView) view.findViewById(R.id.textViewDireccionM);
-                final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
-                RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
-                ParseFile picfile;
-                titletxt.setTypeface(primerfontcandara);
-                descriptiontxt.setTypeface(segundafontcaviar);
-                telefonotxt.setTypeface(segundafontcaviar);
-                direcciontxt.setTypeface(segundafontcaviar);
-
-                telefonotxt.setText(resta.getString("telefono"));
-                direcciontxt.setText(resta.getString("direccion"));
-                descriptiontxt.setText(resta.getString("descripcion"));
-                cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
-                titletxt.setText(resta.getString("nombre"));
-                picfile = resta.getParseFile("fotologo");
-                picfile.getDataInBackground(new GetDataCallback() {
-                    @Override
-                    public void done(byte[] data, ParseException e) {
-                        final BitmapFactory.Options options = new BitmapFactory.Options();
-                        options.inSampleSize = 2;
-                        Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
-                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                        pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                        picimageview.setImageBitmap(pic);
-                    }
-                });
-                ratingbarres.setRating(resta.getInt("rating"));
-
-                cardview.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(final View v) {
-                        resta.saveInBackground(new SaveCallback() {
-                            @Override
-                            public void done(ParseException e) {
-                                id = resta.getObjectId().toString();
-                                Intent intent = new Intent(busquedanombre_delacalleactivity.this,detallerestaurante_delacalleactivity.class);
-                                intent.putExtra("id", id);
-                                busquedanombre_delacalleactivity.this.startActivity(intent);
-                            }
-                        });
-
-                    }
-                });
-
-
-
-                return view;
-            }
-        };
-
-        ListView restaListView = (ListView) this.findViewById(R.id.listViewrestaurantes);
-        restaListView.setAdapter(busquedaNombreQueryAdapter);
-
-        }catch(Exception e)
-        {
-            e.getStackTrace();
-            Log.d("delacalle", "error en mostrar contenido busqueda nombre");
-        }
+        busquedanombre();
     }
 
     @Override
@@ -398,5 +227,97 @@ public class busquedanombre_delacalleactivity extends AppCompatActivity {
         finish();
         // or call onBackPressed()
         return true;
+    }
+
+
+    public void busquedanombre()
+    {
+        final Typeface primerfontcandara = Typeface.createFromAsset(getAssets(), "fonts/CandaraBold.ttf");
+        final Typeface segundafontcaviar = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
+        try
+        {
+            // Show results  in listview with my own adapter ParseQueryAdapter
+            ParseQueryAdapter.QueryFactory<ParseObject> factory =
+                    new  ParseQueryAdapter.QueryFactory<ParseObject>(){
+                        public ParseQuery<ParseObject> create () {
+                            ParseQuery<ParseObject>  query = ParseQuery.getQuery("restaurante");
+                            query.whereEqualTo("nombre", titulo);
+                            return query;
+                        }
+                    };
+
+            busquedaNombreQueryAdapter = new ParseQueryAdapter<ParseObject>(this,factory)
+            {
+
+                @Override
+                public View getItemView(final ParseObject resta,View view, ViewGroup parent)
+                {
+                    if(view == null)
+                    {
+                        view = View.inflate(getContext(),R.layout.plantilla_mostrarrestaurante_delacalle,null);
+                    }
+                    CardView cardview = (CardView) view.findViewById(R.id.cardView);
+                    cardview.setClickable(true);
+                    TextView titletxt = (TextView) view.findViewById(R.id.editTextnombremostrarrestaurante);
+                    TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
+                    TextView telefonotxt = (TextView) view.findViewById(R.id.textViewTelefonoM);
+                    TextView direcciontxt = (TextView) view.findViewById(R.id.textViewDireccionM);
+                    final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
+                    RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
+                    ParseFile picfile;
+                    titletxt.setTypeface(primerfontcandara);
+                    descriptiontxt.setTypeface(segundafontcaviar);
+                    telefonotxt.setTypeface(segundafontcaviar);
+                    direcciontxt.setTypeface(segundafontcaviar);
+
+                    telefonotxt.setText(resta.getString("telefono"));
+                    direcciontxt.setText(resta.getString("direccion"));
+                    descriptiontxt.setText(resta.getString("descripcion"));
+                    cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
+                    titletxt.setText(resta.getString("nombre"));
+                    picfile = resta.getParseFile("fotologo");
+                    picfile.getDataInBackground(new GetDataCallback() {
+                        @Override
+                        public void done(byte[] data, ParseException e) {
+                            final BitmapFactory.Options options = new BitmapFactory.Options();
+                            options.inSampleSize = 2;
+                            Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                            picimageview.setImageBitmap(pic);
+                        }
+                    });
+                    ratingbarres.setRating(resta.getInt("rating"));
+
+                    cardview.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(final View v) {
+                            resta.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    id = resta.getObjectId().toString();
+                                    Intent intent = new Intent(busquedanombre_delacalleactivity.this,detallerestaurante_delacalleactivity.class);
+                                    intent.putExtra("id", id);
+                                    busquedanombre_delacalleactivity.this.startActivity(intent);
+                                }
+                            });
+
+                        }
+                    });
+
+
+
+                    return view;
+                }
+            };
+
+            ListView restaListView = (ListView) this.findViewById(R.id.listViewrestaurantes);
+            restaListView.setAdapter(busquedaNombreQueryAdapter);
+
+        }catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle", "error en mostrar contenido busqueda nombre");
+        }
     }
 }

@@ -24,4 +24,5 @@
     <color name="colorCategoriaCarnes">#db3227</color>
     <color name="colorCategoriaHelados">#f2ea0d</color>
     <color name="colorCategoriaPromociones">#ee7a22</color>
+    <color name="colorCategoriaEventos">#00aeef</color>
 </resources>
