@@ -47,7 +47,7 @@ public class domicilio_delacalleactivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Establecimientos con comicilios");
+        getSupportActionBar().setTitle("Establecimientos con domicilios");
 
         final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_main_swipe_refresh_layout);
 
@@ -108,20 +108,20 @@ public class domicilio_delacalleactivity extends AppCompatActivity {
                     CardView cardview = (CardView) view.findViewById(R.id.cardView);
                     cardview.setClickable(true);
                     TextView titletxt = (TextView) view.findViewById(R.id.editTextnombremostrarrestaurante);
-                    TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
+                    TextView domiciliotxt = (TextView) view.findViewById(R.id.editTextdomiciliomostrarrestaurante);
                     TextView telefonotxt = (TextView) view.findViewById(R.id.textViewTelefonoM);
                     TextView direcciontxt = (TextView) view.findViewById(R.id.textViewDireccionM);
                     final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
                     RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
                     ParseFile picfile;
                     titletxt.setTypeface(primerfontcandara);
-                    descriptiontxt.setTypeface(segundafontcaviar);
+                    domiciliotxt.setTypeface(segundafontcaviar);
                     telefonotxt.setTypeface(segundafontcaviar);
                     direcciontxt.setTypeface(segundafontcaviar);
 
                     telefonotxt.setText(resta.getString("telefono"));
                     direcciontxt.setText(resta.getString("direccion"));
-                    descriptiontxt.setText(resta.getString("descripcion"));
+                    domiciliotxt.setText("Domicilio: " + resta.getString("domicilio"));
                     cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
                     titletxt.setText(resta.getString("nombre"));
                     picfile = resta.getParseFile("fotologo");

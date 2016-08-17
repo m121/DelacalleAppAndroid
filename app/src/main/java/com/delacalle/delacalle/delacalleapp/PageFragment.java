@@ -116,88 +116,8 @@ public class PageFragment extends Fragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                try {
-// Show results  in listview with my own adapter ParseQueryAdapter
-                    ParseQueryAdapter.QueryFactory<ParseObject> factory =
-                            new ParseQueryAdapter.QueryFactory<ParseObject>() {
-                                public ParseQuery<ParseObject> create() {
-                                    ParseQuery<ParseObject> query = ParseQuery.getQuery("restaurante");
-                                    query.whereGreaterThan("rating", 4);
-                                    query.setLimit(5);
-                                    return query;
-                                }
-                            };
-
-                    restaurantesQueryAdapter = new ParseQueryAdapter<ParseObject>(getActivity(), factory) {
-
-                        @Override
-                        public View getItemView(final ParseObject resta, View view, ViewGroup parent) {
-                            if (view == null) {
-                                view = View.inflate(getContext(), R.layout.plantilla_mostrarrestaurante_delacalle, null);
-                            }
-                            CardView cardview = (CardView) view.findViewById(R.id.cardView);
-                            cardview.setClickable(true);
-                            TextView titletxt = (TextView) view.findViewById(R.id.editTextnombremostrarrestaurante);
-                            TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
-                            TextView direcciontxt = (TextView) view.findViewById(R.id.textViewDireccionM);
-                            TextView telefonotxt = (TextView) view.findViewById(R.id.textViewTelefonoM);
-                            final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
-                            RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
-                            ParseFile picfile;
-                            titletxt.setTypeface(primerfontcandara);
-                            descriptiontxt.setTypeface(segundafontcaviar);
-                            direcciontxt.setTypeface(segundafontcaviar);
-                            telefonotxt.setTypeface(segundafontcaviar);
-
-                            cardview.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(final View v) {
-                                    resta.saveInBackground(new SaveCallback() {
-                                        @Override
-                                        public void done(ParseException e) {
-                                            id = resta.getObjectId().toString();
-                                            Intent intent = new Intent(getActivity(), detallerestaurante_delacalleactivity.class);
-                                            intent.putExtra("id", id);
-                                            getActivity().startActivity(intent);
-                                        }
-                                    });
-
-                                }
-                            });
-                            cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
-                            titletxt.setText(resta.getString("nombre"));
-                            descriptiontxt.setText(resta.getString("descripcion"));
-                            direcciontxt.setText(resta.getString("direccion"));
-                            telefonotxt.setText(resta.getString("telefono"));
-                            picfile = resta.getParseFile("fotologo");
-                            picfile.getDataInBackground(new GetDataCallback() {
-                                @Override
-                                public void done(byte[] data, ParseException e) {
-                                    final BitmapFactory.Options options = new BitmapFactory.Options();
-                                    options.inSampleSize = 2;
-                                    Bitmap  pic = BitmapFactory.decodeByteArray(data, 0, data.length,options);
-                                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                    pic.compress(Bitmap.CompressFormat.JPEG, 70, stream);
-                                    picimageview.setImageBitmap(pic);
-                                }
-                            });
-                            ratingbarres.setRating(resta.getInt("rating"));
-
-
-                            return view;
-                        }
-                    };
-
-                    ListView restaListView = (ListView) view.findViewById(R.id.listViewrestaurantes);
-                    restaListView.setAdapter(restaurantesQueryAdapter);
-
-                    swipeRefreshLayout.setRefreshing(false);
-
-                }catch(Exception e)
-                {
-                e.getStackTrace();
-                    Log.d("delacalle","error en actualizar contenido");
-                }
+                topcinco(view);
+                swipeRefreshLayout.setRefreshing(false);
                 }
 
         });
@@ -206,6 +126,8 @@ public class PageFragment extends Fragment {
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
+
+        topcinco(view);
 
         final FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.frame_layout);
       //  frameLayout.getBackground().setAlpha(0);
@@ -298,6 +220,18 @@ public class PageFragment extends Fragment {
             fabrestaurante.setVisibility(View.INVISIBLE);
         }
 
+
+
+
+        return view;
+    }
+
+
+
+    public void topcinco(View view)
+    {
+        final Typeface primerfontcandara = Typeface.createFromAsset(getActivity().getAssets(),"fonts/CandaraBold.ttf");
+        final Typeface segundafontcaviar = Typeface.createFromAsset(getActivity().getAssets(), "fonts/CaviarDreams.ttf");
         try {
             // Show results  in listview with my own adapter ParseQueryAdapter
             ParseQueryAdapter.QueryFactory<ParseObject> factory =
@@ -320,14 +254,14 @@ public class PageFragment extends Fragment {
                     CardView cardview = (CardView) view.findViewById(R.id.cardView);
                     cardview.setClickable(true);
                     TextView titletxt = (TextView) view.findViewById(R.id.editTextnombremostrarrestaurante);
-                    TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
+                    TextView domiciliotxt = (TextView) view.findViewById(R.id.editTextdomiciliomostrarrestaurante);
                     TextView direcciontxt = (TextView) view.findViewById(R.id.textViewDireccionM);
                     TextView telefonotxt = (TextView) view.findViewById(R.id.textViewTelefonoM);
                     final ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
                     RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
                     ParseFile picfile;
                     titletxt.setTypeface(primerfontcandara);
-                    descriptiontxt.setTypeface(segundafontcaviar);
+                    domiciliotxt.setTypeface(segundafontcaviar);
                     direcciontxt.setTypeface(segundafontcaviar);
                     telefonotxt.setTypeface(segundafontcaviar);
 
@@ -348,7 +282,7 @@ public class PageFragment extends Fragment {
                     });
                     cardview.setCardBackgroundColor(Color.parseColor(resta.getString("color")));
                     titletxt.setText(resta.getString("nombre"));
-                    descriptiontxt.setText(resta.getString("descripcion"));
+                    domiciliotxt.setText("Domicilio: " + resta.getString("domicilio"));
                     direcciontxt.setText(resta.getString("direccion"));
                     telefonotxt.setText(resta.getString("telefono"));
                     picfile = resta.getParseFile("fotologo");
@@ -393,17 +327,12 @@ public class PageFragment extends Fragment {
 
 
         }
-    catch(Exception e)
-    {
-        e.getStackTrace();
-        Log.d("delacalle","error en mostrar contenido");
+        catch(Exception e)
+        {
+            e.getStackTrace();
+            Log.d("delacalle","error en mostrar contenido");
+        }
     }
-
-
-        return view;
-    }
-
-
 
 
 

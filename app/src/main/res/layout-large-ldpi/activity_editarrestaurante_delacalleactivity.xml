@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondomenublanco768x1280"
+    android:id="@+id/relativelayoutPaletacambiar"
+    xmlns:fab="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimaryDark"
+        app:titleTextColor="@android:color/white"
+
+        />
+
+    <View
+        android:id="@+id/toolbar_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="7dp"
+        android:background="@drawable/sombratoolbar" />
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/editarrestaurantefotologo"
+            android:id="@+id/textViewTituloFotoLogo"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/imageViewfotoLogoA"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/agregar_foto"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/editarrestaurantefotogrande"
+            android:id="@+id/textViewTituloFotoGrande"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:id="@+id/imageViewfotoRestauranteA"
+            android:background="@drawable/agregar_foto"
+            android:layout_gravity="center"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/editarrestaurantenombre"
+            android:id="@+id/editTextNombreRestauranteA"
+            android:textSize="25sp"
+            android:singleLine="true"
+            android:lines="1"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="@string/editarrestauranteDescripcion"
+            android:digits="abcdefghijklmnopqrstuvwxyz1234567890:-_$., "
+            android:id="@+id/editTextDescripcionRestauranteA"
+            android:textSize="25sp"
+            android:lines="2"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="@string/editarrestaurantepromocion"
+            android:digits="abcdefghijklmnopqrstuvwxyz1234567890:-_$., "
+            android:id="@+id/editTextPromocionRestauranteA"
+            android:textSize="25sp"
+            android:lines="2"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/editarrestaurantedireccion"
+            android:digits="abcdefghijklmnopqrstuvwxyz1234567890#- "
+            android:id="@+id/editTextDireccionRestauranteA"
+            android:textSize="25sp"
+            android:singleLine="true"
+            android:lines="1"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/editarrestaurantetelefono"
+            android:inputType="phone"
+            android:singleLine="true"
+            android:lines="1"
+            android:id="@+id/editTextTelefonoRestauranteA"
+            android:textSize="25sp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/editarrestauranteweb"
+            android:singleLine="true"
+            android:lines="1"
+            android:inputType="textUri"
+            android:id="@+id/editTextWebRestauranteA"
+            android:textSize="25sp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/editarrestauranteabierto"
+            android:singleLine="true"
+            android:lines="1"
+            android:id="@+id/editTextAbiertoRestauranteA"
+            android:textSize="25sp"
+            />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnercategoria"
+            />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnercategoria2"
+            />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerdomicilio" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnereventos"
+            />
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>
+
+
+</LinearLayout>

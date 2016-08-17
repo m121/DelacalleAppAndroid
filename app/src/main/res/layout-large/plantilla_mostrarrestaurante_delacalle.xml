@@ -25,15 +25,13 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/imageViewfotounomostrarrestaurante"
-                android:layout_width="210dp"
-                android:layout_height="120dp"
-                android:layout_centerHorizontal="true"
+                android:layout_width="230dp"
+                android:layout_height="170dp"
                 app:civ_border_width="2dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
                 app:civ_border_color="#FF000000"
-                android:layout_above="@+id/editTextdescripcionmostrarrestaurante" />
+                android:layout_alignBottom="@+id/ratingBarmostrarrestaurante"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
         <TextView
             android:layout_width="150dp"
             android:layout_height="50dp"
@@ -63,19 +61,20 @@
             android:layout_alignLeft="@+id/editTextnombremostrarrestaurante"
             android:layout_alignStart="@+id/editTextnombremostrarrestaurante" />
 
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/plantillamostrarrestaDescripcion"
+                android:text="@string/plantillamostrarrestadomicilio"
                 android:textSize="20sp"
                 android:inputType="textCapCharacters"
-                android:id="@+id/editTextdescripcionmostrarrestaurante"
-                android:layout_alignParentBottom="true"
+                android:id="@+id/editTextdomiciliomostrarrestaurante"
+                android:paddingTop="5sp"
+                android:textStyle="bold"
+                android:layout_above="@+id/textViewDireccionM"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:paddingTop="5sp"
-                android:layout_marginBottom="25dp"
-                android:textStyle="bold" />
+                android:layout_marginBottom="18dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -94,6 +93,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/plantillamostrarrestadireccion"
                 android:id="@+id/textViewDireccionM"
+                android:lines="1"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"

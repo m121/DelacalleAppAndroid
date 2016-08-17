@@ -94,6 +94,8 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
     private String promocionR;
     private String abiertoR;
 
+
+
     Button btneditar;
     private Button btneliminarrestaurante;
 
@@ -396,6 +398,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
                     telefonoRestauranteA.setText(object.getString("telefono"));
                     webRestauranteA.setText(object.getString("web"));
                     horarioatencion.setText(object.getString("horario"));
+
 
                     picfile1 = object.getParseFile("fotologo");
                     picfile1.getDataInBackground(new GetDataCallback() {

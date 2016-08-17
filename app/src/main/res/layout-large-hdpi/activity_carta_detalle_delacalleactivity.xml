@@ -1,0 +1,110 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@drawable/fondomenublanco768x1280"
+    xmlns:fab="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.delacalle.delacalle.delacalleapp.cartaDetalle_delacalleactivity">
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/relativerestaurante">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/imageViewLogoDetalleCarta"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/mostrar_foto"
+        app:civ_border_width="2dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        app:civ_border_color="#FF000000"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cartadetallenombrerestaurante"
+        android:id="@+id/textViewNombreRestauranteDetalleCarta"
+        android:textSize="30sp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/imageViewLogoDetalleCarta"
+        android:layout_toEndOf="@+id/imageViewLogoDetalleCarta" />
+        </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/imageViewFotoRestauranteDetalleCarta"
+        android:background="#000000"
+        android:layout_below="@+id/relativerestaurante"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cartadetallenombreplato"
+        android:id="@+id/textViewNombrePlatoRestauranteDetalleCarta"
+        android:layout_below="@+id/imageViewFotoRestauranteDetalleCarta"
+        android:layout_centerHorizontal="true"
+        android:textSize="50sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewNombrePlatoRestauranteDetalleCarta"
+        android:layout_alignLeft="@+id/imageViewFotoRestauranteDetalleCarta"
+        android:layout_alignStart="@+id/imageViewFotoRestauranteDetalleCarta"
+        android:id="@+id/scrollviewdescripcion"
+        android:layout_alignBottom="@+id/frame_layout">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cartadetalledescripcionplato"
+        android:id="@+id/textViewDescripcionPlatoResturanteDetalleCarta"
+        android:textSize="25sp" />
+    </ScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="@string/cartadetalleprecio"
+        android:id="@+id/textViewPrecioPlatoRestauranteDetalleCarta"
+        android:textSize="35sp"
+        android:layout_below="@+id/scrollviewdescripcion"
+        android:layout_alignRight="@+id/textViewNombrePlatoRestauranteDetalleCarta"
+        android:layout_alignEnd="@+id/textViewNombrePlatoRestauranteDetalleCarta" />
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimaryDark"
+        app:titleTextColor="@android:color/white"
+
+        />
+
+    <View
+        android:id="@+id/toolbar_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@id/toolbar"
+        android:background="@drawable/sombratoolbar"
+        />
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null"></FrameLayout>
+
+</RelativeLayout>

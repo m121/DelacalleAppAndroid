@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/fondomenublanco768x1280"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:weightSum="1"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout3">
+
+        <EditText
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/editTextnombreregistro"
+        android:layout_marginTop="50dp"
+            android:hint="@string/registronombre"
+            android:singleLine="true"
+            android:textSize="20sp"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/btnregistrarse"
+        android:layout_alignStart="@+id/btnregistrarse" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/editTextemailregistro"
+        android:hint="@string/registrocorreo"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:inputType="textEmailAddress"
+        android:textSize="20sp"
+        android:textColorHint="#000000"
+        android:layout_below="@+id/editTextnombreregistro"
+        android:layout_alignLeft="@+id/btnregistrarse" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/editTextpassregistro"
+        android:hint="@string/registrocontrasena"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:inputType="textPassword"
+        android:textSize="20sp"
+        android:textColorHint="#000000"
+        android:layout_below="@+id/editTextemailregistro"
+        android:layout_alignLeft="@+id/btnregistrarse" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/editTextrepassregistro"
+        android:hint="@string/registrorecontrasena"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:inputType="textPassword"
+        android:textColorHint="#000000"
+        android:layout_below="@+id/editTextpassregistro"
+        android:layout_alignLeft="@+id/btnregistrarse" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:text="@string/registrobtnregistro"
+        android:id="@+id/btnregistrarse"
+        android:background="#f27817"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:layout_below="@+id/editTextrepassregistro"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp" />
+
+        <ImageButton
+            android:id="@+id/buttonenlacealogin"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:background="#f27817"
+            android:src="@mipmap/ic_home"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:layout_below="@+id/btnregistrarse"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="42dp"
+            android:layout_gravity="center_horizontal" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/registrotitulo"
+        android:id="@+id/textViewtituloregistrarse"
+        android:textColor="#000000"
+        android:textSize="35sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_above="@+id/linearLayout3"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

@@ -249,6 +249,26 @@ public class menu_pestanas_delacalleactivity extends AppCompatActivity {
                         }
                     });
 
+
+                    ParseQuery<ParseObject> querypromo = ParseQuery.getQuery("restaurante");
+                    querypromo.whereContains("promo", titulo);
+                    querypromo.getFirstInBackground(new GetCallback<ParseObject>() {
+                        @Override
+                        public void done(ParseObject object, ParseException e) {
+                            if (e == null) {
+                                ProgressDialog.show(menu_pestanas_delacalleactivity.this, "Buscando", "Espera mientras busca " + titulo,true,true);
+                                Intent intent = new Intent(menu_pestanas_delacalleactivity.this, busquedapromocion_delacalleactivity.class);
+                                intent.putExtra("titulo", titulo);
+                                startActivity(intent);
+                                Log.d("delacalle", "promocion encontrado");
+                                Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo has encontrado!", Toast.LENGTH_SHORT).show();
+                            } else if (e.getCode() == ParseException.OBJECT_NOT_FOUND) {
+                                Log.d("delacalle", "promocion no encontrado");
+                                //     Toast.makeText(menu_pestanas_delacalleactivity.this, "Lo siento, no lo has encontrado", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
                     ParseQuery<ParseObject> querydir = ParseQuery.getQuery("restaurante");
                     querydir.whereContains("direccion", titulo);
                     querydir.getFirstInBackground(new GetCallback<ParseObject>() {

@@ -234,7 +234,7 @@ String titulo;
             @Override
             public void onClick(View v) {
                 titulo = "PROMOCIONES";
-                Intent intent = new Intent(getActivity(), mostrarcategorias_delacalleactivity.class);
+                Intent intent = new Intent(getActivity(), promociones_delacalleactivity.class);
                 intent.putExtra("titulo", titulo);
                 startActivity(intent);
             }

@@ -206,8 +206,14 @@
     <!--plantilla mostrar restaurante-->
     <string name="plantillamostrarrestanombre">Nombre Restaurante</string>
     <string name="plantillamostrarrestatelefono">Teléfono</string>
-    <string name="plantillamostrarrestaDescripcion">Descripción</string>
+    <string name="plantillamostrarrestadomicilio">Domicilio:</string>
+    <string name="plantillamostrarrestaDescripcion">Horario de atención:</string>
     <string name="plantillamostrarrestadireccion">Dirección</string>
+
+
+    <!-- plantilla mostrar promociones-->
+    <string name="plantillamostrarpromocionesnombre">Nombre Restaurante</string>
+    <string name="plantillamostrarpromocionespromocion">Sin promocion</string>
 
 
     <!--categorias-->

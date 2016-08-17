@@ -278,7 +278,9 @@
             -->
         </activity>
         <activity android:name=".domicilio_delacalleactivity" />
-        <activity android:name=".eventos_delacalleactivity"></activity>
+        <activity android:name=".eventos_delacalleactivity" />
+        <activity android:name=".promociones_delacalleactivity" />
+        <activity android:name=".busquedapromocion_delacalleactivity"></activity>
     </application>
 
 </manifest>

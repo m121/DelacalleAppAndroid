@@ -33,6 +33,12 @@
         <item name="cardBackgroundColor">#f2f2f2</item>
     </style>
 
+    <style name="MyCardViewStylepromo" parent="Theme.AppCompat.Light">
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">8dp</item>
+        <item name="cardBackgroundColor">#ff9133</item>
+    </style>
+
     <style name="RatingBar" parent="Theme.AppCompat">
         <item name="colorControlNormal">#ffd700</item>
         <item name="colorControlActivated">#ff8000</item>

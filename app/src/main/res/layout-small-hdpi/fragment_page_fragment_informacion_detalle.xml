@@ -5,140 +5,174 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.delacalle.delacalle.delacalleapp.PageFragmentInformacionDetalle">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fragmentinformaciontitulonombre"
-            android:id="@+id/textViewtituloNombreRestauranteDetalle"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/fragmentinformacionnombre"
-            android:id="@+id/textViewNombreRestauranteDetalle"
-            android:textSize="13sp"
-            android:layout_below="@+id/textViewtituloNombreRestauranteDetalle"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformaciontitulonombre"
+               android:id="@+id/textViewtituloNombreRestauranteDetalle"
+               android:textSize="15sp"
+               android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fragmentinformaciontitulodescripcion"
-            android:id="@+id/textViewTituloDescripcionDetalle"
-            android:textSize="15sp"
-            android:layout_below="@+id/textViewNombreRestauranteDetalle"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textStyle="bold" />
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformacionnombre"
+               android:id="@+id/textViewNombreRestauranteDetalle"
+              />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="@string/fragmentinformaciondescripcion"
-            android:id="@+id/textViewDescripcionDetalle"
-            android:textSize="13sp"
-            android:layout_below="@+id/textViewTituloDescripcionDetalle"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformaciontitulodescripcion"
+               android:id="@+id/textViewTituloDescripcionDetalle"
+               android:textSize="15sp"
+               android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fragmentinformaciontitulodireccion"
-            android:id="@+id/textViewTituloDireccionDetalle"
-            android:textSize="15sp"
-            android:layout_below="@+id/textViewDescripcionDetalle"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/fragmentinformaciondireccion"
-            android:id="@+id/textViewDireccionDetalle"
-            android:textSize="13sp"
-            android:layout_below="@+id/textViewTituloDireccionDetalle"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fragmentinformaciontitulotelefono"
-            android:id="@+id/textViewTituloTelefonoDetalle"
-            android:textSize="15sp"
-            android:layout_below="@+id/textViewDireccionDetalle"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/fragmentinformaciontelefono"
-            android:id="@+id/textViewTelefonoDetalle"
-            android:textSize="13sp"
-            android:layout_below="@+id/textViewTituloTelefonoDetalle"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fragmentinformaciontituloweb"
-            android:id="@+id/textViewTituloWebDetalle"
-            android:textSize="15sp"
-            android:layout_below="@+id/textViewTelefonoDetalle"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/fragmentinformacionweb"
-            android:id="@+id/textViewWebDetalle"
-            android:textSize="13sp"
-            android:layout_below="@+id/textViewTituloWebDetalle"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/detallerestauranteinformacionRating"
-            android:id="@+id/textViewTituloCalificacionDetalle"
-            android:textSize="15sp"
-            android:layout_below="@+id/textViewWebDetalle"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textStyle="bold" />
-
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ratingBarCalificacionDetalle"
-            android:theme="@style/RatingBar"
-            android:layout_below="@+id/textViewTituloCalificacionDetalle"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformaciondescripcion"
+               android:id="@+id/textViewDescripcionDetalle"
+                />
 
 
-    </RelativeLayout>
-    <FrameLayout
-        android:id="@+id/frame_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@null"></FrameLayout>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformacionpromo"
+               android:id="@+id/textViewTituloPromocionDetalle"
+               android:textSize="15sp"
+               android:textStyle="bold" />
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformacionpromo"
+               android:id="@+id/textViewPromocionDetalle"
+               />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformacionabierto"
+               android:id="@+id/textViewTituloHorarioDetalle"
+               android:textSize="15sp"
+               android:textStyle="bold" />
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformacionabierto"
+               android:id="@+id/textViewHorarioDetalle"
+               />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformaciontitulodireccion"
+               android:id="@+id/textViewTituloDireccionDetalle"
+               android:textSize="15sp"
+               android:textStyle="bold" />
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformaciondireccion"
+               android:id="@+id/textViewDireccionDetalle"
+               />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformaciontitulotelefono"
+               android:id="@+id/textViewTituloTelefonoDetalle"
+               android:textSize="15sp"
+               android:textStyle="bold" />
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformaciontelefono"
+               android:id="@+id/textViewTelefonoDetalle"
+              />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformaciondomicilio"
+               android:id="@+id/textViewTituloDomicilioDetalle"
+               android:textSize="15sp"
+               android:textStyle="bold" />
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformaciondomicilio"
+               android:id="@+id/textViewDomicilioDetalle"
+               />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformacioneventos"
+               android:id="@+id/textViewTituloEventosDetalle"
+               android:textSize="15sp"
+               android:textStyle="bold" />
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformacioneventos"
+               android:id="@+id/textViewEventosDetalle"
+               />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformaciontituloweb"
+               android:id="@+id/textViewTituloWebDetalle"
+               android:textSize="15sp"
+               android:textStyle="bold" />
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformacionweb"
+               android:id="@+id/textViewWebDetalle"
+               />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/fragmentinformacioncalifica"
+               android:id="@+id/textViewTituloCalificacionDetalle"
+               android:textSize="15sp"
+               android:textStyle="bold" />
+
+           <RatingBar
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/ratingBarCalificacionDetalle"
+               android:theme="@style/RatingBar"
+               />
+
+
+
+       </LinearLayout>
+
+
+
+
+   </ScrollView>
+
+
 </FrameLayout>

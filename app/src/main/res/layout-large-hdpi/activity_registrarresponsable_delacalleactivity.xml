@@ -1,0 +1,116 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@drawable/fondomenublanco768x1280"
+    tools:context="com.delacalle.delacalle.delacalleapp.registrarresponsable_delacalleactivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/editTextnombreregistroResponsable"
+        android:layout_marginTop="125dp"
+        android:hint="@string/registrarresponsablenombre"
+        android:singleLine="true"
+        android:lines="1"
+        android:paddingLeft="10dp"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="25sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/editTextemailregistroResponsable"
+        android:hint="@string/registrarresponsablecorreo"
+        android:textColor="#000000"
+        android:paddingLeft="10dp"
+        android:singleLine="true"
+        android:lines="1"
+        android:inputType="textEmailAddress"
+        android:textColorHint="#000000"
+        android:layout_alignParentStart="true"
+        android:textSize="25sp"
+        android:layout_below="@+id/editTextnombreregistroResponsable"
+        android:layout_alignParentLeft="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/editTextpassregistroResponsable"
+        android:hint="@string/registrarresponsablecontrasena"
+        android:paddingLeft="10dp"
+        android:singleLine="true"
+        android:lines="1"
+        android:textColor="#000000"
+        android:inputType="textPassword"
+        android:textColorHint="#000000"
+        android:textSize="25sp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editTextemailregistroResponsable"
+        android:layout_alignParentLeft="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/editTextrepassregistroResponsable"
+        android:hint="@string/registrarresponsablerecontrasena"
+        android:paddingLeft="10dp"
+        android:singleLine="true"
+        android:lines="1"
+        android:textColor="#000000"
+        android:inputType="textPassword"
+        android:textColorHint="#000000"
+        android:textSize="25sp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editTextpassregistroResponsable"
+        android:layout_alignParentLeft="true" />
+
+        <Button
+            android:layout_width="260dp"
+            android:layout_height="50dp"
+            android:text="@string/registrarresponsablebtnregistrarresponsable"
+            android:id="@+id/btnregistrarResponsable"
+            android:background="#f27817"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:layout_below="@+id/editTextrepassregistroResponsable"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="134dp" />
+
+
+
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimaryDark"
+        app:titleTextColor="@android:color/white"
+
+        />
+
+    <View
+        android:id="@+id/toolbar_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="7dp"
+        android:background="@drawable/sombratoolbar" />
+
+
+
+</RelativeLayout>
