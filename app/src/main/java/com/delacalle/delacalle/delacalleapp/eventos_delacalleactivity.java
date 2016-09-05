@@ -168,7 +168,7 @@ public class eventos_delacalleactivity extends AppCompatActivity {
         }catch(Exception e)
         {
             e.getStackTrace();
-            Log.d("delacalle", "error en mostrar contenido domicilios "+e);
+            Log.d("delacalle", "error en mostrar contenido eventos "+e);
         }
     }
 

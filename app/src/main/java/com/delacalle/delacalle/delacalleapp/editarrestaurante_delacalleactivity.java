@@ -563,6 +563,7 @@ public class editarrestaurante_delacalleactivity extends AppCompatActivity  impl
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             eliminarrestaurante();
+                            Log.d("delacalle","se ha eliminado el restaurante");
                         }
 
                     })

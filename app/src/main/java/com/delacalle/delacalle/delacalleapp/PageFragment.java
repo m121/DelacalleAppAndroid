@@ -50,6 +50,8 @@ import com.parse.SaveCallback;
 
 import java.io.ByteArrayOutputStream;
 
+import hotchemi.android.rate.AppRate;
+import hotchemi.android.rate.OnClickButtonListener;
 
 
 /**
@@ -94,6 +96,24 @@ public class PageFragment extends Fragment {
         cd = new ConnectionDetector(getActivity().getApplicationContext());
         // get Internet status
         isInternetPresent = cd.isConnectingToInternet();
+
+        // Para calificar la app , luego 5 veces de iniciada la app
+        AppRate.with(getActivity())
+                .setInstallDays(0) // default 10, 0 means install day.
+                .setLaunchTimes(5) // default 10
+                .setRemindInterval(2) // default 1
+                .setShowLaterButton(true) // default true
+                .setDebug(false) // default false
+                .setOnClickButtonListener(new OnClickButtonListener() { // callback listener.
+                    @Override
+                    public void onClickButton(int which) {
+
+                    }
+                })
+                .monitor();
+
+        // Show a dialog if meets conditions
+        AppRate.showRateDialogIfMeetsConditions(getActivity());
 
 
 

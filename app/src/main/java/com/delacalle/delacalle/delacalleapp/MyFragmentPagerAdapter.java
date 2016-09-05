@@ -33,7 +33,6 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter{
                 return PageFragment.newInstance(0);
             case 1:
                 return PageFragmentTwo.newInstance(1);
-
             default:
                 return null;
         }

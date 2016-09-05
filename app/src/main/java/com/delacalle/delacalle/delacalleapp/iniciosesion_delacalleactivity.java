@@ -133,10 +133,23 @@ String email;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        // Keep log in
+        if (currentUser != null) {
+            // Start an intent for the logged in activity
+            startActivity(new Intent(this, menu_pestanas_delacalleactivity.class));
+        }
+
+
+
         GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
         Tracker tracker = analytics.newTracker("UA-77841203-3");
         tracker.setScreenName("iniciarsesion");
         tracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+
+
+
 
         try {
             FacebookSdk.sdkInitialize(iniciosesion_delacalleactivity.this);

@@ -317,6 +317,7 @@ try {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                            eliminarperfil();
+                            Log.d("delacalle","perfil de usuario eliminado");
                         }
 
                     })
@@ -395,6 +396,7 @@ try {
                 // detener google analytics
                 GoogleAnalytics.getInstance(this).reportActivityStop(this);
                 ParseUser.logOut();
+
                 Log.d("delacalle", "usuario cierra sesion");
                 Toast.makeText(getApplicationContext(), "Cerrando sesión", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(perfilusuario_delacalleactivity.this, iniciosesion_delacalleactivity.class);

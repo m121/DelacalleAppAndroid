@@ -17,7 +17,7 @@ import java.util.TimerTask;
 
 public class splashscreen_delacalleactivity extends AppCompatActivity {
 
-    // Set the duration of the splash screen
+  /*  // Set the duration of the splash screen
     private static final long SPLASH_SCREEN_DELAY = 6000;
 
     @Override
@@ -86,5 +86,5 @@ public class splashscreen_delacalleactivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+*/
 }

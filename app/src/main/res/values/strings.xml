@@ -263,5 +263,6 @@
         <item>SI</item>
         <item>NO</item>
     </string-array>
+    <string name="title_activity_mapa_delacalleactivity">Mapa</string>
 
 </resources>

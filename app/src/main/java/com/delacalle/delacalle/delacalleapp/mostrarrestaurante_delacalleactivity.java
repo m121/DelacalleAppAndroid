@@ -98,7 +98,6 @@ public class mostrarrestaurante_delacalleactivity extends AppCompatActivity {
                 CardView cardview = (CardView) view.findViewById(R.id.cardView);
                 cardview.setClickable(true);
                 TextView titletxt = (TextView) view.findViewById(R.id.editTextnombremostrarrestaurante);
-                TextView descriptiontxt = (TextView) view.findViewById(R.id.editTextdescripcionmostrarrestaurante);
          //       TextView menutxt = (TextView) view.findViewById(R.id.editTextmenumostrarrestaurante);
         final   ImageView picimageview = (ImageView) view.findViewById(R.id.imageViewfotounomostrarrestaurante);
                 RatingBar ratingbarres = (RatingBar) view.findViewById(R.id.ratingBarmostrarrestaurante);
@@ -119,7 +118,7 @@ public class mostrarrestaurante_delacalleactivity extends AppCompatActivity {
                 });
 
                 titletxt.setText(resta.getString("titulo"));
-                descriptiontxt.setText(resta.getString("descripcion"));
+           //     descriptiontxt.setText(resta.getString("descripcion"));
         //        menutxt.setText(resta.getString("menu"));
                 picfile = resta.getParseFile("fotouno");
                 picfile.getDataInBackground(new GetDataCallback() {

@@ -41,7 +41,8 @@ public class StarterApplication extends Application {
         ParseInstallation.getCurrentInstallation().saveInBackground();
 
 
-
+        AnalyticsTrackers.initialize(this);
+        AnalyticsTrackers.getInstance().get(AnalyticsTrackers.Target.APP);
         // By specifying no write privileges for the ACL, we can ensure the role cannot be altered.
         /*ParseACL roleACL = new ParseACL();
         roleACL.setPublicReadAccess(true);

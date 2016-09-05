@@ -10,6 +10,9 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
 
     <compatible-screens>
 
@@ -69,6 +72,11 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:theme="@style/MyMaterialTheme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
         <activity
             android:name=".home_delacalleactivity"
             android:label="@string/title_activity_home_delacalleactivity"
@@ -90,17 +98,14 @@
 
         <activity
             android:name=".iniciosesion_delacalleactivity"
-            android:label="@string/title_activity_iniciosesion_delacalleactivity"
+            android:label="@string/app_name"
             android:screenOrientation="portrait">
 
-            <!--
-            <intent-filter>
+          <!--  <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
-
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".registro_delacalleactivity"
@@ -119,11 +124,14 @@
             android:name=".splashscreen_delacalleactivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".agregarrestaurante_delacalleactivity"
@@ -280,7 +288,16 @@
         <activity android:name=".domicilio_delacalleactivity" />
         <activity android:name=".eventos_delacalleactivity" />
         <activity android:name=".promociones_delacalleactivity" />
-        <activity android:name=".busquedapromocion_delacalleactivity"></activity>
+        <activity android:name=".busquedapromocion_delacalleactivity" />
+        <activity
+            android:name=".mapa_delacalleactivity"
+            android:label="@string/title_activity_mapa_delacalleactivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
